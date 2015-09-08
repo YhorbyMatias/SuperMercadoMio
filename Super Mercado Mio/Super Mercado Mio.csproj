@@ -72,6 +72,30 @@
     <Compile Include="Empresa\Nueva.Designer.cs">
       <DependentUpon>Nueva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grupo\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grupo\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grupo\Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grupo\Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grupo\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grupo\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grupo\Nuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grupo\Nuevo.Designer.cs">
+      <DependentUpon>Nuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +199,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Empresa\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grupo\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grupo\Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grupo\Modificar.resx">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grupo\Nuevo.resx">
+      <DependentUpon>Nuevo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

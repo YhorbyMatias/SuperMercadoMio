@@ -42,6 +42,9 @@ namespace Bss
                 case 7:
                     errorMessage = "El NIT ya se halla registrado.";
                     break;
+                case 8:
+                    errorMessage = "El grupo ya se halla registrado.";
+                    break;
             }
             return errorMessage;
         }

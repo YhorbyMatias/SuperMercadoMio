@@ -55,6 +55,7 @@ namespace Super_Mercado_Mio.Usuario
                     usuario.ID_USUARIO = Convert.ToInt32(dataGridViewUsuarios.SelectedRows[0].Cells["Id_Usuario"].Value);
                     if (usuario.ID_USUARIO != SesionEnt.idUsuario)
                     {
+                        usuario.ESTADO = false;
                         objetoUsuario.delete(usuario);
                         insertarRegistro("Usuario", usuario.ID_USUARIO, "Eliminar");
                         privilegio.ID_USUARIO = usuario.ID_USUARIO;

@@ -278,6 +278,7 @@ namespace Super_Mercado_Mio.Proveedor
                 proveedor.NUMERO_DE_CUENTA = textBoxNumeroDeCuenta.Text.Trim().ToUpper();
                 objetoProveedor.update(proveedor);
                 insertarRegistro("Proveedor", proveedor.ID_PROVEEDOR, "Modificar");
+                updated = true;
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

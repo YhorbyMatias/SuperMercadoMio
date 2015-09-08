@@ -57,6 +57,11 @@
             this.modificarProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaDeGruposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripPrincipal.SuspendLayout();
             this.menuStripMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +154,8 @@
             this.usuarioToolStripMenuItem,
             this.empresaToolStripMenuItem,
             this.sucursalToolStripMenuItem,
-            this.proveedorToolStripMenuItem});
+            this.proveedorToolStripMenuItem,
+            this.grupoToolStripMenuItem});
             this.definicionesToolStripMenuItem.Name = "definicionesToolStripMenuItem";
             this.definicionesToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.definicionesToolStripMenuItem.Text = "Definiciones";
@@ -308,6 +314,49 @@
             this.listaDeProveedoresToolStripMenuItem.Text = "Lista";
             this.listaDeProveedoresToolStripMenuItem.Click += new System.EventHandler(this.listaDeProveedoresToolStripMenuItem_Click);
             // 
+            // grupoToolStripMenuItem
+            // 
+            this.grupoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoGrupoToolStripMenuItem,
+            this.modificarGrupoToolStripMenuItem,
+            this.eliminarGrupoToolStripMenuItem,
+            this.listaDeGruposToolStripMenuItem});
+            this.grupoToolStripMenuItem.Name = "grupoToolStripMenuItem";
+            this.grupoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.grupoToolStripMenuItem.Text = "Grupo";
+            // 
+            // nuevoGrupoToolStripMenuItem
+            // 
+            this.nuevoGrupoToolStripMenuItem.Enabled = false;
+            this.nuevoGrupoToolStripMenuItem.Name = "nuevoGrupoToolStripMenuItem";
+            this.nuevoGrupoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoGrupoToolStripMenuItem.Text = "Nuevo";
+            this.nuevoGrupoToolStripMenuItem.Click += new System.EventHandler(this.nuevoGrupoToolStripMenuItem_Click);
+            // 
+            // modificarGrupoToolStripMenuItem
+            // 
+            this.modificarGrupoToolStripMenuItem.Enabled = false;
+            this.modificarGrupoToolStripMenuItem.Name = "modificarGrupoToolStripMenuItem";
+            this.modificarGrupoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarGrupoToolStripMenuItem.Text = "Modificar";
+            this.modificarGrupoToolStripMenuItem.Click += new System.EventHandler(this.modificarGrupoToolStripMenuItem_Click);
+            // 
+            // eliminarGrupoToolStripMenuItem
+            // 
+            this.eliminarGrupoToolStripMenuItem.Enabled = false;
+            this.eliminarGrupoToolStripMenuItem.Name = "eliminarGrupoToolStripMenuItem";
+            this.eliminarGrupoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarGrupoToolStripMenuItem.Text = "Eliminar";
+            this.eliminarGrupoToolStripMenuItem.Click += new System.EventHandler(this.eliminarGrupoToolStripMenuItem_Click);
+            // 
+            // listaDeGruposToolStripMenuItem
+            // 
+            this.listaDeGruposToolStripMenuItem.Enabled = false;
+            this.listaDeGruposToolStripMenuItem.Name = "listaDeGruposToolStripMenuItem";
+            this.listaDeGruposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listaDeGruposToolStripMenuItem.Text = "Lista";
+            this.listaDeGruposToolStripMenuItem.Click += new System.EventHandler(this.listaDeGruposToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,5 +411,10 @@
         private System.Windows.Forms.ToolStripMenuItem modificarProveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarProveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaDeProveedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grupoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoGrupoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarGrupoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarGrupoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaDeGruposToolStripMenuItem;
     }
 }

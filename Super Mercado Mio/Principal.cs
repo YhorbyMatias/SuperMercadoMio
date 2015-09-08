@@ -174,6 +174,32 @@ namespace Super_Mercado_Mio
             formularioListaDeProveedores.Show();
         }
         #endregion
+        #region Menu Grupo
+        private void nuevoGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Grupo.Nuevo formularioNuevoGrupo = new Grupo.Nuevo();
+            formularioNuevoGrupo.MdiParent = this;
+            formularioNuevoGrupo.Show();
+        }
+        private void modificarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Grupo.Lista formularioListaDeProductos = new Grupo.Lista(2);
+            formularioListaDeProductos.MdiParent = this;
+            formularioListaDeProductos.Show();
+        }
+        private void eliminarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Grupo.Eliminar formularioEliminarGrupo = new Grupo.Eliminar();
+            formularioEliminarGrupo.MdiParent = this;
+            formularioEliminarGrupo.Show();
+        }
+        private void listaDeGruposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Grupo.Lista formularioListaDeProductos = new Grupo.Lista(1);
+            formularioListaDeProductos.MdiParent = this;
+            formularioListaDeProductos.Show();
+        }
+        #endregion
         #region Metodos Propios
         private void loadMenu()
         {
@@ -219,6 +245,30 @@ namespace Super_Mercado_Mio
                         break;
                     case "Datos de Sucursal":
                         datosDeSucursalToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Nuevo Proveedor":
+                        nuevoProveedorToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Proveedor":
+                        modificarProveedorToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Eliminar Proveedor":
+                        eliminarProveedorToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Proveedores":
+                        listaDeProveedoresToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Nuevo Grupo":
+                        nuevoGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Grupo":
+                        modificarGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Eliminar Grupo":
+                        eliminarGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Grupos":
+                        listaDeGruposToolStripMenuItem.Enabled = true;
                         break;
                 }
             }

@@ -46,6 +46,7 @@
     <Compile Include="ConexionBss.cs" />
     <Compile Include="DosificacionBss.cs" />
     <Compile Include="EmpresaBss.cs" />
+    <Compile Include="GrupoBss.cs" />
     <Compile Include="ImpresionBss.cs" />
     <Compile Include="OpcionBss.cs" />
     <Compile Include="PrivilegioBss.cs" />
