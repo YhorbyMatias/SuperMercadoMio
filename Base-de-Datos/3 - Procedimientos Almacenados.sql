@@ -15,14 +15,15 @@ Go
 Create Procedure insertarUsuario
 @Ci Varchar(8),
 @Nombres Varchar(100),
-@Apellidos Varchar(300),
+@Apellido_Paterno Varchar(100),
+@Apellido_Materno Varchar (100),
 @Telefono Varchar(8),
 @Nombre_De_Usuario Varchar(50),
 @Clave Varchar(Max)
 As
 Begin
-	Insert Into Usuario(Nombres, Apellidos, Telefono, Nombre_De_Usuario, Clave, Estado)
-	Values(@Nombres, @Apellidos, @Telefono, @Nombre_De_Usuario, @Clave, 1)
+	Insert Into Usuario(Nombres, Apellido_Paterno, Apellido_Materno, Telefono, Nombre_De_Usuario, Clave, Estado)
+	Values(@Nombres, @Apellido_Paterno, @Apellido_Materno, @Telefono, @Nombre_De_Usuario, @Clave, 1)
 	Select SCOPE_IDENTITY()
 End
 
