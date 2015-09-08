@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DosificacionEnt.cs" />
     <Compile Include="EmpresaEnt.cs" />
+    <Compile Include="GrupoEnt.cs" />
     <Compile Include="OpcionEnt.cs" />
     <Compile Include="PrivilegioEnt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

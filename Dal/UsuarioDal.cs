@@ -73,7 +73,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Usuario Set Estado = 0 Where Id_Usuario = @Id_Usuario";
+            sqlCommand.CommandText = "Update Usuario Set Estado = @Estado Where Id_Usuario = @Id_Usuario";
+            sqlCommand.Parameters.AddWithValue("@Estado", usuarioX.ESTADO);
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", usuarioX.ID_USUARIO);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();

@@ -123,7 +123,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select * From buscarProveedores() "
-                + "Where Id_Proveedor Not Exists (Select Id_Proveedor From Ingreso I Where Estado = 'VIGENTE')";
+                + "Where Id_Proveedor Not Exists (Select Id_Proveedor From Ingreso Where Estado = 'VIGENTE')";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedores");

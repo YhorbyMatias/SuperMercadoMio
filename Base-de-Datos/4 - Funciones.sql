@@ -18,3 +18,13 @@ Return
 	Where Estado = 1
 )
 Go
+
+Create Function buscarGrupos()
+Returns Table
+Return
+(
+	Select ROW_NUMBER() OVER (ORDER BY Nombre) As Numero, Id_Grupo, Nombre
+	From Grupo
+	Where Estado = 1
+)
+Go
