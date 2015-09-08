@@ -82,7 +82,7 @@ Numero_De_Autorizacion Varchar(15) Not Null,
 Llave Varchar(256) Not Null,
 Fecha_Limite_De_Emision Date Not Null,
 Leyenda Varchar(MAX) Not Null,
-Estado Bit Not Null,
+Estado Varchar(20) Not Null,
 Primary Key(Id_Dosificacion),
 Foreign Key(Id_Sucursal) References Sucursal(Id_Sucursal)
 )
@@ -127,3 +127,13 @@ Estado Bit Not Null,
 Primary Key (Id_Producto),
 Foreign Key(Id_Grupo) References Grupo(Id_Grupo)
 )
+
+Create Table Caja
+(
+Id_Equipo Int Not Null Identity(1,1),
+Nombre_De_Equipo Varchar(MAX) Not Null,
+Numero Varchar(100) Not Null,
+Estado Varchar(20) Not Null,
+Primary Key(Id_Equipo)
+)
+Go
