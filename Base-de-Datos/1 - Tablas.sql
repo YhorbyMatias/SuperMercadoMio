@@ -97,16 +97,32 @@ Direccion Varchar(500) Null,
 Telefono Varchar(8) Null,
 Celular Varchar(8) Null,
 Numero_De_Cuenta Varchar(100) Null,
+Estado Bit Not Null,
 Primary Key(Id_Proveedor)
 )
 Go
 
-Create Table Caja
+Create Table Grupo
 (
-Id_Equipo Int Not Null Identity(1,1),
-Nombre_De_Equipo Varchar(MAX) Not Null,
-Numero Varchar(100) Not Null,
-Estado Varchar(20) Not Null,
-Primary Key(Id_Equipo)
+Id_Grupo Int Not Null Identity(1,1),
+Nombre Varchar(100) Not Null,
+Estado Bit Not Null,
+Primary Key(Id_Grupo)
 )
 Go
+
+Create Table Producto
+(
+Id_Producto Int Not Null Identity(1,1),
+Id_Proveedor Int Not Null,
+Id_Grupo Int Not Null,
+Codigo_De_Barras Varchar(100) Not Null,
+Nombre_Generico Varchar(100) Not Null,
+Marca Varchar(100) Not Null,
+Sabor_U_Olor Varchar(100) Not Null,
+Cantidad_Minima Decimal(18,2) Not Null,
+Precio Decimal(18,2) Not Null,
+Estado Bit Not Null,
+Primary Key (Id_Producto),
+Foreign Key(Id_Grupo) References Grupo(Id_Grupo)
+)
