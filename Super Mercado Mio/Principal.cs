@@ -49,20 +49,81 @@ namespace Super_Mercado_Mio
                     FormularioNuevaEmpresa.ShowDialog();
                 }
             }
-            if (objetoSucursal.exists() == 0)
-            {
                 if (usuario.ID_USUARIO == 1)
                 {
-                    nuevaSucursalToolStripMenuItem.Enabled = true;
-                    nuevaSucursalToolStripMenuItem.Visible = true;
+                    modificarEmpresaToolStripMenuItem.Enabled = true;
+                    modificarEmpresaToolStripMenuItem.Visible = true;
                 }
-                else
+                   else
                 {
-                    Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-                    FormularioNuevaSucursal.ShowDialog();
+                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
+                    FormularioNuevaEmpresa.ShowDialog();
                 }
-            }
-        }
+              if (usuario.ID_USUARIO == 1)
+                {
+                    datosDeEmpresaToolStripMenuItem.Enabled=true;
+                    datosDeEmpresaToolStripMenuItem.Visible=true;
+                }
+                   else
+                {
+                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
+                    FormularioNuevaEmpresa.ShowDialog();
+                }
+               if (objetoSucursal.exists() == 0)
+                {
+                    if (usuario.ID_USUARIO == 1)
+                    {
+                        nuevaSucursalToolStripMenuItem.Enabled = true;
+                        nuevaSucursalToolStripMenuItem.Visible = true;
+                    }
+                        else
+                    {
+                        Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
+                        FormularioNuevaSucursal.ShowDialog();
+                    }
+               }
+                   if (usuario.ID_USUARIO == 1)
+                    {
+                        modificarSucursalToolStripMenuItem.Enabled = true;
+                        modificarSucursalToolStripMenuItem.Visible = true;
+                    }
+                        else
+                    {
+                        Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
+                        FormularioNuevaSucursal.ShowDialog();
+                    }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       datosDeSucursalToolStripMenuItem.Enabled = true;
+                       datosDeSucursalToolStripMenuItem.Visible = true;
+                   }
+                        else
+                   {
+                       Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
+                       FormularioNuevaSucursal.ShowDialog();
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       nuevoProveedorToolStripMenuItem.Enabled = true;
+                       nuevoProveedorToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       modificarProveedorToolStripMenuItem.Enabled = true;
+                       modificarProveedorToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       eliminarProveedorToolStripMenuItem.Enabled = true;
+                       eliminarProveedorToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       listaDeProveedoresToolStripMenuItem.Enabled = true;
+                       listaDeProveedoresToolStripMenuItem.Visible = true;
+                   }
+
+                }
         #endregion
         #region Menu Archivo
         private void cambiarClaveToolStripMenuItem_Click(object sender, EventArgs e)
