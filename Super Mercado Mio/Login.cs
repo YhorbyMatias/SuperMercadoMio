@@ -46,7 +46,7 @@ namespace Super_Mercado_Mio
             {
                 ConexionBss.test();
                 usuario.NOMBRE_DE_USUARIO = textBoxUsuario.Text.Trim();
-                usuario.CLAVE = cifrarClave(textBoxClave.Text.Trim());
+                usuario.CLAVE = textBoxClave.Text.Trim();
                 usuario.ID_USUARIO = objetoUsuario.login(usuario);
                 if (usuario.ID_USUARIO != 0)
                 {

@@ -35,33 +35,33 @@ namespace Super_Mercado_Mio
             SesionEnt.nombreDeUsuario = objetoUsuario.getFullName(usuario);
             SesionEnt.nombreDeEquipo = System.Environment.MachineName;
             toolStripStatusLabelUsuario.Text = "Usuario: " + SesionEnt.nombreDeUsuario;
-            //loadMenu();
-            //if (objetoEmpresa.exists() == 0)
-            //{
-            //    if (usuario.ID_USUARIO == 1)
-            //    {
-            //        nuevaEmpresaToolStripMenuItem.Enabled = true;
-            //        nuevaEmpresaToolStripMenuItem.Visible = true;
-            //    }
-            //    else
-            //    {
-            //        Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
-            //        FormularioNuevaEmpresa.ShowDialog();
-            //    }
-            //}
-            //if (objetoSucursal.exists() == 0)
-            //{
-            //    if (usuario.ID_USUARIO == 1)
-            //    {
-            //        nuevaSucursalToolStripMenuItem.Enabled = true;
-            //        nuevaSucursalToolStripMenuItem.Visible = true;
-            //    }
-            //    else
-            //    {
-            //        Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-            //        FormularioNuevaSucursal.ShowDialog();
-            //    }
-            //}
+            loadMenu();
+            if (objetoEmpresa.exists() == 0)
+            {
+                if (usuario.ID_USUARIO == 1)
+                {
+                    nuevaEmpresaToolStripMenuItem.Enabled = true;
+                    nuevaEmpresaToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
+                    FormularioNuevaEmpresa.ShowDialog();
+                }
+            }
+            if (objetoSucursal.exists() == 0)
+            {
+                if (usuario.ID_USUARIO == 1)
+                {
+                    nuevaSucursalToolStripMenuItem.Enabled = true;
+                    nuevaSucursalToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
+                    FormularioNuevaSucursal.ShowDialog();
+                }
+            }
         }
         #endregion
         #region Menu Archivo
@@ -291,11 +291,6 @@ namespace Super_Mercado_Mio
         }
         #endregion
 
-        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo();
-            formularioNuevoProducto.MdiParent = this;
-            formularioNuevoProducto.Show();
-        }
+       
     }
 }

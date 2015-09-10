@@ -16,7 +16,7 @@ Create Procedure insertarUsuario
 @Ci Varchar(8),
 @Nombres Varchar(100),
 @Apellido_Paterno Varchar(100),
-@Apellido_Materno Varchar(100),
+@Apellido_Materno Varchar (100),
 @Telefono Varchar(8),
 @Nombre_De_Usuario Varchar(50),
 @Clave Varchar(Max)
@@ -88,11 +88,19 @@ Create Procedure insertarProveedor
 @Direccion Varchar(500),
 @Telefono Varchar(8),
 @Celular Varchar(8),
-@Numero_De_Cuenta Varchar(100),
-@Estado Bit
+@Numero_De_Cuenta Varchar(100)
 As
 Begin
 	Insert Into Proveedor(Nit, Nombre, Persona_De_Contacto, Direccion, Telefono, Celular, Numero_De_Cuenta, Estado)
-	Values(@Nit, @Nombre, @Persona_De_Contacto, @Direccion, @Telefono, @Celular, @Numero_De_Cuenta, @Estado)
+	Values(@Nit, @Nombre, @Persona_De_Contacto, @Direccion, @Telefono, @Celular, @Numero_De_Cuenta, 1)
+End
+Go
+
+Create Procedure insertarGrupo
+@Nombre Varchar(100),
+As
+Begin
+	Insert Into Proveedor(Nombre, Estado)
+	Values(@Nombre, 1)
 End
 Go
