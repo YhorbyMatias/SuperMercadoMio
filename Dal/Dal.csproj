@@ -46,6 +46,7 @@
     <Compile Include="GrupoDal.cs" />
     <Compile Include="OpcionDal.cs" />
     <Compile Include="PrivilegioDal.cs" />
+    <Compile Include="ProductoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDal.cs" />
     <Compile Include="RegistroDal.cs" />
