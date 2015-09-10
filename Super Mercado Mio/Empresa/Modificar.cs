@@ -41,6 +41,47 @@ namespace Super_Mercado_Mio.Empresa
         }
         #endregion
         #region textBoxPropietario
+        private void textBoxPropietario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                Clipboard.SetText(Clipboard.GetText().Trim());
+                if (ValidacionBss.esCadena(Clipboard.GetText()) == true)
+                {
+                    isWritable = true;
+                }
+                else
+                {
+                    e.Handled = true;
+                    isWritable = false;
+                }
+            }
+        }
+        private void textBoxPropietario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (isWritable == true)
+            {
+                if (ValidacionBss.diccionarioCadena.IndexOf(e.KeyChar) > -1)
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar))
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
         private void textBoxPropietario_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarPropietario();
