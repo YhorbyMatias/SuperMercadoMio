@@ -143,6 +143,8 @@
             this.textBoxPropietario.Name = "textBoxPropietario";
             this.textBoxPropietario.Size = new System.Drawing.Size(250, 20);
             this.textBoxPropietario.TabIndex = 0;
+            this.textBoxPropietario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPropietario_KeyDown);
+            this.textBoxPropietario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPropietario_KeyPress);
             this.textBoxPropietario.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPropietario_Validating);
             // 
             // labelPropietario
