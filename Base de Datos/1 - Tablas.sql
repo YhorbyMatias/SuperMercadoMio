@@ -89,6 +89,16 @@ Foreign Key(Id_Sucursal) References Sucursal(Id_Sucursal)
 )
 Go
 
+Create Table Caja
+(
+Id_Equipo Int Not Null Identity(1,1),
+Nombre_De_Equipo Varchar(MAX) Not Null,
+Numero Varchar(100) Not Null,
+Estado Varchar(20) Not Null,
+Primary Key(Id_Equipo)
+)
+Go
+
 Create Table Proveedor
 (
 Id_Proveedor Int Not Null Identity(1,1),
@@ -129,12 +139,33 @@ Primary Key (Id_Producto),
 Foreign Key(Id_Grupo) References Grupo(Id_Grupo)
 )
 
-Create Table Caja
+Create Table Ingreso
 (
-Id_Equipo Int Not Null Identity(1,1),
-Nombre_De_Equipo Varchar(MAX) Not Null,
-Numero Varchar(100) Not Null,
+Id_Ingreso Int Not Null Identity(1,1),
+Id_Proveedor Int Not Null,
+Fecha Date Not Null,
+Numero_De_Registro Int Not Null,
+Numero_Nota_De_Entrega Varchar(50) Null,
+Monto_Total Money Not Null,
+Observaciones Varchar(MAX) Null,
+Tipo_De_Ingreso Varchar(15) Not Null,
 Estado Varchar(20) Not Null,
-Primary Key(Id_Equipo)
+Primary Key(Id_Ingreso),
+Foreign Key(Id_Proveedor) References Proveedor(Id_Proveedor),
 )
-Go
+
+Create Table Detalle_De_Ingreso
+(
+Id_Detalle_De_Ingreso Int Not Null Identity(1,1),
+Id_Ingreso Int Not Null,
+Id_Producto Int Not Null,
+Cantidad Decimal(18,2) Not Null,
+Precio_De_Compra Money Not Null,
+Porcentaje_De_Utilidad Decimal(18,2) Not Null,
+Precio_De_Venta Money Not Null,
+Monto_Total Money Not Null,
+Estado Bit Not Null,
+Primary Key(Id_Detalle_De_Ingreso),
+Foreign Key(Id_Ingreso) References Ingreso(Id_Ingreso),
+Foreign Key(Id_Producto) References Producto(Id_Producto)
+)
