@@ -13,7 +13,7 @@ Create Function buscarProveedores()
 Returns Table
 Return
 (
-	Select ROW_NUMBER() OVER (ORDER BY Nombre) As Numero, Id_Proveedor, Nit, Nombre, Persona_De_Contacto, Direccion, Telefono, Celular, Numero_De_Cuenta
+	Select ROW_NUMBER() OVER (ORDER BY Nombre) As Numero, Id_Proveedor, Nit, Nombre, Telefono
 	From Proveedor
 	Where Estado = 1
 )

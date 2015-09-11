@@ -110,7 +110,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Numero, Id_Proveedor, Nit, Nombre, Telefono From buscarProveedores()";
+            sqlCommand.CommandText = "Select * From buscarProveedores()";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedores");
@@ -122,7 +122,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Numero, Id_Proveedor, Nit, Nombre, Telefono From buscarProveedores() "
+            sqlCommand.CommandText = "Select * From buscarProveedores() "
                 + "Where Not Exists (Select I.Id_Proveedor From Ingreso I Where Estado = 'VIGENTE' And Id_Proveedor = I.Id_Proveedor)";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;

@@ -21,6 +21,7 @@ Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (15, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (16, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (17, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (18, 1, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (19, 1, 1);
 
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (1, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (2, 2, 1);
@@ -40,3 +41,4 @@ Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (15, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (16, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (17, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (18, 2, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (19, 2, 1);
