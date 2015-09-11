@@ -48,6 +48,7 @@
     <Compile Include="GrupoEnt.cs" />
     <Compile Include="OpcionEnt.cs" />
     <Compile Include="PrivilegioEnt.cs" />
+    <Compile Include="ProductoEnt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorEnt.cs" />
     <Compile Include="RegistroEnt.cs" />

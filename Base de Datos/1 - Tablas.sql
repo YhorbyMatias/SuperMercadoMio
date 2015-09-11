@@ -1,4 +1,3 @@
-Use SuperMio
 Create Table Usuario
 (
 Id_Usuario Int Not Null Identity(1,1),
@@ -83,7 +82,7 @@ Numero_De_Autorizacion Varchar(15) Not Null,
 Llave Varchar(256) Not Null,
 Fecha_Limite_De_Emision Date Not Null,
 Leyenda Varchar(MAX) Not Null,
-Estado Varchar(20) Not Null,
+Estado Varchar(9) Not Null,
 Primary Key(Id_Dosificacion),
 Foreign Key(Id_Sucursal) References Sucursal(Id_Sucursal)
 )
@@ -91,13 +90,47 @@ Go
 
 Create Table Caja
 (
-Id_Equipo Int Not Null Identity(1,1),
+Id_Caja Int Not Null Identity(1,1),
 Nombre_De_Equipo Varchar(MAX) Not Null,
 Numero Varchar(100) Not Null,
 Estado Varchar(20) Not Null,
-Primary Key(Id_Equipo)
+Primary Key(Id_Caja)
 )
 Go
+
+Create Table Apertura_De_Caja
+(
+Id_Apertura_De_Caja Int Not Null Identity(1,1),
+Id_Usuario Int Not Null,
+Id_Caja Int Not Null,
+Fecha Date Not Null,
+Hora Varchar(50) Not Null,
+Monto Decimal(18,2) Not Null,
+Cerrado Bit Not Null,
+Primary Key(Id_Apertura_De_Caja),
+Foreign Key(Id_Usuario) References Usuario(Id_Usuario),
+Foreign Key(Id_Caja) References Caja(Id_Caja)
+)
+
+Create Table Cierre_De_Caja
+(
+Id_Cierre_De_Caja Int Not Null Identity(1,1),
+Id_Usuario Int Not Null,
+Id_Caja Int Not Null,
+Id_Apertura_De_Caja Int Not Null,
+Fecha Date Not Null,
+Hora Varchar(50) Not Null,
+Monto_De_Apertura_De_Caja Decimal(18,2) Not Null,
+Monto_Total_De_Ventas Decimal(18,2) Not Null,
+Monto_De_Devoluciones Decimal(18,2) Not Null,
+Monto_De_Ventas_De_Tarjetas Decimal(18,2) Not Null,
+Pagos Decimal(18,2) Not Null,
+Monto_Total Decimal(18,2) Not Null,
+Primary Key(Id_Cierre_De_Caja),
+Foreign Key(Id_Usuario) References Usuario(Id_Usuario),
+Foreign Key(Id_Caja) References Caja(Id_Caja),
+Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id_Apertura_De_Caja)
+)
 
 Create Table Proveedor
 (
@@ -111,6 +144,16 @@ Celular Varchar(8) Null,
 Numero_De_Cuenta Varchar(100) Null,
 Estado Bit Not Null,
 Primary Key(Id_Proveedor)
+)
+Go
+
+Create Table Cliente
+(
+Id_Cliente Int Not Null Identity(1,1),
+Ci_O_Nit Varchar(12) Not Null,
+Nombre_Completo Varchar(500) Not Null,
+Estado Bit Not Null,
+Primary Key(Id_Cliente)
 )
 Go
 
@@ -128,11 +171,15 @@ Create Table Producto
 Id_Producto Int Not Null Identity(1,1),
 Id_Proveedor Int Not Null,
 Id_Grupo Int Not Null,
+Tipo_De_Codigo_De_Barras Varchar(7) Not Null,
 Codigo_De_Barras Varchar(100) Not Null,
 Nombre_Generico Varchar(100) Not Null,
 Marca Varchar(100) Not Null,
-Sabor_U_Olor Varchar(100) Not Null,
-Cantidad_Minima Decimal(18,2) Not Null,
+Presentacion Varchar(100) Not Null,
+Alias Varchar(24) Not Null,
+Sabor_U_Olor Varchar(100) Null,
+Tipo Varchar(10) Not Null,
+Cantidad_Minima Decimal(18,3) Not Null,
 Precio Decimal(18,2) Not Null,
 Estado Bit Not Null,
 Primary Key (Id_Producto),
@@ -146,9 +193,9 @@ Id_Proveedor Int Not Null,
 Fecha Date Not Null,
 Numero_De_Registro Int Not Null,
 Numero_Nota_De_Entrega Varchar(50) Null,
-Monto_Total Money Not Null,
-Observaciones Varchar(MAX) Null,
-Tipo_De_Ingreso Varchar(15) Not Null,
+Monto_Total Decimal(18,2) Not Null,
+Observaciones Varchar(500) Null,
+Tipo Varchar(15) Not Null,
 Estado Varchar(20) Not Null,
 Primary Key(Id_Ingreso),
 Foreign Key(Id_Proveedor) References Proveedor(Id_Proveedor),
@@ -159,13 +206,52 @@ Create Table Detalle_De_Ingreso
 Id_Detalle_De_Ingreso Int Not Null Identity(1,1),
 Id_Ingreso Int Not Null,
 Id_Producto Int Not Null,
-Cantidad Decimal(18,2) Not Null,
-Precio_De_Compra Money Not Null,
+Cantidad Decimal(18,3) Not Null,
+Precio_De_Compra Decimal(18,2) Not Null,
+Monto_Total Decimal(18,2) Not Null,
 Porcentaje_De_Utilidad Decimal(18,2) Not Null,
-Precio_De_Venta Money Not Null,
-Monto_Total Money Not Null,
+Precio_De_Venta Decimal(18,2) Not Null,
 Estado Bit Not Null,
 Primary Key(Id_Detalle_De_Ingreso),
 Foreign Key(Id_Ingreso) References Ingreso(Id_Ingreso),
 Foreign Key(Id_Producto) References Producto(Id_Producto)
 )
+
+Create Table Egreso
+(
+Id_Egreso Int Not Null Identity(1,1),
+Id_Usuario Int Not Null,
+Id_Caja Int Not Null,
+Id_Apertura_De_Caja Int Not Null,
+Id_Cliente Int Not Null,
+Fecha Date Not Null,
+Hora Varchar(50) Not Null,
+Tipo Varchar(15) Not Null,
+Metodo_De_Pago Varchar(15) Not Null,
+Monto Decimal(18,2) Not Null,
+Monto_Pagado Decimal(18,2) Not Null,
+Cambio Decimal(18,2) Not Null,
+Observaciones Varchar(500) Null,
+Cerrado Bit Not Null,
+Estado Varchar(7) Not Null,
+Primary Key(Id_Egreso),
+Foreign Key(Id_Usuario) References Usuario(Id_Usuario),
+Foreign Key(Id_Caja) References Caja(Id_Caja),
+Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id_Apertura_De_Caja),
+Foreign Key(Id_Cliente) References Cliente(Id_Cliente)
+)
+
+Create Table Detalle_De_Egreso
+(
+Id_Detalle_De_Egreso Int Not Null Identity(1,1),
+Id_Egreso Int Not Null,
+Id_Producto Int Not Null,
+Cantidad Decimal(18,3) Not Null,
+Precio_Unitario Decimal(18,2) Not Null,
+Monto_Total Money Not Null,
+Estado Varchar(7) Not Null,
+Primary Key(Id_Detalle_De_Egreso),
+Foreign Key(Id_Egreso) References Egreso(Id_Egreso),
+Foreign Key(Id_Producto) References Producto(Id_Producto),
+)
+Go

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBoxGrupo = new System.Windows.Forms.ComboBox();
             this.labelGrupo = new System.Windows.Forms.Label();
             this.labelCodigoDeBarras = new System.Windows.Forms.Label();
@@ -35,8 +36,7 @@
             this.radioButtonTipoDeCodigoDeBarrasManual = new System.Windows.Forms.RadioButton();
             this.radioButtonTipoDeCodigoBarrasSistema = new System.Windows.Forms.RadioButton();
             this.labelTipoDeCodigoDeBarras = new System.Windows.Forms.Label();
-            this.lblErrorGrupo = new System.Windows.Forms.Label();
-            this.lblNombreGenerico = new System.Windows.Forms.Label();
+            this.labelNombreGenerico = new System.Windows.Forms.Label();
             this.textBoxNombreGenerico = new System.Windows.Forms.TextBox();
             this.comboBoxProveedor = new System.Windows.Forms.ComboBox();
             this.labelProveedor = new System.Windows.Forms.Label();
@@ -57,8 +57,10 @@
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.labelPresentacion = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPresentacion = new System.Windows.Forms.TextBox();
+            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelTipoDeProducto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxGrupo
@@ -66,10 +68,12 @@
             this.comboBoxGrupo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxGrupo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxGrupo.FormattingEnabled = true;
+            this.errorProviderFormulario.SetIconPadding(this.comboBoxGrupo, 5);
             this.comboBoxGrupo.Location = new System.Drawing.Point(148, 39);
             this.comboBoxGrupo.Name = "comboBoxGrupo";
             this.comboBoxGrupo.Size = new System.Drawing.Size(200, 21);
             this.comboBoxGrupo.TabIndex = 1;
+            this.comboBoxGrupo.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxGrupo_Validating);
             // 
             // labelGrupo
             // 
@@ -91,11 +95,13 @@
             // 
             // textBoxCodigoDeBarras
             // 
+            this.errorProviderFormulario.SetIconPadding(this.textBoxCodigoDeBarras, 5);
             this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(148, 89);
             this.textBoxCodigoDeBarras.MaxLength = 100;
             this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
             this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(200, 20);
             this.textBoxCodigoDeBarras.TabIndex = 4;
+            this.textBoxCodigoDeBarras.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCodigoDeBarras_Validating);
             // 
             // radioButtonTipoDeCodigoDeBarrasManual
             // 
@@ -108,6 +114,7 @@
             this.radioButtonTipoDeCodigoDeBarrasManual.TabStop = true;
             this.radioButtonTipoDeCodigoDeBarrasManual.Text = "Manual";
             this.radioButtonTipoDeCodigoDeBarrasManual.UseVisualStyleBackColor = true;
+            this.radioButtonTipoDeCodigoDeBarrasManual.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoDeBarrasManual_CheckedChanged);
             // 
             // radioButtonTipoDeCodigoBarrasSistema
             // 
@@ -118,6 +125,7 @@
             this.radioButtonTipoDeCodigoBarrasSistema.TabIndex = 3;
             this.radioButtonTipoDeCodigoBarrasSistema.Text = "Sistema";
             this.radioButtonTipoDeCodigoBarrasSistema.UseVisualStyleBackColor = true;
+            this.radioButtonTipoDeCodigoBarrasSistema.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoBarrasSistema_CheckedChanged);
             // 
             // labelTipoDeCodigoDeBarras
             // 
@@ -128,44 +136,36 @@
             this.labelTipoDeCodigoDeBarras.TabIndex = 343;
             this.labelTipoDeCodigoDeBarras.Text = "Tipo de Código de Barras:";
             // 
-            // lblErrorGrupo
+            // labelNombreGenerico
             // 
-            this.lblErrorGrupo.AutoSize = true;
-            this.lblErrorGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorGrupo.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorGrupo.Location = new System.Drawing.Point(354, 13);
-            this.lblErrorGrupo.Name = "lblErrorGrupo";
-            this.lblErrorGrupo.Size = new System.Drawing.Size(11, 16);
-            this.lblErrorGrupo.TabIndex = 344;
-            this.lblErrorGrupo.Text = "!";
-            this.lblErrorGrupo.Visible = false;
-            // 
-            // lblNombreGenerico
-            // 
-            this.lblNombreGenerico.AutoSize = true;
-            this.lblNombreGenerico.Location = new System.Drawing.Point(12, 118);
-            this.lblNombreGenerico.Name = "lblNombreGenerico";
-            this.lblNombreGenerico.Size = new System.Drawing.Size(93, 13);
-            this.lblNombreGenerico.TabIndex = 346;
-            this.lblNombreGenerico.Text = "Nombre Genérico:";
+            this.labelNombreGenerico.AutoSize = true;
+            this.labelNombreGenerico.Location = new System.Drawing.Point(12, 118);
+            this.labelNombreGenerico.Name = "labelNombreGenerico";
+            this.labelNombreGenerico.Size = new System.Drawing.Size(93, 13);
+            this.labelNombreGenerico.TabIndex = 346;
+            this.labelNombreGenerico.Text = "Nombre Genérico:";
             // 
             // textBoxNombreGenerico
             // 
+            this.errorProviderFormulario.SetIconPadding(this.textBoxNombreGenerico, 5);
             this.textBoxNombreGenerico.Location = new System.Drawing.Point(148, 115);
             this.textBoxNombreGenerico.MaxLength = 100;
             this.textBoxNombreGenerico.Name = "textBoxNombreGenerico";
             this.textBoxNombreGenerico.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombreGenerico.TabIndex = 5;
+            this.textBoxNombreGenerico.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNombreGenerico_Validating);
             // 
             // comboBoxProveedor
             // 
             this.comboBoxProveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxProveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxProveedor.FormattingEnabled = true;
+            this.errorProviderFormulario.SetIconPadding(this.comboBoxProveedor, 5);
             this.comboBoxProveedor.Location = new System.Drawing.Point(148, 12);
             this.comboBoxProveedor.Name = "comboBoxProveedor";
             this.comboBoxProveedor.Size = new System.Drawing.Size(200, 21);
             this.comboBoxProveedor.TabIndex = 0;
+            this.comboBoxProveedor.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxProveedor_Validating);
             // 
             // labelProveedor
             // 
@@ -189,11 +189,13 @@
             // 
             this.textBoxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.errorProviderFormulario.SetIconPadding(this.textBoxMarca, 5);
             this.textBoxMarca.Location = new System.Drawing.Point(148, 141);
             this.textBoxMarca.MaxLength = 100;
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.Size = new System.Drawing.Size(200, 20);
             this.textBoxMarca.TabIndex = 6;
+            this.textBoxMarca.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMarca_Validating);
             // 
             // labelSaborUOlor
             // 
@@ -263,11 +265,15 @@
             // 
             // textBoxCantidadMinima
             // 
+            this.errorProviderFormulario.SetIconPadding(this.textBoxCantidadMinima, 5);
             this.textBoxCantidadMinima.Location = new System.Drawing.Point(148, 279);
             this.textBoxCantidadMinima.MaxLength = 10;
             this.textBoxCantidadMinima.Name = "textBoxCantidadMinima";
             this.textBoxCantidadMinima.Size = new System.Drawing.Size(200, 20);
             this.textBoxCantidadMinima.TabIndex = 11;
+            this.textBoxCantidadMinima.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCantidadMinima_KeyDown);
+            this.textBoxCantidadMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCantidadMinima_KeyPress);
+            this.textBoxCantidadMinima.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCantidadMinima_Validating);
             // 
             // labelPrecio
             // 
@@ -280,11 +286,15 @@
             // 
             // textBoxPrecio
             // 
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPrecio, 5);
             this.textBoxPrecio.Location = new System.Drawing.Point(148, 305);
             this.textBoxPrecio.MaxLength = 10;
             this.textBoxPrecio.Name = "textBoxPrecio";
             this.textBoxPrecio.Size = new System.Drawing.Size(200, 20);
             this.textBoxPrecio.TabIndex = 12;
+            this.textBoxPrecio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecio_KeyDown);
+            this.textBoxPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecio_KeyPress);
+            this.textBoxPrecio.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecio_Validating);
             // 
             // labelAlias
             // 
@@ -297,11 +307,13 @@
             // 
             // textBoxAlias
             // 
+            this.errorProviderFormulario.SetIconPadding(this.textBoxAlias, 5);
             this.textBoxAlias.Location = new System.Drawing.Point(148, 195);
             this.textBoxAlias.MaxLength = 24;
             this.textBoxAlias.Name = "textBoxAlias";
             this.textBoxAlias.Size = new System.Drawing.Size(200, 20);
             this.textBoxAlias.TabIndex = 7;
+            this.textBoxAlias.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAlias_Validating);
             // 
             // buttonCerrar
             // 
@@ -313,6 +325,7 @@
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // buttonGuardar
             // 
@@ -323,34 +336,42 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // labelPresentacion
             // 
             this.labelPresentacion.AutoSize = true;
             this.labelPresentacion.Location = new System.Drawing.Point(12, 170);
             this.labelPresentacion.Name = "labelPresentacion";
-            this.labelPresentacion.Size = new System.Drawing.Size(66, 13);
+            this.labelPresentacion.Size = new System.Drawing.Size(72, 13);
             this.labelPresentacion.TabIndex = 362;
-            this.labelPresentacion.Text = "Presentacin:";
+            this.labelPresentacion.Text = "Presentación:";
             // 
-            // textBox1
+            // textBoxPresentacion
             // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.Location = new System.Drawing.Point(148, 167);
-            this.textBox1.MaxLength = 100;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 361;
+            this.textBoxPresentacion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxPresentacion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPresentacion, 5);
+            this.textBoxPresentacion.Location = new System.Drawing.Point(148, 167);
+            this.textBoxPresentacion.MaxLength = 100;
+            this.textBoxPresentacion.Name = "textBoxPresentacion";
+            this.textBoxPresentacion.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPresentacion.TabIndex = 361;
+            this.textBoxPresentacion.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPresentacion_Validating);
+            // 
+            // errorProviderFormulario
+            // 
+            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderFormulario.ContainerControl = this;
             // 
             // Nuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCerrar;
-            this.ClientSize = new System.Drawing.Size(377, 409);
+            this.ClientSize = new System.Drawing.Size(377, 384);
             this.Controls.Add(this.labelPresentacion);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPresentacion);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.labelAlias);
@@ -367,9 +388,8 @@
             this.Controls.Add(this.textBoxMarca);
             this.Controls.Add(this.labelProveedor);
             this.Controls.Add(this.comboBoxProveedor);
-            this.Controls.Add(this.lblNombreGenerico);
+            this.Controls.Add(this.labelNombreGenerico);
             this.Controls.Add(this.textBoxNombreGenerico);
-            this.Controls.Add(this.lblErrorGrupo);
             this.Controls.Add(this.labelTipoDeCodigoDeBarras);
             this.Controls.Add(this.radioButtonTipoDeCodigoBarrasSistema);
             this.Controls.Add(this.radioButtonTipoDeCodigoDeBarrasManual);
@@ -383,6 +403,7 @@
             this.Load += new System.EventHandler(this.Nuevo_Load);
             this.panelTipoDeProducto.ResumeLayout(false);
             this.panelTipoDeProducto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,8 +418,7 @@
         private System.Windows.Forms.RadioButton radioButtonTipoDeCodigoDeBarrasManual;
         private System.Windows.Forms.RadioButton radioButtonTipoDeCodigoBarrasSistema;
         private System.Windows.Forms.Label labelTipoDeCodigoDeBarras;
-        private System.Windows.Forms.Label lblErrorGrupo;
-        private System.Windows.Forms.Label lblNombreGenerico;
+        private System.Windows.Forms.Label labelNombreGenerico;
         private System.Windows.Forms.TextBox textBoxNombreGenerico;
         private System.Windows.Forms.ComboBox comboBoxProveedor;
         private System.Windows.Forms.Label labelProveedor;
@@ -419,6 +439,7 @@
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label labelPresentacion;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPresentacion;
+        private System.Windows.Forms.ErrorProvider errorProviderFormulario;
     }
 }

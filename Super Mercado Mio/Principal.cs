@@ -200,6 +200,14 @@ namespace Super_Mercado_Mio
             formularioListaDeProductos.Show();
         }
         #endregion
+        #region Menu Producto
+        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo(1, null);
+            formularioNuevoProducto.MdiParent = this;
+            formularioNuevoProducto.Show();
+        }
+        #endregion
         #region Metodos Propios
         private void loadMenu()
         {
@@ -290,7 +298,5 @@ namespace Super_Mercado_Mio
             }
         }
         #endregion
-
-       
     }
 }

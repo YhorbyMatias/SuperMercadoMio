@@ -177,7 +177,6 @@
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
-            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // nuevoUsuarioToolStripMenuItem
             // 
@@ -191,7 +190,7 @@
             // 
             this.modificarUsuarioToolStripMenuItem.Enabled = false;
             this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
-            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarUsuarioToolStripMenuItem.Text = "Modificar";
             this.modificarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.modificarUsuarioToolStripMenuItem_Click);
             // 
@@ -199,7 +198,7 @@
             // 
             this.eliminarUsuarioToolStripMenuItem.Enabled = false;
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar";
             this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
@@ -207,7 +206,7 @@
             // 
             this.listaDeUsuariosToolStripMenuItem.Enabled = false;
             this.listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
-            this.listaDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listaDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.listaDeUsuariosToolStripMenuItem.Text = "Lista";
             this.listaDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.listaDeUsuariosToolStripMenuItem_Click);
             // 
@@ -218,7 +217,7 @@
             this.modificarEmpresaToolStripMenuItem,
             this.datosDeEmpresaToolStripMenuItem});
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // nuevaEmpresaToolStripMenuItem
@@ -252,7 +251,7 @@
             this.modificarSucursalToolStripMenuItem,
             this.datosDeSucursalToolStripMenuItem});
             this.sucursalToolStripMenuItem.Name = "sucursalToolStripMenuItem";
-            this.sucursalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sucursalToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.sucursalToolStripMenuItem.Text = "Sucursal";
             // 
             // nuevaSucursalToolStripMenuItem
@@ -287,7 +286,7 @@
             this.eliminarProveedorToolStripMenuItem,
             this.listaDeProveedoresToolStripMenuItem});
             this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
-            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.proveedorToolStripMenuItem.Text = "Proveedor";
             // 
             // nuevoProveedorToolStripMenuItem
@@ -330,7 +329,7 @@
             this.eliminarGrupoToolStripMenuItem,
             this.listaDeGruposToolStripMenuItem});
             this.grupoToolStripMenuItem.Name = "grupoToolStripMenuItem";
-            this.grupoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.grupoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.grupoToolStripMenuItem.Text = "Grupo";
             // 
             // nuevoGrupoToolStripMenuItem

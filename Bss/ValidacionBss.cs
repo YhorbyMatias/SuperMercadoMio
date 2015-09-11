@@ -74,6 +74,18 @@ namespace Bss
         {
             return Regex.IsMatch(cadenaX, @"^\d{9,12}$");
         }
+        public static bool esRealConDosDecimales(string CadenaX)
+        {
+            bool bandera;
+            bandera = Regex.IsMatch(CadenaX, @"^\d+$|\d+\.\d{1,2}$");
+            return bandera;
+        }
+        public static bool esRealConTresDecimales(string CadenaX)
+        {
+            bool bandera;
+            bandera = Regex.IsMatch(CadenaX, @"^\d+$|\d+\.\d{1,3}$");
+            return bandera;
+        }
         public static bool esTelefono(string cadenaX)
         {
             bool bandera;
