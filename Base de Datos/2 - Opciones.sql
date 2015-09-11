@@ -1,3 +1,5 @@
+Insert Into Opcion(Nombre, Estado) Values('Copia de Seguridad de Base de Datos', 1)
+Insert Into Opcion(Nombre, Estado) Values('Restaurar Base de Datos', 1)
 Insert Into Opcion(Nombre, Estado) Values('Nuevo Usuario', 1)
 Insert Into Opcion(Nombre, Estado) Values('Modificar Usuario', 1)
 Insert Into Opcion(Nombre, Estado) Values('Eliminar Usuario', 1)

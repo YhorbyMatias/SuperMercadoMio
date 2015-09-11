@@ -19,7 +19,7 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Count(Id_Producto) From Producto Where Estado = 1 And Nombre_Generico = @Nombre_Generico "
                 + "And Id_Producto <> @Id_Producto";
-            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", productoX.CODIGO_DE_BARRAS);
+            sqlCommand.Parameters.AddWithValue("@Nombre_Generico", productoX.NOMBRE_GENERICO);
             sqlCommand.Parameters.AddWithValue("@Id_Producto", productoX.ID_PRODUCTO);
             sqlConnection.Open();
             int existe = Convert.ToInt32(sqlCommand.ExecuteScalar());
