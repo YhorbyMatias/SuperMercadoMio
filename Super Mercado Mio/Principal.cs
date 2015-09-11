@@ -40,26 +40,6 @@ namespace Super_Mercado_Mio
             {
                 if (usuario.ID_USUARIO == 1)
                 {
-                    nuevoUsuarioToolStripMenuItem.Enabled = true;
-                    nuevoUsuarioToolStripMenuItem.Visible = true;
-                }
-                if (usuario.ID_USUARIO == 1)
-                {
-                    modificarUsuarioToolStripMenuItem.Enabled = true;
-                    modificarUsuarioToolStripMenuItem.Visible = true;
-                }
-                if (usuario.ID_USUARIO == 1)
-                {
-                    eliminarUsuarioToolStripMenuItem.Enabled = true;
-                    eliminarUsuarioToolStripMenuItem.Visible = true;
-                }
-                if (usuario.ID_USUARIO == 1)
-                {
-                    listaDeUsuariosToolStripMenuItem.Enabled = true;
-                    listaDeUsuariosToolStripMenuItem.Visible = true;
-                }
-                if (usuario.ID_USUARIO == 1)
-                {
                     nuevaEmpresaToolStripMenuItem.Enabled = true;
                     nuevaEmpresaToolStripMenuItem.Visible = true;
                 }
@@ -69,100 +49,30 @@ namespace Super_Mercado_Mio
                     FormularioNuevaEmpresa.ShowDialog();
                 }
             }
+            else
+            {
+                nuevaEmpresaToolStripMenuItem.Enabled = false;
+                nuevaEmpresaToolStripMenuItem.Visible = false;
+            }
+            if (objetoSucursal.exists() == 0)
+            {
                 if (usuario.ID_USUARIO == 1)
                 {
-                    modificarEmpresaToolStripMenuItem.Enabled = true;
-                    modificarEmpresaToolStripMenuItem.Visible = true;
+                    nuevaSucursalToolStripMenuItem.Enabled = true;
+                    nuevaSucursalToolStripMenuItem.Visible = true;
                 }
-                   else
+                else
                 {
-                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
-                    FormularioNuevaEmpresa.ShowDialog();
+                    Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
+                    FormularioNuevaSucursal.ShowDialog();
                 }
-              if (usuario.ID_USUARIO == 1)
-                {
-                    datosDeEmpresaToolStripMenuItem.Enabled=true;
-                    datosDeEmpresaToolStripMenuItem.Visible=true;
-                }
-                   else
-                {
-                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
-                    FormularioNuevaEmpresa.ShowDialog();
-                }
-               if (objetoSucursal.exists() == 0)
-                {
-                    if (usuario.ID_USUARIO == 1)
-                    {
-                        nuevaSucursalToolStripMenuItem.Enabled = true;
-                        nuevaSucursalToolStripMenuItem.Visible = true;
-                    }
-                        else
-                    {
-                        Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-                        FormularioNuevaSucursal.ShowDialog();
-                    }
-               }
-                   if (usuario.ID_USUARIO == 1)
-                    {
-                        modificarSucursalToolStripMenuItem.Enabled = true;
-                        modificarSucursalToolStripMenuItem.Visible = true;
-                    }
-                        else
-                    {
-                        Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-                        FormularioNuevaSucursal.ShowDialog();
-                    }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       datosDeSucursalToolStripMenuItem.Enabled = true;
-                       datosDeSucursalToolStripMenuItem.Visible = true;
-                   }
-                        else
-                   {
-                       Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-                       FormularioNuevaSucursal.ShowDialog();
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       nuevoProveedorToolStripMenuItem.Enabled = true;
-                       nuevoProveedorToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       modificarProveedorToolStripMenuItem.Enabled = true;
-                       modificarProveedorToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       eliminarProveedorToolStripMenuItem.Enabled = true;
-                       eliminarProveedorToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       listaDeProveedoresToolStripMenuItem.Enabled = true;
-                       listaDeProveedoresToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       nuevoGrupoToolStripMenuItem.Enabled = true;
-                       nuevoGrupoToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       modificarGrupoToolStripMenuItem.Enabled = true;
-                       modificarGrupoToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       eliminarGrupoToolStripMenuItem.Enabled = true;
-                       eliminarGrupoToolStripMenuItem.Visible = true;
-                   }
-                   if (usuario.ID_USUARIO == 1)
-                   {
-                       listaDeGruposToolStripMenuItem.Enabled = true;
-                       listaDeGruposToolStripMenuItem.Visible = true;
-                   }
-                }
+            }
+            else
+            {
+                nuevaSucursalToolStripMenuItem.Enabled = false;
+                nuevaSucursalToolStripMenuItem.Visible = false;
+            }
+        }
         #endregion
         #region Menu Archivo
         private void cambiarClaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -300,6 +210,14 @@ namespace Super_Mercado_Mio
             formularioListaDeProductos.Show();
         }
         #endregion
+        #region Menu Producto
+        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo(1, null);
+            formularioNuevoProducto.MdiParent = this;
+            formularioNuevoProducto.Show();
+        }
+        #endregion
         #region Metodos Propios
         private void loadMenu()
         {
@@ -389,7 +307,6 @@ namespace Super_Mercado_Mio
                 nuevaSucursalToolStripMenuItem.Visible = false;
             }
         }
-        #endregion
-                     
+        #endregion        
     }
 }

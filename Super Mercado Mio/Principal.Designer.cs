@@ -175,14 +175,14 @@
             this.eliminarUsuarioToolStripMenuItem,
             this.listaDeUsuariosToolStripMenuItem});
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             // 
             // nuevoUsuarioToolStripMenuItem
             // 
             this.nuevoUsuarioToolStripMenuItem.Enabled = false;
             this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
-            this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo";
             this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
             // 

@@ -1,4 +1,3 @@
-Insert Into Usuario(CI, Nombres, Apellido_Paterno, Apellido_Materno, Telefono, Nombre_De_Usuario, Clave, Estado) Values('5005402', 'EDWIN', 'ARAOZ', 'NAVARRO', '76195750', 'Admin', '40BD001563085FC35165329EA1FF5C5ECBDBBEEF', 1)
 Insert Into Opcion(Nombre, Estado) Values('Nuevo Usuario', 1)
 Insert Into Opcion(Nombre, Estado) Values('Modificar Usuario', 1)
 Insert Into Opcion(Nombre, Estado) Values('Eliminar Usuario', 1)

@@ -86,10 +86,6 @@ namespace Dal
             {
                 sqlCommand.Parameters.AddWithValue("@Numero_De_Cuenta", DBNull.Value);
             }
-            if (proveedorX.ESTADO  == true)
-            {
-                sqlCommand.Parameters.AddWithValue("@Estado", proveedorX.ESTADO);
-            }
             sqlConnection.Open();
             int idProveedor = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
