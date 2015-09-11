@@ -97,10 +97,10 @@ End
 Go
 
 Create Procedure insertarGrupo
-@Nombre Varchar(100),
+@Nombre Varchar(100)
 As
 Begin
-	Insert Into Proveedor(Nombre, Estado)
+	Insert Into Grupo(Nombre, Estado)
 	Values(@Nombre, 1)
 End
 Go

@@ -40,6 +40,26 @@ namespace Super_Mercado_Mio
             {
                 if (usuario.ID_USUARIO == 1)
                 {
+                    nuevoUsuarioToolStripMenuItem.Enabled = true;
+                    nuevoUsuarioToolStripMenuItem.Visible = true;
+                }
+                if (usuario.ID_USUARIO == 1)
+                {
+                    modificarUsuarioToolStripMenuItem.Enabled = true;
+                    modificarUsuarioToolStripMenuItem.Visible = true;
+                }
+                if (usuario.ID_USUARIO == 1)
+                {
+                    eliminarUsuarioToolStripMenuItem.Enabled = true;
+                    eliminarUsuarioToolStripMenuItem.Visible = true;
+                }
+                if (usuario.ID_USUARIO == 1)
+                {
+                    listaDeUsuariosToolStripMenuItem.Enabled = true;
+                    listaDeUsuariosToolStripMenuItem.Visible = true;
+                }
+                if (usuario.ID_USUARIO == 1)
+                {
                     nuevaEmpresaToolStripMenuItem.Enabled = true;
                     nuevaEmpresaToolStripMenuItem.Visible = true;
                 }
@@ -122,7 +142,26 @@ namespace Super_Mercado_Mio
                        listaDeProveedoresToolStripMenuItem.Enabled = true;
                        listaDeProveedoresToolStripMenuItem.Visible = true;
                    }
-
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       nuevoGrupoToolStripMenuItem.Enabled = true;
+                       nuevoGrupoToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       modificarGrupoToolStripMenuItem.Enabled = true;
+                       modificarGrupoToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       eliminarGrupoToolStripMenuItem.Enabled = true;
+                       eliminarGrupoToolStripMenuItem.Visible = true;
+                   }
+                   if (usuario.ID_USUARIO == 1)
+                   {
+                       listaDeGruposToolStripMenuItem.Enabled = true;
+                       listaDeGruposToolStripMenuItem.Visible = true;
+                   }
                 }
         #endregion
         #region Menu Archivo
@@ -351,7 +390,6 @@ namespace Super_Mercado_Mio
             }
         }
         #endregion
-
-       
+                     
     }
 }
