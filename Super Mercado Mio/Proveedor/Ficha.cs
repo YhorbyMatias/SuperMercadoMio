@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bss;
+using Ent;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +14,32 @@ namespace Super_Mercado_Mio.Proveedor
 {
     public partial class Ficha : Form
     {
+        #region Objetos
+        ProveedorBss objetoProveedor = new ProveedorBss();
+        ProveedorEnt proveedor = new ProveedorEnt();
+        #endregion
         #region Form
-        public Ficha()
+        public Ficha(int idProveedorX)
         {
             InitializeComponent();
-        }
-        private void Ficha_KeyDown(object sender, KeyEventArgs e)
-        {
-
+            proveedor.ID_PROVEEDOR = idProveedorX;
         }
         private void Ficha_Load(object sender, EventArgs e)
         {
-
+            cargarInformacionDeProveedor();
+        }
+        #endregion
+        #region Metodos Propios
+        private void cargarInformacionDeProveedor()
+        {
+            DataTable dataTableProveedor = objetoProveedor.search(proveedor);
+            textBoxNit.Text = dataTableProveedor.Rows[0]["Nit"].ToString();
+            textBoxNombre.Text = dataTableProveedor.Rows[0]["Nombre"].ToString();
+            textBoxPersonaDeContacto.Text = dataTableProveedor.Rows[0]["Persona_De_Contacto"].ToString();
+            textBoxDireccion.Text = dataTableProveedor.Rows[0]["Direccion"].ToString();
+            textBoxTelefono.Text = dataTableProveedor.Rows[0]["Telefono"].ToString();
+            textBoxCelular.Text = dataTableProveedor.Rows[0]["Celular"].ToString();
+            textBoxNumeroDeCuenta.Text = dataTableProveedor.Rows[0]["Numero_De_Cuenta"].ToString();
         }
         #endregion
     }

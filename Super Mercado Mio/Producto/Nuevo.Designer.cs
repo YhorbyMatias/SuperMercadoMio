@@ -34,7 +34,7 @@
             this.labelCodigoDeBarras = new System.Windows.Forms.Label();
             this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.radioButtonTipoDeCodigoDeBarrasManual = new System.Windows.Forms.RadioButton();
-            this.radioButtonTipoDeCodigoBarrasSistema = new System.Windows.Forms.RadioButton();
+            this.radioButtonTipoDeCodigoDeBarrasSistema = new System.Windows.Forms.RadioButton();
             this.labelTipoDeCodigoDeBarras = new System.Windows.Forms.Label();
             this.labelNombreGenerico = new System.Windows.Forms.Label();
             this.textBoxNombreGenerico = new System.Windows.Forms.TextBox();
@@ -50,6 +50,7 @@
             this.radioButtonTipoDeProductoInventario = new System.Windows.Forms.RadioButton();
             this.labelCantidadMinima = new System.Windows.Forms.Label();
             this.textBoxCantidadMinima = new System.Windows.Forms.TextBox();
+            this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.labelPrecio = new System.Windows.Forms.Label();
             this.textBoxPrecio = new System.Windows.Forms.TextBox();
             this.labelAlias = new System.Windows.Forms.Label();
@@ -116,16 +117,16 @@
             this.radioButtonTipoDeCodigoDeBarrasManual.UseVisualStyleBackColor = true;
             this.radioButtonTipoDeCodigoDeBarrasManual.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoDeBarrasManual_CheckedChanged);
             // 
-            // radioButtonTipoDeCodigoBarrasSistema
+            // radioButtonTipoDeCodigoDeBarrasSistema
             // 
-            this.radioButtonTipoDeCodigoBarrasSistema.AutoSize = true;
-            this.radioButtonTipoDeCodigoBarrasSistema.Location = new System.Drawing.Point(214, 66);
-            this.radioButtonTipoDeCodigoBarrasSistema.Name = "radioButtonTipoDeCodigoBarrasSistema";
-            this.radioButtonTipoDeCodigoBarrasSistema.Size = new System.Drawing.Size(62, 17);
-            this.radioButtonTipoDeCodigoBarrasSistema.TabIndex = 3;
-            this.radioButtonTipoDeCodigoBarrasSistema.Text = "Sistema";
-            this.radioButtonTipoDeCodigoBarrasSistema.UseVisualStyleBackColor = true;
-            this.radioButtonTipoDeCodigoBarrasSistema.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoBarrasSistema_CheckedChanged);
+            this.radioButtonTipoDeCodigoDeBarrasSistema.AutoSize = true;
+            this.radioButtonTipoDeCodigoDeBarrasSistema.Location = new System.Drawing.Point(214, 66);
+            this.radioButtonTipoDeCodigoDeBarrasSistema.Name = "radioButtonTipoDeCodigoDeBarrasSistema";
+            this.radioButtonTipoDeCodigoDeBarrasSistema.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonTipoDeCodigoDeBarrasSistema.TabIndex = 3;
+            this.radioButtonTipoDeCodigoDeBarrasSistema.Text = "Sistema";
+            this.radioButtonTipoDeCodigoDeBarrasSistema.UseVisualStyleBackColor = true;
+            this.radioButtonTipoDeCodigoDeBarrasSistema.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoBarrasSistema_CheckedChanged);
             // 
             // labelTipoDeCodigoDeBarras
             // 
@@ -212,7 +213,7 @@
             this.textBoxSaborUOlor.MaxLength = 100;
             this.textBoxSaborUOlor.Name = "textBoxSaborUOlor";
             this.textBoxSaborUOlor.Size = new System.Drawing.Size(200, 20);
-            this.textBoxSaborUOlor.TabIndex = 8;
+            this.textBoxSaborUOlor.TabIndex = 9;
             // 
             // labelTipo
             // 
@@ -230,7 +231,7 @@
             this.panelTipoDeProducto.Location = new System.Drawing.Point(148, 250);
             this.panelTipoDeProducto.Name = "panelTipoDeProducto";
             this.panelTipoDeProducto.Size = new System.Drawing.Size(200, 23);
-            this.panelTipoDeProducto.TabIndex = 9;
+            this.panelTipoDeProducto.TabIndex = 10;
             // 
             // radioButtonTipoDeProductoBalanza
             // 
@@ -238,7 +239,7 @@
             this.radioButtonTipoDeProductoBalanza.Location = new System.Drawing.Point(81, 3);
             this.radioButtonTipoDeProductoBalanza.Name = "radioButtonTipoDeProductoBalanza";
             this.radioButtonTipoDeProductoBalanza.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonTipoDeProductoBalanza.TabIndex = 10;
+            this.radioButtonTipoDeProductoBalanza.TabIndex = 11;
             this.radioButtonTipoDeProductoBalanza.Text = "Balanza";
             this.radioButtonTipoDeProductoBalanza.UseVisualStyleBackColor = true;
             // 
@@ -249,7 +250,7 @@
             this.radioButtonTipoDeProductoInventario.Location = new System.Drawing.Point(3, 3);
             this.radioButtonTipoDeProductoInventario.Name = "radioButtonTipoDeProductoInventario";
             this.radioButtonTipoDeProductoInventario.Size = new System.Drawing.Size(72, 17);
-            this.radioButtonTipoDeProductoInventario.TabIndex = 9;
+            this.radioButtonTipoDeProductoInventario.TabIndex = 10;
             this.radioButtonTipoDeProductoInventario.TabStop = true;
             this.radioButtonTipoDeProductoInventario.Text = "Inventario";
             this.radioButtonTipoDeProductoInventario.UseVisualStyleBackColor = true;
@@ -265,15 +266,21 @@
             // 
             // textBoxCantidadMinima
             // 
+            this.textBoxCantidadMinima.ContextMenuStrip = this.contextMenuStripTextBox;
             this.errorProviderFormulario.SetIconPadding(this.textBoxCantidadMinima, 5);
             this.textBoxCantidadMinima.Location = new System.Drawing.Point(148, 279);
             this.textBoxCantidadMinima.MaxLength = 10;
             this.textBoxCantidadMinima.Name = "textBoxCantidadMinima";
             this.textBoxCantidadMinima.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCantidadMinima.TabIndex = 11;
+            this.textBoxCantidadMinima.TabIndex = 12;
             this.textBoxCantidadMinima.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCantidadMinima_KeyDown);
             this.textBoxCantidadMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCantidadMinima_KeyPress);
             this.textBoxCantidadMinima.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCantidadMinima_Validating);
+            // 
+            // contextMenuStripTextBox
+            // 
+            this.contextMenuStripTextBox.Name = "contextMenuStripTextBox";
+            this.contextMenuStripTextBox.Size = new System.Drawing.Size(61, 4);
             // 
             // labelPrecio
             // 
@@ -286,12 +293,13 @@
             // 
             // textBoxPrecio
             // 
+            this.textBoxPrecio.ContextMenuStrip = this.contextMenuStripTextBox;
             this.errorProviderFormulario.SetIconPadding(this.textBoxPrecio, 5);
             this.textBoxPrecio.Location = new System.Drawing.Point(148, 305);
             this.textBoxPrecio.MaxLength = 10;
             this.textBoxPrecio.Name = "textBoxPrecio";
             this.textBoxPrecio.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPrecio.TabIndex = 12;
+            this.textBoxPrecio.TabIndex = 13;
             this.textBoxPrecio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecio_KeyDown);
             this.textBoxPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecio_KeyPress);
             this.textBoxPrecio.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecio_Validating);
@@ -312,7 +320,7 @@
             this.textBoxAlias.MaxLength = 24;
             this.textBoxAlias.Name = "textBoxAlias";
             this.textBoxAlias.Size = new System.Drawing.Size(200, 20);
-            this.textBoxAlias.TabIndex = 7;
+            this.textBoxAlias.TabIndex = 8;
             this.textBoxAlias.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAlias_Validating);
             // 
             // buttonCerrar
@@ -321,7 +329,7 @@
             this.buttonCerrar.Location = new System.Drawing.Point(191, 331);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 14;
+            this.buttonCerrar.TabIndex = 15;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
@@ -332,7 +340,7 @@
             this.buttonGuardar.Location = new System.Drawing.Point(96, 331);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 13;
+            this.buttonGuardar.TabIndex = 14;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -356,7 +364,7 @@
             this.textBoxPresentacion.MaxLength = 100;
             this.textBoxPresentacion.Name = "textBoxPresentacion";
             this.textBoxPresentacion.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPresentacion.TabIndex = 361;
+            this.textBoxPresentacion.TabIndex = 7;
             this.textBoxPresentacion.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPresentacion_Validating);
             // 
             // errorProviderFormulario
@@ -391,12 +399,13 @@
             this.Controls.Add(this.labelNombreGenerico);
             this.Controls.Add(this.textBoxNombreGenerico);
             this.Controls.Add(this.labelTipoDeCodigoDeBarras);
-            this.Controls.Add(this.radioButtonTipoDeCodigoBarrasSistema);
+            this.Controls.Add(this.radioButtonTipoDeCodigoDeBarrasSistema);
             this.Controls.Add(this.radioButtonTipoDeCodigoDeBarrasManual);
             this.Controls.Add(this.labelCodigoDeBarras);
             this.Controls.Add(this.textBoxCodigoDeBarras);
             this.Controls.Add(this.comboBoxGrupo);
             this.Controls.Add(this.labelGrupo);
+            this.MaximizeBox = false;
             this.Name = "Nuevo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Producto";
@@ -416,7 +425,7 @@
         private System.Windows.Forms.Label labelCodigoDeBarras;
         private System.Windows.Forms.TextBox textBoxCodigoDeBarras;
         private System.Windows.Forms.RadioButton radioButtonTipoDeCodigoDeBarrasManual;
-        private System.Windows.Forms.RadioButton radioButtonTipoDeCodigoBarrasSistema;
+        private System.Windows.Forms.RadioButton radioButtonTipoDeCodigoDeBarrasSistema;
         private System.Windows.Forms.Label labelTipoDeCodigoDeBarras;
         private System.Windows.Forms.Label labelNombreGenerico;
         private System.Windows.Forms.TextBox textBoxNombreGenerico;
@@ -441,5 +450,6 @@
         private System.Windows.Forms.Label labelPresentacion;
         private System.Windows.Forms.TextBox textBoxPresentacion;
         private System.Windows.Forms.ErrorProvider errorProviderFormulario;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
     }
 }

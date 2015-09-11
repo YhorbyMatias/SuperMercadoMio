@@ -71,6 +71,7 @@ namespace Super_Mercado_Mio.Grupo
             if (validaciones())
             {
                 objetoGrupo.update(grupo);
+                updated = true;
                 insertarRegistro("Grupo", grupo.ID_GRUPO, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);

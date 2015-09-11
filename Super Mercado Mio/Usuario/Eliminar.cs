@@ -86,6 +86,13 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
+        private void setDataGridViewUsuariosFormat()
+        {
+            dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
+            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Número";
+            dataGridViewUsuarios.Columns["Numero"].Width = 70;
+            dataGridViewUsuarios.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void cargarDataGridViewUsuarios(DataTable dataTableUsuariosX)
         {
             dataViewUsuarios.Table = dataTableUsuariosX;
@@ -93,6 +100,7 @@ namespace Super_Mercado_Mio.Usuario
             records = dataGridViewUsuarios.Rows.Count;
             if (records > 0)
             {
+                setDataGridViewUsuariosFormat();
                 dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
                 dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
             }

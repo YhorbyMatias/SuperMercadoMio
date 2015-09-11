@@ -1,4 +1,5 @@
 ﻿using Bss;
+using Ent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +18,13 @@ namespace Super_Mercado_Mio.Producto
         int opcion = 0;
         string codigoDeBarras = "";
         bool isWritable = true;
-        bool[] hasErrors = new bool[9];
+        bool[] hasErrors = new bool[] { false, false, true, true, true, true, true, false, true };
         ProveedorBss objetoProveedor = new ProveedorBss();
         GrupoBss objetoGrupo = new GrupoBss();
         ProductoBss objetoProducto = new ProductoBss();
+        public ProductoEnt producto = new ProductoEnt();
+        RegistroBss objetoRegistro = new RegistroBss();
+        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Nuevo(int opcionX, string codigoDeBarrasX)
@@ -38,6 +42,7 @@ namespace Super_Mercado_Mio.Producto
             {
                 textBoxCodigoDeBarras.Text = codigoDeBarras;
             }
+            this.ActiveControl = textBoxCodigoDeBarras;
         }
         #endregion
         #region comboBoxProveedor
@@ -82,7 +87,7 @@ namespace Super_Mercado_Mio.Producto
             int errorCode = validarNombreGenerico();
             hasErrors[3] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxNombreGenerico, ValidacionBss.getErrorMessage(errorCode));
-            generarAlias();
+            textBoxAlias.Text = generarAlias();
         }
         #endregion
         #region textBoxMarca
@@ -91,7 +96,7 @@ namespace Super_Mercado_Mio.Producto
             int errorCode = validarMarca();
             hasErrors[4] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxMarca, ValidacionBss.getErrorMessage(errorCode));
-            generarAlias();
+            textBoxAlias.Text = generarAlias();
         }
         #endregion
         #region textBoxPresentacion
@@ -100,7 +105,7 @@ namespace Super_Mercado_Mio.Producto
             int errorCode = validarPresentacion();
             hasErrors[5] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxPresentacion, ValidacionBss.getErrorMessage(errorCode));
-            generarAlias();
+            textBoxAlias.Text = generarAlias();
         }
         #endregion
         #region textBoxAlias
@@ -204,7 +209,56 @@ namespace Super_Mercado_Mio.Producto
         #region buttonGuardar
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-
+            if (validaciones())
+            {
+                producto.ID_PROVEEDOR = Convert.ToInt32(comboBoxProveedor.SelectedValue);
+                producto.ID_GRUPO = Convert.ToInt32(comboBoxGrupo.SelectedValue);
+                if (radioButtonTipoDeCodigoDeBarrasManual.Checked)
+                {
+                    producto.TIPO_DE_CODIGO_DE_BARRAS = "MANUAL";
+                    producto.CODIGO_DE_BARRAS = textBoxCodigoDeBarras.Text.Trim();
+                }
+                else
+                {
+                    producto.TIPO_DE_CODIGO_DE_BARRAS = "SISTEMA";
+                    producto.CODIGO_DE_BARRAS = "M" + (objetoProducto.getNumber(producto) + 1).ToString("D5");
+                }
+                producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
+                producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
+                producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
+                producto.ALIAS = textBoxAlias.Text.Trim().ToUpper();
+                producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
+                if (radioButtonTipoDeProductoInventario.Checked)
+                {
+                    producto.TIPO = "INVENTARIO";
+                }
+                else
+                {
+                    producto.TIPO = "BALANZA";
+                }
+                if (textBoxCantidadMinima.Text != "")
+                {
+                    producto.CANTIDAD_MINIMA = Convert.ToDecimal(textBoxCantidadMinima.Text);
+                }
+                else
+                {
+                    producto.CANTIDAD_MINIMA = 0;
+                }
+                producto.PRECIO = Convert.ToDecimal(textBoxPrecio.Text.Trim());
+                producto.ID_PRODUCTO = objetoProducto.insert(producto);
+                insertarRegistro("Producto", producto.ID_PRODUCTO, "Nuevo");
+                if (producto.CODIGO_DE_BARRAS == textBoxCodigoDeBarras.Text.Trim())
+                {
+                    MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Los datos fueron guardados correctamente.\n \n" + "Código de Barras: " + producto.CODIGO_DE_BARRAS,
+                        "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                this.Close();
+            }
         }
         #endregion
         #region buttonCerrar
@@ -250,96 +304,18 @@ namespace Super_Mercado_Mio.Producto
             textBoxMarca.AutoCompleteSource = AutoCompleteSource.CustomSource;
             textBoxMarca.AutoCompleteCustomSource = marcas;
         }
-        private int validarProveedor()
-        {
-            if (comboBoxProveedor.SelectedValue != null)
-            {
-                return 0;
-            }
-            else
-            {
-                return 2;
-            }
-        }
-        private int validarGrupo()
-        {
-            if (comboBoxGrupo.SelectedValue != null)
-            {
-                return 0;
-            }
-            else
-            {
-                return 2;
-            }
-        }
         private void evaluarCodigoDeBarras()
         {
-            if (radioButtonTipoDeCodigoBarrasSistema.Checked == true)
+            if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
             {
                 textBoxCodigoDeBarras.ReadOnly = true;
+                producto.TIPO_DE_CODIGO_DE_BARRAS = "SISTEMA";
+                textBoxCodigoDeBarras.Text = "M" + (objetoProducto.getNumber(producto) + 1).ToString("D5");
             }
             else
             {
                 textBoxCodigoDeBarras.ReadOnly = false;
                 textBoxCodigoDeBarras.ResetText();
-            }
-        }
-        private int validarCodigoDeBarras()
-        {
-            if (textBoxCodigoDeBarras.Text.Trim()!= "")
-            {
-                if (radioButtonTipoDeCodigoDeBarrasManual.Checked)
-                {
-                    if (textBoxCodigoDeBarras.Text[0].Equals('M') || textBoxCodigoDeBarras.Text[0].Equals('m'))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarNombreGenerico()
-        {
-            if (textBoxNombreGenerico.Text.Trim() != "")
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarMarca()
-        {
-            if (textBoxMarca.Text.Trim() != "")
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarPresentacion()
-        {
-            if (textBoxPresentacion.Text.Trim() != "")
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
             }
         }
         private string generarAlias()
@@ -374,11 +350,204 @@ namespace Super_Mercado_Mio.Producto
             }
             return alias;
         }
+        private bool verificarCodigoDeBarras()
+        {
+            producto.CODIGO_DE_BARRAS = textBoxCodigoDeBarras.Text.Trim();
+            if (objetoProducto.authenticateCodigoDeBarras(producto) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool verificarAlias()
+        {
+            producto.ALIAS = textBoxAlias.Text.Trim().ToUpper();
+            if (objetoProducto.authenticateAlias(producto) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool verificarProducto(int opcionX)
+        {
+            bool result = false;
+            if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
+            {
+                switch (opcionX)
+                {
+                    case 1:
+                        if (!hasErrors[4] && !hasErrors[5])
+                        {
+                            producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
+                            producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
+                            producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
+                            producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
+                            if (objetoProducto.authenticate(producto) == 0)
+                            {
+                                result = true;
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (!hasErrors[3] && !hasErrors[5])
+                        {
+                            producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
+                            producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
+                            producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
+                            producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
+                            if (objetoProducto.authenticate(producto) == 0)
+                            {
+                                result = true;
+                            }
+                        }
+                        break;
+                    case 3:
+                        if (!hasErrors[3] && !hasErrors[4])
+                        {
+                            producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
+                            producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
+                            producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
+                            producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
+                            if (objetoProducto.authenticate(producto) == 0)
+                            {
+                                result = true;
+                            }
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                result = true;
+            }
+            return result;
+        }
+        private int validarProveedor()
+        {
+            if (comboBoxProveedor.SelectedValue != null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+        private int validarGrupo()
+        {
+            if (comboBoxGrupo.SelectedValue != null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+        private int validarCodigoDeBarras()
+        {
+            if (textBoxCodigoDeBarras.Text.Trim()!= "")
+            {
+                if (radioButtonTipoDeCodigoDeBarrasManual.Checked)
+                {
+                    if (textBoxCodigoDeBarras.Text[0].Equals('M') || textBoxCodigoDeBarras.Text[0].Equals('m'))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (verificarCodigoDeBarras())
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 9;
+                        }
+                    }
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int validarNombreGenerico()
+        {
+            if (textBoxNombreGenerico.Text.Trim() != "")
+            {
+                if (verificarProducto(1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 10;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int validarMarca()
+        {
+            if (textBoxMarca.Text.Trim() != "")
+            {
+                if (verificarProducto(2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 10;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int validarPresentacion()
+        {
+            if (textBoxPresentacion.Text.Trim() != "")
+            {
+                if (verificarProducto(3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 10;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
         private int validarAlias()
         {
             if (textBoxAlias.Text.Trim() != "")
             {
-                return 0;
+                if (verificarAlias())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 11;
+                }
             }
             else
             {
@@ -432,8 +601,61 @@ namespace Super_Mercado_Mio.Producto
             }
             else
             {
-                return 0;
+                return 1;
             }
+        }
+        private bool validaciones()
+        {
+            int errorPosition = hasErrors.ToList().IndexOf(true);
+            if (errorPosition == -1)
+            {
+                return true;
+            }
+            else
+            {
+                switch (errorPosition)
+                {
+                    case 0:
+                        comboBoxProveedor.Focus();
+                        break;
+                    case 1:
+                        comboBoxGrupo.Focus();
+                        break;
+                    case 2:
+                        textBoxCodigoDeBarras.Focus();
+                        break;
+                    case 3:
+                        textBoxNombreGenerico.Focus();
+                        break;
+                    case 4:
+                        textBoxMarca.Focus();
+                        break;
+                    case 5:
+                        textBoxPresentacion.Focus();
+                        break;
+                    case 6:
+                        textBoxAlias.Focus();
+                        break;
+                    case 7:
+                        textBoxCantidadMinima.Focus();
+                        break;
+                    case 8:
+                        textBoxPresentacion.Focus();
+                        break;
+                }
+                return false;
+            }
+        }
+        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
+        {
+            registro = new RegistroEnt();
+            registro.USUARIO = SesionEnt.nombreDeUsuario;
+            registro.EQUIPO = SesionEnt.nombreDeEquipo;
+            registro.HORA = DateTime.Now.ToString("T");
+            registro.TABLA = tablaX;
+            registro.ID_TABLA = idTablaX;
+            registro.TIPO = tipoX;
+            objetoRegistro.insert(registro);
         }
         #endregion
     }

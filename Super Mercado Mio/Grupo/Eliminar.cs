@@ -66,6 +66,13 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
+        private void setDataGridViewGruposFormat()
+        {
+            dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
+            dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
+            dataGridViewGrupos.Columns["Numero"].Width = 70;
+            dataGridViewGrupos.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void loadDataGridViewGrupos(DataTable dataTableProveedoresX)
         {
             dataViewGrupos.Table = dataTableProveedoresX;
@@ -73,9 +80,8 @@ namespace Super_Mercado_Mio.Grupo
             records = dataGridViewGrupos.Rows.Count;
             if (records > 0)
             {
+                setDataGridViewGruposFormat();
                 dataGridViewGrupos.ColumnHeadersVisible = true;
-                dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
-                dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
                 dataGridViewGrupos.Sort(dataGridViewGrupos.Columns["Nombre"], ListSortDirection.Ascending);
             }
             else

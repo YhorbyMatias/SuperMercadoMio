@@ -27,10 +27,6 @@ namespace Super_Mercado_Mio.Grupo
         }
         private void Lista_Load(object sender, EventArgs e)
         {
-            if (opcion == 2)
-            {
-                dataGridViewGrupos.Columns["Modificar"].Visible = true;
-            }
             loadDataGridViewGrupos(objetoGrupo.searchAll());
         }
         #endregion
@@ -60,6 +56,18 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
+        private void setDataGridViewGruposFormat()
+        {
+            if (opcion == 2)
+            {
+                dataGridViewGrupos.Columns["Modificar"].Visible = true;
+            }
+            dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
+            dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
+            dataGridViewGrupos.Columns["Modificar"].Width = 60;
+            dataGridViewGrupos.Columns["Numero"].Width = 70;
+            dataGridViewGrupos.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void loadDataGridViewGrupos(DataTable dataTableProveedoresX)
         {
             dataViewGrupos.Table = dataTableProveedoresX;
@@ -67,9 +75,8 @@ namespace Super_Mercado_Mio.Grupo
             records = dataGridViewGrupos.Rows.Count;
             if (records > 0)
             {
+                setDataGridViewGruposFormat();
                 dataGridViewGrupos.ColumnHeadersVisible = true;
-                dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
-                dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
                 dataGridViewGrupos.Sort(dataGridViewGrupos.Columns["Nombre"], ListSortDirection.Ascending);
             }
             else

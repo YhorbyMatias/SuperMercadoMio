@@ -10,7 +10,7 @@ namespace Bss
     public class ValidacionBss
     {
         #region Atributos
-        public static string diccionarioCadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz áéíóúÁÉÍÓÚÑñ.";
+        public static string diccionarioCadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz áéíóúÁÉÍÓÚÑñ.,";
         #endregion
         #region Metodos
         public static string getErrorMessage(int errorCodeX)
@@ -45,12 +45,21 @@ namespace Bss
                 case 8:
                     errorMessage = "El grupo ya se halla registrado.";
                     break;
+                case 9:
+                    errorMessage = "El código de barras ya se halla registrado.";
+                    break;
+                case 10:
+                    errorMessage = "El producto ya se halla registrado.";
+                    break;
+                case 11:
+                    errorMessage = "El alias ya se halla registrado.";
+                    break;
             }
             return errorMessage;
         }
         public static bool esCadena(string cadenaX)
         {
-            return Regex.IsMatch(cadenaX, @"^[a-zA-Z áéíóúÁÉÍÓÚÑñ.]+$");
+            return Regex.IsMatch(cadenaX, @"^[a-zA-Z áéíóúÁÉÍÓÚÑñ.,]+$");
         }
         public static bool esCelular(string CadenaX)
         {

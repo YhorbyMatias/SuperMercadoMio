@@ -325,20 +325,21 @@ namespace Super_Mercado_Mio.Usuario
                 usuario.APELLIDO_MATERNO = textBoxApellidoMaterno.Text.Trim().ToUpper();
                 usuario.TELEFONO = textBoxTelefono.Text.Trim();
                 usuario.CLAVE = cifrarClave(textBoxClave.Text.Trim());
-                int idUsuarioNuevo = objetoUsuario.insert(usuario);
-                insertarRegistro("Usuario", idUsuarioNuevo, "Nuevo");
+                usuario.ID_USUARIO = objetoUsuario.insert(usuario);
+                insertarRegistro("Usuario", usuario.ID_USUARIO, "Nuevo");
                 for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
                 {
                     if (checkedListBoxOpciones.GetItemChecked(i))
                     {
                         privilegio = new PrivilegioEnt();
-                        privilegio.ID_USUARIO = idUsuarioNuevo;
+                        privilegio.ID_USUARIO = usuario.ID_USUARIO;
                         privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id_Opcion"]);
                         privilegio.ID_PRIVILEGIO = objetoPrivilegio.insert(privilegio);
                         insertarRegistro("Privilegio", privilegio.ID_PRIVILEGIO, "Nuevo");
                     }
                 }
-                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 this.Close();
             }
         }

@@ -182,8 +182,7 @@ Tipo Varchar(10) Not Null,
 Cantidad_Minima Decimal(18,3) Not Null,
 Precio Decimal(18,2) Not Null,
 Estado Bit Not Null,
-Primary Key (Id_Producto),
-Foreign Key(Id_Grupo) References Grupo(Id_Grupo)
+Primary Key (Id_Producto)
 )
 
 Create Table Ingreso

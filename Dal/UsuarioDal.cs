@@ -158,7 +158,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select * From buscarUsuarios() Where Id_Usuario > 1";
+            sqlCommand.CommandText = "Select * From buscarUsuarios()";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Usuarios");
             sqlDataAdapter.SelectCommand = sqlCommand;

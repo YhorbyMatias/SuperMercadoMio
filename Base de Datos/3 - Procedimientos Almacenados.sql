@@ -93,6 +93,7 @@ As
 Begin
 	Insert Into Proveedor(Nit, Nombre, Persona_De_Contacto, Direccion, Telefono, Celular, Numero_De_Cuenta, Estado)
 	Values(@Nit, @Nombre, @Persona_De_Contacto, @Direccion, @Telefono, @Celular, @Numero_De_Cuenta, 1)
+	Select SCOPE_IDENTITY()
 End
 Go
 
@@ -102,5 +103,29 @@ As
 Begin
 	Insert Into Grupo(Nombre, Estado)
 	Values(@Nombre, 1)
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarProducto
+@Id_Proveedor Int,
+@Id_Grupo Int,
+@Tipo_De_Codigo_De_Barras Varchar(7),
+@Codigo_De_Barras Varchar(100),
+@Nombre_Generico Varchar(100),
+@Marca Varchar(100),
+@Presentacion Varchar(100),
+@Alias Varchar(24),
+@Sabor_U_Olor Varchar(100),
+@Tipo Varchar(10),
+@Cantidad_Minima Decimal(18,3),
+@Precio Decimal(18,2)
+As
+Begin
+	Insert Into Producto(Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Alias,
+	Sabor_U_Olor, Tipo, Cantidad_Minima, Precio, Estado)
+	Values(@Id_Proveedor, @Id_Grupo, @Tipo_De_Codigo_De_Barras, @Codigo_De_Barras, @Nombre_Generico, @Marca, @Presentacion, @Alias,
+	@Sabor_U_Olor, @Tipo, @Cantidad_Minima, @Precio, 1)
+	Select SCOPE_IDENTITY()
 End
 Go

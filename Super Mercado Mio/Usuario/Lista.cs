@@ -27,10 +27,6 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void Lista_Load(object sender, EventArgs e)
         {
-            if (opcion == 2)
-            {
-                dataGridViewUsuarios.Columns["Modificar"].Visible = true;
-            }
             cargarDataGridViewUsuarios(objetoUsuario.searchAll());
         }
         #endregion
@@ -61,6 +57,18 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
+        private void setDataGridViewUsuariosFormat()
+        {
+            if (opcion == 2)
+            {
+                dataGridViewUsuarios.Columns["Modificar"].Visible = true;
+            }
+            dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
+            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Número";
+            dataGridViewUsuarios.Columns["Modificar"].Width = 60;
+            dataGridViewUsuarios.Columns["Numero"].Width = 70;
+            dataGridViewUsuarios.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void cargarDataGridViewUsuarios(DataTable dataTableUsuariosX)
         {
             dataViewUsuarios.Table = dataTableUsuariosX;
@@ -68,9 +76,8 @@ namespace Super_Mercado_Mio.Usuario
             records = dataGridViewUsuarios.Rows.Count;
             if (records > 0)
             {
+                setDataGridViewUsuariosFormat();
                 dataGridViewUsuarios.ColumnHeadersVisible = true;
-                dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
-                dataGridViewUsuarios.Columns["Numero"].HeaderText = "Número";
                 dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
             }
             else

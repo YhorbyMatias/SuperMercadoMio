@@ -27,10 +27,6 @@ namespace Super_Mercado_Mio.Proveedor
         }
         private void Lista_Load(object sender, EventArgs e)
         {
-            if (opcion == 2)
-            {
-                dataGridViewProveedores.Columns["Modificar"].Visible = true;
-            }
             loadDataGridViewProveedores(objetoProveedor.searchAll());
         }
         #endregion
@@ -50,6 +46,12 @@ namespace Super_Mercado_Mio.Proveedor
             {
                 if (e.ColumnIndex == 0)
                 {
+                    Proveedor.Ficha formularioFichaDeProveedor =
+                        new Ficha(Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value));
+                    formularioFichaDeProveedor.ShowDialog();
+                }
+                if (e.ColumnIndex == 1)
+                {
                     Proveedor.Modificar formularioModificarProveedor =
                         new Modificar(Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value),
                             this.refreshDataGridViewProveedores);
@@ -61,6 +63,27 @@ namespace Super_Mercado_Mio.Proveedor
         }
         #endregion
         #region Metodos Propios
+        private void setDataGridViewProveedoresFormat()
+        {
+            if (opcion == 1)
+            {
+                dataGridViewProveedores.Columns["Ficha"].Visible = true;
+            }
+            if (opcion == 2)
+            {
+                dataGridViewProveedores.Columns["Modificar"].Visible = true;
+            }
+            dataGridViewProveedores.Columns["Id_Proveedor"].Visible = false;
+            dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
+            dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
+            dataGridViewProveedores.Columns["Ficha"].Width = 60;
+            dataGridViewProveedores.Columns["Modificar"].Width = 60;
+            dataGridViewProveedores.Columns["Numero"].Width = 70;
+            dataGridViewProveedores.Columns["Nit"].Width = 100;
+            dataGridViewProveedores.Columns["Nombre"].Width = 350;
+            dataGridViewProveedores.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewProveedores.Columns["Nombre"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+        }
         private void loadDataGridViewProveedores(DataTable dataTableProveedoresX)
         {
             dataViewProveedores.Table = dataTableProveedoresX;
@@ -68,13 +91,8 @@ namespace Super_Mercado_Mio.Proveedor
             records = dataGridViewProveedores.Rows.Count;
             if (records > 0)
             {
+                setDataGridViewProveedoresFormat();
                 dataGridViewProveedores.ColumnHeadersVisible = true;
-                dataGridViewProveedores.Columns["Id_Proveedor"].Visible = false;
-                dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
-                dataGridViewProveedores.Columns["Persona_De_Contacto"].HeaderText = "Persona de Contacto";
-                dataGridViewProveedores.Columns["Direccion"].HeaderText = "Dirección";
-                dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
-                dataGridViewProveedores.Columns["Numero_De_Cuenta"].HeaderText = "Nº de Cuenta";
                 dataGridViewProveedores.Sort(dataGridViewProveedores.Columns["Nombre"], ListSortDirection.Ascending);
             }
             else
