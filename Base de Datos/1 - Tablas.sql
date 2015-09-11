@@ -255,3 +255,66 @@ Foreign Key(Id_Egreso) References Egreso(Id_Egreso),
 Foreign Key(Id_Producto) References Producto(Id_Producto),
 )
 Go
+
+Create Table Factura
+(
+Id_Factura Int Not Null Identity(1,1),
+Id_Usuario Int Not Null,
+Id_Caja Int Not Null,
+Id_Apertura_De_Caja Int Not Null,
+Id_Egreso Int Not Null,
+Id_Cliente Int Not Null,
+Id_Dosificacion Int Not Null,
+Numero_De_Autorizacion Varchar(15) Not Null,
+Numero_De_Factura Int Not Null,
+Codigo_De_Control Varchar(14) Not Null,
+Nit_O_Ci_Cliente Varchar(12) Not Null,
+Cliente Varchar(500) Not Null,
+Fecha Date Not Null,
+Hora Varchar(50) Not Null,
+Monto Money Not Null,
+Monto_Pagado Money Not Null,
+Cambio Money Not Null,
+Estado Varchar(20) Not Null,
+Primary Key(Id_Factura),
+Foreign Key(Id_Usuario) References Usuario(Id_Usuario),
+Foreign Key(Id_Caja) References Caja(Id_Caja),
+Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id_Apertura_De_Caja),
+Foreign Key(Id_Cliente) References Cliente(Id_Cliente),
+Foreign Key(Id_Dosificacion) References Dosificacion(Id_Dosificacion)
+)
+Go
+
+Create Table Detalle_De_Factura
+(
+Id_Detalle_De_Factura Int Not Null Identity(1,1),
+Id_Factura Int Not Null,
+Id_Producto Int Not Null,
+Detalle Varchar(24) Not Null,
+Cantidad Decimal(18,3) Not Null,
+Precio_Total Decimal(18,2) Not Null,
+Estado Bit Not Null,
+Primary Key(Id_Detalle_De_Factura),
+Foreign Key(Id_Factura) References Factura(Id_Factura),
+Foreign Key(Id_Producto) References Producto(Id_Producto),
+)
+Go
+
+Create Table Monto_De_Devolucion
+(
+Id_Monto_De_Devolucion Int Not Null Identity(1,1),
+Id_Usuario Int Not Null,
+Id_Caja Int Not Null,
+Id_Apertura_De_Caja Int Not Null,
+Id_Egreso Int Not Null,
+Fecha Date Not Null,
+Hora Varchar(50) Not Null,
+Monto Decimal(18,2) Not Null,
+Cerrado Bit Not Null,
+Estado Bit Not Null,
+Primary Key(Id_Monto_De_Devolucion),
+Foreign Key(Id_Usuario) References Usuario(Id_Usuario),
+Foreign Key(Id_Caja) References Caja(Id_Caja),
+Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id_Apertura_De_Caja)
+)
+Go
