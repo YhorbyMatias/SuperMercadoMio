@@ -257,6 +257,7 @@ namespace Super_Mercado_Mio.Proveedor
                 proveedor.TELEFONO = textBoxTelefono.Text.Trim();
                 proveedor.CELULAR = textBoxCelular.Text.Trim();
                 proveedor.NUMERO_DE_CUENTA = textBoxNumeroDeCuenta.Text.Trim().ToUpper();
+                proveedor.ESTADO = true;
                 proveedor.ID_PROVEEDOR = objetoProveedor.insert(proveedor);
                 insertarRegistro("Proveedor", proveedor.ID_PROVEEDOR, "Nuevo");
                 nit = proveedor.NIT;

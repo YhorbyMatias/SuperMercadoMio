@@ -73,7 +73,7 @@ namespace Super_Mercado_Mio.Proveedor
                 dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
                 dataGridViewProveedores.Columns["Persona_De_Contacto"].HeaderText = "Persona de Contacto";
                 dataGridViewProveedores.Columns["Direccion"].HeaderText = "Dirección";
-                dataGridViewProveedores.Columns["Numero"].HeaderText = "Teléfono";
+                dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
                 dataGridViewProveedores.Columns["Numero_De_Cuenta"].HeaderText = "Nº de Cuenta";
                 dataGridViewProveedores.Sort(dataGridViewProveedores.Columns["Nombre"], ListSortDirection.Ascending);
             }

@@ -18,7 +18,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Count(Id_Grupo) From Grupo Where Estado = 1 And Nombre = @Nombre And Id_Grupo <> @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Nombres", grupoX.NOMBRE);
+            sqlCommand.Parameters.AddWithValue("@Nombre", grupoX.NOMBRE);
             sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupoX.ID_GRUPO);
             sqlConnection.Open();
             int existe = Convert.ToInt32(sqlCommand.ExecuteScalar());
