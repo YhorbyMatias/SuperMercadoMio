@@ -38,6 +38,7 @@ namespace Dal
         }
         public int authenticateAlias(ProductoEnt productoX)
         {
+            int exists = 0;
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
@@ -46,7 +47,14 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Alias", productoX.ALIAS);
             sqlCommand.Parameters.AddWithValue("@Id_Producto", productoX.ID_PRODUCTO);
             sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            try
+            {
+                exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                        
+            }
+            catch { 
+            
+            }
             sqlConnection.Close();
             return exists;
         }
@@ -103,6 +111,7 @@ namespace Dal
         }
         public int getNumber(ProductoEnt productoX)
         {
+            int numero = 0;
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
@@ -110,7 +119,11 @@ namespace Dal
                 + "And Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras";
             sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", productoX.CODIGO_DE_BARRAS);
             sqlConnection.Open();
-            int numero = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            try
+            {
+                numero = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            }
+            catch { }
             sqlConnection.Close();
             return numero;
         }
