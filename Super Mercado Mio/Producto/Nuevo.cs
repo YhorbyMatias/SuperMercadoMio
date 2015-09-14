@@ -391,7 +391,7 @@ namespace Super_Mercado_Mio.Producto
                 switch (opcionX)
                 {
                     case 1:
-                        if (!hasErrors[4] && !hasErrors[5])
+                        if (hasErrors[4] && hasErrors[5])
                         {
                             producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
                             producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
@@ -408,7 +408,7 @@ namespace Super_Mercado_Mio.Producto
                         }
                         break;
                     case 2:
-                        if (!hasErrors[3] && !hasErrors[5])
+                        if (!hasErrors[3] && hasErrors[5])
                         {
                             producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
                             producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
@@ -425,7 +425,7 @@ namespace Super_Mercado_Mio.Producto
                         }
                         break;
                     case 3:
-                        if (!hasErrors[3] && !hasErrors[4])
+                        if (!hasErrors[3] && hasErrors[4])
                         {
                             producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
                             producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
