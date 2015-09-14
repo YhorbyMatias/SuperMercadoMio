@@ -18,7 +18,7 @@ namespace Super_Mercado_Mio.Producto
         int opcion = 0;
         string codigoDeBarras = "";
         bool isWritable = true;
-        bool[] hasErrors = new bool[] { false, false, true, true, true, true, true, false, true };
+        bool[] hasErrors = new bool[] { false, false, true, false, false, false, true, false, false, true };
         ProveedorBss objetoProveedor = new ProveedorBss();
         GrupoBss objetoGrupo = new GrupoBss();
         ProductoBss objetoProducto = new ProductoBss();
@@ -116,6 +116,14 @@ namespace Super_Mercado_Mio.Producto
             errorProviderFormulario.SetError(textBoxAlias, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
+        #region textBoxSaborYOlor
+        private void textBoxSaborUOlor_Validating(object sender, CancelEventArgs e)
+        {
+            int errorCode = validarSaborUOlor();
+            hasErrors[7] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxSaborUOlor, ValidacionBss.getErrorMessage(errorCode));
+        }
+        #endregion
         #region textBoxCantidadMinima
         private void textBoxCantidadMinima_KeyDown(object sender, KeyEventArgs e)
         {
@@ -157,7 +165,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxCantidadMinima_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarCantidadMinima();
-            hasErrors[7] = Convert.ToBoolean(errorCode);
+            hasErrors[8] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxCantidadMinima, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -202,7 +210,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxPrecio_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarPrecio();
-            hasErrors[8] = Convert.ToBoolean(errorCode);
+            hasErrors[9] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxPrecio, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -311,6 +319,7 @@ namespace Super_Mercado_Mio.Producto
                 textBoxCodigoDeBarras.ReadOnly = true;
                 producto.TIPO_DE_CODIGO_DE_BARRAS = "SISTEMA";
                 textBoxCodigoDeBarras.Text = "M" + (objetoProducto.getNumber(producto) + 1).ToString("D5");
+                errorProviderFormulario.SetError(textBoxCodigoDeBarras, null);
             }
             else
             {
@@ -393,6 +402,10 @@ namespace Super_Mercado_Mio.Producto
                                 result = true;
                             }
                         }
+                        else
+                        {
+                            return true;
+                        }
                         break;
                     case 2:
                         if (!hasErrors[3] && hasErrors[5])
@@ -406,6 +419,10 @@ namespace Super_Mercado_Mio.Producto
                                 result = true;
                             }
                         }
+                        else
+                        {
+                            return true;
+                        }
                         break;
                     case 3:
                         if (!hasErrors[3] && hasErrors[4])
@@ -418,6 +435,27 @@ namespace Super_Mercado_Mio.Producto
                             {
                                 result = true;
                             }
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                        break;
+                    case 4:
+                        if (!hasErrors[3] && !hasErrors[4] && !hasErrors[5])
+                        {
+                            producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
+                            producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
+                            producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
+                            producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
+                            if (objetoProducto.authenticate(producto) == 0)
+                            {
+                                result = true;
+                            }
+                        }
+                        else
+                        {
+                            return true;
                         }
                         break;
                 }
@@ -486,13 +524,20 @@ namespace Super_Mercado_Mio.Producto
         {
             if (textBoxNombreGenerico.Text.Trim() != "")
             {
-                if (verificarProducto(1))
+                if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
                 {
-                    return 0;
+                    if (verificarProducto(1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 10;
+                    }
                 }
                 else
                 {
-                    return 10;
+                    return 0;
                 }
             }
             else
@@ -504,13 +549,20 @@ namespace Super_Mercado_Mio.Producto
         {
             if (textBoxMarca.Text.Trim() != "")
             {
-                if (verificarProducto(2))
+                if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
                 {
-                    return 0;
+                    if (verificarProducto(2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 10;
+                    }
                 }
                 else
                 {
-                    return 10;
+                    return 0;
                 }
             }
             else
@@ -522,13 +574,20 @@ namespace Super_Mercado_Mio.Producto
         {
             if (textBoxPresentacion.Text.Trim() != "")
             {
-                if (verificarProducto(3))
+                if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
                 {
-                    return 0;
+                    if (verificarProducto(3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 10;
+                    }
                 }
                 else
                 {
-                    return 10;
+                    return 0;
                 }
             }
             else
@@ -552,6 +611,24 @@ namespace Super_Mercado_Mio.Producto
             else
             {
                 return 1;
+            }
+        }
+        private int validarSaborUOlor()
+        {
+            if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
+            {
+                if (verificarProducto(4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 10;
+                }
+            }
+            else
+            {
+                return 0;
             }
         }
         private int validarCantidadMinima()
@@ -637,9 +714,12 @@ namespace Super_Mercado_Mio.Producto
                         textBoxAlias.Focus();
                         break;
                     case 7:
-                        textBoxCantidadMinima.Focus();
+                        textBoxSaborUOlor.Focus();
                         break;
                     case 8:
+                        textBoxCantidadMinima.Focus();
+                        break;
+                    case 9:
                         textBoxPresentacion.Focus();
                         break;
                 }

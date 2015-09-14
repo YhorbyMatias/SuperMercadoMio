@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewGrupos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewProductos = new System.Windows.Forms.DataGridView();
             this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.textBoxCodigo = new System.Windows.Forms.TextBox();
             this.labelCodigo = new System.Windows.Forms.Label();
@@ -44,26 +44,26 @@
             this.labelProveedor = new System.Windows.Forms.Label();
             this.textBoxGrupo = new System.Windows.Forms.TextBox();
             this.labelGrupo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrupos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewGrupos
+            // dataGridViewProductos
             // 
-            this.dataGridViewGrupos.AllowUserToAddRows = false;
-            this.dataGridViewGrupos.AllowUserToDeleteRows = false;
-            this.dataGridViewGrupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewGrupos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridViewGrupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGrupos.ColumnHeadersVisible = false;
-            this.dataGridViewGrupos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewProductos.AllowUserToAddRows = false;
+            this.dataGridViewProductos.AllowUserToDeleteRows = false;
+            this.dataGridViewProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridViewProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProductos.ColumnHeadersVisible = false;
+            this.dataGridViewProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Modificar});
-            this.dataGridViewGrupos.Location = new System.Drawing.Point(12, 64);
-            this.dataGridViewGrupos.MultiSelect = false;
-            this.dataGridViewGrupos.Name = "dataGridViewGrupos";
-            this.dataGridViewGrupos.ReadOnly = true;
-            this.dataGridViewGrupos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGrupos.Size = new System.Drawing.Size(1060, 405);
-            this.dataGridViewGrupos.TabIndex = 7;
+            this.dataGridViewProductos.Location = new System.Drawing.Point(12, 64);
+            this.dataGridViewProductos.MultiSelect = false;
+            this.dataGridViewProductos.Name = "dataGridViewProductos";
+            this.dataGridViewProductos.ReadOnly = true;
+            this.dataGridViewProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewProductos.Size = new System.Drawing.Size(1060, 405);
+            this.dataGridViewProductos.TabIndex = 7;
             // 
             // Modificar
             // 
@@ -224,13 +224,13 @@
             this.Controls.Add(this.labelNombreGenerico);
             this.Controls.Add(this.textBoxCodigo);
             this.Controls.Add(this.labelCodigo);
-            this.Controls.Add(this.dataGridViewGrupos);
+            this.Controls.Add(this.dataGridViewProductos);
             this.MaximizeBox = false;
             this.Name = "Lista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Productos";
             this.Load += new System.EventHandler(this.Lista_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrupos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,7 +238,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewGrupos;
+        private System.Windows.Forms.DataGridView dataGridViewProductos;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.TextBox textBoxCodigo;
         private System.Windows.Forms.Label labelCodigo;

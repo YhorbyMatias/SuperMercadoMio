@@ -270,6 +270,7 @@
             this.textBoxSaborUOlor.Name = "textBoxSaborUOlor";
             this.textBoxSaborUOlor.Size = new System.Drawing.Size(200, 20);
             this.textBoxSaborUOlor.TabIndex = 9;
+            this.textBoxSaborUOlor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSaborUOlor_Validating);
             // 
             // labelMarca
             // 
