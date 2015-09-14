@@ -18,18 +18,11 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Count(Id_Producto) From Producto Where Estado = 1 And Nombre_Generico = @Nombre_Generico "
-                + "And Marca = @Marca And Presentacion = @Presentacion And Sabor_U_Olor = @Sabor_U_Olor And Id_Producto <> @Id_Producto";
+                + "And Marca = @Marca And Presentacion = @Presentacion And ISNULL(Sabor_U_Olor, '') = @Sabor_U_Olor And Id_Producto <> @Id_Producto";
             sqlCommand.Parameters.AddWithValue("@Nombre_Generico", productoX.NOMBRE_GENERICO);
             sqlCommand.Parameters.AddWithValue("@Marca", productoX.MARCA);
             sqlCommand.Parameters.AddWithValue("@Presentacion", productoX.PRESENTACION);
-            if (productoX.SABOR_U_OLOR != "")
-            {
-                sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", productoX.SABOR_U_OLOR);
-            }
-            else
-            {
-                sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", DBNull.Value);
-            }
+            sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", productoX.SABOR_U_OLOR);
             sqlCommand.Parameters.AddWithValue("@Id_Producto", productoX.ID_PRODUCTO);
             sqlConnection.Open();
             int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
@@ -108,7 +101,7 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select COUNT(Id_Producto) From Producto Where Estado = 1 "
                 + "And Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras";
-            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", productoX.CODIGO_DE_BARRAS);
+            sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", productoX.TIPO_DE_CODIGO_DE_BARRAS);
             sqlConnection.Open();
             int numero = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();

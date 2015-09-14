@@ -16,8 +16,10 @@ namespace Super_Mercado_Mio.Producto
     {
         #region Objetos
         int opcion = 0;
+        int records = 0;
         ProductoBss objetoProducto = new ProductoBss();
         ProductoEnt producto = new ProductoEnt();
+        DataView dataViewProductos = new DataView();
         #endregion
         #region Form
         public Lista()
@@ -64,5 +66,25 @@ namespace Super_Mercado_Mio.Producto
         {
 
         }
+        #region Metodos Propios
+        private void filterDataGridViewProveedores()
+        {
+            if (records > 0)
+            {
+                if (textBoxCodigo.Text.Trim() != "")
+                {
+                    if (!textBoxCodigo.Text.Trim()[0].Equals('M') || !textBoxCodigo.Text.Trim()[0].Equals('m'))
+                    {
+                        dataViewProductos.RowFilter = dataGridViewProductos.SortedColumn.Name.ToString() + " = "
+                            + textBoxCodigo.Text.Trim();
+                    }
+                }
+                else
+                {
+                    dataViewProductos.RowFilter = dataGridViewProductos.SortedColumn.Name.ToString() + " = -1";
+                }
+            }
+        }
+        #endregion
     }
 }
