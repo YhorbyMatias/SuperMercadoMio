@@ -119,9 +119,9 @@ namespace Super_Mercado_Mio.Producto
         #region textBoxSaborYOlor
         private void textBoxSaborUOlor_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarAlias();
-            hasErrors[6] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxAlias, ValidacionBss.getErrorMessage(errorCode));
+            int errorCode = validarSaborUOlor();
+            hasErrors[7] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxSaborUOlor, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxCantidadMinima
