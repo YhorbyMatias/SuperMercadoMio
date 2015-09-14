@@ -76,11 +76,11 @@ namespace Super_Mercado_Mio.Proveedor
             dataGridViewProveedores.Columns["Id_Proveedor"].Visible = false;
             dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
             dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
-            dataGridViewProveedores.Columns["Ficha"].Width = 60;
-            dataGridViewProveedores.Columns["Modificar"].Width = 60;
-            dataGridViewProveedores.Columns["Numero"].Width = 70;
+            dataGridViewProveedores.Columns["Ficha"].Width = 100;
+            dataGridViewProveedores.Columns["Modificar"].Width = 100;
+            dataGridViewProveedores.Columns["Numero"].Width = 100;
             dataGridViewProveedores.Columns["Nit"].Width = 100;
-            dataGridViewProveedores.Columns["Nombre"].Width = 350;
+            dataGridViewProveedores.Columns["Nombre"].Width = 150;
             dataGridViewProveedores.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewProveedores.Columns["Nombre"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
