@@ -406,6 +406,8 @@
             this.Controls.Add(this.comboBoxGrupo);
             this.Controls.Add(this.labelGrupo);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(393, 423);
+            this.MinimumSize = new System.Drawing.Size(393, 423);
             this.Name = "Nuevo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Producto";

@@ -127,6 +127,19 @@ namespace Dal
             sqlConnection.Close();
             return numero;
         }
+        public DataTable search(ProductoEnt productoX)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, "
+                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio From Producto Where Estado = 1";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Marcas");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable searchMarcas()
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -138,6 +151,46 @@ namespace Dal
             sqlDataAdapter.SelectCommand = sqlCommand;
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
+        }
+        public void update(ProductoEnt productoX)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Producto Set Id_Proveedor = @Id_Proveedor, Id_Grupo = @Id_Grupo, "
+                + "Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras, Codigo_De_Barras = @Codigo_De_Barras, "
+                + "Nombre_Generico = @Nombre_Generico, Marca = @Marca, Alias = @Alias, Sabor_U_Olor = @Sabor_U_Olor, Tipo = @Tipo, "
+                + "Cantidad_Minima = @Cantidad_Minima, Precio = @Precio Where Id_Producto = @Id_Producto";
+            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", productoX.ID_PROVEEDOR);
+            sqlCommand.Parameters.AddWithValue("@Id_Grupo", productoX.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", productoX.TIPO_DE_CODIGO_DE_BARRAS);
+            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", productoX.CODIGO_DE_BARRAS);
+            sqlCommand.Parameters.AddWithValue("@Nombre_Generico", productoX.NOMBRE_GENERICO);
+            sqlCommand.Parameters.AddWithValue("@Marca", productoX.MARCA);
+            sqlCommand.Parameters.AddWithValue("@Presentacion", productoX.PRESENTACION);
+            sqlCommand.Parameters.AddWithValue("@Alias", productoX.ALIAS);
+            if (productoX.SABOR_U_OLOR != "")
+            {
+                sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", productoX.SABOR_U_OLOR);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", DBNull.Value);
+            }
+            sqlCommand.Parameters.AddWithValue("@Tipo", productoX.TIPO);
+            if (productoX.CANTIDAD_MINIMA > 0)
+            {
+                sqlCommand.Parameters.AddWithValue("@Cantidad_Minima", productoX.CANTIDAD_MINIMA);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@Cantidad_Minima", DBNull.Value);
+            }
+            sqlCommand.Parameters.AddWithValue("@Precio", productoX.PRECIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Producto", productoX.ID_PRODUCTO);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
         }
         #endregion
     }
