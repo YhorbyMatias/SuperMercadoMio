@@ -96,5 +96,21 @@ namespace Ent
             set { this.estado = value; }
         }
         #endregion
+        #region Atributos Auxiliares
+        private string proveedor;
+        private string grupo;
+        #endregion
+        #region Propiedades Auxiliares
+        public string PROVEEDOR
+        {
+            get { return this.proveedor; }
+            set { this.proveedor = value; }
+        }
+        public string GRUPO
+        {
+            get { return this.grupo; }
+            set { this.grupo = value; }
+        }
+        #endregion
     }
 }

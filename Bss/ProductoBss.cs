@@ -35,9 +35,17 @@ namespace Bss
         {
             return producto.getNumber(productoX);
         }
+        public DataTable search(ProductoEnt productoX)
+        {
+            return producto.search(productoX);
+        }
         public DataTable searchMarcas()
         {
             return producto.searchMarcas();
+        }
+        public void update(ProductoEnt productoX)
+        {
+            producto.update(productoX);
         }
         #endregion
     }

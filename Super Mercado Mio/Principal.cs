@@ -217,6 +217,12 @@ namespace Super_Mercado_Mio
             formularioNuevoProducto.MdiParent = this;
             formularioNuevoProducto.Show();
         }
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Modificar formularioModificarProducto = new Producto.Modificar(2);
+            formularioModificarProducto.MdiParent = this;
+            formularioModificarProducto.Show();
+        }
         #endregion
         #region Metodos Propios
         private void loadMenu()
