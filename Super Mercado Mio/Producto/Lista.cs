@@ -31,41 +31,69 @@ namespace Super_Mercado_Mio.Producto
 
         }
         #endregion
-
+        #region textBoxCodigo
         private void textBoxCodigo_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxNombreGenerico
         private void textBoxNombreGenerico_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxMarca
         private void textBoxMarca_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxPresentacion
         private void textBoxPresentacion_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxSaborUOlor
         private void textBoxSaborUOlor_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxProveedor
         private void textBoxProveedor_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
-
+        #endregion
+        #region textBoxGrupo
         private void textBoxGrupo_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyValue == 13)
+            {
+                filterDataGridViewProveedores();
+            }
         }
+        #endregion
         #region Metodos Propios
         private void filterDataGridViewProveedores()
         {
@@ -73,15 +101,16 @@ namespace Super_Mercado_Mio.Producto
             {
                 if (textBoxCodigo.Text.Trim() != "")
                 {
-                    if (!textBoxCodigo.Text.Trim()[0].Equals('M') || !textBoxCodigo.Text.Trim()[0].Equals('m'))
-                    {
-                        dataViewProductos.RowFilter = dataGridViewProductos.SortedColumn.Name.ToString() + " = "
-                            + textBoxCodigo.Text.Trim();
-                    }
+                    dataViewProductos.RowFilter = "Codigo = " + textBoxCodigo.Text.Trim();
                 }
                 else
                 {
-                    dataViewProductos.RowFilter = dataGridViewProductos.SortedColumn.Name.ToString() + " = -1";
+                    dataViewProductos.RowFilter = "Nombre_Generico Like '%" + textBoxNombreGenerico.Text.Trim().ToUpper() + "%'"
+                        + "Or Marca Like '%" + textBoxMarca.Text.Trim().ToUpper() + "%'"
+                        + "Or Presentacion Like '%" + textBoxPresentacion.Text.Trim().ToUpper() + "%'"
+                        + "Or Sabor_U_Olor Like '%" + textBoxSaborUOlor.Text.Trim().ToUpper() + "%'"
+                        + "Or Proveedor Like '%" + textBoxProveedor.Text.Trim().ToUpper() + "%'"
+                        + "Or Grupo Like '%" + textBoxGrupo.Text.Trim().ToUpper() + "%'";
                 }
             }
         }
