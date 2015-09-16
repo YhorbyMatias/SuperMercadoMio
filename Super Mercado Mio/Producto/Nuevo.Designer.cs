@@ -51,8 +51,8 @@
             this.labelCantidadMinima = new System.Windows.Forms.Label();
             this.textBoxCantidadMinima = new System.Windows.Forms.TextBox();
             this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.labelPrecio = new System.Windows.Forms.Label();
-            this.textBoxPrecio = new System.Windows.Forms.TextBox();
+            this.labelPrecioDeVenta = new System.Windows.Forms.Label();
+            this.textBoxPrecioDeVenta = new System.Windows.Forms.TextBox();
             this.labelAlias = new System.Windows.Forms.Label();
             this.textBoxAlias = new System.Windows.Forms.TextBox();
             this.buttonCerrar = new System.Windows.Forms.Button();
@@ -60,6 +60,8 @@
             this.labelPresentacion = new System.Windows.Forms.Label();
             this.textBoxPresentacion = new System.Windows.Forms.TextBox();
             this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxPrecioDeCompra = new System.Windows.Forms.TextBox();
+            this.labelPrecioDeCompra = new System.Windows.Forms.Label();
             this.panelTipoDeProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
             this.SuspendLayout();
@@ -283,27 +285,27 @@
             this.contextMenuStripTextBox.Name = "contextMenuStripTextBox";
             this.contextMenuStripTextBox.Size = new System.Drawing.Size(61, 4);
             // 
-            // labelPrecio
+            // labelPrecioDeVenta
             // 
-            this.labelPrecio.AutoSize = true;
-            this.labelPrecio.Location = new System.Drawing.Point(12, 308);
-            this.labelPrecio.Name = "labelPrecio";
-            this.labelPrecio.Size = new System.Drawing.Size(40, 13);
-            this.labelPrecio.TabIndex = 358;
-            this.labelPrecio.Text = "Precio:";
+            this.labelPrecioDeVenta.AutoSize = true;
+            this.labelPrecioDeVenta.Location = new System.Drawing.Point(12, 334);
+            this.labelPrecioDeVenta.Name = "labelPrecioDeVenta";
+            this.labelPrecioDeVenta.Size = new System.Drawing.Size(86, 13);
+            this.labelPrecioDeVenta.TabIndex = 358;
+            this.labelPrecioDeVenta.Text = "Precio de Venta:";
             // 
-            // textBoxPrecio
+            // textBoxPrecioDeVenta
             // 
-            this.textBoxPrecio.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxPrecio, 5);
-            this.textBoxPrecio.Location = new System.Drawing.Point(148, 305);
-            this.textBoxPrecio.MaxLength = 10;
-            this.textBoxPrecio.Name = "textBoxPrecio";
-            this.textBoxPrecio.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPrecio.TabIndex = 13;
-            this.textBoxPrecio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecio_KeyDown);
-            this.textBoxPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecio_KeyPress);
-            this.textBoxPrecio.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecio_Validating);
+            this.textBoxPrecioDeVenta.ContextMenuStrip = this.contextMenuStripTextBox;
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPrecioDeVenta, 5);
+            this.textBoxPrecioDeVenta.Location = new System.Drawing.Point(148, 331);
+            this.textBoxPrecioDeVenta.MaxLength = 10;
+            this.textBoxPrecioDeVenta.Name = "textBoxPrecioDeVenta";
+            this.textBoxPrecioDeVenta.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPrecioDeVenta.TabIndex = 14;
+            this.textBoxPrecioDeVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecioDeVenta_KeyDown);
+            this.textBoxPrecioDeVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecioDeVenta_KeyPress);
+            this.textBoxPrecioDeVenta.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecioDeVenta_Validating);
             // 
             // labelAlias
             // 
@@ -327,10 +329,10 @@
             // buttonCerrar
             // 
             this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Location = new System.Drawing.Point(191, 331);
+            this.buttonCerrar.Location = new System.Drawing.Point(191, 357);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 15;
+            this.buttonCerrar.TabIndex = 16;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
@@ -338,10 +340,10 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(96, 331);
+            this.buttonGuardar.Location = new System.Drawing.Point(96, 357);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 14;
+            this.buttonGuardar.TabIndex = 15;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -373,20 +375,44 @@
             this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderFormulario.ContainerControl = this;
             // 
+            // textBoxPrecioDeCompra
+            // 
+            this.textBoxPrecioDeCompra.ContextMenuStrip = this.contextMenuStripTextBox;
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPrecioDeCompra, 5);
+            this.textBoxPrecioDeCompra.Location = new System.Drawing.Point(148, 305);
+            this.textBoxPrecioDeCompra.MaxLength = 10;
+            this.textBoxPrecioDeCompra.Name = "textBoxPrecioDeCompra";
+            this.textBoxPrecioDeCompra.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPrecioDeCompra.TabIndex = 13;
+            this.textBoxPrecioDeCompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecioDeCompra_KeyDown);
+            this.textBoxPrecioDeCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecioDeCompra_KeyPress);
+            this.textBoxPrecioDeCompra.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecioDeCompra_Validating);
+            // 
+            // labelPrecioDeCompra
+            // 
+            this.labelPrecioDeCompra.AutoSize = true;
+            this.labelPrecioDeCompra.Location = new System.Drawing.Point(12, 308);
+            this.labelPrecioDeCompra.Name = "labelPrecioDeCompra";
+            this.labelPrecioDeCompra.Size = new System.Drawing.Size(94, 13);
+            this.labelPrecioDeCompra.TabIndex = 364;
+            this.labelPrecioDeCompra.Text = "Precio de Compra:";
+            // 
             // Nuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCerrar;
-            this.ClientSize = new System.Drawing.Size(377, 384);
+            this.ClientSize = new System.Drawing.Size(377, 410);
+            this.Controls.Add(this.labelPrecioDeCompra);
+            this.Controls.Add(this.textBoxPrecioDeCompra);
             this.Controls.Add(this.labelPresentacion);
             this.Controls.Add(this.textBoxPresentacion);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.labelAlias);
             this.Controls.Add(this.textBoxAlias);
-            this.Controls.Add(this.labelPrecio);
-            this.Controls.Add(this.textBoxPrecio);
+            this.Controls.Add(this.labelPrecioDeVenta);
+            this.Controls.Add(this.textBoxPrecioDeVenta);
             this.Controls.Add(this.labelCantidadMinima);
             this.Controls.Add(this.textBoxCantidadMinima);
             this.Controls.Add(this.panelTipoDeProducto);
@@ -407,8 +433,8 @@
             this.Controls.Add(this.comboBoxGrupo);
             this.Controls.Add(this.labelGrupo);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(393, 423);
-            this.MinimumSize = new System.Drawing.Size(393, 423);
+            this.MaximumSize = new System.Drawing.Size(393, 449);
+            this.MinimumSize = new System.Drawing.Size(393, 449);
             this.Name = "Nuevo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Producto";
@@ -444,8 +470,8 @@
         private System.Windows.Forms.RadioButton radioButtonTipoDeProductoBalanza;
         private System.Windows.Forms.Label labelCantidadMinima;
         private System.Windows.Forms.TextBox textBoxCantidadMinima;
-        private System.Windows.Forms.Label labelPrecio;
-        private System.Windows.Forms.TextBox textBoxPrecio;
+        private System.Windows.Forms.Label labelPrecioDeVenta;
+        private System.Windows.Forms.TextBox textBoxPrecioDeVenta;
         private System.Windows.Forms.Label labelAlias;
         private System.Windows.Forms.TextBox textBoxAlias;
         private System.Windows.Forms.Button buttonCerrar;
@@ -454,5 +480,7 @@
         private System.Windows.Forms.TextBox textBoxPresentacion;
         private System.Windows.Forms.ErrorProvider errorProviderFormulario;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
+        private System.Windows.Forms.Label labelPrecioDeCompra;
+        private System.Windows.Forms.TextBox textBoxPrecioDeCompra;
     }
 }

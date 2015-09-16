@@ -34,17 +34,17 @@ Returns Table
 Return
 (
 	Select Pr.Id_Producto, P.Nombre As Proveedor, G.Nombre As Grupo, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca, Pr.Presentacion,
-	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Cantidad_Minima, Pr.Precio
+	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta
 	From Proveedor P, Grupo G, Producto Pr
 	Where P.Id_Proveedor = Pr.Id_Proveedor And G.Id_Grupo = Pr.Id_Grupo And Pr.Estado = 1
 	Union
 	Select Pr.Id_Producto, P.Nombre As Proveedor, '' As Grupo, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca, Pr.Presentacion,
-	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Cantidad_Minima, Pr.Precio
+	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta
 	From Proveedor P, Producto Pr
 	Where P.Id_Proveedor = Pr.Id_Proveedor And Pr.Id_Grupo = 0 And Pr.Estado = 1
 	Union
 	Select Id_Producto, '', '' As Grupo, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, ISNULL(Sabor_U_Olor, '') As Sabor_U_Olor,
-	Cantidad_Minima, Precio
+	Cantidad_Minima, Precio_De_Compra, Precio_De_Venta
 	From Producto
 	Where Id_Proveedor = 0 And Id_Grupo = 0 And Estado = 1
 )

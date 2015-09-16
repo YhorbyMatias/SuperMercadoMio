@@ -68,9 +68,9 @@ namespace Super_Mercado_Mio.Grupo
             dataGridViewGrupos.Columns["Numero"].Width = 70;
             dataGridViewGrupos.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
-        private void loadDataGridViewGrupos(DataTable dataTableProveedoresX)
+        private void loadDataGridViewGrupos(DataTable dataTableGruposX)
         {
-            dataViewGrupos.Table = dataTableProveedoresX;
+            dataViewGrupos.Table = dataTableGruposX;
             dataGridViewGrupos.DataSource = dataViewGrupos;
             records = dataGridViewGrupos.Rows.Count;
             if (records > 0)

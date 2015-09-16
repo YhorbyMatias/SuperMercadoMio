@@ -65,6 +65,19 @@ namespace Dal
             sqlConnection.Close();
             return exists;
         }
+        public DataTable findAll()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor "
+                + "From buscarProductos() Where Precio > 0 Order By Codigo_De_Barras Asc";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Productos");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public int insert(ProductoEnt productoX)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -96,7 +109,8 @@ namespace Dal
             {
                 sqlCommand.Parameters.AddWithValue("@Cantidad_Minima", DBNull.Value);
             }
-            sqlCommand.Parameters.AddWithValue("@Precio", productoX.PRECIO);
+            sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", productoX.PRECIO_DE_COMPRA);
+            sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", productoX.PRECIO_DE_VENTA);
             sqlConnection.Open();
             int idProducto = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
@@ -126,7 +140,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, "
-                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio From Producto Where Estado = 1";
+                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta From Producto Where Estado = 1";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Marcas");
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -138,19 +152,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select * From buscarProductos()";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable("Productos");
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            sqlDataAdapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable selectAll()
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select * From buscarProductos()";
+            sqlCommand.CommandText = "Select * From buscarProductos() Order By Codigo_De_Barras Asc";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Productos");
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -169,6 +171,19 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable selectAll()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
+                + "Precio_De_Compra, Precio_De_Venta From buscarProductos() Order By Codigo_De_Barras Asc";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Productos");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public void update(ProductoEnt productoX)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -177,7 +192,8 @@ namespace Dal
             sqlCommand.CommandText = "Update Producto Set Id_Proveedor = @Id_Proveedor, Id_Grupo = @Id_Grupo, "
                 + "Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras, Codigo_De_Barras = @Codigo_De_Barras, "
                 + "Nombre_Generico = @Nombre_Generico, Marca = @Marca, Alias = @Alias, Sabor_U_Olor = @Sabor_U_Olor, Tipo = @Tipo, "
-                + "Cantidad_Minima = @Cantidad_Minima, Precio = @Precio Where Id_Producto = @Id_Producto";
+                + "Cantidad_Minima = @Cantidad_Minima, Precio_De_Compra = @Precio_De_Compra, Precio_De_Venta = @Precio_De_Venta "
+                + "Where Id_Producto = @Id_Producto";
             sqlCommand.Parameters.AddWithValue("@Id_Proveedor", productoX.ID_PROVEEDOR);
             sqlCommand.Parameters.AddWithValue("@Id_Grupo", productoX.ID_GRUPO);
             sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", productoX.TIPO_DE_CODIGO_DE_BARRAS);
@@ -203,7 +219,8 @@ namespace Dal
             {
                 sqlCommand.Parameters.AddWithValue("@Cantidad_Minima", DBNull.Value);
             }
-            sqlCommand.Parameters.AddWithValue("@Precio", productoX.PRECIO);
+            sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", productoX.PRECIO_DE_COMPRA);
+            sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", productoX.PRECIO_DE_VENTA);
             sqlCommand.Parameters.AddWithValue("@Id_Producto", productoX.ID_PRODUCTO);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();

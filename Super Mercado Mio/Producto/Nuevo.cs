@@ -18,7 +18,7 @@ namespace Super_Mercado_Mio.Producto
         int opcion = 0;
         string codigoDeBarras = "";
         bool isWritable = true;
-        bool[] hasErrors = new bool[] { false, false, true, false, false, false, true, false, false, true };
+        bool[] hasErrors = new bool[] { false, false, true, false, false, false, true, false, false, true, true };
         ProveedorBss objetoProveedor = new ProveedorBss();
         GrupoBss objetoGrupo = new GrupoBss();
         ProductoBss objetoProducto = new ProductoBss();
@@ -169,8 +169,8 @@ namespace Super_Mercado_Mio.Producto
             errorProviderFormulario.SetError(textBoxCantidadMinima, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
-        #region textBoxPrecio
-        private void textBoxPrecio_KeyDown(object sender, KeyEventArgs e)
+        #region textBoxPrecioDeCompra
+        private void textBoxPrecioDeCompra_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.V)
             {
@@ -185,7 +185,7 @@ namespace Super_Mercado_Mio.Producto
                 }
             }
         }
-        private void textBoxPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxPrecioDeCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (isWritable == true)
             {
@@ -195,7 +195,7 @@ namespace Super_Mercado_Mio.Producto
                 }
                 else if (e.KeyChar == 46)
                 {
-                    if (textBoxPrecio.Text.IndexOf(".") > -1)
+                    if (textBoxPrecioDeCompra.Text.IndexOf(".") > -1)
                     {
                         e.Handled = true;
                     }
@@ -207,11 +207,56 @@ namespace Super_Mercado_Mio.Producto
                 e.Handled = true;
             }
         }
-        private void textBoxPrecio_Validating(object sender, CancelEventArgs e)
+        private void textBoxPrecioDeCompra_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarPrecio();
+            int errorCode = validarPrecioDeCompra();
             hasErrors[9] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxPrecio, ValidacionBss.getErrorMessage(errorCode));
+            errorProviderFormulario.SetError(textBoxPrecioDeCompra, ValidacionBss.getErrorMessage(errorCode));
+        }
+        #endregion
+        #region textBoxPrecioDeVenta
+        private void textBoxPrecioDeVenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                if (ValidacionBss.esRealConDosDecimales(Clipboard.GetText()) == false)
+                {
+                    e.Handled = true;
+                    isWritable = false;
+                }
+                else
+                {
+                    isWritable = true;
+                }
+            }
+        }
+        private void textBoxPrecioDeVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (isWritable == true)
+            {
+                if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != 46)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyChar == 46)
+                {
+                    if (textBoxPrecioDeVenta.Text.IndexOf(".") > -1)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            else
+            {
+                isWritable = true;
+                e.Handled = true;
+            }
+        }
+        private void textBoxPrecioDeVenta_Validating(object sender, CancelEventArgs e)
+        {
+            int errorCode = validarPrecioDeVenta();
+            hasErrors[10] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxPrecioDeVenta, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -252,7 +297,8 @@ namespace Super_Mercado_Mio.Producto
                 {
                     producto.CANTIDAD_MINIMA = 0;
                 }
-                producto.PRECIO = Convert.ToDecimal(textBoxPrecio.Text.Trim());
+                producto.PRECIO_DE_COMPRA = Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim());
+                producto.PRECIO_DE_VENTA = Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim());
                 producto.ID_PRODUCTO = objetoProducto.insert(producto);
                 insertarRegistro("Producto", producto.ID_PRODUCTO, "Nuevo");
                 if (producto.CODIGO_DE_BARRAS == textBoxCodigoDeBarras.Text.Trim())
@@ -656,13 +702,38 @@ namespace Super_Mercado_Mio.Producto
                 return 0;
             }
         }
-        private int validarPrecio()
+        private int validarPrecioDeCompra()
         {
-            if (textBoxPrecio.Text.Trim() != "")
+            if (textBoxPrecioDeCompra.Text.Trim() != "")
             {
-                if (ValidacionBss.esRealConDosDecimales(textBoxPrecio.Text.Trim()))
+                if (ValidacionBss.esRealConDosDecimales(textBoxPrecioDeCompra.Text.Trim()))
                 {
-                    if (Convert.ToDecimal(textBoxPrecio.Text) > 0)
+                    if (Convert.ToDecimal(textBoxPrecioDeCompra.Text) > 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int validarPrecioDeVenta()
+        {
+            if (textBoxPrecioDeVenta.Text.Trim() != "")
+            {
+                if (ValidacionBss.esRealConDosDecimales(textBoxPrecioDeVenta.Text.Trim()))
+                {
+                    if (Convert.ToDecimal(textBoxPrecioDeVenta.Text) > 0)
                     {
                         return 0;
                     }
@@ -720,7 +791,10 @@ namespace Super_Mercado_Mio.Producto
                         textBoxCantidadMinima.Focus();
                         break;
                     case 9:
-                        textBoxPresentacion.Focus();
+                        textBoxPrecioDeCompra.Focus();
+                        break;
+                    case 10:
+                        textBoxPrecioDeVenta.Focus();
                         break;
                 }
                 return false;

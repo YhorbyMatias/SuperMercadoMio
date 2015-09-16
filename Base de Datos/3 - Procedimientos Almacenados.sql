@@ -119,13 +119,48 @@ Create Procedure insertarProducto
 @Sabor_U_Olor Varchar(100),
 @Tipo Varchar(10),
 @Cantidad_Minima Decimal(18,3),
-@Precio Decimal(18,2)
+@Precio_De_Compra Decimal(18,2),
+@Precio_De_Venta Decimal(18,2)
 As
 Begin
 	Insert Into Producto(Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Alias,
-	Sabor_U_Olor, Tipo, Cantidad_Minima, Precio, Estado)
+	Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta, Estado)
 	Values(@Id_Proveedor, @Id_Grupo, @Tipo_De_Codigo_De_Barras, @Codigo_De_Barras, @Nombre_Generico, @Marca, @Presentacion, @Alias,
-	@Sabor_U_Olor, @Tipo, @Cantidad_Minima, @Precio, 1)
+	@Sabor_U_Olor, @Tipo, @Cantidad_Minima, @Precio_De_Compra, @Precio_De_Venta, 1)
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarIngreso
+@Id_Proveedor Int,
+@Fecha Date,
+@Numero_De_Registro Int,
+@Numero_De_Nota_De_Entrega Varchar(50),
+@Monto Decimal(18,2),
+@Observaciones Varchar(500),
+@Estado Varchar(20)
+As
+Begin
+	Insert Into Ingreso(Id_Proveedor, Fecha, Numero_De_Registro, Numero_De_Nota_De_Entrega, Monto, Observaciones, Estado)
+	Values(@Id_Proveedor, @Fecha, @Numero_De_Registro, @Numero_De_Nota_De_Entrega, @Monto, @Observaciones, @Estado)
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarDetalleDeIngreso
+@Id_Ingreso Int,
+@Id_Producto Int,
+@Cantidad Decimal(18,3),
+@Precio_De_Compra Decimal(18,2),
+@Monto_Total Decimal(18,2),
+@Porcentaje_De_Utilidad Decimal(18,2),
+@Precio_De_Venta Decimal(18,2),
+@Estado Varchar(7)
+As
+Begin
+	Insert Into Detalle_De_Ingreso(Id_Ingreso, Id_Producto, Cantidad, Precio_De_Compra, Monto_Total, Porcentaje_De_Utilidad, Precio_De_Venta,
+	Estado)
+	Values(@Id_Ingreso, @Id_Producto, @Cantidad, @Precio_De_Compra, @Monto_Total, @Porcentaje_De_Utilidad, @Precio_De_Venta, @Estado)
 	Select SCOPE_IDENTITY()
 End
 Go

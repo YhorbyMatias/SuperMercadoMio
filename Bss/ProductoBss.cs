@@ -27,6 +27,10 @@ namespace Bss
         {
             return producto.authenticateCodigoDeBarras(productoX);
         }
+        public DataTable findAll()
+        {
+            return producto.findAll();
+        }
         public int insert(ProductoEnt productoX)
         {
             return producto.insert(productoX);
@@ -39,9 +43,17 @@ namespace Bss
         {
             return producto.search(productoX);
         }
+        public DataTable searchAll()
+        {
+            return producto.searchAll();
+        }
         public DataTable searchMarcas()
         {
             return producto.searchMarcas();
+        }
+        public DataTable selectAll()
+        {
+            return producto.selectAll();
         }
         public void update(ProductoEnt productoX)
         {

@@ -21,7 +21,8 @@ namespace Ent
         private string sabor_u_olor;
         private string tipo;
         private decimal cantidad_minima;
-        private decimal precio;
+        private decimal precio_de_compra;
+        private decimal precio_de_venta;
         private bool estado;
         #endregion
         #region Propiedades
@@ -85,31 +86,20 @@ namespace Ent
             get { return this.cantidad_minima; }
             set { this.cantidad_minima = value; }
         }
-        public decimal PRECIO
+        public decimal PRECIO_DE_COMPRA
         {
-            get { return this.precio; }
-            set { this.precio = value; }
+            get { return this.precio_de_compra; }
+            set { this.precio_de_compra = value; }
+        }
+        public decimal PRECIO_DE_VENTA
+        {
+            get { return this.precio_de_venta; }
+            set { this.precio_de_venta = value; }
         }
         public bool ESTADO
         {
             get { return this.estado; }
             set { this.estado = value; }
-        }
-        #endregion
-        #region Atributos Auxiliares
-        private string proveedor;
-        private string grupo;
-        #endregion
-        #region Propiedades Auxiliares
-        public string PROVEEDOR
-        {
-            get { return this.proveedor; }
-            set { this.proveedor = value; }
-        }
-        public string GRUPO
-        {
-            get { return this.grupo; }
-            set { this.grupo = value; }
         }
         #endregion
     }
