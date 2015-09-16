@@ -16,7 +16,7 @@ namespace Super_Mercado_Mio.Compra
     {
         #region Objetos
         bool isWritable = true;
-        bool[] hasErrors = new bool { true, true, true };
+        bool[] hasErrors = new bool[] { true, true, true };
         IngresoBss objetoIngreso = new IngresoBss();
         IngresoEnt ingreso = new IngresoEnt();
         ProveedorBss objetoProveedor = new ProveedorBss();

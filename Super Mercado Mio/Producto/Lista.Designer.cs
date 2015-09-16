@@ -30,8 +30,8 @@
         {
             this.dataGridViewProductos = new System.Windows.Forms.DataGridView();
             this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.textBoxCodigo = new System.Windows.Forms.TextBox();
-            this.labelCodigo = new System.Windows.Forms.Label();
+            this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
+            this.labelCodigoDeBarras = new System.Windows.Forms.Label();
             this.textBoxNombreGenerico = new System.Windows.Forms.TextBox();
             this.labelNombreGenerico = new System.Windows.Forms.Label();
             this.labelMarca = new System.Windows.Forms.Label();
@@ -81,27 +81,27 @@
             this.Modificar.Visible = false;
             this.Modificar.VisitedLinkColor = System.Drawing.Color.Black;
             // 
-            // textBoxCodigo
+            // textBoxCodigoDeBarras
             // 
-            this.textBoxCodigo.Location = new System.Drawing.Point(77, 12);
-            this.textBoxCodigo.MaxLength = 100;
-            this.textBoxCodigo.Name = "textBoxCodigo";
-            this.textBoxCodigo.Size = new System.Drawing.Size(125, 20);
-            this.textBoxCodigo.TabIndex = 0;
-            this.textBoxCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigo_KeyDown);
+            this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(109, 12);
+            this.textBoxCodigoDeBarras.MaxLength = 100;
+            this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
+            this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(125, 20);
+            this.textBoxCodigoDeBarras.TabIndex = 0;
+            this.textBoxCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigoDeBarras_KeyDown);
             // 
-            // labelCodigo
+            // labelCodigoDeBarras
             // 
-            this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(12, 15);
-            this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(43, 13);
-            this.labelCodigo.TabIndex = 88;
-            this.labelCodigo.Text = "Código:";
+            this.labelCodigoDeBarras.AutoSize = true;
+            this.labelCodigoDeBarras.Location = new System.Drawing.Point(12, 15);
+            this.labelCodigoDeBarras.Name = "labelCodigoDeBarras";
+            this.labelCodigoDeBarras.Size = new System.Drawing.Size(91, 13);
+            this.labelCodigoDeBarras.TabIndex = 88;
+            this.labelCodigoDeBarras.Text = "Código de Barras:";
             // 
             // textBoxNombreGenerico
             // 
-            this.textBoxNombreGenerico.Location = new System.Drawing.Point(281, 12);
+            this.textBoxNombreGenerico.Location = new System.Drawing.Point(313, 12);
             this.textBoxNombreGenerico.MaxLength = 100;
             this.textBoxNombreGenerico.Name = "textBoxNombreGenerico";
             this.textBoxNombreGenerico.Size = new System.Drawing.Size(125, 20);
@@ -111,7 +111,7 @@
             // labelNombreGenerico
             // 
             this.labelNombreGenerico.AutoSize = true;
-            this.labelNombreGenerico.Location = new System.Drawing.Point(208, 15);
+            this.labelNombreGenerico.Location = new System.Drawing.Point(240, 15);
             this.labelNombreGenerico.Name = "labelNombreGenerico";
             this.labelNombreGenerico.Size = new System.Drawing.Size(67, 13);
             this.labelNombreGenerico.TabIndex = 90;
@@ -120,7 +120,7 @@
             // labelMarca
             // 
             this.labelMarca.AutoSize = true;
-            this.labelMarca.Location = new System.Drawing.Point(412, 15);
+            this.labelMarca.Location = new System.Drawing.Point(444, 15);
             this.labelMarca.Name = "labelMarca";
             this.labelMarca.Size = new System.Drawing.Size(40, 13);
             this.labelMarca.TabIndex = 91;
@@ -128,7 +128,7 @@
             // 
             // textBoxMarca
             // 
-            this.textBoxMarca.Location = new System.Drawing.Point(458, 12);
+            this.textBoxMarca.Location = new System.Drawing.Point(490, 12);
             this.textBoxMarca.MaxLength = 100;
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.Size = new System.Drawing.Size(125, 20);
@@ -137,7 +137,7 @@
             // 
             // textBoxPresentacion
             // 
-            this.textBoxPresentacion.Location = new System.Drawing.Point(667, 12);
+            this.textBoxPresentacion.Location = new System.Drawing.Point(699, 12);
             this.textBoxPresentacion.MaxLength = 100;
             this.textBoxPresentacion.Name = "textBoxPresentacion";
             this.textBoxPresentacion.Size = new System.Drawing.Size(125, 20);
@@ -147,7 +147,7 @@
             // labelPresentacion
             // 
             this.labelPresentacion.AutoSize = true;
-            this.labelPresentacion.Location = new System.Drawing.Point(589, 15);
+            this.labelPresentacion.Location = new System.Drawing.Point(621, 15);
             this.labelPresentacion.Name = "labelPresentacion";
             this.labelPresentacion.Size = new System.Drawing.Size(72, 13);
             this.labelPresentacion.TabIndex = 93;
@@ -155,7 +155,7 @@
             // 
             // textBoxSaborUOlor
             // 
-            this.textBoxSaborUOlor.Location = new System.Drawing.Point(875, 12);
+            this.textBoxSaborUOlor.Location = new System.Drawing.Point(907, 12);
             this.textBoxSaborUOlor.MaxLength = 100;
             this.textBoxSaborUOlor.Name = "textBoxSaborUOlor";
             this.textBoxSaborUOlor.Size = new System.Drawing.Size(125, 20);
@@ -165,7 +165,7 @@
             // labelSaborUOlor
             // 
             this.labelSaborUOlor.AutoSize = true;
-            this.labelSaborUOlor.Location = new System.Drawing.Point(798, 15);
+            this.labelSaborUOlor.Location = new System.Drawing.Point(830, 15);
             this.labelSaborUOlor.Name = "labelSaborUOlor";
             this.labelSaborUOlor.Size = new System.Drawing.Size(71, 13);
             this.labelSaborUOlor.TabIndex = 95;
@@ -173,7 +173,7 @@
             // 
             // textBoxProveedor
             // 
-            this.textBoxProveedor.Location = new System.Drawing.Point(77, 38);
+            this.textBoxProveedor.Location = new System.Drawing.Point(109, 38);
             this.textBoxProveedor.MaxLength = 300;
             this.textBoxProveedor.Name = "textBoxProveedor";
             this.textBoxProveedor.Size = new System.Drawing.Size(125, 20);
@@ -191,7 +191,7 @@
             // 
             // textBoxGrupo
             // 
-            this.textBoxGrupo.Location = new System.Drawing.Point(281, 38);
+            this.textBoxGrupo.Location = new System.Drawing.Point(313, 38);
             this.textBoxGrupo.MaxLength = 100;
             this.textBoxGrupo.Name = "textBoxGrupo";
             this.textBoxGrupo.Size = new System.Drawing.Size(125, 20);
@@ -201,7 +201,7 @@
             // labelGrupo
             // 
             this.labelGrupo.AutoSize = true;
-            this.labelGrupo.Location = new System.Drawing.Point(208, 41);
+            this.labelGrupo.Location = new System.Drawing.Point(240, 41);
             this.labelGrupo.Name = "labelGrupo";
             this.labelGrupo.Size = new System.Drawing.Size(39, 13);
             this.labelGrupo.TabIndex = 99;
@@ -224,8 +224,8 @@
             this.Controls.Add(this.labelMarca);
             this.Controls.Add(this.textBoxNombreGenerico);
             this.Controls.Add(this.labelNombreGenerico);
-            this.Controls.Add(this.textBoxCodigo);
-            this.Controls.Add(this.labelCodigo);
+            this.Controls.Add(this.textBoxCodigoDeBarras);
+            this.Controls.Add(this.labelCodigoDeBarras);
             this.Controls.Add(this.dataGridViewProductos);
             this.MaximizeBox = false;
             this.Name = "Lista";
@@ -242,8 +242,8 @@
 
         private System.Windows.Forms.DataGridView dataGridViewProductos;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
-        private System.Windows.Forms.TextBox textBoxCodigo;
-        private System.Windows.Forms.Label labelCodigo;
+        private System.Windows.Forms.TextBox textBoxCodigoDeBarras;
+        private System.Windows.Forms.Label labelCodigoDeBarras;
         private System.Windows.Forms.TextBox textBoxNombreGenerico;
         private System.Windows.Forms.Label labelNombreGenerico;
         private System.Windows.Forms.Label labelMarca;

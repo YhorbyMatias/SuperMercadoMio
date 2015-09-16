@@ -43,12 +43,12 @@ namespace Super_Mercado_Mio.Producto
             }
         }
         #endregion
-        #region textBoxCodigo
-        private void textBoxCodigo_KeyDown(object sender, KeyEventArgs e)
+        #region textBoxCodigoDeBarras
+        private void textBoxCodigoDeBarras_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -57,7 +57,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -66,7 +66,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -75,7 +75,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -84,7 +84,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -93,7 +93,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -102,7 +102,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewProveedores();
+                filterDataGridViewProductos();
             }
         }
         #endregion
@@ -235,13 +235,13 @@ namespace Super_Mercado_Mio.Producto
                 dataGridViewProductos.ColumnHeadersVisible = false;
             }
         }
-        private void filterDataGridViewProveedores()
+        private void filterDataGridViewProductos()
         {
             if (records > 0)
             {
-                if (textBoxCodigo.Text.Trim() != "")
+                if (textBoxCodigoDeBarras.Text.Trim() != "")
                 {
-                    dataViewProductos.RowFilter = "Codigo = " + textBoxCodigo.Text.Trim();
+                    dataViewProductos.RowFilter = "Codigo_De_Barras = '" + textBoxCodigoDeBarras.Text.Trim() + "'";
                 }
                 else
                 {
