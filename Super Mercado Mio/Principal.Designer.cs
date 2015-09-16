@@ -68,6 +68,8 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripPrincipal.SuspendLayout();
             this.menuStripMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +95,8 @@
             this.menuStripMenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.definicionesToolStripMenuItem,
-            this.productoToolStripMenuItem});
+            this.productoToolStripMenuItem,
+            this.compraToolStripMenuItem});
             this.menuStripMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuStripMenuPrincipal.Name = "menuStripMenuPrincipal";
             this.menuStripMenuPrincipal.Size = new System.Drawing.Size(1308, 24);
@@ -122,14 +125,12 @@
             // 
             // copiaDeSeguridadBaseDeDatosToolStripMenuItem
             // 
-            this.copiaDeSeguridadBaseDeDatosToolStripMenuItem.Enabled = true;
             this.copiaDeSeguridadBaseDeDatosToolStripMenuItem.Name = "copiaDeSeguridadBaseDeDatosToolStripMenuItem";
             this.copiaDeSeguridadBaseDeDatosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.copiaDeSeguridadBaseDeDatosToolStripMenuItem.Text = "Copia de Seguridad";
             // 
             // restaurarBaseDeDatosToolStripMenuItem
             // 
-            this.restaurarBaseDeDatosToolStripMenuItem.Enabled = true;
             this.restaurarBaseDeDatosToolStripMenuItem.Name = "restaurarBaseDeDatosToolStripMenuItem";
             this.restaurarBaseDeDatosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.restaurarBaseDeDatosToolStripMenuItem.Text = "Restaurar";
@@ -180,7 +181,6 @@
             // 
             // nuevoUsuarioToolStripMenuItem
             // 
-            this.nuevoUsuarioToolStripMenuItem.Enabled = true;
             this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
             this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo";
@@ -188,7 +188,6 @@
             // 
             // modificarUsuarioToolStripMenuItem
             // 
-            this.modificarUsuarioToolStripMenuItem.Enabled = true;
             this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
             this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarUsuarioToolStripMenuItem.Text = "Modificar";
@@ -196,7 +195,6 @@
             // 
             // eliminarUsuarioToolStripMenuItem
             // 
-            this.eliminarUsuarioToolStripMenuItem.Enabled = true;
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
             this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar";
@@ -204,7 +202,6 @@
             // 
             // listaDeUsuariosToolStripMenuItem
             // 
-            this.listaDeUsuariosToolStripMenuItem.Enabled = true;
             this.listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
             this.listaDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.listaDeUsuariosToolStripMenuItem.Text = "Lista";
@@ -222,7 +219,6 @@
             // 
             // nuevaEmpresaToolStripMenuItem
             // 
-            this.nuevaEmpresaToolStripMenuItem.Enabled = true;
             this.nuevaEmpresaToolStripMenuItem.Name = "nuevaEmpresaToolStripMenuItem";
             this.nuevaEmpresaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevaEmpresaToolStripMenuItem.Text = "Nueva";
@@ -230,7 +226,6 @@
             // 
             // modificarEmpresaToolStripMenuItem
             // 
-            this.modificarEmpresaToolStripMenuItem.Enabled = true;
             this.modificarEmpresaToolStripMenuItem.Name = "modificarEmpresaToolStripMenuItem";
             this.modificarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarEmpresaToolStripMenuItem.Text = "Modificar";
@@ -238,7 +233,6 @@
             // 
             // datosDeEmpresaToolStripMenuItem
             // 
-            this.datosDeEmpresaToolStripMenuItem.Enabled = true;
             this.datosDeEmpresaToolStripMenuItem.Name = "datosDeEmpresaToolStripMenuItem";
             this.datosDeEmpresaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.datosDeEmpresaToolStripMenuItem.Text = "Datos";
@@ -256,7 +250,6 @@
             // 
             // nuevaSucursalToolStripMenuItem
             // 
-            this.nuevaSucursalToolStripMenuItem.Enabled = true;
             this.nuevaSucursalToolStripMenuItem.Name = "nuevaSucursalToolStripMenuItem";
             this.nuevaSucursalToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevaSucursalToolStripMenuItem.Text = "Nueva";
@@ -264,7 +257,6 @@
             // 
             // modificarSucursalToolStripMenuItem
             // 
-            this.modificarSucursalToolStripMenuItem.Enabled = true;
             this.modificarSucursalToolStripMenuItem.Name = "modificarSucursalToolStripMenuItem";
             this.modificarSucursalToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarSucursalToolStripMenuItem.Text = "Modificar";
@@ -272,7 +264,6 @@
             // 
             // datosDeSucursalToolStripMenuItem
             // 
-            this.datosDeSucursalToolStripMenuItem.Enabled = true;
             this.datosDeSucursalToolStripMenuItem.Name = "datosDeSucursalToolStripMenuItem";
             this.datosDeSucursalToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.datosDeSucursalToolStripMenuItem.Text = "Datos";
@@ -291,7 +282,6 @@
             // 
             // nuevoProveedorToolStripMenuItem
             // 
-            this.nuevoProveedorToolStripMenuItem.Enabled = true;
             this.nuevoProveedorToolStripMenuItem.Name = "nuevoProveedorToolStripMenuItem";
             this.nuevoProveedorToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevoProveedorToolStripMenuItem.Text = "Nuevo";
@@ -299,7 +289,6 @@
             // 
             // modificarProveedorToolStripMenuItem
             // 
-            this.modificarProveedorToolStripMenuItem.Enabled = true;
             this.modificarProveedorToolStripMenuItem.Name = "modificarProveedorToolStripMenuItem";
             this.modificarProveedorToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarProveedorToolStripMenuItem.Text = "Modificar";
@@ -307,7 +296,6 @@
             // 
             // eliminarProveedorToolStripMenuItem
             // 
-            this.eliminarProveedorToolStripMenuItem.Enabled = true;
             this.eliminarProveedorToolStripMenuItem.Name = "eliminarProveedorToolStripMenuItem";
             this.eliminarProveedorToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.eliminarProveedorToolStripMenuItem.Text = "Eliminar";
@@ -315,7 +303,6 @@
             // 
             // listaDeProveedoresToolStripMenuItem
             // 
-            this.listaDeProveedoresToolStripMenuItem.Enabled = true;
             this.listaDeProveedoresToolStripMenuItem.Name = "listaDeProveedoresToolStripMenuItem";
             this.listaDeProveedoresToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.listaDeProveedoresToolStripMenuItem.Text = "Lista";
@@ -334,7 +321,6 @@
             // 
             // nuevoGrupoToolStripMenuItem
             // 
-            this.nuevoGrupoToolStripMenuItem.Enabled = true;
             this.nuevoGrupoToolStripMenuItem.Name = "nuevoGrupoToolStripMenuItem";
             this.nuevoGrupoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevoGrupoToolStripMenuItem.Text = "Nuevo";
@@ -342,7 +328,6 @@
             // 
             // modificarGrupoToolStripMenuItem
             // 
-            this.modificarGrupoToolStripMenuItem.Enabled = true;
             this.modificarGrupoToolStripMenuItem.Name = "modificarGrupoToolStripMenuItem";
             this.modificarGrupoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarGrupoToolStripMenuItem.Text = "Modificar";
@@ -350,7 +335,6 @@
             // 
             // eliminarGrupoToolStripMenuItem
             // 
-            this.eliminarGrupoToolStripMenuItem.Enabled = true;
             this.eliminarGrupoToolStripMenuItem.Name = "eliminarGrupoToolStripMenuItem";
             this.eliminarGrupoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.eliminarGrupoToolStripMenuItem.Text = "Eliminar";
@@ -358,7 +342,6 @@
             // 
             // listaDeGruposToolStripMenuItem
             // 
-            this.listaDeGruposToolStripMenuItem.Enabled = true;
             this.listaDeGruposToolStripMenuItem.Name = "listaDeGruposToolStripMenuItem";
             this.listaDeGruposToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.listaDeGruposToolStripMenuItem.Text = "Lista";
@@ -379,35 +362,50 @@
             // nuevoProductoToolStripMenuItem
             // 
             this.nuevoProductoToolStripMenuItem.Name = "nuevoProductoToolStripMenuItem";
-            this.nuevoProductoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoProductoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.nuevoProductoToolStripMenuItem.Text = "Nuevo";
             this.nuevoProductoToolStripMenuItem.Click += new System.EventHandler(this.nuevoProductoToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
             // listaToolStripMenuItem
             // 
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            this.listaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.listaToolStripMenuItem.Text = "Lista";
             this.listaToolStripMenuItem.Click += new System.EventHandler(this.listaToolStripMenuItem_Click);
             // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.stockToolStripMenuItem.Text = "Stock";
+            // 
+            // compraToolStripMenuItem
+            // 
+            this.compraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevaCompraToolStripMenuItem});
+            this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.compraToolStripMenuItem.Text = "Compra";
+            // 
+            // nuevaCompraToolStripMenuItem
+            // 
+            this.nuevaCompraToolStripMenuItem.Name = "nuevaCompraToolStripMenuItem";
+            this.nuevaCompraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevaCompraToolStripMenuItem.Text = "Nueva";
+            this.nuevaCompraToolStripMenuItem.Click += new System.EventHandler(this.nuevaCompraToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -474,5 +472,7 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaCompraToolStripMenuItem;
     }
 }

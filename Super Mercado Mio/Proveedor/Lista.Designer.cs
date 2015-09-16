@@ -72,6 +72,7 @@
             this.dataGridViewProveedores.Size = new System.Drawing.Size(760, 421);
             this.dataGridViewProveedores.TabIndex = 84;
             this.dataGridViewProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProveedores_CellContentClick);
+            this.dataGridViewProveedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProveedores_CellDoubleClick);
             // 
             // Ficha
             // 

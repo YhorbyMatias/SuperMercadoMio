@@ -230,6 +230,14 @@ namespace Super_Mercado_Mio
             formularioListaDeProductos.Show();
         }
         #endregion
+        #region Menu Compra
+        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Nueva formularioNuevaCompra = new Compra.Nueva();
+            formularioNuevaCompra.MdiParent = this;
+            formularioNuevaCompra.Show();
+        }
+        #endregion
         #region Metodos Propios
         private void loadMenu()
         {

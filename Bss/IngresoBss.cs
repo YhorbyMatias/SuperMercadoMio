@@ -14,6 +14,10 @@ namespace Bss
         private IngresoDal ingreso = new IngresoDal();
         #endregion
         #region Metodos
+        public int getNumeroDeRegistro()
+        {
+            return ingreso.getNumeroDeRegistro();
+        }
         public int insert(IngresoEnt ingresoX)
         {
             return ingreso.insert(ingresoX);

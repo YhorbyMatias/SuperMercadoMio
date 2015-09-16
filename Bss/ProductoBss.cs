@@ -51,6 +51,10 @@ namespace Bss
         {
             return producto.searchMarcas();
         }
+        public DataTable select(ProductoEnt productoX)
+        {
+            return producto.select(productoX);
+        }
         public DataTable selectAll()
         {
             return producto.selectAll();

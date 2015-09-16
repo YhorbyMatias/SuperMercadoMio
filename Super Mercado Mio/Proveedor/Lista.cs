@@ -1,4 +1,5 @@
 ﻿using Bss;
+using Ent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Super_Mercado_Mio.Proveedor
         int opcion = 0;
         int records = 0;
         ProveedorBss objetoProveedor = new ProveedorBss();
+        public ProveedorEnt proveedor = new ProveedorEnt();
         DataView dataViewProveedores = new DataView();
         #endregion
         #region Form
@@ -61,6 +63,15 @@ namespace Super_Mercado_Mio.Proveedor
                 }
             }
         }
+        private void dataGridViewProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (opcion == 3)
+            {
+                proveedor.ID_PROVEEDOR = Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value);
+                proveedor.NIT = dataGridViewProveedores["Nit", e.RowIndex].Value.ToString();
+                this.Close();
+            }
+        }
         #endregion
         #region Metodos Propios
         private void setDataGridViewProveedoresFormat()
@@ -69,7 +80,7 @@ namespace Super_Mercado_Mio.Proveedor
             {
                 dataGridViewProveedores.Columns["Ficha"].Visible = true;
             }
-            if (opcion == 2)
+            else if (opcion == 2)
             {
                 dataGridViewProveedores.Columns["Modificar"].Visible = true;
             }
@@ -78,9 +89,9 @@ namespace Super_Mercado_Mio.Proveedor
             dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
             dataGridViewProveedores.Columns["Ficha"].Width = 100;
             dataGridViewProveedores.Columns["Modificar"].Width = 100;
-            dataGridViewProveedores.Columns["Numero"].Width = 100;
-            dataGridViewProveedores.Columns["Nit"].Width = 100;
-            dataGridViewProveedores.Columns["Nombre"].Width = 150;
+            dataGridViewProveedores.Columns["Numero"].Width = 80;
+            dataGridViewProveedores.Columns["Nit"].Width = 90;
+            dataGridViewProveedores.Columns["Telefono"].Width = 90;
             dataGridViewProveedores.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewProveedores.Columns["Nombre"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }

@@ -54,6 +54,12 @@ namespace Bss
                 case 11:
                     errorMessage = "El alias ya se halla registrado.";
                     break;
+                case 12:
+                    errorMessage = "El precio de compra debe ser menor al precio de venta.";
+                    break;
+                case 13:
+                    errorMessage = "Revise el nit del proveedor.";
+                    break;
             }
             return errorMessage;
         }

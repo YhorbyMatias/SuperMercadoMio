@@ -171,6 +171,20 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable select(ProductoEnt productoX)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
+                + "Precio_De_Compra, Precio_De_Venta From buscarProductos() Where Codigo_De_Barras = @Codigo_De_Barras";
+            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", productoX.CODIGO_DE_BARRAS);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Producto");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable selectAll()
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

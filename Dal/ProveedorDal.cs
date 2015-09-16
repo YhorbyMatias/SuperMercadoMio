@@ -130,6 +130,19 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable select(ProveedorEnt proveedorX)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id_Proveedor, Nombre From Proveedor Where Estado = 1 And Nit = @Nit";
+            sqlCommand.Parameters.AddWithValue("@Nit", proveedorX.NIT);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            DataTable dataTable = new DataTable("Proveedor");
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable selectAll()
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

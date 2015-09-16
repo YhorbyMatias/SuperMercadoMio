@@ -20,7 +20,7 @@ namespace Super_Mercado_Mio.Proveedor
         bool isWritable = true;
         bool[] hasErrors = new bool[5];
         ProveedorBss objetoProveedor = new ProveedorBss();
-        ProveedorEnt proveedor = new ProveedorEnt();
+        public ProveedorEnt proveedor = new ProveedorEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
         #endregion
@@ -36,6 +36,7 @@ namespace Super_Mercado_Mio.Proveedor
             if (opcion == 2)
             {
                 textBoxNit.Text = nit;
+                this.ActiveControl = textBoxNombre;
             }
         }
         #endregion

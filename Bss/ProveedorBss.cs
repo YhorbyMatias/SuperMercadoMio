@@ -39,6 +39,10 @@ namespace Bss
         {
             return proveedor.searchRemovable();
         }
+        public DataTable select(ProveedorEnt proveedorX)
+        {
+            return proveedor.select(proveedorX);
+        }
         public DataTable selectAll()
         {
             return proveedor.selectAll();
