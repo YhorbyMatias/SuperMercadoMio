@@ -142,13 +142,48 @@ namespace Super_Mercado_Mio.Compra
         }
         #endregion
         #region Metodos Propios
+        private void addProducto(DataTable dataTableProductoX)
+        {
+            int row = 0;
+            bool exists = false;
+            for (int rows = 0; rows < dataGridViewDetalleDeIngreso.Rows.Count; rows++)
+            {
+                if (dataTableProductoX.Rows[0]["Id_Producto"].ToString() == dataGridViewDetalleDeIngreso["Id_Producto", rows].Value.ToString())
+                {
+                    row = rows;
+                    exists = true;
+                    break;
+                }
+            }
+            if (exists == false)
+            {
+                dataGridViewDetalleDeIngreso.Rows.Add();
+                row = dataGridViewDetalleDeIngreso.Rows.Count - 1;
+                dataGridViewDetalleDeIngreso["Id_Producto", row].Value = dataTableProductoX.Rows[0]["Id_Producto"].ToString();
+                dataGridViewDetalleDeIngreso["Codigo_De_Barras", row].Value = dataTableProductoX.Rows[0]["Codigo_De_Barras"].ToString();
+                dataGridViewDetalleDeIngreso["Nombre_Generico", row].Value = dataTableProductoX.Rows[0]["Nombre_Generico"].ToString();
+                dataGridViewDetalleDeIngreso["Marca", row].Value = dataTableProductoX.Rows[0]["Marca"].ToString();
+                dataGridViewDetalleDeIngreso["Presentacion", row].Value = dataTableProductoX.Rows[0]["Presentacion"].ToString();
+                dataGridViewDetalleDeIngreso["Sabor_U_Olor", row].Value = dataTableProductoX.Rows[0]["Sabor_U_Olor"].ToString();
+                dataGridViewDetalleDeIngreso["Cantidad", row].Value = 1;
+                dataGridViewDetalleDeIngreso["Precio_De_Compra", row].Value = Convert.ToDecimal(dataTableProductoX.Rows[0]["Precio_De_Compra"]);
+                dataGridViewDetalleDeIngreso["Monto_Total", row].Value = Convert.ToDecimal(dataTableProductoX.Rows[0]["Precio_De_Compra"]);
+                dataGridViewDetalleDeIngreso["Precio_De_Venta", row].Value = Convert.ToDecimal(dataTableProductoX.Rows[0]["Precio_De_Venta"]);
+            }
+            else
+            {
+                dataGridViewDetalleDeIngreso["Cantidad", row].Value = Convert.ToDecimal(dataGridViewDetalleDeIngreso["Cantidad", row].Value) + 1;
+                dataGridViewDetalleDeIngreso["Precio_Total", row].Value = (Convert.ToDecimal(dataGridViewDetalleDeIngreso["Cantidad", row].Value) *
+                    Convert.ToDecimal(dataGridViewDetalleDeIngreso["Precio_Unitario", row].Value)).ToString("0.00");
+            }
+        }
         private void searchProducto()
         {
             producto.CODIGO_DE_BARRAS = textBoxCodigoDeBarras.Text.Trim().ToUpper();
             DataTable dataTableProducto = objetoProducto.select(producto);
             if (dataTableProducto.Rows.Count > 0)
             {
-
+                addProducto(dataTableProducto);
             }
             else
             {
@@ -158,7 +193,7 @@ namespace Super_Mercado_Mio.Compra
                 if (producto.ID_PRODUCTO != 0)
                 {
                     dataTableProducto = objetoProducto.select(producto);
-
+                    addProducto(dataTableProducto);
                 }
             }
         }

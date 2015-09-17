@@ -17,7 +17,7 @@ namespace Super_Mercado_Mio.Producto
         #region Objetos
         string codigoDeBarrasSistema = "";
         bool isWritable = true;
-        bool[] hasErrors = new bool[] { false, false, false, false, false, false, false, false, false, false };
+        bool[] hasErrors = new bool[] { false, false, false, false, false, false, false, false, false, false, false };
         ProveedorBss objetoProveedor = new ProveedorBss();
         GrupoBss objetoGrupo = new GrupoBss();
         ProductoBss objetoProducto = new ProductoBss();

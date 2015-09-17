@@ -246,11 +246,11 @@ namespace Super_Mercado_Mio.Producto
                 else
                 {
                     dataViewProductos.RowFilter = "Nombre_Generico Like '%" + textBoxNombreGenerico.Text.Trim().ToUpper() + "%'"
-                        + "Or Marca Like '%" + textBoxMarca.Text.Trim().ToUpper() + "%'"
-                        + "Or Presentacion Like '%" + textBoxPresentacion.Text.Trim().ToUpper() + "%'"
-                        + "Or Sabor_U_Olor Like '%" + textBoxSaborUOlor.Text.Trim().ToUpper() + "%'"
-                        + "Or Proveedor Like '%" + textBoxProveedor.Text.Trim().ToUpper() + "%'"
-                        + "Or Grupo Like '%" + textBoxGrupo.Text.Trim().ToUpper() + "%'";
+                        + "And Marca Like '%" + textBoxMarca.Text.Trim().ToUpper() + "%'"
+                        + "And Presentacion Like '%" + textBoxPresentacion.Text.Trim().ToUpper() + "%'"
+                        + "And Sabor_U_Olor Like '%" + textBoxSaborUOlor.Text.Trim().ToUpper() + "%'"
+                        + "And Proveedor Like '%" + textBoxProveedor.Text.Trim().ToUpper() + "%'"
+                        + "And Grupo Like '%" + textBoxGrupo.Text.Trim().ToUpper() + "%'";
                 }
             }
         }
