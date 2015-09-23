@@ -11,12 +11,12 @@ namespace Bss
     public class OpcionBss
     {
         #region Objetos
-        private OpcionDal opcion = new OpcionDal();
+        private OpcionDal objetoOpcion = new OpcionDal();
         #endregion
         #region Metodos
         public DataTable search()
         {
-            return opcion.search();
+            return objetoOpcion.search();
         }
         #endregion
     }

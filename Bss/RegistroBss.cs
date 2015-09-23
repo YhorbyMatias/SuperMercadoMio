@@ -11,12 +11,12 @@ namespace Bss
     public class RegistroBss
     {
         #region Objetos
-        RegistroDal registro = new RegistroDal();
+        RegistroDal objetoRegistro = new RegistroDal();
         #endregion
         #region Metodos
-        public void insert(RegistroEnt registroX)
+        public void insert(RegistroEnt registro)
         {
-            registro.insert(registroX);
+            objetoRegistro.insert(registro);
         }
         #endregion
     }

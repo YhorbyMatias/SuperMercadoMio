@@ -12,56 +12,60 @@ namespace Bss
     public class ProductoBss
     {
         #region Objetos
-        ProductoDal producto = new ProductoDal();
+        ProductoDal objetoProducto = new ProductoDal();
         #endregion
         #region Metodos
-        public int authenticate(ProductoEnt productoX)
+        public int authenticate(ProductoEnt producto)
         {
-            return producto.authenticate(productoX);
+            return objetoProducto.authenticate(producto);
         }
-        public int authenticateAlias(ProductoEnt productoX)
+        public int authenticateAlias(ProductoEnt producto)
         {
-            return producto.authenticateAlias(productoX);
+            return objetoProducto.authenticateAlias(producto);
         }
-        public int authenticateCodigoDeBarras(ProductoEnt productoX)
+        public int authenticateCodigoDeBarras(ProductoEnt producto)
         {
-            return producto.authenticateCodigoDeBarras(productoX);
+            return objetoProducto.authenticateCodigoDeBarras(producto);
         }
         public DataTable findAll()
         {
-            return producto.findAll();
+            return objetoProducto.findAll();
         }
-        public int insert(ProductoEnt productoX)
+        public int insert(ProductoEnt producto)
         {
-            return producto.insert(productoX);
+            return objetoProducto.insert(producto);
         }
-        public int getNumber(ProductoEnt productoX)
+        public int getNumber(ProductoEnt producto)
         {
-            return producto.getNumber(productoX);
+            return objetoProducto.getNumber(producto);
         }
-        public DataTable search(ProductoEnt productoX)
+        public DataTable search(ProductoEnt producto)
         {
-            return producto.search(productoX);
+            return objetoProducto.search(producto);
         }
         public DataTable searchAll()
         {
-            return producto.searchAll();
+            return objetoProducto.searchAll();
         }
         public DataTable searchMarcas()
         {
-            return producto.searchMarcas();
+            return objetoProducto.searchMarcas();
         }
-        public DataTable select(ProductoEnt productoX)
+        public DataTable select(ProductoEnt producto)
         {
-            return producto.select(productoX);
+            return objetoProducto.select(producto);
         }
         public DataTable selectAll()
         {
-            return producto.selectAll();
+            return objetoProducto.selectAll();
         }
-        public void update(ProductoEnt productoX)
+        public void update(ProductoEnt producto)
         {
-            producto.update(productoX);
+            objetoProducto.update(producto);
+        }
+        public void updatePrecios(ProductoEnt producto)
+        {
+            objetoProducto.updatePrecios(producto);
         }
         #endregion
     }

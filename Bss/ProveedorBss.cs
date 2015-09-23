@@ -12,44 +12,44 @@ namespace Bss
     public class ProveedorBss
     {
         #region Objetos
-        ProveedorDal proveedor = new ProveedorDal();
+        ProveedorDal objetoProveedor = new ProveedorDal();
         #endregion
         #region Metodos
-        public int authenticateNit(ProveedorEnt proveedorX)
+        public int authenticateNit(ProveedorEnt proveedor)
         {
-            return proveedor.authenticateNit(proveedorX);
+            return objetoProveedor.authenticateNit(proveedor);
         }
-        public void delete(ProveedorEnt proveedorX)
+        public void delete(ProveedorEnt proveedor)
         {
-            proveedor.delete(proveedorX);
+            objetoProveedor.delete(proveedor);
         }
-        public int insert(ProveedorEnt proveedorX)
+        public int insert(ProveedorEnt proveedor)
         {
-            return proveedor.insert(proveedorX);
+            return objetoProveedor.insert(proveedor);
         }
-        public DataTable search(ProveedorEnt proveedorX)
+        public DataTable search(ProveedorEnt proveedor)
         {
-            return proveedor.search(proveedorX);
+            return objetoProveedor.search(proveedor);
         }
         public DataTable searchAll()
         {
-            return proveedor.searchAll();
+            return objetoProveedor.searchAll();
         }
         public DataTable searchRemovable()
         {
-            return proveedor.searchRemovable();
+            return objetoProveedor.searchRemovable();
         }
-        public DataTable select(ProveedorEnt proveedorX)
+        public DataTable select(ProveedorEnt proveedor)
         {
-            return proveedor.select(proveedorX);
+            return objetoProveedor.select(proveedor);
         }
         public DataTable selectAll()
         {
-            return proveedor.selectAll();
+            return objetoProveedor.selectAll();
         }
-        public void update(ProveedorEnt proveedorX)
+        public void update(ProveedorEnt proveedor)
         {
-            proveedor.update(proveedorX);
+            objetoProveedor.update(proveedor);
         }
         #endregion
     }

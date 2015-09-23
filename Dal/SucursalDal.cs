@@ -19,21 +19,21 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Count(Id_Sucursal) From Sucursal Where Estado = 1";
             sqlConnection.Open();
-            int existe = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
-            return existe;
+            return exists;
         }
-        public int insert(SucursalEnt sucursalX)
+        public int insert(SucursalEnt sucursal)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarSucursal";
-            sqlCommand.Parameters.AddWithValue("@Id_Empresa", sucursalX.ID_EMPRESA);
-            sqlCommand.Parameters.AddWithValue("@Numero", sucursalX.NUMERO);
-            sqlCommand.Parameters.AddWithValue("@Direccion", sucursalX.DIRECCION);
-            sqlCommand.Parameters.AddWithValue("@Telefono", sucursalX.TELEFONO);
-            sqlCommand.Parameters.AddWithValue("@Municipio", sucursalX.MUNICIPIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Empresa", sucursal.ID_EMPRESA);
+            sqlCommand.Parameters.AddWithValue("@Numero", sucursal.NUMERO);
+            sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
+            sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
+            sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
             sqlConnection.Open();
             int idSucursal = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
@@ -64,18 +64,18 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
-        public void update(SucursalEnt sucursalX)
+        public void update(SucursalEnt sucursal)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Sucursal Set Numero = @Numero, Direccion = @Direccion, Telefono = @Telefono, "
                 + "Municipio = @Municipio Where Id_Sucursal = @Id_Sucursal";
-            sqlCommand.Parameters.AddWithValue("@Numero", sucursalX.NUMERO);
-            sqlCommand.Parameters.AddWithValue("@Direccion", sucursalX.DIRECCION);
-            sqlCommand.Parameters.AddWithValue("@Telefono", sucursalX.TELEFONO);
-            sqlCommand.Parameters.AddWithValue("@Municipio", sucursalX.MUNICIPIO);
-            sqlCommand.Parameters.AddWithValue("@Id_Sucursal", sucursalX.ID_SUCURSAL);
+            sqlCommand.Parameters.AddWithValue("@Numero", sucursal.NUMERO);
+            sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
+            sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
+            sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Sucursal", sucursal.ID_SUCURSAL);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

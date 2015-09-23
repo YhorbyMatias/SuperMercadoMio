@@ -12,32 +12,32 @@ namespace Bss
     public class PrivilegioBss
     {
         #region Objetos
-        private PrivilegioDal privilegio = new PrivilegioDal();
+        private PrivilegioDal objetoPrivilegio = new PrivilegioDal();
         #endregion
         #region Metodos
-        public void delete(PrivilegioEnt privilegioX)
+        public void delete(PrivilegioEnt privilegio)
         {
-            privilegio.delete(privilegioX);
+            objetoPrivilegio.delete(privilegio);
         }
-        public int exists(OpcionEnt opcionX, PrivilegioEnt privilegioX)
+        public int exists(OpcionEnt opcion, PrivilegioEnt privilegio)
         {
-            return privilegio.exists(opcionX, privilegioX);
+            return objetoPrivilegio.exists(opcion, privilegio);
         }
-        public DataTable find(PrivilegioEnt privilegioX)
+        public DataTable find(PrivilegioEnt privilegio)
         {
-            return privilegio.find(privilegioX);
+            return objetoPrivilegio.find(privilegio);
         }
-        public int insert(PrivilegioEnt privilegioX)
+        public int insert(PrivilegioEnt privilegio)
         {
-            return privilegio.insert(privilegioX);
+            return objetoPrivilegio.insert(privilegio);
         }
-        public DataTable search(PrivilegioEnt privilegioX)
+        public DataTable search(PrivilegioEnt privilegio)
         {
-            return privilegio.search(privilegioX);
+            return objetoPrivilegio.search(privilegio);
         }
-        public DataTable select(PrivilegioEnt privilegioX)
+        public DataTable select(PrivilegioEnt privilegio)
         {
-            return privilegio.select(privilegioX);
+            return objetoPrivilegio.select(privilegio);
         }
         #endregion
     }

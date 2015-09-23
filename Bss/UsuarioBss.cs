@@ -12,56 +12,56 @@ namespace Bss
     public class UsuarioBss
     {
         #region Objetos
-        private UsuarioDal usuario = new UsuarioDal();
+        private UsuarioDal objetoUsuario = new UsuarioDal();
         #endregion
         #region Metodos
-        public int authenticate(UsuarioEnt usuarioX)
+        public int authenticate(UsuarioEnt usuario)
         {
-            return usuario.authenticate(usuarioX);
+            return objetoUsuario.authenticate(usuario);
         }
-        public int authenticateCi(UsuarioEnt usuarioX)
+        public int authenticateCi(UsuarioEnt usuario)
         {
-            return usuario.authenticateCi(usuarioX);
+            return objetoUsuario.authenticateCi(usuario);
         }
-        public int authenticatePassword(UsuarioEnt usuarioX)
+        public int authenticatePassword(UsuarioEnt usuario)
         {
-            return usuario.authenticatePassword(usuarioX);
+            return objetoUsuario.authenticatePassword(usuario);
         }
-        public int authenticateUserName(UsuarioEnt usuarioX)
+        public int authenticateUserName(UsuarioEnt usuario)
         {
-            return usuario.authenticateUserName(usuarioX);
+            return objetoUsuario.authenticateUserName(usuario);
         }
-        public void delete(UsuarioEnt usuarioX)
+        public void delete(UsuarioEnt usuario)
         {
-            usuario.delete(usuarioX);
+            objetoUsuario.delete(usuario);
         }
-        public string getFullName(UsuarioEnt usuarioX)
+        public string getFullName(UsuarioEnt usuario)
         {
-            return usuario.getFullName(usuarioX);
+            return objetoUsuario.getFullName(usuario);
         }
-        public int insert(UsuarioEnt usuarioX)
+        public int insert(UsuarioEnt usuario)
         {
-            return usuario.insert(usuarioX);
+            return objetoUsuario.insert(usuario);
         }
-        public int login(UsuarioEnt usuarioX)
+        public int login(UsuarioEnt usuario)
         {
-            return usuario.login(usuarioX);
+            return objetoUsuario.login(usuario);
         }
-        public DataTable search(UsuarioEnt usuarioX)
+        public DataTable search(UsuarioEnt usuario)
         {
-            return usuario.search(usuarioX);
+            return objetoUsuario.search(usuario);
         }
         public DataTable searchAll()
         {
-            return usuario.searchAll();
+            return objetoUsuario.searchAll();
         }
-        public void update(UsuarioEnt usuarioX)
+        public void update(UsuarioEnt usuario)
         {
-            usuario.update(usuarioX);
+            objetoUsuario.update(usuario);
         }
-        public void updatePassword(UsuarioEnt usuarioX)
+        public void updatePassword(UsuarioEnt usuario)
         {
-            usuario.updatePassword(usuarioX);
+            objetoUsuario.updatePassword(usuario);
         }
         #endregion
     }

@@ -12,48 +12,48 @@ namespace Bss
     public class DosificacionBss
     {
         #region Objetos
-        DosificacionDal dosificacion = new DosificacionDal();
+        DosificacionDal objetoDosificacion = new DosificacionDal();
         #endregion
         #region Metodos
-        public int authenticate(DosificacionEnt dosificacionX)
+        public int authenticate(DosificacionEnt dosificacion)
         {
-            return dosificacion.authenticate(dosificacionX);
+            return objetoDosificacion.authenticate(dosificacion);
         }
-        public int checkEmissionDeadline(DosificacionEnt dosificacionX)
+        public int checkEmissionDeadline(DosificacionEnt dosificacion)
         {
-            return dosificacion.checkEmissionDeadline(dosificacionX);
+            return objetoDosificacion.checkEmissionDeadline(dosificacion);
         }
-        public int exists(DosificacionEnt dosificacionX)
+        public int exists(DosificacionEnt dosificacion)
         {
-            return dosificacion.exists(dosificacionX);
+            return objetoDosificacion.exists(dosificacion);
         }
-        public DataTable findAll(DosificacionEnt dosificacionX)
+        public DataTable findAll()
         {
-            return dosificacion.findAll(dosificacionX);
+            return objetoDosificacion.findAll();
         }
-        public int insert(DosificacionEnt dosificacionX)
+        public int insert(DosificacionEnt dosificacion)
         {
-            return dosificacion.insert(dosificacionX);
+            return objetoDosificacion.insert(dosificacion);
         }
-        public DataTable search(DosificacionEnt dosificacionX)
+        public DataTable search(DosificacionEnt dosificacion)
         {
-            return dosificacion.search(dosificacionX);
+            return objetoDosificacion.search(dosificacion);
         }
-        public DataTable searchAll(DosificacionEnt dosificacionX)
+        public DataTable searchAll(DosificacionEnt dosificacion)
         {
-            return dosificacion.searchAll(dosificacionX);
+            return objetoDosificacion.searchAll(dosificacion);
         }
-        public DataTable select(DosificacionEnt dosificacionX)
+        public DataTable select(DosificacionEnt dosificacion)
         {
-            return dosificacion.select(dosificacionX);
+            return objetoDosificacion.select(dosificacion);
         }
-        public void update(DosificacionEnt dosificacionX)
+        public void update(DosificacionEnt dosificacion)
         {
-            dosificacion.update(dosificacionX);
+            objetoDosificacion.update(dosificacion);
         }
-        public void updateStatus(DosificacionEnt dosificacionX)
+        public void updateStatus(DosificacionEnt dosificacion)
         {
-            dosificacion.updateStatus(dosificacionX);
+            objetoDosificacion.updateEstado(dosificacion);
         }
         #endregion
     }

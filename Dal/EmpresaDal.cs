@@ -23,16 +23,16 @@ namespace Dal
             sqlConnection.Close();
             return existe;
         }
-        public int insert(EmpresaEnt empresaX)
+        public int insert(EmpresaEnt empresa)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarEmpresa";
-            sqlCommand.Parameters.AddWithValue("@Propietario", empresaX.PROPIETARIO);
-            sqlCommand.Parameters.AddWithValue("@Razon_Social", empresaX.RAZON_SOCIAL);
-            sqlCommand.Parameters.AddWithValue("@Nit", empresaX.NIT);
-            sqlCommand.Parameters.AddWithValue("@Actividad_Economica", empresaX.ACTIVIDAD_ECONOMICA);
+            sqlCommand.Parameters.AddWithValue("@Propietario", empresa.PROPIETARIO);
+            sqlCommand.Parameters.AddWithValue("@Razon_Social", empresa.RAZON_SOCIAL);
+            sqlCommand.Parameters.AddWithValue("@Nit", empresa.NIT);
+            sqlCommand.Parameters.AddWithValue("@Actividad_Economica", empresa.ACTIVIDAD_ECONOMICA);
             sqlConnection.Open();
             int idEmpresa = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
@@ -63,18 +63,18 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
-        public void update(EmpresaEnt empresaX)
+        public void update(EmpresaEnt empresa)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Empresa Set Propietario = @Propietario, Razon_Social = @Razon_Social, Nit = @Nit, "
                 + "Actividad_Economica = @Actividad_Economica Where Id_Empresa = @Id_Empresa";
-            sqlCommand.Parameters.AddWithValue("@Propietario", empresaX.PROPIETARIO);
-            sqlCommand.Parameters.AddWithValue("@Razon_Social", empresaX.RAZON_SOCIAL);
-            sqlCommand.Parameters.AddWithValue("@Nit", empresaX.NIT);
-            sqlCommand.Parameters.AddWithValue("@Actividad_Economica", empresaX.ACTIVIDAD_ECONOMICA);
-            sqlCommand.Parameters.AddWithValue("@Id_Empresa", empresaX.ID_EMPRESA);
+            sqlCommand.Parameters.AddWithValue("@Propietario", empresa.PROPIETARIO);
+            sqlCommand.Parameters.AddWithValue("@Razon_Social", empresa.RAZON_SOCIAL);
+            sqlCommand.Parameters.AddWithValue("@Nit", empresa.NIT);
+            sqlCommand.Parameters.AddWithValue("@Actividad_Economica", empresa.ACTIVIDAD_ECONOMICA);
+            sqlCommand.Parameters.AddWithValue("@Id_Empresa", empresa.ID_EMPRESA);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

@@ -12,28 +12,28 @@ namespace Bss
     public class EmpresaBss
     {
         #region Objetos
-        EmpresaDal empresa = new EmpresaDal();
+        EmpresaDal objetoEmpresa = new EmpresaDal();
         #endregion
         #region Metodos
         public int exists()
         {
-            return empresa.exists();
+            return objetoEmpresa.exists();
         }
-        public int insert(EmpresaEnt empresaX)
+        public int insert(EmpresaEnt empresa)
         {
-            return empresa.insert(empresaX);
+            return objetoEmpresa.insert(empresa);
         }
-        public void update(EmpresaEnt empresaX)
+        public void update(EmpresaEnt empresa)
         {
-            empresa.update(empresaX);
+            objetoEmpresa.update(empresa);
         }
         public DataTable search()
         {
-            return empresa.search();
+            return objetoEmpresa.search();
         }
         public DataTable select()
         {
-            return empresa.select();
+            return objetoEmpresa.select();
         }
         #endregion
     }

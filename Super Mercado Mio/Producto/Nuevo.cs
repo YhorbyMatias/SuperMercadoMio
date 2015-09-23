@@ -38,11 +38,12 @@ namespace Super_Mercado_Mio.Producto
             loadProveedores();
             loadGrupos();
             loadMarcas();
+            this.ActiveControl = textBoxCodigoDeBarras;
             if (opcion == 2)
             {
                 textBoxCodigoDeBarras.Text = codigoDeBarras;
+                this.ActiveControl = textBoxNombreGenerico;
             }
-            this.ActiveControl = textBoxCodigoDeBarras;
         }
         #endregion
         #region comboBoxProveedor

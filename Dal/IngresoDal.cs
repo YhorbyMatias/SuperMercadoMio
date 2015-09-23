@@ -23,26 +23,25 @@ namespace Dal
             sqlConnection.Close();
             return numeroDeRegistro;
         }
-        public int insert(IngresoEnt ingresoX)
+        public int insert(IngresoEnt ingreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarIngreso";
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", ingresoX.ID_PROVEEDOR);
-            sqlCommand.Parameters.AddWithValue("@Fecha", ingresoX.FECHA);
-            sqlCommand.Parameters.AddWithValue("@Numero_De_Registro", ingresoX.NUMERO_DE_REGISTRO);
-            sqlCommand.Parameters.AddWithValue("@Numero_De_Nota_De_Entrega", ingresoX.NUMERO_DE_NOTA_DE_ENTREGA);
-            sqlCommand.Parameters.AddWithValue("@Monto", ingresoX.MONTO);
-            if (ingresoX.OBSERVACIONES != "")
+            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", ingreso.ID_PROVEEDOR);
+            sqlCommand.Parameters.AddWithValue("@Fecha", ingreso.FECHA);
+            sqlCommand.Parameters.AddWithValue("@Numero_De_Registro", ingreso.NUMERO_DE_REGISTRO);
+            sqlCommand.Parameters.AddWithValue("@Numero_De_Nota_De_Entrega", ingreso.NUMERO_DE_NOTA_DE_ENTREGA);
+            sqlCommand.Parameters.AddWithValue("@Monto", ingreso.MONTO);
+            if (ingreso.OBSERVACIONES != "")
             {
-                sqlCommand.Parameters.AddWithValue("@Observaciones", ingresoX.OBSERVACIONES);
+                sqlCommand.Parameters.AddWithValue("@Observaciones", ingreso.OBSERVACIONES);
             }
             else
             {
                 sqlCommand.Parameters.AddWithValue("@Observaciones", DBNull.Value);
             }
-            sqlCommand.Parameters.AddWithValue("@Estado", ingresoX.ESTADO);
             sqlConnection.Open();
             int idIngreso = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();

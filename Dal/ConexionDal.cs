@@ -22,9 +22,9 @@ namespace Dal
                 {
                     sqlConnection.Open();
                 }
-                catch (SqlException sqlExceptionX)
+                catch (SqlException sqlException)
                 {
-                    throw sqlExceptionX;
+                    throw sqlException;
                 }
                 finally
                 {

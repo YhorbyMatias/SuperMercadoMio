@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,6 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelNit = new System.Windows.Forms.Label();
             this.textBoxNit = new System.Windows.Forms.TextBox();
             this.textBoxProveedor = new System.Windows.Forms.TextBox();
@@ -55,11 +57,11 @@
             this.textBoxMonto = new System.Windows.Forms.TextBox();
             this.labelMonto = new System.Windows.Forms.Label();
             this.groupBoxDetalleDeCompra = new System.Windows.Forms.GroupBox();
+            this.labelCodigoDeBarras = new System.Windows.Forms.Label();
+            this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
+            this.dataGridViewDetalleDeIngreso = new System.Windows.Forms.DataGridView();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.dataGridViewDetalleDeIngreso = new System.Windows.Forms.DataGridView();
-            this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
-            this.labelCodigoDeBarras = new System.Windows.Forms.Label();
             this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo_De_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -222,6 +224,66 @@
             this.groupBoxDetalleDeCompra.TabStop = false;
             this.groupBoxDetalleDeCompra.Text = "Detalle de Compra";
             // 
+            // labelCodigoDeBarras
+            // 
+            this.labelCodigoDeBarras.AutoSize = true;
+            this.labelCodigoDeBarras.Location = new System.Drawing.Point(6, 22);
+            this.labelCodigoDeBarras.Name = "labelCodigoDeBarras";
+            this.labelCodigoDeBarras.Size = new System.Drawing.Size(91, 13);
+            this.labelCodigoDeBarras.TabIndex = 256;
+            this.labelCodigoDeBarras.Text = "Código de Barras:";
+            // 
+            // textBoxCodigoDeBarras
+            // 
+            this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(103, 19);
+            this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
+            this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(150, 20);
+            this.textBoxCodigoDeBarras.TabIndex = 3;
+            this.textBoxCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigoDeBarras_KeyDown);
+            // 
+            // dataGridViewDetalleDeIngreso
+            // 
+            this.dataGridViewDetalleDeIngreso.AllowUserToAddRows = false;
+            this.dataGridViewDetalleDeIngreso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDetalleDeIngreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewDetalleDeIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDetalleDeIngreso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Producto,
+            this.Codigo_De_Barras,
+            this.Nombre_Generico,
+            this.Marca,
+            this.Presentacion,
+            this.Sabor_U_Olor,
+            this.Cantidad,
+            this.Precio_De_Compra,
+            this.Monto_Total,
+            this.Porcentaje_De_Utilidad,
+            this.Precio_De_Venta});
+            this.dataGridViewDetalleDeIngreso.Location = new System.Drawing.Point(9, 45);
+            this.dataGridViewDetalleDeIngreso.MultiSelect = false;
+            this.dataGridViewDetalleDeIngreso.Name = "dataGridViewDetalleDeIngreso";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDetalleDeIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewDetalleDeIngreso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDetalleDeIngreso.Size = new System.Drawing.Size(998, 297);
+            this.dataGridViewDetalleDeIngreso.TabIndex = 4;
+            this.dataGridViewDetalleDeIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetalleDeIngreso_CellValidating);
+            this.dataGridViewDetalleDeIngreso.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewDetalleDeIngreso_UserDeletingRow);
+            this.dataGridViewDetalleDeIngreso.Validating += new System.ComponentModel.CancelEventHandler(this.dataGridViewDetalleDeIngreso_Validating);
+            // 
             // buttonCerrar
             // 
             this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -245,49 +307,6 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // dataGridViewDetalleDeIngreso
-            // 
-            this.dataGridViewDetalleDeIngreso.AllowUserToAddRows = false;
-            this.dataGridViewDetalleDeIngreso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewDetalleDeIngreso.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridViewDetalleDeIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetalleDeIngreso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Producto,
-            this.Codigo_De_Barras,
-            this.Nombre_Generico,
-            this.Marca,
-            this.Presentacion,
-            this.Sabor_U_Olor,
-            this.Cantidad,
-            this.Precio_De_Compra,
-            this.Monto_Total,
-            this.Porcentaje_De_Utilidad,
-            this.Precio_De_Venta});
-            this.dataGridViewDetalleDeIngreso.Location = new System.Drawing.Point(9, 45);
-            this.dataGridViewDetalleDeIngreso.Name = "dataGridViewDetalleDeIngreso";
-            this.dataGridViewDetalleDeIngreso.Size = new System.Drawing.Size(998, 297);
-            this.dataGridViewDetalleDeIngreso.TabIndex = 4;
-            this.dataGridViewDetalleDeIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetalleDeIngreso_CellValidating);
-            this.dataGridViewDetalleDeIngreso.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewDetalleDeIngreso_RowsAdded);
-            this.dataGridViewDetalleDeIngreso.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewDetalleDeIngreso_RowsRemoved);
-            // 
-            // textBoxCodigoDeBarras
-            // 
-            this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(103, 19);
-            this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
-            this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(150, 20);
-            this.textBoxCodigoDeBarras.TabIndex = 3;
-            this.textBoxCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigoDeBarras_KeyDown);
-            // 
-            // labelCodigoDeBarras
-            // 
-            this.labelCodigoDeBarras.AutoSize = true;
-            this.labelCodigoDeBarras.Location = new System.Drawing.Point(6, 22);
-            this.labelCodigoDeBarras.Name = "labelCodigoDeBarras";
-            this.labelCodigoDeBarras.Size = new System.Drawing.Size(91, 13);
-            this.labelCodigoDeBarras.TabIndex = 256;
-            this.labelCodigoDeBarras.Text = "Código de Barras:";
-            // 
             // errorProviderFormulario
             // 
             this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -295,8 +314,8 @@
             // 
             // Id_Producto
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id_Producto.HeaderText = "Id_Producto";
             this.Id_Producto.Name = "Id_Producto";
             this.Id_Producto.ReadOnly = true;
@@ -304,78 +323,80 @@
             // 
             // Codigo_De_Barras
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            this.Codigo_De_Barras.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
+            this.Codigo_De_Barras.DefaultCellStyle = dataGridViewCellStyle3;
             this.Codigo_De_Barras.HeaderText = "Código de Barras";
             this.Codigo_De_Barras.Name = "Codigo_De_Barras";
             this.Codigo_De_Barras.ReadOnly = true;
             // 
             // Nombre_Generico
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombre_Generico.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombre_Generico.DefaultCellStyle = dataGridViewCellStyle4;
             this.Nombre_Generico.HeaderText = "Nombre Genérico";
             this.Nombre_Generico.Name = "Nombre_Generico";
             this.Nombre_Generico.ReadOnly = true;
             // 
             // Marca
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marca.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Marca.DefaultCellStyle = dataGridViewCellStyle5;
             this.Marca.HeaderText = "Marca";
             this.Marca.Name = "Marca";
             this.Marca.ReadOnly = true;
             // 
             // Presentacion
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            this.Presentacion.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Presentacion.DefaultCellStyle = dataGridViewCellStyle6;
             this.Presentacion.HeaderText = "Presentación";
             this.Presentacion.Name = "Presentacion";
             this.Presentacion.ReadOnly = true;
             // 
             // Sabor_U_Olor
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            this.Sabor_U_Olor.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sabor_U_Olor.DefaultCellStyle = dataGridViewCellStyle7;
             this.Sabor_U_Olor.HeaderText = "Sabor U Olor";
             this.Sabor_U_Olor.Name = "Sabor_U_Olor";
             this.Sabor_U_Olor.ReadOnly = true;
             // 
             // Cantidad
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle8;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
             // Precio_De_Compra
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Precio_De_Compra.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Precio_De_Compra.DefaultCellStyle = dataGridViewCellStyle9;
             this.Precio_De_Compra.HeaderText = "Precio de Compra";
             this.Precio_De_Compra.Name = "Precio_De_Compra";
             // 
             // Monto_Total
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle10;
             this.Monto_Total.HeaderText = "Monto Total";
             this.Monto_Total.Name = "Monto_Total";
             // 
             // Porcentaje_De_Utilidad
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Porcentaje_De_Utilidad.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Porcentaje_De_Utilidad.DefaultCellStyle = dataGridViewCellStyle11;
             this.Porcentaje_De_Utilidad.HeaderText = "% de Utilidad";
             this.Porcentaje_De_Utilidad.Name = "Porcentaje_De_Utilidad";
             // 
             // Precio_De_Venta
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Precio_De_Venta.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Precio_De_Venta.DefaultCellStyle = dataGridViewCellStyle12;
             this.Precio_De_Venta.HeaderText = "Precio de Venta";
             this.Precio_De_Venta.Name = "Precio_De_Venta";
             // 

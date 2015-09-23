@@ -13,10 +13,10 @@ namespace Bss
         public static string diccionarioCadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz áéíóúÁÉÍÓÚÑñ.,";
         #endregion
         #region Metodos
-        public static string getErrorMessage(int errorCodeX)
+        public static string getErrorMessage(int errorCode)
         {
             string errorMessage = "";
-            switch(errorCodeX)
+            switch(errorCode)
             {
                 case 0:
                     errorMessage = null;
@@ -60,51 +60,54 @@ namespace Bss
                 case 13:
                     errorMessage = "Revise el nit del proveedor.";
                     break;
+                case 14:
+                    errorMessage = "No se agregó ningún producto.";
+                    break;
             }
             return errorMessage;
         }
-        public static bool esCadena(string cadenaX)
+        public static bool esCadena(string value)
         {
-            return Regex.IsMatch(cadenaX, @"^[a-zA-Z áéíóúÁÉÍÓÚÑñ.,]+$");
+            return Regex.IsMatch(value, @"^[a-zA-Z áéíóúÁÉÍÓÚÑñ.,]+$");
         }
-        public static bool esCelular(string CadenaX)
+        public static bool esCelular(string value)
         {
             bool bandera;
-            bandera = Regex.IsMatch(CadenaX, @"^([6-7])\d{7}$");
+            bandera = Regex.IsMatch(value, @"^([6-7])\d{7}$");
             return bandera;
         }
-        public static bool esCelularOTelefono(string cadenaX)
+        public static bool esCelularOTelefono(string value)
         {
-            return Regex.IsMatch(cadenaX, @"^([6-7])\d{7}$|^[0-9]{7,8}$");
+            return Regex.IsMatch(value, @"^([6-7])\d{7}$|^[0-9]{7,8}$");
         }
-        public static bool esCi(string cadenaX)
+        public static bool esCi(string value)
         {
-            return Regex.IsMatch(cadenaX, @"^[0-9]{4,8}$|[0]$|[00]$");
+            return Regex.IsMatch(value, @"^[0-9]{4,8}$|[0]$|[00]$");
         }
-        public static bool esEntero(string cadenaX)
+        public static bool esEntero(string value)
         {
-            return Regex.IsMatch(cadenaX, @"^\d+$");
+            return Regex.IsMatch(value, @"^\d+$");
         }
-        public static bool esNit(string cadenaX)
+        public static bool esNit(string value)
         {
-            return Regex.IsMatch(cadenaX, @"^\d{9,12}$");
+            return Regex.IsMatch(value, @"^\d{9,12}$");
         }
-        public static bool esRealConDosDecimales(string CadenaX)
+        public static bool esRealConDosDecimales(string value)
         {
             bool bandera;
-            bandera = Regex.IsMatch(CadenaX, @"^\d+$|\d+\.\d{1,2}$");
+            bandera = Regex.IsMatch(value, @"^\d+$|\d+\.\d{1,2}$");
             return bandera;
         }
-        public static bool esRealConTresDecimales(string CadenaX)
+        public static bool esRealConTresDecimales(string value)
         {
             bool bandera;
-            bandera = Regex.IsMatch(CadenaX, @"^\d+$|\d+\.\d{1,3}$");
+            bandera = Regex.IsMatch(value, @"^\d+$|\d+\.\d{1,3}$");
             return bandera;
         }
-        public static bool esTelefono(string cadenaX)
+        public static bool esTelefono(string value)
         {
             bool bandera;
-            bandera = Regex.IsMatch(cadenaX, @"^[0-9]{7,8}$");
+            bandera = Regex.IsMatch(value, @"^[0-9]{7,8}$");
             return bandera;
         }
         #endregion

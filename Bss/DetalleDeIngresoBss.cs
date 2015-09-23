@@ -11,12 +11,12 @@ namespace Bss
     public class DetalleDeIngresoBss
     {
         #region Objetos
-        private DetalleDeIngresoDal detalleDeIngreso = new DetalleDeIngresoDal();
+        private DetalleDeIngresoDal objetoDetalleDeIngreso = new DetalleDeIngresoDal();
         #endregion
         #region Metodos
-        public int insert(DetalleDeIngresoEnt detalleDeIngresoX)
+        public int insert(DetalleDeIngresoEnt detalleDeIngreso)
         {
-            return detalleDeIngreso.insert(detalleDeIngresoX);
+            return objetoDetalleDeIngreso.insert(detalleDeIngreso);
         }
         #endregion
     }

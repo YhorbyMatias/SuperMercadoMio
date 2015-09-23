@@ -12,28 +12,28 @@ namespace Bss
     public class SucursalBss
     {
         #region Objetos
-        SucursalDal sucursal = new SucursalDal();
+        SucursalDal objetoSucursal = new SucursalDal();
         #endregion
         #region Metodos
         public int exists()
         {
-            return sucursal.exists();
+            return objetoSucursal.exists();
         }
-        public int insert(SucursalEnt sucursalX)
+        public int insert(SucursalEnt sucursal)
         {
-            return sucursal.insert(sucursalX);
+            return objetoSucursal.insert(sucursal);
         }
-        public void update(SucursalEnt sucursalX)
+        public void update(SucursalEnt sucursal)
         {
-            sucursal.update(sucursalX);
+            objetoSucursal.update(sucursal);
         }
         public DataTable search()
         {
-            return sucursal.search();
+            return objetoSucursal.search();
         }
         public DataTable select()
         {
-            return sucursal.select();
+            return objetoSucursal.select();
         }
         #endregion
     }

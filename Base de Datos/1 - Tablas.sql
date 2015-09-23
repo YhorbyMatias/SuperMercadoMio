@@ -210,7 +210,7 @@ Precio_De_Compra Decimal(18,2) Not Null,
 Monto_Total Decimal(18,2) Not Null,
 Porcentaje_De_Utilidad Decimal(18,2) Not Null,
 Precio_De_Venta Decimal(18,2) Not Null,
-Estado Varchar(7) Not Null,
+Estado Varchar(9) Not Null,
 Primary Key(Id_Detalle_De_Ingreso),
 Foreign Key(Id_Ingreso) References Ingreso(Id_Ingreso),
 Foreign Key(Id_Producto) References Producto(Id_Producto)

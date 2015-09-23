@@ -12,40 +12,40 @@ namespace Bss
     public class GrupoBss
     {
         #region Objetos
-        GrupoDal grupo = new GrupoDal();
+        GrupoDal objetoGrupo = new GrupoDal();
         #endregion
         #region Metodos
-        public int authenticate(GrupoEnt grupoX)
+        public int authenticate(GrupoEnt grupo)
         {
-            return grupo.authenticate(grupoX);
+            return objetoGrupo.authenticate(grupo);
         }
-        public void delete(GrupoEnt grupoX)
+        public void delete(GrupoEnt grupo)
         {
-            grupo.delete(grupoX);
+            objetoGrupo.delete(grupo);
         }
-        public int insert(GrupoEnt grupoX)
+        public int insert(GrupoEnt grupo)
         {
-            return grupo.insert(grupoX);
+            return objetoGrupo.insert(grupo);
         }
-        public DataTable search(GrupoEnt grupoX)
+        public DataTable search(GrupoEnt grupo)
         {
-            return grupo.search(grupoX);
+            return objetoGrupo.search(grupo);
         }
         public DataTable searchAll()
         {
-            return grupo.searchAll();
+            return objetoGrupo.searchAll();
         }
         public DataTable searchRemovable()
         {
-            return grupo.searchRemovable();
+            return objetoGrupo.searchRemovable();
         }
         public DataTable selectAll()
         {
-            return grupo.selectAll();
+            return objetoGrupo.selectAll();
         }
-        public void update(GrupoEnt grupoX)
+        public void update(GrupoEnt grupo)
         {
-            grupo.update(grupoX);
+            objetoGrupo.update(grupo);
         }
         #endregion
     }

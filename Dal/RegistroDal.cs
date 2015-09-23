@@ -12,18 +12,18 @@ namespace Dal
     public class RegistroDal
     {
         #region Metodos
-        public void insert(RegistroEnt registroX)
+        public void insert(RegistroEnt registro)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarRegistro";
-            sqlCommand.Parameters.AddWithValue("@Usuario", registroX.USUARIO);
-            sqlCommand.Parameters.AddWithValue("@Equipo", registroX.EQUIPO);
-            sqlCommand.Parameters.AddWithValue("@Hora", registroX.HORA);
-            sqlCommand.Parameters.AddWithValue("@Tabla", registroX.TABLA);
-            sqlCommand.Parameters.AddWithValue("@Id_Tabla", registroX.ID_TABLA);
-            sqlCommand.Parameters.AddWithValue("@Tipo", registroX.TIPO);
+            sqlCommand.Parameters.AddWithValue("@Usuario", registro.USUARIO);
+            sqlCommand.Parameters.AddWithValue("@Equipo", registro.EQUIPO);
+            sqlCommand.Parameters.AddWithValue("@Hora", registro.HORA);
+            sqlCommand.Parameters.AddWithValue("@Tabla", registro.TABLA);
+            sqlCommand.Parameters.AddWithValue("@Id_Tabla", registro.ID_TABLA);
+            sqlCommand.Parameters.AddWithValue("@Tipo", registro.TIPO);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

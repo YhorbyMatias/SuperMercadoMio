@@ -133,16 +133,14 @@ Go
 
 Create Procedure insertarIngreso
 @Id_Proveedor Int,
-@Fecha Date,
 @Numero_De_Registro Int,
 @Numero_De_Nota_De_Entrega Varchar(50),
 @Monto Decimal(18,2),
-@Observaciones Varchar(500),
-@Estado Varchar(20)
+@Observaciones Varchar(500)
 As
 Begin
 	Insert Into Ingreso(Id_Proveedor, Fecha, Numero_De_Registro, Numero_De_Nota_De_Entrega, Monto, Observaciones, Estado)
-	Values(@Id_Proveedor, @Fecha, @Numero_De_Registro, @Numero_De_Nota_De_Entrega, @Monto, @Observaciones, @Estado)
+	Values(@Id_Proveedor, GETDATE(), @Numero_De_Registro, @Numero_De_Nota_De_Entrega, @Monto, @Observaciones, 'VIGENTE')
 	Select SCOPE_IDENTITY()
 End
 Go
@@ -154,13 +152,12 @@ Create Procedure insertarDetalleDeIngreso
 @Precio_De_Compra Decimal(18,2),
 @Monto_Total Decimal(18,2),
 @Porcentaje_De_Utilidad Decimal(18,2),
-@Precio_De_Venta Decimal(18,2),
-@Estado Varchar(7)
+@Precio_De_Venta Decimal(18,2)
 As
 Begin
 	Insert Into Detalle_De_Ingreso(Id_Ingreso, Id_Producto, Cantidad, Precio_De_Compra, Monto_Total, Porcentaje_De_Utilidad, Precio_De_Venta,
 	Estado)
-	Values(@Id_Ingreso, @Id_Producto, @Cantidad, @Precio_De_Compra, @Monto_Total, @Porcentaje_De_Utilidad, @Precio_De_Venta, @Estado)
+	Values(@Id_Ingreso, @Id_Producto, @Cantidad, @Precio_De_Compra, @Monto_Total, @Porcentaje_De_Utilidad, @Precio_De_Venta, 'VIGENTE')
 	Select SCOPE_IDENTITY()
 End
 Go

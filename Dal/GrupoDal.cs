@@ -12,50 +12,50 @@ namespace Dal
     public class GrupoDal
     {
         #region Metodos
-        public int authenticate(GrupoEnt grupoX)
+        public int authenticate(GrupoEnt grupo)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Count(Id_Grupo) From Grupo Where Estado = 1 And Nombre = @Nombre And Id_Grupo <> @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Nombre", grupoX.NOMBRE);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupoX.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Nombre", grupo.NOMBRE);
+            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
             sqlConnection.Open();
-            int existe = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
-            return existe;
+            return exists;
         }
-        public void delete(GrupoEnt grupoX)
+        public void delete(GrupoEnt grupo)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Grupo Set Estado = @Estado Where Id_Grupo = @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Estado", grupoX.ESTADO);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupoX.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Estado", grupo.ESTADO);
+            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
-        public int insert(GrupoEnt grupoX)
+        public int insert(GrupoEnt grupo)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarGrupo";
-            sqlCommand.Parameters.AddWithValue("@Nombre", grupoX.NOMBRE);
+            sqlCommand.Parameters.AddWithValue("@Nombre", grupo.NOMBRE);
             sqlConnection.Open();
             int idGrupo = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return idGrupo;
         }
-        public DataTable search(GrupoEnt grupoX)
+        public DataTable search(GrupoEnt grupo)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Nombre From Grupo Where Estado = 1 And Id_Grupo = @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupoX.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Grupo");
@@ -83,7 +83,7 @@ namespace Dal
                 + "Where Not Exists (Select Id_Grupo From Producto P Where Estado = 1 And Id_Grupo = P.Id_Grupo)";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
-            DataTable dataTable = new DataTable("Proveedores");
+            DataTable dataTable = new DataTable("Grupos");
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
@@ -99,14 +99,14 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
-        public void update(GrupoEnt grupoX)
+        public void update(GrupoEnt grupo)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Grupo Set Nombre = @Nombre Where Id_Grupo = @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Nombre", grupoX.NOMBRE);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupoX.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Nombre", grupo.NOMBRE);
+            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

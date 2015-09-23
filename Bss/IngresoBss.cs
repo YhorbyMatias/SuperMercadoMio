@@ -11,16 +11,16 @@ namespace Bss
     public class IngresoBss
     {
         #region Objetos
-        private IngresoDal ingreso = new IngresoDal();
+        private IngresoDal objetoIngreso = new IngresoDal();
         #endregion
         #region Metodos
         public int getNumeroDeRegistro()
         {
-            return ingreso.getNumeroDeRegistro();
+            return objetoIngreso.getNumeroDeRegistro();
         }
-        public int insert(IngresoEnt ingresoX)
+        public int insert(IngresoEnt ingreso)
         {
-            return ingreso.insert(ingresoX);
+            return objetoIngreso.insert(ingreso);
         }
         #endregion
     }
