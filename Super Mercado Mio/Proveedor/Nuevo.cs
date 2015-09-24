@@ -252,6 +252,7 @@ namespace Super_Mercado_Mio.Proveedor
         {
             if (validaciones())
             {
+                proveedor.NIT = textBoxNit.Text.Trim();
                 proveedor.NOMBRE = textBoxNombre.Text.Trim().ToUpper();
                 proveedor.PERSONA_DE_CONTACTO = textBoxPersonaDeContacto.Text.Trim().ToUpper();
                 proveedor.DIRECCION = textBoxDireccion.Text.Trim().ToUpper();

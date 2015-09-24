@@ -89,9 +89,9 @@ namespace Dal
                 + "Where Id_Usuario = @Id_Usuario";
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", usuario.ID_USUARIO);
             sqlConnection.Open();
-            string usuario = Convert.ToString(sqlCommand.ExecuteScalar());
+            string userFullName = Convert.ToString(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
-            return usuario;
+            return userFullName;
         }
         public int insert(UsuarioEnt usuario)
         {

@@ -308,6 +308,9 @@ namespace Super_Mercado_Mio
                     case "Lista de Grupos":
                         listaDeGruposToolStripMenuItem.Enabled = true;
                         break;
+                    case "Nueva Compra":
+                        nuevaCompraToolStripMenuItem.Enabled = true;
+                        break;
                 }
             }
         }
