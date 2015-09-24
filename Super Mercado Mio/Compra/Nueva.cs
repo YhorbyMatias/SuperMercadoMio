@@ -214,9 +214,6 @@ namespace Super_Mercado_Mio.Compra
         }
         private void dataGridViewDetalleDeIngreso_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validateNotaDeEntrega();
-            hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxCodigoDeBarras, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -525,7 +522,7 @@ namespace Super_Mercado_Mio.Compra
                 return 12;
             }
         }
-        private int validarProductos()
+        private int validateProductos()
         {
             if (dataGridViewDetalleDeIngreso.Rows.Count > 0)
             {
@@ -563,6 +560,9 @@ namespace Super_Mercado_Mio.Compra
         }
         private bool validate()
         {
+            int errorCode = validateProductos();
+            hasErrors[2] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxCodigoDeBarras, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
             {

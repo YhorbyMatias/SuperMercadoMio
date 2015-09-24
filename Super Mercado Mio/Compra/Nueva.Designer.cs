@@ -60,9 +60,6 @@
             this.labelCodigoDeBarras = new System.Windows.Forms.Label();
             this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.dataGridViewDetalleDeIngreso = new System.Windows.Forms.DataGridView();
-            this.buttonCerrar = new System.Windows.Forms.Button();
-            this.buttonGuardar = new System.Windows.Forms.Button();
-            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo_De_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre_Generico = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +71,9 @@
             this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Porcentaje_De_Utilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_De_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonCerrar = new System.Windows.Forms.Button();
+            this.buttonGuardar = new System.Windows.Forms.Button();
+            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBoxDetalleDeCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleDeIngreso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
@@ -282,35 +282,6 @@
             this.dataGridViewDetalleDeIngreso.TabIndex = 4;
             this.dataGridViewDetalleDeIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetalleDeIngreso_CellValidating);
             this.dataGridViewDetalleDeIngreso.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewDetalleDeIngreso_UserDeletingRow);
-            this.dataGridViewDetalleDeIngreso.Validating += new System.ComponentModel.CancelEventHandler(this.dataGridViewDetalleDeIngreso_Validating);
-            // 
-            // buttonCerrar
-            // 
-            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Location = new System.Drawing.Point(521, 438);
-            this.buttonCerrar.Name = "buttonCerrar";
-            this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 6;
-            this.buttonCerrar.Text = "Cerrar";
-            this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonCerrar.UseVisualStyleBackColor = true;
-            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
-            // 
-            // buttonGuardar
-            // 
-            this.buttonGuardar.Location = new System.Drawing.Point(426, 438);
-            this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 5;
-            this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonGuardar.UseVisualStyleBackColor = true;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // errorProviderFormulario
-            // 
-            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderFormulario.ContainerControl = this;
             // 
             // Id_Producto
             // 
@@ -399,6 +370,34 @@
             this.Precio_De_Venta.DefaultCellStyle = dataGridViewCellStyle12;
             this.Precio_De_Venta.HeaderText = "Precio de Venta";
             this.Precio_De_Venta.Name = "Precio_De_Venta";
+            // 
+            // buttonCerrar
+            // 
+            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCerrar.Location = new System.Drawing.Point(521, 438);
+            this.buttonCerrar.Name = "buttonCerrar";
+            this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
+            this.buttonCerrar.TabIndex = 6;
+            this.buttonCerrar.Text = "Cerrar";
+            this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCerrar.UseVisualStyleBackColor = true;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
+            // 
+            // buttonGuardar
+            // 
+            this.buttonGuardar.Location = new System.Drawing.Point(426, 438);
+            this.buttonGuardar.Name = "buttonGuardar";
+            this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
+            this.buttonGuardar.TabIndex = 5;
+            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            // 
+            // errorProviderFormulario
+            // 
+            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderFormulario.ContainerControl = this;
             // 
             // Nueva
             // 
