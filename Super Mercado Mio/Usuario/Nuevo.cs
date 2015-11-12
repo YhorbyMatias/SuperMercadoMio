@@ -374,24 +374,24 @@ namespace Super_Mercado_Mio.Usuario
                 return false;
             }
         }
-        private bool authenticateUser(int controlToValidate)
+        private int authenticateUser()
         {
-            if (hasErrors[controlToValidate] == false)
+            if (!hasErrors[1] && !hasErrors[2])
             {
                 usuario.NOMBRES = textBoxNombres.Text.Trim().ToUpper();
                 usuario.APELLIDO_PATERNO = textBoxApellidoPaterno.Text.Trim().ToUpper();
                 if (objetoUsuario.authenticate(usuario) == 0)
                 {
-                    return true;
+                    return 111;
                 }
                 else
                 {
-                    return false;
+                    return 0;
                 }
             }
             else
             {
-                return false;
+                return 0;
             }
         }
         private bool authenticateUserName()
@@ -408,6 +408,9 @@ namespace Super_Mercado_Mio.Usuario
         }
         private bool checkForErrors()
         {
+            int errorCode = authenticateUser();
+            hasErrors[1] = Convert.ToBoolean(errorCode);
+            errorProvider.SetError(textBoxNombres, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
             {
@@ -475,7 +478,7 @@ namespace Super_Mercado_Mio.Usuario
         {
             if (textBoxCi.Text.Trim() != "")
             {
-                if (ValidacionBss.esCadena(textBoxCi.Text.Trim()) == true)
+                if (ValidacionBss.esCi(textBoxCi.Text.Trim()) == true)
                 {
                     if (authenticateCi())
                     {
@@ -502,14 +505,7 @@ namespace Super_Mercado_Mio.Usuario
             {
                 if (ValidacionBss.esCadena(textBoxApellidoPaterno.Text.Trim()) == true)
                 {
-                    if (authenticateUser(1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 111;
-                    }
+                    return 0;
                 }
                 else
                 {
@@ -545,14 +541,7 @@ namespace Super_Mercado_Mio.Usuario
             {
                 if (ValidacionBss.esCadena(textBoxNombres.Text.Trim()) == true)
                 {
-                    if (authenticateUser(2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 111;
-                    }
+                    return 0;
                 }
                 else
                 {
