@@ -405,7 +405,7 @@ namespace Super_Mercado_Mio.Usuario
             {
                 usuario.NOMBRES = textBoxNombres.Text.Trim().ToUpper();
                 usuario.APELLIDO_PATERNO = textBoxApellidoPaterno.Text.Trim().ToUpper();
-                if (objetoUsuario.authenticate(usuario) == 0)
+                if (objetoUsuario.authenticate(usuario) > 0)
                 {
                     return 111;
                 }
