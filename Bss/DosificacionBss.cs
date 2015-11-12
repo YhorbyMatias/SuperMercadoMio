@@ -15,13 +15,13 @@ namespace Bss
         DosificacionDal objetoDosificacion = new DosificacionDal();
         #endregion
         #region Metodos
+        public int add(DosificacionEnt dosificacion)
+        {
+            return objetoDosificacion.add(dosificacion);
+        }
         public int authenticate(DosificacionEnt dosificacion)
         {
             return objetoDosificacion.authenticate(dosificacion);
-        }
-        public int checkEmissionDeadline(DosificacionEnt dosificacion)
-        {
-            return objetoDosificacion.checkEmissionDeadline(dosificacion);
         }
         public int exists(DosificacionEnt dosificacion)
         {
@@ -31,9 +31,13 @@ namespace Bss
         {
             return objetoDosificacion.findAll();
         }
-        public int insert(DosificacionEnt dosificacion)
+        public int getId(DosificacionEnt dosificacion)
         {
-            return objetoDosificacion.insert(dosificacion);
+            return objetoDosificacion.getId(dosificacion);
+        }
+        public int getRemainingDays(DosificacionEnt dosificacion)
+        {
+            return objetoDosificacion.getRemainingDays(dosificacion);
         }
         public DataTable search(DosificacionEnt dosificacion)
         {

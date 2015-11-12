@@ -62,6 +62,7 @@
             this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxPrecioDeCompra = new System.Windows.Forms.TextBox();
             this.labelPrecioDeCompra = new System.Windows.Forms.Label();
+            this.contextMenuStripFormulario = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panelTipoDeProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
             this.SuspendLayout();
@@ -397,6 +398,11 @@
             this.labelPrecioDeCompra.TabIndex = 364;
             this.labelPrecioDeCompra.Text = "Precio de Compra:";
             // 
+            // contextMenuStripFormulario
+            // 
+            this.contextMenuStripFormulario.Name = "contextMenuStripFormulario";
+            this.contextMenuStripFormulario.Size = new System.Drawing.Size(61, 4);
+            // 
             // Nuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,5 +488,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
         private System.Windows.Forms.Label labelPrecioDeCompra;
         private System.Windows.Forms.TextBox textBoxPrecioDeCompra;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripFormulario;
     }
 }

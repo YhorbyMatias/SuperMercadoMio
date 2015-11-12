@@ -97,6 +97,17 @@ Begin
 End
 Go
 
+Create Procedure insertarCliente
+@Ci_O_Nit Varchar(12),
+@Nombre Varchar(500)
+As
+Begin
+	Insert Into Cliente(Ci_O_Nit, Nombre, Estado)
+	Values(@Ci_O_Nit, @Nombre, 1)
+	Select SCOPE_IDENTITY()
+End
+Go
+
 Create Procedure insertarGrupo
 @Nombre Varchar(100)
 As

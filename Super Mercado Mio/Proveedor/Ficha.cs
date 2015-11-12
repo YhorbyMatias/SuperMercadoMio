@@ -19,10 +19,10 @@ namespace Super_Mercado_Mio.Proveedor
         ProveedorEnt proveedor = new ProveedorEnt();
         #endregion
         #region Form
-        public Ficha(int idProveedorX)
+        public Ficha(int idProveedor)
         {
             InitializeComponent();
-            proveedor.ID_PROVEEDOR = idProveedorX;
+            proveedor.ID = idProveedor;
         }
         private void Ficha_Load(object sender, EventArgs e)
         {

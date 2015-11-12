@@ -15,17 +15,21 @@ namespace Bss
         ProveedorDal objetoProveedor = new ProveedorDal();
         #endregion
         #region Metodos
+        public int add(ProveedorEnt proveedor)
+        {
+            return objetoProveedor.add(proveedor);
+        }
         public int authenticateNit(ProveedorEnt proveedor)
         {
             return objetoProveedor.authenticateNit(proveedor);
         }
+        public int authenticateName(ProveedorEnt proveedor)
+        {
+            return objetoProveedor.authenticateName(proveedor);
+        }
         public void delete(ProveedorEnt proveedor)
         {
             objetoProveedor.delete(proveedor);
-        }
-        public int insert(ProveedorEnt proveedor)
-        {
-            return objetoProveedor.insert(proveedor);
         }
         public DataTable search(ProveedorEnt proveedor)
         {

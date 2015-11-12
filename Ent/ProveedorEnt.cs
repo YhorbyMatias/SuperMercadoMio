@@ -9,7 +9,7 @@ namespace Ent
     public class ProveedorEnt
     {
         #region Atributos
-        private int id_proveedor;
+        private int id;
         private string nit;
         private string nombre;
         private string persona_de_contacto;
@@ -20,10 +20,10 @@ namespace Ent
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_PROVEEDOR
+        public int ID
         {
-            get { return this.id_proveedor; }
-            set { this.id_proveedor = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public string NIT
         {

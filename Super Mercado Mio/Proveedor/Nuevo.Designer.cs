@@ -46,6 +46,7 @@
             this.labelNit = new System.Windows.Forms.Label();
             this.textBoxNit = new System.Windows.Forms.TextBox();
             this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +61,9 @@
             // 
             // textBoxNombre
             // 
-            this.errorProviderFormulario.SetIconAlignment(this.textBoxNombre, System.Windows.Forms.ErrorIconAlignment.TopRight);
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxNombre, System.Windows.Forms.ErrorIconAlignment.TopLeft);
             this.errorProviderFormulario.SetIconPadding(this.textBoxNombre, 5);
-            this.textBoxNombre.Location = new System.Drawing.Point(128, 38);
+            this.textBoxNombre.Location = new System.Drawing.Point(145, 38);
             this.textBoxNombre.MaxLength = 300;
             this.textBoxNombre.Multiline = true;
             this.textBoxNombre.Name = "textBoxNombre";
@@ -81,7 +82,10 @@
             // 
             // textBoxPersonaDeContacto
             // 
-            this.textBoxPersonaDeContacto.Location = new System.Drawing.Point(128, 84);
+            this.textBoxPersonaDeContacto.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxPersonaDeContacto, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPersonaDeContacto, 5);
+            this.textBoxPersonaDeContacto.Location = new System.Drawing.Point(145, 84);
             this.textBoxPersonaDeContacto.MaxLength = 300;
             this.textBoxPersonaDeContacto.Multiline = true;
             this.textBoxPersonaDeContacto.Name = "textBoxPersonaDeContacto";
@@ -94,7 +98,7 @@
             // labelDireccion
             // 
             this.labelDireccion.AutoSize = true;
-            this.labelDireccion.Location = new System.Drawing.Point(12, 139);
+            this.labelDireccion.Location = new System.Drawing.Point(12, 133);
             this.labelDireccion.Name = "labelDireccion";
             this.labelDireccion.Size = new System.Drawing.Size(55, 13);
             this.labelDireccion.TabIndex = 356;
@@ -102,7 +106,7 @@
             // 
             // textBoxDireccion
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(128, 130);
+            this.textBoxDireccion.Location = new System.Drawing.Point(145, 130);
             this.textBoxDireccion.MaxLength = 500;
             this.textBoxDireccion.Multiline = true;
             this.textBoxDireccion.Name = "textBoxDireccion";
@@ -120,7 +124,10 @@
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(128, 196);
+            this.textBoxTelefono.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxTelefono, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxTelefono, 5);
+            this.textBoxTelefono.Location = new System.Drawing.Point(145, 196);
             this.textBoxTelefono.MaxLength = 8;
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
@@ -140,7 +147,10 @@
             // 
             // textBoxCelular
             // 
-            this.textBoxCelular.Location = new System.Drawing.Point(128, 222);
+            this.textBoxCelular.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxCelular, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxCelular, 5);
+            this.textBoxCelular.Location = new System.Drawing.Point(145, 222);
             this.textBoxCelular.MaxLength = 8;
             this.textBoxCelular.Name = "textBoxCelular";
             this.textBoxCelular.Size = new System.Drawing.Size(200, 20);
@@ -160,7 +170,7 @@
             // 
             // textBoxNumeroDeCuenta
             // 
-            this.textBoxNumeroDeCuenta.Location = new System.Drawing.Point(128, 248);
+            this.textBoxNumeroDeCuenta.Location = new System.Drawing.Point(145, 248);
             this.textBoxNumeroDeCuenta.MaxLength = 100;
             this.textBoxNumeroDeCuenta.Name = "textBoxNumeroDeCuenta";
             this.textBoxNumeroDeCuenta.Size = new System.Drawing.Size(200, 20);
@@ -200,8 +210,10 @@
             // 
             // textBoxNit
             // 
+            this.textBoxNit.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxNit, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.errorProviderFormulario.SetIconPadding(this.textBoxNit, 5);
-            this.textBoxNit.Location = new System.Drawing.Point(128, 12);
+            this.textBoxNit.Location = new System.Drawing.Point(145, 12);
             this.textBoxNit.MaxLength = 12;
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.Size = new System.Drawing.Size(200, 20);
@@ -214,6 +226,11 @@
             // 
             this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderFormulario.ContainerControl = this;
+            // 
+            // contextMenuStripEmpty
+            // 
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
             // 
             // Nuevo
             // 
@@ -270,5 +287,6 @@
         private System.Windows.Forms.Label labelNit;
         private System.Windows.Forms.TextBox textBoxNit;
         private System.Windows.Forms.ErrorProvider errorProviderFormulario;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
     }
 }

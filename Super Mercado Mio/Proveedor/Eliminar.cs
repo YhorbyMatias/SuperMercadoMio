@@ -49,10 +49,10 @@ namespace Super_Mercado_Mio.Proveedor
                 if (MessageBox.Show("¿Está seguro de eliminar el proveedor?", "Eliminar Proveedor",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    proveedor.ID_PROVEEDOR = Convert.ToInt32(dataGridViewProveedores.SelectedRows[0].Cells["Id_Proveedor"].Value);
+                    proveedor.ID = Convert.ToInt32(dataGridViewProveedores.SelectedRows[0].Cells["Id"].Value);
                     proveedor.ESTADO = false;
                     objetoProveedor.delete(proveedor);
-                    insertarRegistro("Proveedor", proveedor.ID_PROVEEDOR, "Eliminar");
+                    insertarRegistro("Proveedor", proveedor.ID, "Eliminar");
                     MessageBox.Show("El proveedor fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -68,7 +68,7 @@ namespace Super_Mercado_Mio.Proveedor
         #region Metodos Propios
         private void setDataGridViewProveedoresFormat()
         {
-            dataGridViewProveedores.Columns["Id_Proveedor"].Visible = false;
+            dataGridViewProveedores.Columns["Id"].Visible = false;
             dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
             dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
             dataGridViewProveedores.Columns["Numero"].Width = 70;

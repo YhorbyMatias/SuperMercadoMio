@@ -39,7 +39,9 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(65, 12);
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxNombre, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxNombre, 5);
+            this.textBoxNombre.Location = new System.Drawing.Point(82, 12);
             this.textBoxNombre.MaxLength = 100;
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);

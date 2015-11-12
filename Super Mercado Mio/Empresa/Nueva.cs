@@ -18,18 +18,18 @@ namespace Super_Mercado_Mio.Empresa
         int opcion = 0;
         private readonly Action isCompanyRegistered;
         bool isWritable = true;
-        bool[] hasErrors = new bool[4];
+        bool[] hasErrors = new bool[] { true, true, true, true };
         EmpresaBss objetoEmpresa = new EmpresaBss();
         EmpresaEnt empresa = new EmpresaEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Nueva(int opcionX, Action isCompanyRegisteredX)
+        public Nueva(int opcion, Action isCompanyRegistered)
         {
             InitializeComponent();
-            opcion = opcionX;
-            isCompanyRegistered = isCompanyRegisteredX;
+            this.opcion = opcion;
+            this.isCompanyRegistered = isCompanyRegistered;
         }
         private void Nueva_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -90,7 +90,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarPropietario();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxPropietario, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxPropietario, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxRazonSocial
@@ -98,7 +98,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarRazonSocial();
             hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxRazonSocial, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxRazonSocial, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxNit
@@ -148,7 +148,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarNit();
             hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxActividadEconomica
@@ -197,7 +197,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarActividadEconomica();
             hasErrors[3] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxActividadEconomica, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxActividadEconomica, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -209,8 +209,8 @@ namespace Super_Mercado_Mio.Empresa
                 empresa.RAZON_SOCIAL = textBoxRazonSocial.Text.Trim().ToUpper();
                 empresa.NIT = textBoxNit.Text.Trim();
                 empresa.ACTIVIDAD_ECONOMICA = textBoxActividadEconomica.Text.Trim().ToUpper();
-                empresa.ID_EMPRESA = objetoEmpresa.insert(empresa);
-                insertarRegistro("Empresa", empresa.ID_EMPRESA, "Nuevo");
+                empresa.ID = objetoEmpresa.insert(empresa);
+                insertarRegistro("Empresa", empresa.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();

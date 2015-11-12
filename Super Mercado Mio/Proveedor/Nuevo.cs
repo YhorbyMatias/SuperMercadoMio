@@ -15,25 +15,25 @@ namespace Super_Mercado_Mio.Proveedor
     public partial class Nuevo : Form
     {
         #region Objetos
-        int opcion = 0;
+        int option = 0;
         public string nit = "";
         bool isWritable = true;
-        bool[] hasErrors = new bool[5];
+        bool[] hasErrors = new bool[] { true, true, false, false, false };
         ProveedorBss objetoProveedor = new ProveedorBss();
         public ProveedorEnt proveedor = new ProveedorEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Nuevo(int opcionX, string nitX)
+        public Nuevo(int option, string nit)
         {
             InitializeComponent();
-            opcion = opcionX;
-            nit = nitX;
+            this.option = option;
+            this.nit = nit;
         }
         private void Nuevo_Load(object sender, EventArgs e)
         {
-            if (opcion == 2)
+            if (option == 2)
             {
                 textBoxNit.Text = nit;
                 this.ActiveControl = textBoxNombre;
@@ -259,8 +259,8 @@ namespace Super_Mercado_Mio.Proveedor
                 proveedor.TELEFONO = textBoxTelefono.Text.Trim();
                 proveedor.CELULAR = textBoxCelular.Text.Trim();
                 proveedor.NUMERO_DE_CUENTA = textBoxNumeroDeCuenta.Text.Trim().ToUpper();
-                proveedor.ID_PROVEEDOR = objetoProveedor.insert(proveedor);
-                insertarRegistro("Proveedor", proveedor.ID_PROVEEDOR, "Nuevo");
+                proveedor.ID = objetoProveedor.add(proveedor);
+                insertarRegistro("Proveedor", proveedor.ID, "Nuevo");
                 nit = proveedor.NIT;
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -274,16 +274,42 @@ namespace Super_Mercado_Mio.Proveedor
         }
         #endregion
         #region Metodos Propios
-        private bool verificarNit()
+        private bool authenticateName()
         {
-            proveedor.NIT = textBoxNit.Text.Trim();
-            if (objetoProveedor.authenticateNit(proveedor) == 0)
+            if (textBoxNit.Text.Trim() == "0")
             {
-                return true;
+                proveedor.NOMBRE = textBoxNombre.Text.Trim().ToUpper();
+                if (objetoProveedor.authenticateName(proveedor) == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
+            }
+        }
+        private bool verificarNit()
+        {
+            proveedor.NIT = textBoxNit.Text.Trim();
+            if (proveedor.NIT != "0")
+            {
+                if (objetoProveedor.authenticateNit(proveedor) == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
             }
         }
         private int validarNit()
@@ -298,7 +324,7 @@ namespace Super_Mercado_Mio.Proveedor
                     }
                     else
                     {
-                        return 7;
+                        return 400;
                     }
                 }
                 else
@@ -315,7 +341,14 @@ namespace Super_Mercado_Mio.Proveedor
         {
             if (textBoxNombre.Text.Trim() != "")
             {
-                return 0;
+                if (authenticateName())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 401;
+                }
             }
             else
             {
@@ -378,6 +411,12 @@ namespace Super_Mercado_Mio.Proveedor
         }
         private bool validaciones()
         {
+            int errorCode = validarNit();
+            hasErrors[0] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
+            errorCode = validarNombre();
+            hasErrors[1] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxNombre, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
             {

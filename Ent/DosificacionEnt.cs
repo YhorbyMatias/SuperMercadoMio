@@ -9,7 +9,7 @@ namespace Ent
     public class DosificacionEnt
     {
         #region Atributos
-        private int id_dosificacion;
+        private int id;
         private int id_sucursal;
         private string numero_de_autorizacion;
         private string llave;
@@ -18,10 +18,10 @@ namespace Ent
         private string estado;
         #endregion
         #region Propiedades
-        public int ID_DOSIFICACION
+        public int ID
         {
-            get { return this.id_dosificacion; }
-            set { this.id_dosificacion = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_SUCURSAL
         {

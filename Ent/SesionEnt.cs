@@ -13,6 +13,7 @@ namespace Ent
         public static string nombreDeUsuario;
         public static string nombreDeEquipo;
         public static int idCaja;
+        public static bool activeDosificacion;
         public static PosPrinter posPrinter = null;
     }
 }

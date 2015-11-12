@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBoxNit = new System.Windows.Forms.TextBox();
-            this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.textBoxActividadEconomica = new System.Windows.Forms.TextBox();
@@ -40,15 +40,16 @@
             this.textBoxRazonSocial = new System.Windows.Forms.TextBox();
             this.labelPropietario = new System.Windows.Forms.Label();
             this.textBoxPropietario = new System.Windows.Forms.TextBox();
-            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxNit
             // 
-            this.textBoxNit.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxNit, 5);
-            this.textBoxNit.Location = new System.Drawing.Point(128, 64);
+            this.textBoxNit.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxNit, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxNit, 5);
+            this.textBoxNit.Location = new System.Drawing.Point(145, 64);
             this.textBoxNit.MaxLength = 12;
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.Size = new System.Drawing.Size(250, 20);
@@ -57,10 +58,10 @@
             this.textBoxNit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNit_KeyPress);
             this.textBoxNit.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNit_Validating);
             // 
-            // contextMenuStripTextBox
+            // contextMenuStripEmpty
             // 
-            this.contextMenuStripTextBox.Name = "contextMenuStripTextBox";
-            this.contextMenuStripTextBox.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(153, 26);
             // 
             // buttonCerrar
             // 
@@ -87,9 +88,10 @@
             // 
             // textBoxActividadEconomica
             // 
-            this.textBoxActividadEconomica.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxActividadEconomica, 5);
-            this.textBoxActividadEconomica.Location = new System.Drawing.Point(128, 90);
+            this.textBoxActividadEconomica.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxActividadEconomica, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxActividadEconomica, 5);
+            this.textBoxActividadEconomica.Location = new System.Drawing.Point(145, 90);
             this.textBoxActividadEconomica.Multiline = true;
             this.textBoxActividadEconomica.Name = "textBoxActividadEconomica";
             this.textBoxActividadEconomica.Size = new System.Drawing.Size(250, 88);
@@ -127,8 +129,9 @@
             // 
             // textBoxRazonSocial
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxRazonSocial, 5);
-            this.textBoxRazonSocial.Location = new System.Drawing.Point(128, 38);
+            this.errorProvider.SetIconAlignment(this.textBoxRazonSocial, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxRazonSocial, 5);
+            this.textBoxRazonSocial.Location = new System.Drawing.Point(145, 38);
             this.textBoxRazonSocial.MaxLength = 200;
             this.textBoxRazonSocial.Name = "textBoxRazonSocial";
             this.textBoxRazonSocial.Size = new System.Drawing.Size(250, 20);
@@ -146,8 +149,9 @@
             // 
             // textBoxPropietario
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxPropietario, 5);
-            this.textBoxPropietario.Location = new System.Drawing.Point(128, 12);
+            this.errorProvider.SetIconAlignment(this.textBoxPropietario, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxPropietario, 5);
+            this.textBoxPropietario.Location = new System.Drawing.Point(145, 12);
             this.textBoxPropietario.MaxLength = 300;
             this.textBoxPropietario.Name = "textBoxPropietario";
             this.textBoxPropietario.Size = new System.Drawing.Size(250, 20);
@@ -156,10 +160,10 @@
             this.textBoxPropietario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPropietario_KeyPress);
             this.textBoxPropietario.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPropietario_Validating);
             // 
-            // errorProviderFormulario
+            // errorProvider
             // 
-            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderFormulario.ContainerControl = this;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
             // 
             // Modificar
             // 
@@ -185,7 +189,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Empresa";
             this.Load += new System.EventHandler(this.Modificar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,7 +198,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxNit;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.TextBox textBoxActividadEconomica;
@@ -204,6 +208,6 @@
         private System.Windows.Forms.TextBox textBoxRazonSocial;
         private System.Windows.Forms.Label labelPropietario;
         private System.Windows.Forms.TextBox textBoxPropietario;
-        private System.Windows.Forms.ErrorProvider errorProviderFormulario;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -19,6 +19,10 @@ namespace Bss
         {
             return objetoSucursal.exists();
         }
+        public string getNumber(SucursalEnt sucursal)
+        {
+            return objetoSucursal.getNumber(sucursal);
+        }
         public int insert(SucursalEnt sucursal)
         {
             return objetoSucursal.insert(sucursal);

@@ -39,7 +39,7 @@
             this.lblApellidoPaterno = new System.Windows.Forms.Label();
             this.lblNombres = new System.Windows.Forms.Label();
             this.textBoxApellidoMaterno = new System.Windows.Forms.TextBox();
-            this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBoxApellidoPaterno = new System.Windows.Forms.TextBox();
             this.textBoxNombres = new System.Windows.Forms.TextBox();
             this.labelCi = new System.Windows.Forms.Label();
@@ -48,14 +48,14 @@
             this.textBoxCi = new System.Windows.Forms.TextBox();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonCerrar = new System.Windows.Forms.Button();
-            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBoxSeleccionarTodos
             // 
             this.checkBoxSeleccionarTodos.AutoSize = true;
-            this.checkBoxSeleccionarTodos.Location = new System.Drawing.Point(342, 14);
+            this.checkBoxSeleccionarTodos.Location = new System.Drawing.Point(359, 14);
             this.checkBoxSeleccionarTodos.Name = "checkBoxSeleccionarTodos";
             this.checkBoxSeleccionarTodos.Size = new System.Drawing.Size(115, 17);
             this.checkBoxSeleccionarTodos.TabIndex = 7;
@@ -69,8 +69,9 @@
             this.checkedListBoxOpciones.ColumnWidth = 200;
             this.checkedListBoxOpciones.FormattingEnabled = true;
             this.checkedListBoxOpciones.HorizontalScrollbar = true;
-            this.errorProviderFormulario.SetIconPadding(this.checkedListBoxOpciones, 5);
-            this.checkedListBoxOpciones.Location = new System.Drawing.Point(342, 37);
+            this.errorProvider.SetIconAlignment(this.checkedListBoxOpciones, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.errorProvider.SetIconPadding(this.checkedListBoxOpciones, 5);
+            this.checkedListBoxOpciones.Location = new System.Drawing.Point(359, 37);
             this.checkedListBoxOpciones.MultiColumn = true;
             this.checkedListBoxOpciones.Name = "checkedListBoxOpciones";
             this.checkedListBoxOpciones.Size = new System.Drawing.Size(605, 154);
@@ -97,8 +98,9 @@
             // 
             // textBoxClave
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxClave, 5);
-            this.textBoxClave.Location = new System.Drawing.Point(119, 168);
+            this.errorProvider.SetIconAlignment(this.textBoxClave, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxClave, 5);
+            this.textBoxClave.Location = new System.Drawing.Point(136, 168);
             this.textBoxClave.Name = "textBoxClave";
             this.textBoxClave.PasswordChar = '*';
             this.textBoxClave.Size = new System.Drawing.Size(200, 20);
@@ -107,8 +109,9 @@
             // 
             // textBoxNombreDeUsuario
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxNombreDeUsuario, 5);
-            this.textBoxNombreDeUsuario.Location = new System.Drawing.Point(119, 142);
+            this.errorProvider.SetIconAlignment(this.textBoxNombreDeUsuario, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxNombreDeUsuario, 5);
+            this.textBoxNombreDeUsuario.Location = new System.Drawing.Point(136, 142);
             this.textBoxNombreDeUsuario.MaxLength = 50;
             this.textBoxNombreDeUsuario.Name = "textBoxNombreDeUsuario";
             this.textBoxNombreDeUsuario.Size = new System.Drawing.Size(200, 20);
@@ -144,9 +147,10 @@
             // 
             // textBoxApellidoMaterno
             // 
-            this.textBoxApellidoMaterno.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxApellidoMaterno, 5);
-            this.textBoxApellidoMaterno.Location = new System.Drawing.Point(119, 90);
+            this.textBoxApellidoMaterno.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxApellidoMaterno, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxApellidoMaterno, 5);
+            this.textBoxApellidoMaterno.Location = new System.Drawing.Point(136, 90);
             this.textBoxApellidoMaterno.MaxLength = 100;
             this.textBoxApellidoMaterno.Name = "textBoxApellidoMaterno";
             this.textBoxApellidoMaterno.Size = new System.Drawing.Size(200, 20);
@@ -155,16 +159,17 @@
             this.textBoxApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxApellidoMaterno_KeyPress);
             this.textBoxApellidoMaterno.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxApellidoMaterno_Validating);
             // 
-            // contextMenuStripTextBox
+            // contextMenuStripEmpty
             // 
-            this.contextMenuStripTextBox.Name = "contextMenuStripTextBox";
-            this.contextMenuStripTextBox.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
             // 
             // textBoxApellidoPaterno
             // 
-            this.textBoxApellidoPaterno.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxApellidoPaterno, 5);
-            this.textBoxApellidoPaterno.Location = new System.Drawing.Point(119, 64);
+            this.textBoxApellidoPaterno.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxApellidoPaterno, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxApellidoPaterno, 5);
+            this.textBoxApellidoPaterno.Location = new System.Drawing.Point(136, 64);
             this.textBoxApellidoPaterno.MaxLength = 100;
             this.textBoxApellidoPaterno.Name = "textBoxApellidoPaterno";
             this.textBoxApellidoPaterno.Size = new System.Drawing.Size(200, 20);
@@ -175,9 +180,10 @@
             // 
             // textBoxNombres
             // 
-            this.textBoxNombres.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxNombres, 5);
-            this.textBoxNombres.Location = new System.Drawing.Point(119, 38);
+            this.textBoxNombres.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxNombres, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxNombres, 5);
+            this.textBoxNombres.Location = new System.Drawing.Point(136, 38);
             this.textBoxNombres.MaxLength = 100;
             this.textBoxNombres.Name = "textBoxNombres";
             this.textBoxNombres.Size = new System.Drawing.Size(200, 20);
@@ -197,9 +203,10 @@
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxTelefono, 5);
-            this.textBoxTelefono.Location = new System.Drawing.Point(119, 116);
+            this.textBoxTelefono.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxTelefono, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxTelefono, 5);
+            this.textBoxTelefono.Location = new System.Drawing.Point(136, 116);
             this.textBoxTelefono.MaxLength = 8;
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
@@ -219,9 +226,10 @@
             // 
             // textBoxCi
             // 
-            this.textBoxCi.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxCi, 5);
-            this.textBoxCi.Location = new System.Drawing.Point(119, 12);
+            this.textBoxCi.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxCi, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxCi, 5);
+            this.textBoxCi.Location = new System.Drawing.Point(136, 12);
             this.textBoxCi.MaxLength = 8;
             this.textBoxCi.Name = "textBoxCi";
             this.textBoxCi.Size = new System.Drawing.Size(200, 20);
@@ -253,10 +261,10 @@
             this.buttonCerrar.UseVisualStyleBackColor = true;
             this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
-            // errorProviderFormulario
+            // errorProvider
             // 
-            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderFormulario.ContainerControl = this;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
             // 
             // Nuevo
             // 
@@ -290,7 +298,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Usuario";
             this.Load += new System.EventHandler(this.Nuevo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,7 +316,7 @@
         private System.Windows.Forms.Label lblApellidoPaterno;
         private System.Windows.Forms.Label lblNombres;
         private System.Windows.Forms.TextBox textBoxApellidoMaterno;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
         private System.Windows.Forms.TextBox textBoxApellidoPaterno;
         private System.Windows.Forms.TextBox textBoxNombres;
         private System.Windows.Forms.Label labelCi;
@@ -317,6 +325,6 @@
         private System.Windows.Forms.TextBox textBoxCi;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button buttonCerrar;
-        private System.Windows.Forms.ErrorProvider errorProviderFormulario;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -9,7 +9,7 @@ namespace Ent
     public class UsuarioEnt
     {
         #region Atributos
-        private int id_usuario;
+        private int id;
         private string ci;
         private string nombres;
         private string apellido_paterno;
@@ -20,10 +20,10 @@ namespace Ent
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_USUARIO
+        public int ID
         {
-            get { return this.id_usuario; }
-            set { this.id_usuario = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public string CI
         {

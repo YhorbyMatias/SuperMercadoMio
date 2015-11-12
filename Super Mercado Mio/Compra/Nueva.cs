@@ -59,13 +59,13 @@ namespace Super_Mercado_Mio.Compra
             {
                 Proveedor.Lista formularioListaDeProveedores = new Proveedor.Lista(3);
                 formularioListaDeProveedores.ShowDialog();
-                if (formularioListaDeProveedores.proveedor.ID_PROVEEDOR > 0)
+                if (formularioListaDeProveedores.proveedor.ID > 0)
                 {
                     textBoxNit.Text = formularioListaDeProveedores.proveedor.NIT;
                     searchProveedor();
                 }
             }
-            else if (e.KeyValue == 13)
+            if (e.KeyValue == 13)
             {
                 searchProveedor();
             }
@@ -212,16 +212,13 @@ namespace Super_Mercado_Mio.Compra
         {
             textBoxMonto.Text = calculateMonto();
         }
-        private void dataGridViewDetalleDeIngreso_Validating(object sender, CancelEventArgs e)
-        {
-        }
         #endregion
         #region buttonGuardar
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (validate())
             {
-                ingreso.ID_PROVEEDOR = proveedor.ID_PROVEEDOR;
+                ingreso.ID_PROVEEDOR = proveedor.ID;
                 ingreso.NUMERO_DE_REGISTRO = (objetoIngreso.getNumeroDeRegistro() + 1);
                 ingreso.NUMERO_DE_NOTA_DE_ENTREGA = textBoxNumeroDeNotaDeEntrega.Text.Trim().ToUpper();
                 ingreso.MONTO = Convert.ToDecimal(calculateMonto());
@@ -372,18 +369,32 @@ namespace Super_Mercado_Mio.Compra
         private void searchProveedor()
         {
             proveedor.NIT = textBoxNit.Text.Trim();
-            DataTable dataTableProveedor = objetoProveedor.select(proveedor);
-            if (dataTableProveedor.Rows.Count > 0)
+            DataTable dataTableProveedores = objetoProveedor.select(proveedor);
+            if (dataTableProveedores.Rows.Count > 0)
             {
-                proveedor.ID_PROVEEDOR = Convert.ToInt32(dataTableProveedor.Rows[0]["Id_Proveedor"]);
-                textBoxProveedor.Text = dataTableProveedor.Rows[0]["Nombre"].ToString();
+                if (dataTableProveedores.Rows.Count == 1)
+                {
+                    proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[0]["Id_Proveedor"]);
+                    textBoxProveedor.Text = dataTableProveedores.Rows[0]["Nombre"].ToString();
+                }
+                else
+                {
+                    Proveedor.Busqueda formBusquedaDeProveedores = new Proveedor.Busqueda(dataTableProveedores);
+                    formBusquedaDeProveedores.ShowDialog();
+                    if (formBusquedaDeProveedores.row > -1)
+                    {
+                        int rowIndex = formBusquedaDeProveedores.row;
+                        proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[rowIndex]["Id_Proveedor"]);
+                        textBoxProveedor.Text = dataTableProveedores.Rows[rowIndex]["Nombre"].ToString();
+                    }
+                }
             }
             else
             {
                 Proveedor.Nuevo formularioNuevoProveedor = new Proveedor.Nuevo(2, proveedor.NIT);
                 formularioNuevoProveedor.ShowDialog();
                 proveedor = formularioNuevoProveedor.proveedor;
-                if (proveedor.ID_PROVEEDOR > 0)
+                if (proveedor.ID > 0)
                 {
                     textBoxNit.Text = proveedor.NIT;
                     textBoxProveedor.Text = proveedor.NOMBRE;

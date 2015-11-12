@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.lblMunicipio = new System.Windows.Forms.Label();
@@ -44,14 +44,14 @@
             this.lblNumero = new System.Windows.Forms.Label();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.textBoxNumero = new System.Windows.Forms.TextBox();
-            this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).BeginInit();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // contextMenuStripTextBox
+            // contextMenuStripEmpty
             // 
-            this.contextMenuStripTextBox.Name = "contextMenuStripTextBox";
-            this.contextMenuStripTextBox.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
             // 
             // buttonCerrar
             // 
@@ -87,8 +87,9 @@
             // 
             // textBoxMunicipio
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxMunicipio, 5);
-            this.textBoxMunicipio.Location = new System.Drawing.Point(99, 189);
+            this.errorProvider.SetIconAlignment(this.textBoxMunicipio, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxMunicipio, 5);
+            this.textBoxMunicipio.Location = new System.Drawing.Point(116, 189);
             this.textBoxMunicipio.MaxLength = 100;
             this.textBoxMunicipio.Name = "textBoxMunicipio";
             this.textBoxMunicipio.Size = new System.Drawing.Size(250, 20);
@@ -106,8 +107,9 @@
             // 
             // textBoxTelefono
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxTelefono, 5);
-            this.textBoxTelefono.Location = new System.Drawing.Point(99, 163);
+            this.errorProvider.SetIconAlignment(this.textBoxTelefono, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxTelefono, 5);
+            this.textBoxTelefono.Location = new System.Drawing.Point(116, 163);
             this.textBoxTelefono.MaxLength = 8;
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(250, 20);
@@ -118,7 +120,7 @@
             // 
             // textBoxNit
             // 
-            this.textBoxNit.Location = new System.Drawing.Point(99, 38);
+            this.textBoxNit.Location = new System.Drawing.Point(116, 38);
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.ReadOnly = true;
             this.textBoxNit.Size = new System.Drawing.Size(250, 20);
@@ -144,7 +146,7 @@
             // 
             // textBoxEmpresa
             // 
-            this.textBoxEmpresa.Location = new System.Drawing.Point(99, 12);
+            this.textBoxEmpresa.Location = new System.Drawing.Point(116, 12);
             this.textBoxEmpresa.Name = "textBoxEmpresa";
             this.textBoxEmpresa.ReadOnly = true;
             this.textBoxEmpresa.Size = new System.Drawing.Size(250, 20);
@@ -170,8 +172,9 @@
             // 
             // textBoxDireccion
             // 
-            this.errorProviderFormulario.SetIconPadding(this.textBoxDireccion, 5);
-            this.textBoxDireccion.Location = new System.Drawing.Point(99, 90);
+            this.errorProvider.SetIconAlignment(this.textBoxDireccion, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxDireccion, 5);
+            this.textBoxDireccion.Location = new System.Drawing.Point(116, 90);
             this.textBoxDireccion.Multiline = true;
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(250, 67);
@@ -180,9 +183,10 @@
             // 
             // textBoxNumero
             // 
-            this.textBoxNumero.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.errorProviderFormulario.SetIconPadding(this.textBoxNumero, 5);
-            this.textBoxNumero.Location = new System.Drawing.Point(99, 64);
+            this.textBoxNumero.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProvider.SetIconAlignment(this.textBoxNumero, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxNumero, 5);
+            this.textBoxNumero.Location = new System.Drawing.Point(116, 64);
             this.textBoxNumero.MaxLength = 3;
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(250, 20);
@@ -191,10 +195,10 @@
             this.textBoxNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumero_KeyPress);
             this.textBoxNumero.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNumero_Validating);
             // 
-            // errorProviderFormulario
+            // errorProvider
             // 
-            this.errorProviderFormulario.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderFormulario.ContainerControl = this;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
             // 
             // Nueva
             // 
@@ -225,7 +229,7 @@
             this.Text = "Nueva Sucursal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Nueva_FormClosing);
             this.Load += new System.EventHandler(this.Nueva_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +237,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label lblMunicipio;
@@ -248,6 +252,6 @@
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox textBoxDireccion;
         private System.Windows.Forms.TextBox textBoxNumero;
-        private System.Windows.Forms.ErrorProvider errorProviderFormulario;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

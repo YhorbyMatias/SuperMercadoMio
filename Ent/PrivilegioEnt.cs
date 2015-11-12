@@ -9,16 +9,16 @@ namespace Ent
     public class PrivilegioEnt
     {
         #region Atributos
-        private int id_privilegio;
+        private int id;
         private int id_usuario;
         private int id_opcion;
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_PRIVILEGIO
+        public int ID
         {
-            get { return this.id_privilegio; }
-            set { this.id_privilegio = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_USUARIO
         {

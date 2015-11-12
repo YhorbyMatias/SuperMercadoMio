@@ -31,18 +31,19 @@
             this.components = new System.ComponentModel.Container();
             this.errorProviderFormulario = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxNit = new System.Windows.Forms.TextBox();
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.textBoxCelular = new System.Windows.Forms.TextBox();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
+            this.textBoxPersonaDeContacto = new System.Windows.Forms.TextBox();
             this.labelNit = new System.Windows.Forms.Label();
             this.labelNumeroDeCuenta = new System.Windows.Forms.Label();
             this.textBoxNumeroDeCuenta = new System.Windows.Forms.TextBox();
             this.labelCelular = new System.Windows.Forms.Label();
-            this.textBoxCelular = new System.Windows.Forms.TextBox();
             this.labelTelefono = new System.Windows.Forms.Label();
-            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.labelDireccion = new System.Windows.Forms.Label();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.labelPersonaDeContacto = new System.Windows.Forms.Label();
-            this.textBoxPersonaDeContacto = new System.Windows.Forms.TextBox();
             this.labelNombre = new System.Windows.Forms.Label();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
@@ -56,8 +57,10 @@
             // 
             // textBoxNit
             // 
+            this.textBoxNit.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxNit, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.errorProviderFormulario.SetIconPadding(this.textBoxNit, 5);
-            this.textBoxNit.Location = new System.Drawing.Point(128, 12);
+            this.textBoxNit.Location = new System.Drawing.Point(145, 12);
             this.textBoxNit.MaxLength = 12;
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.Size = new System.Drawing.Size(200, 20);
@@ -66,17 +69,62 @@
             this.textBoxNit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNit_KeyPress);
             this.textBoxNit.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNit_Validating);
             // 
+            // contextMenuStripEmpty
+            // 
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
+            // 
             // textBoxNombre
             // 
-            this.errorProviderFormulario.SetIconAlignment(this.textBoxNombre, System.Windows.Forms.ErrorIconAlignment.TopRight);
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxNombre, System.Windows.Forms.ErrorIconAlignment.TopLeft);
             this.errorProviderFormulario.SetIconPadding(this.textBoxNombre, 5);
-            this.textBoxNombre.Location = new System.Drawing.Point(128, 38);
+            this.textBoxNombre.Location = new System.Drawing.Point(145, 38);
             this.textBoxNombre.MaxLength = 300;
             this.textBoxNombre.Multiline = true;
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 40);
-            this.textBoxNombre.TabIndex = 366;
+            this.textBoxNombre.TabIndex = 1;
             this.textBoxNombre.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNombre_Validating);
+            // 
+            // textBoxCelular
+            // 
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxCelular, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxCelular, 5);
+            this.textBoxCelular.Location = new System.Drawing.Point(145, 222);
+            this.textBoxCelular.MaxLength = 8;
+            this.textBoxCelular.Name = "textBoxCelular";
+            this.textBoxCelular.Size = new System.Drawing.Size(200, 20);
+            this.textBoxCelular.TabIndex = 5;
+            this.textBoxCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCelular_KeyDown);
+            this.textBoxCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCelular_KeyPress);
+            this.textBoxCelular.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCelular_Validating);
+            // 
+            // textBoxTelefono
+            // 
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxTelefono, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxTelefono, 5);
+            this.textBoxTelefono.Location = new System.Drawing.Point(145, 196);
+            this.textBoxTelefono.MaxLength = 8;
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
+            this.textBoxTelefono.TabIndex = 4;
+            this.textBoxTelefono.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTelefono_KeyDown);
+            this.textBoxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefono_KeyPress);
+            this.textBoxTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxTelefono_Validating);
+            // 
+            // textBoxPersonaDeContacto
+            // 
+            this.errorProviderFormulario.SetIconAlignment(this.textBoxPersonaDeContacto, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.errorProviderFormulario.SetIconPadding(this.textBoxPersonaDeContacto, 5);
+            this.textBoxPersonaDeContacto.Location = new System.Drawing.Point(145, 84);
+            this.textBoxPersonaDeContacto.MaxLength = 300;
+            this.textBoxPersonaDeContacto.Multiline = true;
+            this.textBoxPersonaDeContacto.Name = "textBoxPersonaDeContacto";
+            this.textBoxPersonaDeContacto.Size = new System.Drawing.Size(200, 40);
+            this.textBoxPersonaDeContacto.TabIndex = 2;
+            this.textBoxPersonaDeContacto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPersonaDeContacto_KeyDown);
+            this.textBoxPersonaDeContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPersonaDeContacto_KeyPress);
+            this.textBoxPersonaDeContacto.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPersonaDeContacto_Validating);
             // 
             // labelNit
             // 
@@ -98,11 +146,11 @@
             // 
             // textBoxNumeroDeCuenta
             // 
-            this.textBoxNumeroDeCuenta.Location = new System.Drawing.Point(128, 248);
+            this.textBoxNumeroDeCuenta.Location = new System.Drawing.Point(145, 248);
             this.textBoxNumeroDeCuenta.MaxLength = 100;
             this.textBoxNumeroDeCuenta.Name = "textBoxNumeroDeCuenta";
             this.textBoxNumeroDeCuenta.Size = new System.Drawing.Size(200, 20);
-            this.textBoxNumeroDeCuenta.TabIndex = 371;
+            this.textBoxNumeroDeCuenta.TabIndex = 6;
             // 
             // labelCelular
             // 
@@ -113,17 +161,6 @@
             this.labelCelular.TabIndex = 378;
             this.labelCelular.Text = "Celular:";
             // 
-            // textBoxCelular
-            // 
-            this.textBoxCelular.Location = new System.Drawing.Point(128, 222);
-            this.textBoxCelular.MaxLength = 8;
-            this.textBoxCelular.Name = "textBoxCelular";
-            this.textBoxCelular.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCelular.TabIndex = 370;
-            this.textBoxCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCelular_KeyDown);
-            this.textBoxCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCelular_KeyPress);
-            this.textBoxCelular.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCelular_Validating);
-            // 
             // labelTelefono
             // 
             this.labelTelefono.AutoSize = true;
@@ -133,21 +170,10 @@
             this.labelTelefono.TabIndex = 377;
             this.labelTelefono.Text = "Teléfono:";
             // 
-            // textBoxTelefono
-            // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(128, 196);
-            this.textBoxTelefono.MaxLength = 8;
-            this.textBoxTelefono.Name = "textBoxTelefono";
-            this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
-            this.textBoxTelefono.TabIndex = 369;
-            this.textBoxTelefono.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTelefono_KeyDown);
-            this.textBoxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefono_KeyPress);
-            this.textBoxTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxTelefono_Validating);
-            // 
             // labelDireccion
             // 
             this.labelDireccion.AutoSize = true;
-            this.labelDireccion.Location = new System.Drawing.Point(12, 139);
+            this.labelDireccion.Location = new System.Drawing.Point(12, 133);
             this.labelDireccion.Name = "labelDireccion";
             this.labelDireccion.Size = new System.Drawing.Size(55, 13);
             this.labelDireccion.TabIndex = 376;
@@ -155,12 +181,12 @@
             // 
             // textBoxDireccion
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(128, 130);
+            this.textBoxDireccion.Location = new System.Drawing.Point(145, 130);
             this.textBoxDireccion.MaxLength = 500;
             this.textBoxDireccion.Multiline = true;
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(200, 60);
-            this.textBoxDireccion.TabIndex = 368;
+            this.textBoxDireccion.TabIndex = 3;
             // 
             // labelPersonaDeContacto
             // 
@@ -170,18 +196,6 @@
             this.labelPersonaDeContacto.Size = new System.Drawing.Size(110, 13);
             this.labelPersonaDeContacto.TabIndex = 375;
             this.labelPersonaDeContacto.Text = "Persona de Contacto:";
-            // 
-            // textBoxPersonaDeContacto
-            // 
-            this.textBoxPersonaDeContacto.Location = new System.Drawing.Point(128, 84);
-            this.textBoxPersonaDeContacto.MaxLength = 300;
-            this.textBoxPersonaDeContacto.Multiline = true;
-            this.textBoxPersonaDeContacto.Name = "textBoxPersonaDeContacto";
-            this.textBoxPersonaDeContacto.Size = new System.Drawing.Size(200, 40);
-            this.textBoxPersonaDeContacto.TabIndex = 367;
-            this.textBoxPersonaDeContacto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPersonaDeContacto_KeyDown);
-            this.textBoxPersonaDeContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPersonaDeContacto_KeyPress);
-            this.textBoxPersonaDeContacto.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPersonaDeContacto_Validating);
             // 
             // labelNombre
             // 
@@ -198,7 +212,7 @@
             this.buttonCerrar.Location = new System.Drawing.Point(181, 274);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 384;
+            this.buttonCerrar.TabIndex = 8;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
@@ -209,7 +223,7 @@
             this.buttonGuardar.Location = new System.Drawing.Point(86, 274);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 383;
+            this.buttonGuardar.TabIndex = 7;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -244,7 +258,6 @@
             this.Name = "Modificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Proveedor";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Modificar_FormClosing);
             this.Load += new System.EventHandler(this.Modificar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFormulario)).EndInit();
             this.ResumeLayout(false);
@@ -271,5 +284,6 @@
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
     }
 }

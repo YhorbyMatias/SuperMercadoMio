@@ -16,7 +16,7 @@ namespace Super_Mercado_Mio.Empresa
     {
         #region Objetos
         bool isWritable = true;
-        bool[] hasErrors = new bool[4];
+        bool[] hasErrors = new bool[] { false, false, false, false };
         EmpresaBss objetoEmpresa = new EmpresaBss();
         EmpresaEnt empresa = new EmpresaEnt();
         RegistroBss objetoRegistro = new RegistroBss();
@@ -86,7 +86,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarPropietario();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxPropietario, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxPropietario, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxRazonSocial
@@ -94,7 +94,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarRazonSocial();
             hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxRazonSocial, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxRazonSocial, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxNit
@@ -144,7 +144,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarNit();
             hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxActividadEconomica
@@ -193,7 +193,7 @@ namespace Super_Mercado_Mio.Empresa
         {
             int errorCode = validarActividadEconomica();
             hasErrors[3] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxActividadEconomica, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxActividadEconomica, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -201,13 +201,13 @@ namespace Super_Mercado_Mio.Empresa
         {
             if (validaciones() == true)
             {
-                empresa.ID_EMPRESA = 1;
+                empresa.ID = 1;
                 empresa.PROPIETARIO = textBoxPropietario.Text.Trim().ToUpper();
                 empresa.RAZON_SOCIAL = textBoxRazonSocial.Text.Trim().ToUpper();
                 empresa.NIT = textBoxNit.Text.Trim();
                 empresa.ACTIVIDAD_ECONOMICA = textBoxActividadEconomica.Text.Trim().ToUpper();
                 objetoEmpresa.update(empresa);
-                insertarRegistro("Empresa", empresa.ID_EMPRESA, "Modificar");
+                insertarRegistro("Empresa", empresa.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

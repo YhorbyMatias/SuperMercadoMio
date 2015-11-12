@@ -15,43 +15,18 @@ namespace Super_Mercado_Mio.Proveedor
     public partial class Modificar : Form
     {
         #region Objetos
-        private readonly Action refreshDataGridViewProveedores;
         bool isWritable = true;
-        bool updated = false;
-        bool[] hasErrors = new bool[5];
+        bool[] hasErrors = new bool[] { false, false, false, false, false };
         ProveedorBss objetoProveedor = new ProveedorBss();
         ProveedorEnt proveedor = new ProveedorEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Modificar(int idProveedorX, Action actualizarDataGridViewUsuariosX)
+        public Modificar(int idProveedor)
         {
             InitializeComponent();
-            proveedor.ID_PROVEEDOR = idProveedorX;
-            refreshDataGridViewProveedores = actualizarDataGridViewUsuariosX;
-        }
-        private void Modificar_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form formularioListaDeProveedores = this.MdiParent.MdiChildren.FirstOrDefault(x => x is Proveedor.Lista);
-            if (updated == false)
-            {
-                if (e.CloseReason == CloseReason.UserClosing)
-                {
-                    if (formularioListaDeProveedores != null)
-                    {
-                        formularioListaDeProveedores.Show();
-                    }
-                }
-            }
-            else
-            {
-                if (formularioListaDeProveedores != null)
-                {
-                    refreshDataGridViewProveedores();
-                    formularioListaDeProveedores.Show();
-                }
-            }
+            proveedor.ID = idProveedor;
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
@@ -277,9 +252,9 @@ namespace Super_Mercado_Mio.Proveedor
                 proveedor.CELULAR = textBoxCelular.Text.Trim();
                 proveedor.NUMERO_DE_CUENTA = textBoxNumeroDeCuenta.Text.Trim().ToUpper();
                 objetoProveedor.update(proveedor);
-                insertarRegistro("Proveedor", proveedor.ID_PROVEEDOR, "Modificar");
-                updated = true;
-                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                insertarRegistro("Proveedor", proveedor.ID, "Modificar");
+                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -291,6 +266,25 @@ namespace Super_Mercado_Mio.Proveedor
         }
         #endregion
         #region Metodos Propios
+        private bool authenticateName()
+        {
+            if (textBoxNit.Text.Trim() == "0")
+            {
+                proveedor.NOMBRE = textBoxNombre.Text.Trim().ToUpper();
+                if (objetoProveedor.authenticateName(proveedor) == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
         private void cargarInformacionDeProveedor()
         {
             DataTable dataTableProveedor = objetoProveedor.search(proveedor);
@@ -305,13 +299,20 @@ namespace Super_Mercado_Mio.Proveedor
         private bool verificarNit()
         {
             proveedor.NIT = textBoxNit.Text.Trim();
-            if (objetoProveedor.authenticateNit(proveedor) == 0)
+            if (proveedor.NIT != "0")
             {
-                return true;
+                if (objetoProveedor.authenticateNit(proveedor) == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
             }
         }
         private int validarNit()
@@ -326,7 +327,7 @@ namespace Super_Mercado_Mio.Proveedor
                     }
                     else
                     {
-                        return 7;
+                        return 400;
                     }
                 }
                 else
@@ -343,7 +344,14 @@ namespace Super_Mercado_Mio.Proveedor
         {
             if (textBoxNombre.Text.Trim() != "")
             {
-                return 0;
+                if (authenticateName())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 401;
+                }
             }
             else
             {
@@ -406,6 +414,12 @@ namespace Super_Mercado_Mio.Proveedor
         }
         private bool validaciones()
         {
+            int errorCode = validarNit();
+            hasErrors[0] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxNit, ValidacionBss.getErrorMessage(errorCode));
+            errorCode = validarNombre();
+            hasErrors[1] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxNombre, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
             {

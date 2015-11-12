@@ -18,7 +18,7 @@ namespace Super_Mercado_Mio.Sucursal
         int opcion = 0;
         private readonly Action isBranchRegistered;
         bool isWritable = true;
-        bool[] hasErrors = new bool[4];
+        bool[] hasErrors = new bool[] { true, true, true, true };
         EmpresaBss objetoEmpresa = new EmpresaBss();
         SucursalBss objetoSucursal = new SucursalBss();
         public SucursalEnt sucursal = new SucursalEnt();
@@ -26,11 +26,11 @@ namespace Super_Mercado_Mio.Sucursal
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Nueva(int opcionX, Action isBranchRegisteredX)
+        public Nueva(int opcion, Action isBranchRegistered)
         {
             InitializeComponent();
-            opcion = opcionX;
-            isBranchRegistered = isBranchRegisteredX;
+            this.opcion = opcion;
+            this.isBranchRegistered = isBranchRegistered;
         }
         private void Nueva_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -104,7 +104,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarNumero();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxDireccion
@@ -112,7 +112,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarDireccion();
             hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxDireccion, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxDireccion, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxTelefono
@@ -162,7 +162,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarTelefono();
             hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxMunicipio
@@ -170,7 +170,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarMunicipio();
             hasErrors[3] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxMunicipio, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxMunicipio, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -183,8 +183,8 @@ namespace Super_Mercado_Mio.Sucursal
                 sucursal.DIRECCION = textBoxDireccion.Text.Trim().ToUpper();
                 sucursal.TELEFONO = textBoxTelefono.Text.Trim();
                 sucursal.MUNICIPIO = textBoxMunicipio.Text.Trim().ToUpper();
-                sucursal.ID_SUCURSAL = objetoSucursal.insert(sucursal);
-                insertarRegistro("Sucursal", sucursal.ID_SUCURSAL, "Nuevo");
+                sucursal.ID = objetoSucursal.insert(sucursal);
+                insertarRegistro("Sucursal", sucursal.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

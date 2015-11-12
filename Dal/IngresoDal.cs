@@ -30,7 +30,6 @@ namespace Dal
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "insertarIngreso";
             sqlCommand.Parameters.AddWithValue("@Id_Proveedor", ingreso.ID_PROVEEDOR);
-            sqlCommand.Parameters.AddWithValue("@Fecha", ingreso.FECHA);
             sqlCommand.Parameters.AddWithValue("@Numero_De_Registro", ingreso.NUMERO_DE_REGISTRO);
             sqlCommand.Parameters.AddWithValue("@Numero_De_Nota_De_Entrega", ingreso.NUMERO_DE_NOTA_DE_ENTREGA);
             sqlCommand.Parameters.AddWithValue("@Monto", ingreso.MONTO);
