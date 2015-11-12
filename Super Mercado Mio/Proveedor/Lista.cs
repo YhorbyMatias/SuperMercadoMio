@@ -15,17 +15,17 @@ namespace Super_Mercado_Mio.Proveedor
     public partial class Lista : Form
     {
         #region Objetos
-        int opcion = 0;
+        int option = 0;
         int records = 0;
         ProveedorBss objetoProveedor = new ProveedorBss();
         public ProveedorEnt proveedor = new ProveedorEnt();
         DataView dataViewProveedores = new DataView();
         #endregion
         #region Form
-        public Lista(int opcionX)
+        public Lista(int option)
         {
             InitializeComponent();
-            opcion = opcionX;
+            this.option = option;
         }
         private void Lista_Load(object sender, EventArgs e)
         {
@@ -49,14 +49,13 @@ namespace Super_Mercado_Mio.Proveedor
                 if (e.ColumnIndex == 0)
                 {
                     Proveedor.Ficha formularioFichaDeProveedor =
-                        new Ficha(Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value));
+                        new Ficha(Convert.ToInt32(dataGridViewProveedores["Id", e.RowIndex].Value));
                     formularioFichaDeProveedor.ShowDialog();
                 }
                 if (e.ColumnIndex == 1)
                 {
                     Proveedor.Modificar formularioModificarProveedor =
-                        new Modificar(Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value),
-                            this.refreshDataGridViewProveedores);
+                        new Modificar(Convert.ToInt32(dataGridViewProveedores["Id", e.RowIndex].Value));
                     formularioModificarProveedor.MdiParent = this.MdiParent;
                     this.Hide();
                     formularioModificarProveedor.Show();
@@ -65,9 +64,9 @@ namespace Super_Mercado_Mio.Proveedor
         }
         private void dataGridViewProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (opcion == 3)
+            if (option == 3)
             {
-                proveedor.ID_PROVEEDOR = Convert.ToInt32(dataGridViewProveedores["Id_Proveedor", e.RowIndex].Value);
+                proveedor.ID = Convert.ToInt32(dataGridViewProveedores["Id", e.RowIndex].Value);
                 proveedor.NIT = dataGridViewProveedores["Nit", e.RowIndex].Value.ToString();
                 this.Close();
             }
@@ -76,15 +75,15 @@ namespace Super_Mercado_Mio.Proveedor
         #region Metodos Propios
         private void setDataGridViewProveedoresFormat()
         {
-            if (opcion == 1)
+            if (option == 1)
             {
                 dataGridViewProveedores.Columns["Ficha"].Visible = true;
             }
-            else if (opcion == 2)
+            else if (option == 2)
             {
                 dataGridViewProveedores.Columns["Modificar"].Visible = true;
             }
-            dataGridViewProveedores.Columns["Id_Proveedor"].Visible = false;
+            dataGridViewProveedores.Columns["Id"].Visible = false;
             dataGridViewProveedores.Columns["Numero"].HeaderText = "Número";
             dataGridViewProveedores.Columns["Telefono"].HeaderText = "Teléfono";
             dataGridViewProveedores.Columns["Ficha"].Width = 100;
@@ -134,11 +133,6 @@ namespace Super_Mercado_Mio.Proveedor
                                                  " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
                 }
             }
-        }
-        private void refreshDataGridViewProveedores()
-        {
-            loadDataGridViewProveedores(objetoProveedor.searchAll());
-            filterDataGridViewProveedores();
         }
         #endregion
     }

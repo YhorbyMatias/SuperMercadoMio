@@ -9,15 +9,15 @@ namespace Ent
     public class OpcionEnt
     {
         #region Atributos
-        private int id_opcion;
+        private int id;
         private string nombre;
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_OPCION
+        public int ID
         {
-            get { return this.id_opcion; }
-            set { this.id_opcion = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public string NOMBRE
         {

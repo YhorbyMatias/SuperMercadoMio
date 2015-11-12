@@ -44,6 +44,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelNit = new System.Windows.Forms.Label();
             this.textBoxNit = new System.Windows.Forms.TextBox();
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBoxProveedor = new System.Windows.Forms.TextBox();
             this.labelProveedor = new System.Windows.Forms.Label();
             this.textBoxFecha = new System.Windows.Forms.TextBox();
@@ -90,8 +91,9 @@
             // 
             // textBoxNit
             // 
+            this.textBoxNit.ContextMenuStrip = this.contextMenuStripEmpty;
             this.errorProviderFormulario.SetIconPadding(this.textBoxNit, 5);
-            this.textBoxNit.Location = new System.Drawing.Point(77, 12);
+            this.textBoxNit.Location = new System.Drawing.Point(94, 12);
             this.textBoxNit.MaxLength = 12;
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.Size = new System.Drawing.Size(150, 20);
@@ -100,9 +102,14 @@
             this.textBoxNit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNit_KeyPress);
             this.textBoxNit.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNit_Validating);
             // 
+            // contextMenuStripEmpty
+            // 
+            this.contextMenuStripEmpty.Name = "contextMenuStripEmpty";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
+            // 
             // textBoxProveedor
             // 
-            this.textBoxProveedor.Location = new System.Drawing.Point(77, 38);
+            this.textBoxProveedor.Location = new System.Drawing.Point(94, 38);
             this.textBoxProveedor.Multiline = true;
             this.textBoxProveedor.Name = "textBoxProveedor";
             this.textBoxProveedor.ReadOnly = true;
@@ -469,5 +476,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto_Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje_De_Utilidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_De_Venta;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
     }
 }

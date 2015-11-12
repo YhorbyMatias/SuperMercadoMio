@@ -16,10 +16,8 @@ namespace Super_Mercado_Mio.Usuario
     public partial class Modificar : Form
     {
         #region Objetos
-        private readonly Action actualizarDataGridViewUsuarios;
         bool isWritable = true;
-        bool updated = false;
-        bool[] hasErrors = new bool[7];
+        bool[] hasErrors = new bool[] { false, false, false, false, false, false, false };
         OpcionBss objetoOpcion = new OpcionBss();
         UsuarioBss objetoUsuario = new UsuarioBss();
         UsuarioEnt usuario = new UsuarioEnt();
@@ -32,38 +30,15 @@ namespace Super_Mercado_Mio.Usuario
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Modificar(int idUsuarioX, Action actualizarDataGridViewUsuariosX)
+        public Modificar(int idUsuario)
         {
             InitializeComponent();
-            usuario.ID_USUARIO = idUsuarioX;
-            actualizarDataGridViewUsuarios = actualizarDataGridViewUsuariosX;
-        }
-        private void Modificar_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form formularioListaDeUsuarios = this.MdiParent.MdiChildren.FirstOrDefault(x => x is Usuario.Lista);
-            if (updated == false)
-            {
-                if (e.CloseReason == CloseReason.UserClosing)
-                {
-                    if (formularioListaDeUsuarios != null)
-                    {
-                        formularioListaDeUsuarios.Show();
-                    }
-                }
-            }
-            else
-            {
-                if (formularioListaDeUsuarios != null)
-                {
-                    actualizarDataGridViewUsuarios();
-                    formularioListaDeUsuarios.Show();
-                }
-            }
+            usuario.ID = idUsuario;
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
-            cargarCheckedListBoxOpciones();
-            cargarInformacionDeUsuario();
+            loadCheckedListBoxOpciones();
+            loadFormData();
         }
         #endregion
         #region textBoxCi
@@ -111,9 +86,9 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void textBoxCi_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarCi();
+            int errorCode = reviewCi();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxCi, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxCi, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxNombres
@@ -160,9 +135,9 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void textBoxNombres_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarNombres();
+            int errorCode = reviewNames();
             hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNombres, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNombres, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxApellidoPaterno
@@ -209,9 +184,9 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void textBoxApellidoPaterno_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarApellidoPaterno();
+            int errorCode = reviewLastName();
             hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxApellidoPaterno, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxApellidoPaterno, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxApellidoMaterno
@@ -258,9 +233,9 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void textBoxApellidoMaterno_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarApellidoMaterno();
+            int errorCode = reviewMotherLastName();
             hasErrors[3] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxApellidoMaterno, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxApellidoMaterno, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxTelefono
@@ -308,17 +283,17 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void textBoxTelefono_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarTelefono();
+            int errorCode = reviewPhone();
             hasErrors[4] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxNombreDeUsuario
         private void textBoxNombreDeUsuario_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarNombreDeUsuario();
+            int errorCode = reviewUserName();
             hasErrors[5] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNombreDeUsuario, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNombreDeUsuario, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region checkBoxSeleccionarTodos
@@ -333,25 +308,25 @@ namespace Super_Mercado_Mio.Usuario
         #region checkedListBoxOpciones
         private void checkedListBoxOpciones_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = validarOpciones();
+            int errorCode = reviewOptions();
             hasErrors[6] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(checkedListBoxOpciones, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(checkedListBoxOpciones, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (validaciones() == true)
+            if (checkForErrors() == true)
             {
-                cargarListPrivilegiosFinales();
+                loadListPrivilegiosFinales();
                 usuario.APELLIDO_MATERNO = textBoxApellidoMaterno.Text.Trim().ToUpper();
                 usuario.TELEFONO = textBoxTelefono.Text.Trim();
                 if (textBoxClave.Text.Trim() != "")
                 {
-                    usuario.CLAVE = cifrarClave(textBoxClave.Text.Trim());
+                    usuario.CLAVE = encryptPassword(textBoxClave.Text.Trim());
                 }
                 objetoUsuario.update(usuario);
-                insertarRegistro("Usuario", usuario.ID_USUARIO, "Modificar");
+                addRecord("Usuario", usuario.ID, "Modificar");
                 foreach (PrivilegioEnt privilegioAuxiliar in listPrivilegiosFinales)
                 {
                     bool estado = false;
@@ -366,7 +341,7 @@ namespace Super_Mercado_Mio.Usuario
                     if (estado == false)
                     {
                         int idPrivilegio = objetoPrivilegio.insert(privilegioAuxiliar);
-                        insertarRegistro("Privilegio", idPrivilegio, "Nuevo");
+                        addRecord("Privilegio", idPrivilegio, "Nuevo");
                     }
                 }
                 for (int filas = 0; filas < dataTablePrivilegios.Rows.Count; filas++)
@@ -383,13 +358,12 @@ namespace Super_Mercado_Mio.Usuario
                     if (estado == false)
                     {
                         privilegio = new PrivilegioEnt();
-                        privilegio.ID_PRIVILEGIO = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id_Privilegio"]);
+                        privilegio.ID = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id"]);
                         privilegio.ESTADO = false;
                         objetoPrivilegio.delete(privilegio);
-                        insertarRegistro("Privilegio", privilegio.ID_PRIVILEGIO, "Eliminar");
+                        addRecord("Privilegio", privilegio.ID, "Eliminar");
                     }
                 }
-                updated = true;
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -402,46 +376,18 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
-        private void cargarCheckedListBoxOpciones()
+        private void addRecord(string tablaX, int idTablaX, string tipoX)
         {
-            dataTableOpciones = objetoOpcion.search();
-            foreach (DataRow dataRowFila in dataTableOpciones.Rows)
-            {
-                checkedListBoxOpciones.Items.Add(dataRowFila["Nombre"].ToString());
-            }
+            registro = new RegistroEnt();
+            registro.USUARIO = SesionEnt.nombreDeUsuario;
+            registro.EQUIPO = SesionEnt.nombreDeEquipo;
+            registro.HORA = DateTime.Now.ToString("T");
+            registro.TABLA = tablaX;
+            registro.ID_TABLA = idTablaX;
+            registro.TIPO = tipoX;
+            objetoRegistro.insert(registro);
         }
-        private void obtenerPrivilegios(int idUsuarioX)
-        {
-            for (int items = 0; items < checkedListBoxOpciones.Items.Count; items++)
-            {
-                checkedListBoxOpciones.SetItemChecked(items, false);
-            }
-            privilegio.ID_USUARIO = idUsuarioX;
-            dataTablePrivilegios = objetoPrivilegio.search(privilegio);
-            foreach (DataRow dataRow in dataTablePrivilegios.Rows)
-            {
-                for (int fila = 0; fila < dataTableOpciones.Rows.Count; fila++)
-                {
-                    if (dataRow["Id_Opcion"].ToString() == dataTableOpciones.Rows[fila]["Id_Opcion"].ToString())
-                    {
-                        checkedListBoxOpciones.SetItemChecked(fila, true);
-                    }
-                }
-            }
-        }
-        private void cargarInformacionDeUsuario()
-        {
-            DataTable dataTableUsuario = objetoUsuario.search(usuario);
-            textBoxCi.Text = dataTableUsuario.Rows[0]["Ci"].ToString();
-            textBoxNombres.Text = dataTableUsuario.Rows[0]["Nombres"].ToString();
-            textBoxApellidoPaterno.Text = dataTableUsuario.Rows[0]["Apellido_Paterno"].ToString();
-            textBoxApellidoMaterno.Text = dataTableUsuario.Rows[0]["Apellido_Materno"].ToString();
-            textBoxTelefono.Text = dataTableUsuario.Rows[0]["Telefono"].ToString();
-            textBoxNombreDeUsuario.Text = dataTableUsuario.Rows[0]["Nombre_De_Usuario"].ToString();
-            usuario.CLAVE = dataTableUsuario.Rows[0]["Clave"].ToString();
-            obtenerPrivilegios(usuario.ID_USUARIO);
-        }
-        private bool verificarCi()
+        private bool authenticateCi()
         {
             usuario.CI = textBoxCi.Text.Trim();
             if (objetoUsuario.authenticateCi(usuario) == 0)
@@ -453,9 +399,9 @@ namespace Super_Mercado_Mio.Usuario
                 return false;
             }
         }
-        private bool verificarUsuario(int controlToValidateX)
+        private bool authenticateUser(int controlToValidate)
         {
-            if (hasErrors[controlToValidateX] == false)
+            if (hasErrors[controlToValidate] == false)
             {
                 usuario.NOMBRES = textBoxNombres.Text.Trim().ToUpper();
                 usuario.APELLIDO_PATERNO = textBoxApellidoPaterno.Text.Trim().ToUpper();
@@ -473,7 +419,7 @@ namespace Super_Mercado_Mio.Usuario
                 return false;
             }
         }
-        private bool verificarNombreDeUsuario()
+        private bool authenticateUserName()
         {
             usuario.NOMBRE_DE_USUARIO = textBoxNombreDeUsuario.Text.Trim();
             if (objetoUsuario.authenticateUserName(usuario) == 0)
@@ -485,149 +431,7 @@ namespace Super_Mercado_Mio.Usuario
                 return false;
             }
         }
-        private int validarCi()
-        {
-            if (textBoxCi.Text.Trim() != "")
-            {
-                if (ValidacionBss.esCadena(textBoxCi.Text.Trim()) == true)
-                {
-                    if (verificarCi())
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarNombres()
-        {
-            if (textBoxNombres.Text.Trim() != "")
-            {
-                if (ValidacionBss.esCadena(textBoxNombres.Text.Trim()) == true)
-                {
-                    if (verificarUsuario(2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarApellidoPaterno()
-        {
-            if (textBoxApellidoPaterno.Text.Trim() != "")
-            {
-                if (ValidacionBss.esCadena(textBoxApellidoPaterno.Text.Trim()) == true)
-                {
-                    if (verificarUsuario(1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarApellidoMaterno()
-        {
-            if (textBoxApellidoMaterno.Text.Trim() != "")
-            {
-                if (ValidacionBss.esCadena(textBoxApellidoMaterno.Text.Trim()) == true)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        private int validarTelefono()
-        {
-            if (textBoxTelefono.Text.Trim() != "")
-            {
-                if (ValidacionBss.esCelularOTelefono(textBoxTelefono.Text.Trim()) == true)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        private int validarNombreDeUsuario()
-        {
-            if (textBoxNombreDeUsuario.Text.Trim() != "")
-            {
-                if (verificarNombreDeUsuario())
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarOpciones()
-        {
-            int errorCode = 3;
-            for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
-            {
-                if (checkedListBoxOpciones.GetItemChecked(i))
-                {
-                    errorCode = 0;
-                    break;
-                }
-            }
-            return errorCode;
-        }
-        private bool validaciones()
+        private bool checkForErrors()
         {
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
@@ -663,20 +467,7 @@ namespace Super_Mercado_Mio.Usuario
                 return false;
             }
         }
-        private void cargarListPrivilegiosFinales()
-        {
-            for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
-            {
-                if (checkedListBoxOpciones.GetItemChecked(i))
-                {
-                    PrivilegioEnt privilegio = new PrivilegioEnt();
-                    privilegio.ID_USUARIO = usuario.ID_USUARIO;
-                    privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id_Opcion"]);
-                    listPrivilegiosFinales.Add(privilegio);
-                }
-            }
-        }
-        private string cifrarClave(string claveX)
+        private string encryptPassword(string claveX)
         {
             UTF8Encoding enc = new UTF8Encoding();
             byte[] data = enc.GetBytes(claveX);
@@ -694,16 +485,199 @@ namespace Super_Mercado_Mio.Usuario
             }
             return sb.ToString().ToUpper();
         }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
+        private void getPrivileges(int idUsuario)
         {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
+            for (int items = 0; items < checkedListBoxOpciones.Items.Count; items++)
+            {
+                checkedListBoxOpciones.SetItemChecked(items, false);
+            }
+            privilegio.ID_USUARIO = idUsuario;
+            dataTablePrivilegios = objetoPrivilegio.search(privilegio);
+            foreach (DataRow dataRow in dataTablePrivilegios.Rows)
+            {
+                for (int fila = 0; fila < dataTableOpciones.Rows.Count; fila++)
+                {
+                    if (dataRow["Id_Opcion"].ToString() == dataTableOpciones.Rows[fila]["Id"].ToString())
+                    {
+                        checkedListBoxOpciones.SetItemChecked(fila, true);
+                    }
+                }
+            }
+        }
+        private void loadCheckedListBoxOpciones()
+        {
+            dataTableOpciones = objetoOpcion.search();
+            foreach (DataRow dataRowFila in dataTableOpciones.Rows)
+            {
+                checkedListBoxOpciones.Items.Add(dataRowFila["Nombre"].ToString());
+            }
+        }
+        private void loadFormData()
+        {
+            DataTable dataTableUsuario = objetoUsuario.search(usuario);
+            textBoxCi.Text = dataTableUsuario.Rows[0]["Ci"].ToString();
+            textBoxNombres.Text = dataTableUsuario.Rows[0]["Nombres"].ToString();
+            textBoxApellidoPaterno.Text = dataTableUsuario.Rows[0]["Apellido_Paterno"].ToString();
+            textBoxApellidoMaterno.Text = dataTableUsuario.Rows[0]["Apellido_Materno"].ToString();
+            textBoxTelefono.Text = dataTableUsuario.Rows[0]["Telefono"].ToString();
+            textBoxNombreDeUsuario.Text = dataTableUsuario.Rows[0]["Nombre_De_Usuario"].ToString();
+            usuario.CLAVE = dataTableUsuario.Rows[0]["Clave"].ToString();
+            getPrivileges(usuario.ID);
+        }
+        private void loadListPrivilegiosFinales()
+        {
+            for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
+            {
+                if (checkedListBoxOpciones.GetItemChecked(i))
+                {
+                    PrivilegioEnt privilegio = new PrivilegioEnt();
+                    privilegio.ID_USUARIO = usuario.ID;
+                    privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id_Opcion"]);
+                    listPrivilegiosFinales.Add(privilegio);
+                }
+            }
+        }
+        private int reviewCi()
+        {
+            if (textBoxCi.Text.Trim() != "")
+            {
+                if (ValidacionBss.esCadena(textBoxCi.Text.Trim()) == true)
+                {
+                    if (authenticateCi())
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 110;
+                    }
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int reviewLastName()
+        {
+            if (textBoxApellidoPaterno.Text.Trim() != "")
+            {
+                if (ValidacionBss.esCadena(textBoxApellidoPaterno.Text.Trim()) == true)
+                {
+                    if (authenticateUser(1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 111;
+                    }
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int reviewMotherLastName()
+        {
+            if (textBoxApellidoMaterno.Text.Trim() != "")
+            {
+                if (ValidacionBss.esCadena(textBoxApellidoMaterno.Text.Trim()) == true)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private int reviewNames()
+        {
+            if (textBoxNombres.Text.Trim() != "")
+            {
+                if (ValidacionBss.esCadena(textBoxNombres.Text.Trim()) == true)
+                {
+                    if (authenticateUser(2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 111;
+                    }
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int reviewPhone()
+        {
+            if (textBoxTelefono.Text.Trim() != "")
+            {
+                if (ValidacionBss.esCelularOTelefono(textBoxTelefono.Text.Trim()) == true)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private int reviewUserName()
+        {
+            if (textBoxNombreDeUsuario.Text.Trim() != "")
+            {
+                if (authenticateUserName())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int reviewOptions()
+        {
+            int errorCode = 3;
+            for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
+            {
+                if (checkedListBoxOpciones.GetItemChecked(i))
+                {
+                    errorCode = 0;
+                    break;
+                }
+            }
+            return errorCode;
         }
         #endregion
     }

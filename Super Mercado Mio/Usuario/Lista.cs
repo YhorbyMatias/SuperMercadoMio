@@ -14,20 +14,20 @@ namespace Super_Mercado_Mio.Usuario
     public partial class Lista : Form
     {
         #region Objetos
-        int opcion = 0;
+        int option = 0;
         int records = 0;
         UsuarioBss objetoUsuario = new UsuarioBss();
-        DataView dataViewUsuarios = new DataView();
+        DataView dataViewUsers = new DataView();
         #endregion
         #region Form
-        public Lista(int opcionX)
+        public Lista(int option)
         {
             InitializeComponent();
-            opcion = opcionX;
+            this.option = option;
         }
         private void Lista_Load(object sender, EventArgs e)
         {
-            cargarDataGridViewUsuarios(objetoUsuario.searchAll());
+            loadDataGridViewUsers(objetoUsuario.searchAll());
         }
         #endregion
         #region textBoxBuscar
@@ -35,7 +35,7 @@ namespace Super_Mercado_Mio.Usuario
         {
             if (e.KeyValue == 13)
             {
-                filterDataGridViewUsuarios();
+                filterDataGridViewUsers();
             }
         }
         #endregion
@@ -46,37 +46,57 @@ namespace Super_Mercado_Mio.Usuario
             {
                 if (e.ColumnIndex == 0)
                 {
-                    Usuario.Modificar formularioModificarUsuario =
-                        new Modificar(Convert.ToInt32(dataGridViewUsuarios["Id_Usuario", e.RowIndex].Value),
-                            this.actualizarDataGridViewUsuarios);
-                    formularioModificarUsuario.MdiParent = this.MdiParent;
+                    Usuario.Modificar formModificarUsuario = new Modificar(Convert.ToInt32(dataGridViewUsuarios["Id", e.RowIndex].Value));
+                    formModificarUsuario.MdiParent = this.MdiParent;
                     this.Hide();
-                    formularioModificarUsuario.Show();
+                    formModificarUsuario.Show();
                 }
             }
         }
         #endregion
         #region Metodos Propios
-        private void setDataGridViewUsuariosFormat()
+        private void filterDataGridViewUsers()
         {
-            if (opcion == 2)
+            if (records > 0)
+            {
+                if (dataGridViewUsuarios.SortedColumn.ValueType == typeof(int))
+                {
+                    if (ValidacionBss.esEntero(textBoxBuscar.Text.Trim()))
+                    {
+                        dataViewUsers.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() + " = " + textBoxBuscar.Text.Trim();
+                    }
+                    else
+                    {
+                        dataViewUsers.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() + " = -1";
+                    }
+                }
+                else
+                {
+                    dataViewUsers.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() +
+                                                 " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
+                }
+            }
+        }
+        private void formatDataGridViewUsers()
+        {
+            if (option == 2)
             {
                 dataGridViewUsuarios.Columns["Modificar"].Visible = true;
             }
-            dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
-            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Número";
+            dataGridViewUsuarios.Columns["Id"].Visible = false;
+            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Nº";
             dataGridViewUsuarios.Columns["Modificar"].Width = 60;
             dataGridViewUsuarios.Columns["Numero"].Width = 70;
             dataGridViewUsuarios.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
-        private void cargarDataGridViewUsuarios(DataTable dataTableUsuariosX)
+        private void loadDataGridViewUsers(DataTable dataTableUsers)
         {
-            dataViewUsuarios.Table = dataTableUsuariosX;
-            dataGridViewUsuarios.DataSource = dataViewUsuarios;
+            dataViewUsers.Table = dataTableUsers;
+            dataGridViewUsuarios.DataSource = dataViewUsers;
             records = dataGridViewUsuarios.Rows.Count;
             if (records > 0)
             {
-                setDataGridViewUsuariosFormat();
+                formatDataGridViewUsers();
                 dataGridViewUsuarios.ColumnHeadersVisible = true;
                 dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
             }
@@ -85,33 +105,6 @@ namespace Super_Mercado_Mio.Usuario
                 dataGridViewUsuarios.DataSource = null;
                 dataGridViewUsuarios.ColumnHeadersVisible = false;
             }
-        }
-        private void filterDataGridViewUsuarios()
-        {
-            if (records > 0)
-            {
-                if (dataGridViewUsuarios.SortedColumn.ValueType == typeof(int))
-                {
-                    if (ValidacionBss.esEntero(textBoxBuscar.Text.Trim()))
-                    {
-                        dataViewUsuarios.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() + " = " + textBoxBuscar.Text.Trim();
-                    }
-                    else
-                    {
-                        dataViewUsuarios.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() + " = -1";
-                    }
-                }
-                else
-                {
-                    dataViewUsuarios.RowFilter = dataGridViewUsuarios.SortedColumn.Name.ToString() +
-                                                 " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
-                }
-            }
-        }
-        private void actualizarDataGridViewUsuarios()
-        {
-            cargarDataGridViewUsuarios(objetoUsuario.searchAll());
-            filterDataGridViewUsuarios();
         }
         #endregion
     }

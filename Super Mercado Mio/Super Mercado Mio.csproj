@@ -54,10 +54,64 @@
     <Compile Include="Archivo\CambiarClave.Designer.cs">
       <DependentUpon>CambiarClave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cliente\Busqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Busqueda.Designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Nuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Nuevo.Designer.cs">
+      <DependentUpon>Nuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compra\Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compra\Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra\Nueva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Compra\Nueva.Designer.cs">
+      <DependentUpon>Nueva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dosificacion\Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dosificacion\Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dosificacion\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dosificacion\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dosificacion\Nueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dosificacion\Nueva.Designer.cs">
       <DependentUpon>Nueva.cs</DependentUpon>
     </Compile>
     <Compile Include="Empresa\Datos.cs">
@@ -134,6 +188,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor\Busqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedor\Busqueda.Designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Proveedor\Eliminar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,10 +266,43 @@
     <Compile Include="Usuario\Nuevo.Designer.cs">
       <DependentUpon>Nuevo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venta\Nueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\Nueva.Designer.cs">
+      <DependentUpon>Nueva.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Archivo\CambiarClave.resx">
       <DependentUpon>CambiarClave.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Busqueda.resx">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Modificar.resx">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Nuevo.resx">
+      <DependentUpon>Nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compra\Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compra\Nueva.resx">
+      <DependentUpon>Nueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dosificacion\Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dosificacion\Modificar.resx">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dosificacion\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Empresa\Datos.resx">
@@ -258,6 +351,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Proveedor\Busqueda.resx">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Proveedor\Eliminar.resx">
       <DependentUpon>Eliminar.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\Nuevo.resx">
       <DependentUpon>Nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\Nueva.resx">
+      <DependentUpon>Nueva.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -336,6 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TLast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cerrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

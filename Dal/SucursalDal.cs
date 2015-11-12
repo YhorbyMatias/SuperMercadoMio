@@ -17,11 +17,23 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Sucursal) From Sucursal Where Estado = 1";
+            sqlCommand.CommandText = "Select Count(Id) From Sucursal Where Estado = 1";
             sqlConnection.Open();
             int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return exists;
+        }
+        public string getNumber(SucursalEnt sucursal)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Numero From Sucursal Where Estado = 1 And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", sucursal.ID);
+            sqlConnection.Open();
+            string number = Convert.ToString(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return number;
         }
         public int insert(SucursalEnt sucursal)
         {
@@ -45,7 +57,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select E.Razon_Social, E.Nit, S.Numero, S.Direccion, S.Telefono, S.Municipio "
-                + "From Empresa E, Sucursal S Where E.Id_Empresa = S.Id_Empresa And E.Estado = 1 And S.Estado = 1 And S.Id_Sucursal = 1";
+                + "From Empresa E, Sucursal S Where E.Id = S.Id_Empresa And E.Estado = 1 And S.Estado = 1 And S.Id = 1";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Sucursal");
@@ -57,7 +69,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Sucursal, Numero From Sucursal Where Estado = 1 And Id_Sucursal = 1";
+            sqlCommand.CommandText = "Select Id, Numero From Sucursal Where Id = 1 And Estado = 1";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Sucursal");
@@ -70,12 +82,12 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Sucursal Set Numero = @Numero, Direccion = @Direccion, Telefono = @Telefono, "
-                + "Municipio = @Municipio Where Id_Sucursal = @Id_Sucursal";
+                + "Municipio = @Municipio Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Numero", sucursal.NUMERO);
             sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
             sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
             sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
-            sqlCommand.Parameters.AddWithValue("@Id_Sucursal", sucursal.ID_SUCURSAL);
+            sqlCommand.Parameters.AddWithValue("@Id_Sucursal", sucursal.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

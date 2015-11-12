@@ -16,7 +16,7 @@ namespace Super_Mercado_Mio.Sucursal
     {
         #region Objetos
         bool isWritable = true;
-        bool[] hasErrors = new bool[4];
+        bool[] hasErrors = new bool[] { false, false, false, false };
         EmpresaBss objetoEmpresa = new EmpresaBss();
         SucursalBss objetoSucursal = new SucursalBss();
         SucursalEnt sucursal = new SucursalEnt();
@@ -88,7 +88,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarNumero();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxDireccion
@@ -96,7 +96,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarDireccion();
             hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxDireccion, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxDireccion, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxTelefono
@@ -146,7 +146,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarTelefono();
             hasErrors[2] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxTelefono, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxMunicipio
@@ -154,7 +154,7 @@ namespace Super_Mercado_Mio.Sucursal
         {
             int errorCode = validarMunicipio();
             hasErrors[3] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxMunicipio, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxMunicipio, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -162,13 +162,13 @@ namespace Super_Mercado_Mio.Sucursal
         {
             if (validaciones())
             {
-                sucursal.ID_SUCURSAL = 1;
+                sucursal.ID = 1;
                 sucursal.NUMERO = textBoxNumero.Text.Trim();
                 sucursal.DIRECCION = textBoxDireccion.Text.Trim().ToUpper();
                 sucursal.TELEFONO = textBoxTelefono.Text.Trim();
                 sucursal.MUNICIPIO = textBoxMunicipio.Text.Trim().ToUpper();
                 objetoSucursal.update(sucursal);
-                insertarRegistro("Sucursal", sucursal.ID_SUCURSAL, "Modificar");
+                insertarRegistro("Sucursal", sucursal.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

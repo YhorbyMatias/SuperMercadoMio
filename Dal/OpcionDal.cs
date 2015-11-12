@@ -16,7 +16,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Opcion, Nombre From Opcion Where Estado = 1 Order By Nombre";
+            sqlCommand.CommandText = "Select Id, Nombre From Opcion Where Estado = 1 Order By Nombre";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Opciones");

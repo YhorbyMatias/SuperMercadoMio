@@ -11,6 +11,7 @@ namespace Bss
     {
         #region Atributos
         public static string diccionarioCadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz áéíóúÁÉÍÓÚÑñ.,";
+        public static string diccionarioLlave = @"ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789=#()*+-_\@[]{}%$";
         #endregion
         #region Metodos
         public static string getErrorMessage(int errorCode)
@@ -30,21 +31,39 @@ namespace Bss
                 case 3:
                     errorMessage = "No se seleccionó niguna opción.";
                     break;
-                case 4:
+                    //User Errors
+                case 110:
                     errorMessage = "El CI ya se halla registrado.";
                     break;
-                case 5:
+                case 111:
                     errorMessage = "El usuario ya se halla registrado.";
                     break;
-                case 6:
+                case 112:
                     errorMessage = "El nombre de usuario ya se halla registrado.";
                     break;
-                case 7:
+                    //Dosificacion Errors
+                case 200:
+                    errorMessage = "El número de autorización ya se halla registrado.";
+                    break;
+                    //Provider Errors
+                case 400:
                     errorMessage = "El NIT ya se halla registrado.";
                     break;
+                case 401:
+                    errorMessage = "El proveedor ya se halla registrado.";
+                    break;
+                    //Client Errors
+                case 500:
+                    errorMessage = "El Ci o Nit ya se halla registrado.";
+                    break;
+                case 501:
+                    errorMessage = "El cliente ya se halla registrado.";
+                    break;
+                    //Group Errors
                 case 8:
                     errorMessage = "El grupo ya se halla registrado.";
                     break;
+                    //Product Screens
                 case 9:
                     errorMessage = "El código de barras ya se halla registrado.";
                     break;
@@ -57,6 +76,7 @@ namespace Bss
                 case 12:
                     errorMessage = "El precio de compra debe ser menor al precio de venta.";
                     break;
+                    //
                 case 13:
                     errorMessage = "Revise el nit del proveedor.";
                     break;
@@ -84,9 +104,35 @@ namespace Bss
         {
             return Regex.IsMatch(value, @"^[0-9]{4,8}$|[0]$|[00]$");
         }
+        public static bool esCiONit(string value)
+        {
+            return Regex.IsMatch(value, @"^\d{4,12}$|[0]$|[00]$");
+        }
+        public static bool isDigitOrControl(char value)
+        {
+            if (char.IsDigit(value))
+            {
+                return true;
+            }
+            else
+            {
+                if (Char.IsControl(value))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         public static bool esEntero(string value)
         {
             return Regex.IsMatch(value, @"^\d+$");
+        }
+        public static bool esLlaveDeDosificacion(string value)
+        {
+            return Regex.IsMatch(value, @"^[a-zA-Z23456789=#()*\+\-_\\@[\]{}%$]+$");
         }
         public static bool esNit(string value)
         {

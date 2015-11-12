@@ -32,7 +32,7 @@ namespace Super_Mercado_Mio.Usuario
         }
         private void Eliminar_Load(object sender, EventArgs e)
         {
-            cargarDataGridViewUsuarios(objetoUsuario.searchAll());
+            loadDataGridViewUsuarios(objetoUsuario.searchAll());
         }
         #endregion
         #region textBoxBuscar
@@ -52,21 +52,21 @@ namespace Super_Mercado_Mio.Usuario
                 if (MessageBox.Show("¿Está seguro de eliminar el usuario?", "Eliminar Usuario", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    usuario.ID_USUARIO = Convert.ToInt32(dataGridViewUsuarios.SelectedRows[0].Cells["Id_Usuario"].Value);
-                    if (usuario.ID_USUARIO != SesionEnt.idUsuario)
+                    usuario.ID = Convert.ToInt32(dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value);
+                    if (usuario.ID != SesionEnt.idUsuario)
                     {
                         usuario.ESTADO = false;
                         objetoUsuario.delete(usuario);
-                        insertarRegistro("Usuario", usuario.ID_USUARIO, "Eliminar");
-                        privilegio.ID_USUARIO = usuario.ID_USUARIO;
+                        addRecord("Usuario", usuario.ID, "Eliminar");
+                        privilegio.ID_USUARIO = usuario.ID;
                         dataTablePrivilegios = objetoPrivilegio.find(privilegio);
                         for (int filas = 0; filas < dataTablePrivilegios.Rows.Count; filas++)
                         {
                             privilegio = new PrivilegioEnt();
-                            privilegio.ID_PRIVILEGIO = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id_Privilegio"]);
+                            privilegio.ID = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id"]);
                             privilegio.ESTADO = false;
                             objetoPrivilegio.delete(privilegio);
-                            insertarRegistro("Privilegio", privilegio.ID_PRIVILEGIO, "Eliminar");
+                            addRecord("Privilegio", privilegio.ID, "Eliminar");
                         }
                         MessageBox.Show("El usuario fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
@@ -86,29 +86,16 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
-        private void setDataGridViewUsuariosFormat()
+        private void addRecord(string tabla, int clave, string tipo)
         {
-            dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
-            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Número";
-            dataGridViewUsuarios.Columns["Numero"].Width = 70;
-            dataGridViewUsuarios.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-        }
-        private void cargarDataGridViewUsuarios(DataTable dataTableUsuariosX)
-        {
-            dataViewUsuarios.Table = dataTableUsuariosX;
-            dataGridViewUsuarios.DataSource = dataViewUsuarios;
-            records = dataGridViewUsuarios.Rows.Count;
-            if (records > 0)
-            {
-                setDataGridViewUsuariosFormat();
-                dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
-                dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
-            }
-            else
-            {
-                dataGridViewUsuarios.DataSource = null;
-                dataGridViewUsuarios.ColumnHeadersVisible = false;
-            }
+            registro = new RegistroEnt();
+            registro.USUARIO = SesionEnt.nombreDeUsuario;
+            registro.EQUIPO = SesionEnt.nombreDeEquipo;
+            registro.HORA = DateTime.Now.ToString("T");
+            registro.TABLA = tabla;
+            registro.ID_TABLA = clave;
+            registro.TIPO = tipo;
+            objetoRegistro.insert(registro);
         }
         private void filterDataGridViewUsuarios()
         {
@@ -132,16 +119,29 @@ namespace Super_Mercado_Mio.Usuario
                 }
             }
         }
-        private void insertarRegistro(string tablaX, int claveX, string tipoX)
+        private void formatDataGridViewUsuarios()
         {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = claveX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
+            dataGridViewUsuarios.Columns["Id"].Visible = false;
+            dataGridViewUsuarios.Columns["Numero"].HeaderText = "Nº";
+            dataGridViewUsuarios.Columns["Numero"].Width = 70;
+            dataGridViewUsuarios.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+        private void loadDataGridViewUsuarios(DataTable dataTableUsuarios)
+        {
+            dataViewUsuarios.Table = dataTableUsuarios;
+            dataGridViewUsuarios.DataSource = dataViewUsuarios;
+            records = dataGridViewUsuarios.Rows.Count;
+            if (records > 0)
+            {
+                formatDataGridViewUsuarios();
+                dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
+                dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
+            }
+            else
+            {
+                dataGridViewUsuarios.DataSource = null;
+                dataGridViewUsuarios.ColumnHeadersVisible = false;
+            }
         }
         #endregion
     }

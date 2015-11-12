@@ -17,9 +17,9 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Privilegio Set Estado = @Estado Where Id_Privilegio = @Id_Privilegio";
+            sqlCommand.CommandText = "Update Privilegio Set Estado = @Estado Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Estado", privilegio.ESTADO);
-            sqlCommand.Parameters.AddWithValue("@Id_Privilegio", privilegio.ID_PRIVILEGIO);
+            sqlCommand.Parameters.AddWithValue("@Id", privilegio.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
@@ -29,8 +29,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Privilegio) From Opcion O, Privilegio P Where O.Id_Opcion = P.Id_Opcion "
-                + "And O.Estado = 1 And P.Estado = 1 And O.Nombre = @Nombre And P.Id_Usuario = @Id_Usuario";
+            sqlCommand.CommandText = "Select Count(Id) From Opcion O, Privilegio P Where O.Id = P.Id_Opcion And O.Estado = 1 "
+                + "And P.Estado = 1 And O.Nombre = @Nombre And P.Id_Usuario = @Id_Usuario";
             sqlCommand.Parameters.AddWithValue("@Nombre", opcion.NOMBRE);
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", privilegio.ID_USUARIO);
             sqlConnection.Open();
@@ -43,7 +43,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Privilegio From Privilegio Where Estado = 1 And Id_Usuario = @Id_Usuario";
+            sqlCommand.CommandText = "Select Id From Privilegio Where Estado = 1 And Id_Usuario = @Id_Usuario";
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", privilegio.ID_USUARIO);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -60,16 +60,16 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", privilegio.ID_USUARIO);
             sqlCommand.Parameters.AddWithValue("@Id_Opcion", privilegio.ID_OPCION);
             sqlConnection.Open();
-            int idPrivilegio = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
-            return idPrivilegio;
+            return id;
         }
         public DataTable search(PrivilegioEnt privilegio)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Privilegio, Id_Opcion From Privilegio Where Estado = 1 And Id_Usuario = @Id_Usuario";
+            sqlCommand.CommandText = "Select Id, Id_Opcion From Privilegio Where Estado = 1 And Id_Usuario = @Id_Usuario";
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", privilegio.ID_USUARIO);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -82,7 +82,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select O.Nombre From Opcion O, Privilegio P Where O.Id_Opcion = P.Id_Opcion And O.Estado = 1 "
+            sqlCommand.CommandText = "Select O.Nombre From Opcion O, Privilegio P Where O.Id = P.Id_Opcion And O.Estado = 1 "
                 + "And P.Estado = 1 And P.Id_Usuario = @Id_Usuario";
             sqlCommand.Parameters.AddWithValue("@Id_Usuario", privilegio.ID_USUARIO);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();

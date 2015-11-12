@@ -128,7 +128,8 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, "
-                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta From Producto Where Estado = 1 and Id_Producto = @Id_Producto";
+                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta From Producto Where Estado = 1 "
+                + "And Id_Producto = @Id_Producto";
             sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Producto");

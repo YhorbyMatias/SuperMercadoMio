@@ -9,7 +9,7 @@ namespace Ent
     public class SucursalEnt
     {
         #region Atributos
-        private int id_sucursal;
+        private int id;
         private int id_empresa;
         private string numero;
         private string direccion;
@@ -18,10 +18,10 @@ namespace Ent
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_SUCURSAL
+        public int ID
         {
-            get { return this.id_sucursal; }
-            set { this.id_sucursal = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_EMPRESA
         {

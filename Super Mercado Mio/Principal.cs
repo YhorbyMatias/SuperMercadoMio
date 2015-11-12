@@ -19,6 +19,8 @@ namespace Super_Mercado_Mio
         public UsuarioEnt usuario = new UsuarioEnt();
         EmpresaBss objetoEmpresa = new EmpresaBss();
         SucursalBss objetoSucursal = new SucursalBss();
+        DosificacionBss objetoDosificacion = new DosificacionBss();
+        DosificacionEnt dosificacion = new DosificacionEnt();
         #endregion
         #region Form
         public Principal()
@@ -31,14 +33,14 @@ namespace Super_Mercado_Mio
         }
         private void Principal_Load(object sender, EventArgs e)
         {
-            SesionEnt.idUsuario = usuario.ID_USUARIO;
+            SesionEnt.idUsuario = usuario.ID;
             SesionEnt.nombreDeUsuario = objetoUsuario.getFullName(usuario);
             SesionEnt.nombreDeEquipo = System.Environment.MachineName;
             toolStripStatusLabelUsuario.Text = "Usuario: " + SesionEnt.nombreDeUsuario;
             loadMenu();
             if (objetoEmpresa.exists() == 0)
             {
-                if (usuario.ID_USUARIO == 1)
+                if (usuario.ID == 1)
                 {
                     nuevaEmpresaToolStripMenuItem.Enabled = true;
                     nuevaEmpresaToolStripMenuItem.Visible = true;
@@ -56,7 +58,7 @@ namespace Super_Mercado_Mio
             }
             if (objetoSucursal.exists() == 0)
             {
-                if (usuario.ID_USUARIO == 1)
+                if (usuario.ID == 1)
                 {
                     nuevaSucursalToolStripMenuItem.Enabled = true;
                     nuevaSucursalToolStripMenuItem.Visible = true;
@@ -72,6 +74,7 @@ namespace Super_Mercado_Mio
                 nuevaSucursalToolStripMenuItem.Enabled = false;
                 nuevaSucursalToolStripMenuItem.Visible = false;
             }
+            reviewDosificacion();
         }
         #endregion
         #region Menu Archivo
@@ -158,6 +161,26 @@ namespace Super_Mercado_Mio
             formularioDatosDeSucursal.Show();
         }
         #endregion
+        #region Menu Dosificacion
+        private void nuevaDosificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dosificacion.Nueva formNuevaDosificacion = new Dosificacion.Nueva();
+            formNuevaDosificacion.MdiParent = this;
+            formNuevaDosificacion.Show();
+        }
+        private void modificarDosificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dosificacion.Lista formListaDeDosificacion = new Dosificacion.Lista(2);
+            formListaDeDosificacion.MdiParent = this;
+            formListaDeDosificacion.Show();
+        }
+        private void listaDeDosificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dosificacion.Lista formListaDeDosificacion = new Dosificacion.Lista(1);
+            formListaDeDosificacion.MdiParent = this;
+            formListaDeDosificacion.Show();
+        }
+        #endregion
         #region Menu Proveedor
         private void nuevoProveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -238,12 +261,38 @@ namespace Super_Mercado_Mio
             formularioNuevaCompra.Show();
         }
         #endregion
-        #region Metodos Propios
+        #region Menu Cliente
+        private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cliente.Nuevo formNuevoCliente = new Cliente.Nuevo(1, null);
+            formNuevoCliente.MdiParent = this;
+            formNuevoCliente.Show();
+        }
+        private void modificarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cliente.Lista formListaDeClientes = new Cliente.Lista(2);
+            formListaDeClientes.MdiParent = this;
+            formListaDeClientes.Show();
+        }
+        private void eliminarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cliente.Eliminar formEliminarCliente = new Cliente.Eliminar();
+            formEliminarCliente.MdiParent = this;
+            formEliminarCliente.Show();
+        }
+        private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cliente.Lista formListaDeClientes = new Cliente.Lista(1);
+            formListaDeClientes.MdiParent = this;
+            formListaDeClientes.Show();
+        }
+        #endregion
+        #region Methods
         private void loadMenu()
         {
             PrivilegioBss objetoprivilegio = new PrivilegioBss();
             PrivilegioEnt privilegio = new PrivilegioEnt();
-            privilegio.ID_USUARIO = usuario.ID_USUARIO;
+            privilegio.ID_USUARIO = usuario.ID;
             DataTable dataTablePrivilegios = objetoprivilegio.select(privilegio);
             int numeroderoles = dataTablePrivilegios.Rows.Count;
             for (int i = 0; i < numeroderoles; i++)
@@ -284,6 +333,15 @@ namespace Super_Mercado_Mio
                     case "Datos de Sucursal":
                         datosDeSucursalToolStripMenuItem.Enabled = true;
                         break;
+                    case "Nueva Dosificación":
+                        nuevaDosificacionToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Dosificación":
+                        modificarDosificacionToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Dosificaciones":
+                        listaDeDosificacionesToolStripMenuItem.Enabled = true;
+                        break;
                     case "Nuevo Proveedor":
                         nuevoProveedorToolStripMenuItem.Enabled = true;
                         break;
@@ -295,6 +353,18 @@ namespace Super_Mercado_Mio
                         break;
                     case "Lista de Proveedores":
                         listaDeProveedoresToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Nuevo Cliente":
+                        nuevoClienteToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Cliente":
+                        modificarClienteToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Eliminar Cliente":
+                        eliminarClienteToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Clientes":
+                        listaDeClientesToolStripMenuItem.Enabled = true;
                         break;
                     case "Nuevo Grupo":
                         nuevoGrupoToolStripMenuItem.Enabled = true;
@@ -330,6 +400,53 @@ namespace Super_Mercado_Mio
                 nuevaSucursalToolStripMenuItem.Visible = false;
             }
         }
-        #endregion        
+        private void reviewDosificacion()
+        {
+            SesionEnt.activeDosificacion = true;
+            dosificacion.ID_SUCURSAL = 1;
+            dosificacion.ESTADO = "ACTIVA";
+            if (objetoDosificacion.exists(dosificacion) == 1)
+            {
+                dosificacion.ID = objetoDosificacion.getId(dosificacion);
+                int remainingDays = objetoDosificacion.getRemainingDays(dosificacion);
+                if (remainingDays <= 7)
+                {
+                    if (remainingDays < 0)
+                    {
+                        dosificacion.ESTADO = "INACTIVA";
+                        objetoDosificacion.updateStatus(dosificacion);
+                        dosificacion = new DosificacionEnt();
+                        dosificacion.ID_SUCURSAL = 1;
+                        dosificacion.ESTADO = "PENDIENTE";
+                        if (objetoDosificacion.exists(dosificacion) == 1)
+                        {
+                            dosificacion.ID = objetoDosificacion.getId(dosificacion);
+                            dosificacion.ESTADO = "ACTIVA";
+                            objetoDosificacion.updateStatus(dosificacion);
+                        }
+                        else
+                        {
+                            nuevaDosificacionToolStripMenuItem.Visible = true;
+                            SesionEnt.activeDosificacion = false;
+                            MessageBox.Show("No existe una dosificación activa. No se pueden emitir facturas.", "Advertencia", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("La dosificación vencerá en " + remainingDays + " días.", "Advertencia", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+                nuevaDosificacionToolStripMenuItem.Visible = true;
+                SesionEnt.activeDosificacion = false;
+                MessageBox.Show("No existe una dosificación activa. No se pueden emitir facturas.", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+        #endregion
     }
 }

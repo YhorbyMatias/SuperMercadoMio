@@ -17,7 +17,7 @@ namespace Super_Mercado_Mio.Grupo
         #region Objetos
         private readonly Action refreshDataGridViewGrupos;
         bool updated = false;
-        bool[] hasErrors = new bool[1];
+        bool[] hasErrors = new bool[] { false };
         GrupoBss objetoGrupo = new GrupoBss();
         public GrupoEnt grupo = new GrupoEnt();
         RegistroBss objetoRegistro = new RegistroBss();

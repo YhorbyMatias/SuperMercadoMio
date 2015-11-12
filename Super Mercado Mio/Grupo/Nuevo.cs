@@ -15,7 +15,7 @@ namespace Super_Mercado_Mio.Grupo
     public partial class Nuevo : Form
     {
         #region Objetos
-        bool[] hasErrors = new bool[1];
+        bool[] hasErrors = new bool[] { true };
         GrupoBss objetoGrupo = new GrupoBss();
         public GrupoEnt grupo = new GrupoEnt();
         RegistroBss objetoRegistro = new RegistroBss();

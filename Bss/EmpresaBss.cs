@@ -21,7 +21,7 @@ namespace Bss
         }
         public int insert(EmpresaEnt empresa)
         {
-            return objetoEmpresa.insert(empresa);
+            return objetoEmpresa.add(empresa);
         }
         public void update(EmpresaEnt empresa)
         {

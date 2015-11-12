@@ -12,33 +12,7 @@ namespace Dal
     public class ProveedorDal
     {
         #region Metodos
-        public int authenticateNit(ProveedorEnt proveedor)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Proveedor) From Proveedor Where Estado = 1 And Nit = @Nit "
-                + "And Id_Proveedor <> @Id_Proveedor";
-            sqlCommand.Parameters.AddWithValue("@Nit", proveedor.NIT);
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID_PROVEEDOR);
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
-        public void delete(ProveedorEnt proveedor)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Proveedor Set Estado = @Estado Where Id_Proveedor = @Id_Proveedor";
-            sqlCommand.Parameters.AddWithValue("@Estado", proveedor.ESTADO);
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID_PROVEEDOR);
-            sqlConnection.Open();
-            sqlCommand.ExecuteNonQuery();
-            sqlConnection.Close();
-        }
-        public int insert(ProveedorEnt proveedor)
+        public int add(ProveedorEnt proveedor)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -91,14 +65,52 @@ namespace Dal
             sqlConnection.Close();
             return idProveedor;
         }
+        public int authenticateNit(ProveedorEnt proveedor)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Proveedor Where Estado = 1 And Nit = @Nit And Id <> @Id";
+            sqlCommand.Parameters.AddWithValue("@Nit", proveedor.NIT);
+            sqlCommand.Parameters.AddWithValue("@Id", proveedor.ID);
+            sqlConnection.Open();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exists;
+        }
+        public int authenticateName(ProveedorEnt proveedor)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Proveedor Where Estado = 1 And Nombre = @Nombre And Id <> @Id";
+            sqlCommand.Parameters.AddWithValue("@Nombre", proveedor.NOMBRE);
+            sqlCommand.Parameters.AddWithValue("@Id", proveedor.ID);
+            sqlConnection.Open();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exists;
+        }
+        public void delete(ProveedorEnt proveedor)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Proveedor Set Estado = @Estado Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Estado", proveedor.ESTADO);
+            sqlCommand.Parameters.AddWithValue("@Id", proveedor.ID);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
         public DataTable search(ProveedorEnt proveedor)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Nit, Nombre, Persona_De_Contacto, Direccion, Telefono, Celular, Numero_De_Cuenta "
-                + "From Proveedor Where Estado = 1 And Id_Proveedor = @Id_Proveedor";
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID_PROVEEDOR);
+                + "From Proveedor Where Estado = 1 And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedor");
@@ -123,7 +135,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select * From buscarProveedores() "
-                + "Where Not Exists (Select I.Id_Proveedor From Ingreso I Where Estado = 'VIGENTE' And Id_Proveedor = I.Id_Proveedor)";
+                + "Where Not Exists (Select I.Id_Proveedor From Ingreso I Where Estado = 'VIGENTE' And Id = I.Id_Proveedor)";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedores");
@@ -135,7 +147,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Proveedor, Nombre From Proveedor Where Estado = 1 And Nit = @Nit";
+            sqlCommand.CommandText = "Select Id, Nombre From Proveedor Where Estado = 1 And Nit = @Nit";
             sqlCommand.Parameters.AddWithValue("@Nit", proveedor.NIT);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -148,7 +160,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Proveedor, Nombre From buscarProveedores()";
+            sqlCommand.CommandText = "Select Id, Nombre From buscarProveedores()";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedores");
@@ -162,7 +174,7 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Proveedor Set Nit = @Nit, Nombre = @Nombre, Persona_De_Contacto = @Persona_De_Contacto, "
                 + "Direccion = @Direccion, Telefono = @Telefono, Celular = @Celular, Numero_De_Cuenta = @Numero_De_Cuenta "
-                + "Where Id_Proveedor = @Id_Proveedor";
+                + "Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Nit", proveedor.NIT);
             sqlCommand.Parameters.AddWithValue("@Nombre", proveedor.NOMBRE);
             if (proveedor.PERSONA_DE_CONTACTO != "")
@@ -205,7 +217,7 @@ namespace Dal
             {
                 sqlCommand.Parameters.AddWithValue("@Numero_De_Cuenta", DBNull.Value);
             }
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID_PROVEEDOR);
+            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

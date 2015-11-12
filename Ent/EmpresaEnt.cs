@@ -9,7 +9,7 @@ namespace Ent
     public class EmpresaEnt
     {
         #region Atributos
-        private int id_empresa;
+        private int id;
         private string razon_social;
         private string nit;
         private string actividad_economica;
@@ -17,10 +17,10 @@ namespace Ent
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_EMPRESA
+        public int ID
         {
-            get { return this.id_empresa; }
-            set { this.id_empresa = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public string RAZON_SOCIAL
         {

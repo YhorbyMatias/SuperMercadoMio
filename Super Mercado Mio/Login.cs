@@ -47,12 +47,12 @@ namespace Super_Mercado_Mio
                 ConexionBss.test();
                 usuario.NOMBRE_DE_USUARIO = textBoxUsuario.Text.Trim();
                 usuario.CLAVE = cifrarClave(textBoxClave.Text.Trim());
-                usuario.ID_USUARIO = objetoUsuario.login(usuario);
-                if (usuario.ID_USUARIO != 0)
+                usuario.ID = objetoUsuario.login(usuario);
+                if (usuario.ID != 0)
                 {
                     MessageBox.Show("Bienvenido: " + textBoxUsuario.Text, "Ingreso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Principal FormularioPrincipal = new Principal();
-                    FormularioPrincipal.usuario.ID_USUARIO = usuario.ID_USUARIO;
+                    FormularioPrincipal.usuario.ID = usuario.ID;
                     this.Hide();
                     FormularioPrincipal.Show();
                 }

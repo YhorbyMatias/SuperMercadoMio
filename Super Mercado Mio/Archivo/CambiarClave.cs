@@ -26,7 +26,7 @@ namespace Super_Mercado_Mio.Archivo
         public CambiarClave(UsuarioEnt usuarioX)
         {
             InitializeComponent();
-            idUsuario = usuarioX.ID_USUARIO;
+            idUsuario = usuarioX.ID;
             usuario = usuarioX;
         }
         #endregion
@@ -90,7 +90,7 @@ namespace Super_Mercado_Mio.Archivo
                 usuario.CLAVE = generarClave(textBoxNuevaClave.Text.Trim());
                 objetoUsuario.updatePassword(usuario);
                 string nombreDeUsuario = objetoUsuario.getFullName(usuario);
-                insertarRegistro(nombreDeUsuario, "Usuario", usuario.ID_USUARIO, "Update Password");
+                insertarRegistro(nombreDeUsuario, "Usuario", usuario.ID, "Update Password");
                 MessageBox.Show("La clave se cambió correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
