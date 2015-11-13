@@ -110,7 +110,7 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Nit, Nombre, Persona_De_Contacto, Direccion, Telefono, Celular, Numero_De_Cuenta "
                 + "From Proveedor Where Estado = 1 And Id = @Id";
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID);
+            sqlCommand.Parameters.AddWithValue("@Id", proveedor.ID);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Proveedor");
@@ -217,7 +217,7 @@ namespace Dal
             {
                 sqlCommand.Parameters.AddWithValue("@Numero_De_Cuenta", DBNull.Value);
             }
-            sqlCommand.Parameters.AddWithValue("@Id_Proveedor", proveedor.ID);
+            sqlCommand.Parameters.AddWithValue("@Id", proveedor.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

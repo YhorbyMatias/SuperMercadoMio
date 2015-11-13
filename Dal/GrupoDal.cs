@@ -17,9 +17,9 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Grupo) From Grupo Where Estado = 1 And Nombre = @Nombre And Id_Grupo <> @Id_Grupo";
+            sqlCommand.CommandText = "Select Count(Id) From Grupo Where Estado = 1 And Nombre = @Nombre And Id <> @Id";
             sqlCommand.Parameters.AddWithValue("@Nombre", grupo.NOMBRE);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Id", grupo.ID);
             sqlConnection.Open();
             int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
@@ -30,9 +30,9 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Grupo Set Estado = @Estado Where Id_Grupo = @Id_Grupo";
+            sqlCommand.CommandText = "Update Grupo Set Estado = @Estado Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Estado", grupo.ESTADO);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Id", grupo.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
@@ -54,8 +54,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Nombre From Grupo Where Estado = 1 And Id_Grupo = @Id_Grupo";
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
+            sqlCommand.CommandText = "Select Nombre From Grupo Where Estado = 1 And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", grupo.ID);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Grupo");
@@ -104,9 +104,9 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Grupo Set Nombre = @Nombre Where Id_Grupo = @Id_Grupo";
+            sqlCommand.CommandText = "Update Grupo Set Nombre = @Nombre Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Nombre", grupo.NOMBRE);
-            sqlCommand.Parameters.AddWithValue("@Id_Grupo", grupo.ID_GRUPO);
+            sqlCommand.Parameters.AddWithValue("@Id", grupo.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

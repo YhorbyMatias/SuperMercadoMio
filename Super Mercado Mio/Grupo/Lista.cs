@@ -46,7 +46,7 @@ namespace Super_Mercado_Mio.Grupo
             {
                 if (e.ColumnIndex == 0)
                 {
-                    Grupo.Modificar formularioModificarGrupo = new Modificar(Convert.ToInt32(dataGridViewGrupos["Id_Grupo", e.RowIndex].Value),
+                    Grupo.Modificar formularioModificarGrupo = new Modificar(Convert.ToInt32(dataGridViewGrupos["Id", e.RowIndex].Value),
                             this.refreshDataGridViewGrupos);
                     formularioModificarGrupo.MdiParent = this.MdiParent;
                     this.Hide();
@@ -62,7 +62,7 @@ namespace Super_Mercado_Mio.Grupo
             {
                 dataGridViewGrupos.Columns["Modificar"].Visible = true;
             }
-            dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
+            dataGridViewGrupos.Columns["Id"].Visible = false;
             dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
             dataGridViewGrupos.Columns["Modificar"].Width = 60;
             dataGridViewGrupos.Columns["Numero"].Width = 70;

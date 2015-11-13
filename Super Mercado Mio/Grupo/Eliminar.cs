@@ -49,10 +49,10 @@ namespace Super_Mercado_Mio.Grupo
                 if (MessageBox.Show("¿Está seguro de eliminar el grupo?", "Eliminar Grupo",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    grupo.ID_GRUPO = Convert.ToInt32(dataGridViewGrupos.SelectedRows[0].Cells["Id_Grupo"].Value);
+                    grupo.ID = Convert.ToInt32(dataGridViewGrupos.SelectedRows[0].Cells["Id"].Value);
                     grupo.ESTADO = false;
                     objetoGrupo.delete(grupo);
-                    insertarRegistro("Grupo", grupo.ID_GRUPO, "Eliminar");
+                    insertarRegistro("Grupo", grupo.ID, "Eliminar");
                     MessageBox.Show("El grupo fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -68,7 +68,7 @@ namespace Super_Mercado_Mio.Grupo
         #region Metodos Propios
         private void setDataGridViewGruposFormat()
         {
-            dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
+            dataGridViewGrupos.Columns["Id"].Visible = false;
             dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
             dataGridViewGrupos.Columns["Numero"].Width = 70;
             dataGridViewGrupos.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

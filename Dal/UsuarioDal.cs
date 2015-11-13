@@ -143,8 +143,8 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Ci, Nombres, Apellido_Paterno, Apellido_Materno, Telefono, Nombre_De_Usuario, Clave From Usuario "
-                + "Where Estado = 1 And Id_Usuario = @Id_Usuario";
-            sqlCommand.Parameters.AddWithValue("@Id_Usuario", usuario.ID);
+                + "Where Estado = 1 And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", usuario.ID);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Usuario");

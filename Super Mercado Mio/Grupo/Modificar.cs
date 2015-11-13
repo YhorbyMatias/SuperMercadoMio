@@ -27,7 +27,7 @@ namespace Super_Mercado_Mio.Grupo
         public Modificar(int idGrupoX, Action refreshDataGridViewGruposX)
         {
             InitializeComponent();
-            grupo.ID_GRUPO = idGrupoX;
+            grupo.ID = idGrupoX;
             refreshDataGridViewGrupos = refreshDataGridViewGruposX;
         }
         private void Modificar_FormClosing(object sender, FormClosingEventArgs e)
@@ -72,7 +72,7 @@ namespace Super_Mercado_Mio.Grupo
             {
                 objetoGrupo.update(grupo);
                 updated = true;
-                insertarRegistro("Grupo", grupo.ID_GRUPO, "Modificar");
+                insertarRegistro("Grupo", grupo.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();

@@ -87,7 +87,7 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
             sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
             sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
-            sqlCommand.Parameters.AddWithValue("@Id_Sucursal", sucursal.ID);
+            sqlCommand.Parameters.AddWithValue("@Id", sucursal.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

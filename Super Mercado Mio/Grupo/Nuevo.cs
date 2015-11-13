@@ -40,8 +40,8 @@ namespace Super_Mercado_Mio.Grupo
         {
             if (validaciones())
             {
-                grupo.ID_GRUPO = objetoGrupo.insert(grupo);
-                insertarRegistro("Grupo", grupo.ID_GRUPO, "Nuevo");
+                grupo.ID = objetoGrupo.insert(grupo);
+                insertarRegistro("Grupo", grupo.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
