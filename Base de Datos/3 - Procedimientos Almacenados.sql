@@ -22,8 +22,8 @@ Create Procedure insertarUsuario
 @Clave Varchar(Max)
 As
 Begin
-	Insert Into Usuario(Nombres, Apellido_Paterno, Apellido_Materno, Telefono, Nombre_De_Usuario, Clave, Estado)
-	Values(@Nombres, @Apellido_Paterno, @Apellido_Materno, @Telefono, @Nombre_De_Usuario, @Clave, 1)
+	Insert Into Usuario(Ci, Nombres, Apellido_Paterno, Apellido_Materno, Telefono, Nombre_De_Usuario, Clave, Estado)
+	Values(@Ci, @Nombres, @Apellido_Paterno, @Apellido_Materno, @Telefono, @Nombre_De_Usuario, @Clave, 1)
 	Select SCOPE_IDENTITY()
 End
 
