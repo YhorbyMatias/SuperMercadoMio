@@ -15,8 +15,6 @@ namespace Super_Mercado_Mio.Grupo
     public partial class Modificar : Form
     {
         #region Objetos
-        private readonly Action refreshDataGridViewGrupos;
-        bool updated = false;
         bool[] hasErrors = new bool[] { false };
         GrupoBss objetoGrupo = new GrupoBss();
         public GrupoEnt grupo = new GrupoEnt();
@@ -24,37 +22,14 @@ namespace Super_Mercado_Mio.Grupo
         RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
-        public Modificar(int idGrupoX, Action refreshDataGridViewGruposX)
+        public Modificar(int idGrupo)
         {
             InitializeComponent();
-            grupo.ID_GRUPO = idGrupoX;
-            refreshDataGridViewGrupos = refreshDataGridViewGruposX;
-        }
-        private void Modificar_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form formularioListaDeGrupos = this.MdiParent.MdiChildren.FirstOrDefault(x => x is Grupo.Lista);
-            if (updated == false)
-            {
-                if (e.CloseReason == CloseReason.UserClosing)
-                {
-                    if (formularioListaDeGrupos != null)
-                    {
-                        formularioListaDeGrupos.Show();
-                    }
-                }
-            }
-            else
-            {
-                if (formularioListaDeGrupos != null)
-                {
-                    refreshDataGridViewGrupos();
-                    formularioListaDeGrupos.Show();
-                }
-            }
+            grupo.ID = idGrupo;
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
-            cargarInformacionDeGrupo();
+            loadFormData();
         }
         #endregion
         #region textBoxNombre
@@ -71,8 +46,7 @@ namespace Super_Mercado_Mio.Grupo
             if (validaciones())
             {
                 objetoGrupo.update(grupo);
-                updated = true;
-                insertarRegistro("Grupo", grupo.ID_GRUPO, "Modificar");
+                addRecord("Grupo", grupo.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -86,7 +60,18 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
-        private void cargarInformacionDeGrupo()
+        private void addRecord(string tabla, int idTabla, string tipo)
+        {
+            registro = new RegistroEnt();
+            registro.USUARIO = SesionEnt.nombreDeUsuario;
+            registro.EQUIPO = SesionEnt.nombreDeEquipo;
+            registro.HORA = DateTime.Now.ToString("T");
+            registro.TABLA = tabla;
+            registro.ID_TABLA = idTabla;
+            registro.TIPO = tipo;
+            objetoRegistro.insert(registro);
+        }
+        private void loadFormData()
         {
             DataTable dataTableGrupo = objetoGrupo.search(grupo);
             textBoxNombre.Text = dataTableGrupo.Rows[0]["Nombre"].ToString();
@@ -101,7 +86,7 @@ namespace Super_Mercado_Mio.Grupo
                 }
                 else
                 {
-                    return 8;
+                    return 600;
                 }
             }
             else
@@ -133,17 +118,6 @@ namespace Super_Mercado_Mio.Grupo
                 textBoxNombre.Focus();
                 return false;
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

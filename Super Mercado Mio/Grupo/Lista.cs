@@ -14,7 +14,7 @@ namespace Super_Mercado_Mio.Grupo
     public partial class Lista : Form
     {
         #region Objetos
-        int opcion = 0;
+        int option = 0;
         int records = 0;
         GrupoBss objetoGrupo = new GrupoBss();
         DataView dataViewGrupos = new DataView();
@@ -23,7 +23,7 @@ namespace Super_Mercado_Mio.Grupo
         public Lista(int opcionX)
         {
             InitializeComponent();
-            opcion = opcionX;
+            option = opcionX;
         }
         private void Lista_Load(object sender, EventArgs e)
         {
@@ -46,8 +46,7 @@ namespace Super_Mercado_Mio.Grupo
             {
                 if (e.ColumnIndex == 0)
                 {
-                    Grupo.Modificar formularioModificarGrupo = new Modificar(Convert.ToInt32(dataGridViewGrupos["Id_Grupo", e.RowIndex].Value),
-                            this.refreshDataGridViewGrupos);
+                    Grupo.Modificar formularioModificarGrupo = new Modificar(Convert.ToInt32(dataGridViewGrupos["Id", e.RowIndex].Value));
                     formularioModificarGrupo.MdiParent = this.MdiParent;
                     this.Hide();
                     formularioModificarGrupo.Show();
@@ -58,19 +57,19 @@ namespace Super_Mercado_Mio.Grupo
         #region Metodos Propios
         private void setDataGridViewGruposFormat()
         {
-            if (opcion == 2)
+            if (option == 2)
             {
                 dataGridViewGrupos.Columns["Modificar"].Visible = true;
             }
-            dataGridViewGrupos.Columns["Id_Grupo"].Visible = false;
+            dataGridViewGrupos.Columns["Id"].Visible = false;
             dataGridViewGrupos.Columns["Numero"].HeaderText = "Número";
             dataGridViewGrupos.Columns["Modificar"].Width = 60;
             dataGridViewGrupos.Columns["Numero"].Width = 70;
             dataGridViewGrupos.Columns["Numero"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
-        private void loadDataGridViewGrupos(DataTable dataTableGruposX)
+        private void loadDataGridViewGrupos(DataTable dataTableGrupos)
         {
-            dataViewGrupos.Table = dataTableGruposX;
+            dataViewGrupos.Table = dataTableGrupos;
             dataGridViewGrupos.DataSource = dataViewGrupos;
             records = dataGridViewGrupos.Rows.Count;
             if (records > 0)
@@ -107,11 +106,6 @@ namespace Super_Mercado_Mio.Grupo
                                                  " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
                 }
             }
-        }
-        private void refreshDataGridViewGrupos()
-        {
-            loadDataGridViewGrupos(objetoGrupo.searchAll());
-            filterDataGridViewGrupos();
         }
         #endregion
     }

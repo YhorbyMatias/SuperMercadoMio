@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AperturaDeCajaBss.cs" />
     <Compile Include="CajaBss.cs" />
     <Compile Include="ClienteBss.cs" />
     <Compile Include="ConexionBss.cs" />

@@ -15,6 +15,10 @@ namespace Bss
         GrupoDal objetoGrupo = new GrupoDal();
         #endregion
         #region Metodos
+        public int add(GrupoEnt grupo)
+        {
+            return objetoGrupo.add(grupo);
+        }
         public int authenticate(GrupoEnt grupo)
         {
             return objetoGrupo.authenticate(grupo);
@@ -22,10 +26,6 @@ namespace Bss
         public void delete(GrupoEnt grupo)
         {
             objetoGrupo.delete(grupo);
-        }
-        public int insert(GrupoEnt grupo)
-        {
-            return objetoGrupo.insert(grupo);
         }
         public DataTable search(GrupoEnt grupo)
         {

@@ -40,8 +40,8 @@ namespace Super_Mercado_Mio.Grupo
         {
             if (validaciones())
             {
-                grupo.ID_GRUPO = objetoGrupo.insert(grupo);
-                insertarRegistro("Grupo", grupo.ID_GRUPO, "Nuevo");
+                grupo.ID = objetoGrupo.add(grupo);
+                addRecord("Grupo", grupo.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -55,6 +55,17 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
+        private void addRecord(string tabla, int idTabla, string tipo)
+        {
+            registro = new RegistroEnt();
+            registro.USUARIO = SesionEnt.nombreDeUsuario;
+            registro.EQUIPO = SesionEnt.nombreDeEquipo;
+            registro.HORA = DateTime.Now.ToString("T");
+            registro.TABLA = tabla;
+            registro.ID_TABLA = idTabla;
+            registro.TIPO = tipo;
+            objetoRegistro.insert(registro);
+        }
         private int validarNombre()
         {
             if (textBoxNombre.Text.Trim() != "")
@@ -65,7 +76,7 @@ namespace Super_Mercado_Mio.Grupo
                 }
                 else
                 {
-                    return 8;
+                    return 600;
                 }
             }
             else
@@ -97,17 +108,6 @@ namespace Super_Mercado_Mio.Grupo
                 textBoxNombre.Focus();
                 return false;
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

@@ -90,26 +90,26 @@ Go
 
 Create Table Caja
 (
-Id Int Not Null Identity(1,1),
-Nombre_De_Equipo Varchar(MAX) Not Null,
-Numero Varchar(100) Not Null,
-Estado Varchar(20) Not Null,
-Primary Key(Id)
+	Id Int Not Null Identity(1,1),
+	Nombre_De_Equipo Varchar(MAX) Not Null,
+	Numero Varchar(100) Not Null,
+	Estado Varchar(20) Not Null,
+	Primary Key(Id)
 )
 Go
 
 Create Table Apertura_De_Caja
 (
-Id Int Not Null Identity(1,1),
-Id_Usuario Int Not Null,
-Id_Caja Int Not Null,
-Fecha Date Not Null,
-Hora Varchar(50) Not Null,
-Monto Decimal(18,2) Not Null,
-Cerrado Bit Not Null,
-Primary Key(Id),
-Foreign Key(Id_Usuario) References Usuario(Id),
-Foreign Key(Id_Caja) References Caja(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(50) Not Null,
+	Monto Decimal(18,2) Not Null,
+	Cerrado Bit Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Usuario) References Usuario(Id),
+	Foreign Key(Id_Caja) References Caja(Id)
 )
 
 Create Table Cierre_De_Caja

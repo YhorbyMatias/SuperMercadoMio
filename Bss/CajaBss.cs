@@ -22,6 +22,18 @@ namespace Bss
         {
             return objetoCaja.authenticateNumber(caja);
         }
+        public int exists(CajaEnt caja)
+        {
+            return objetoCaja.exists(caja);
+        }
+        public int getId(CajaEnt caja)
+        {
+            return objetoCaja.getId(caja);
+        }
+        public int getNumber(CajaEnt caja)
+        {
+            return objetoCaja.getNumber(caja);
+        }
         #endregion
     }
 }

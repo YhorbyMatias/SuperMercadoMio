@@ -9,15 +9,15 @@ namespace Ent
     public class GrupoEnt
     {
         #region Atributos
-        private int id_grupo;
+        private int id;
         private string nombre;
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_GRUPO
+        public int ID
         {
-            get { return this.id_grupo; }
-            set { this.id_grupo = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public string NOMBRE
         {

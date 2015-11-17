@@ -54,6 +54,12 @@
     <Compile Include="Archivo\CambiarClave.Designer.cs">
       <DependentUpon>CambiarClave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Caja\Apertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja\Apertura.Designer.cs">
+      <DependentUpon>Apertura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Caja\Nueva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </Compile>
     <EmbeddedResource Include="Archivo\CambiarClave.resx">
       <DependentUpon>CambiarClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caja\Apertura.resx">
+      <DependentUpon>Apertura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Caja\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>

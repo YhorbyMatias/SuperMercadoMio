@@ -12,34 +12,45 @@ using System.Windows.Forms;
 
 namespace Super_Mercado_Mio.Caja
 {
-    public partial class Nueva : Form
+    public partial class Apertura : Form
     {
-        #region Objetos
+        #region Objects
         bool isWritable = true;
         bool[] hasErrors = new bool[] { true };
         CajaBss objetoCaja = new CajaBss();
         CajaEnt caja = new CajaEnt();
+        AperturaDeCajaBss objetoAperturaDeCaja = new AperturaDeCajaBss();
+        AperturaDeCajaEnt aperturaDeCaja = new AperturaDeCajaEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
         #endregion
-        #region Formulario
-        public Nueva()
+        #region Form
+        public Apertura()
         {
             InitializeComponent();
         }
-        private void Nueva_Load(object sender, EventArgs e)
+        private void Apertura_Load(object sender, EventArgs e)
         {
-            this.ControlBox = false;
-            buttonCerrar.Enabled = false;
+            caja.NOMBRE_DE_EQUIPO = System.Environment.MachineName;
+            textBoxNumeroDeCaja.Text = objetoCaja.getNumber(caja).ToString();
+            textBoxUsuario.Text = SesionEnt.nombreDeUsuario;
+            textBoxFecha.Text = DateTime.Now.ToShortDateString();
+            textBoxHora.Text = DateTime.Now.ToString("T");
+            timerHora.Start();
         }
         #endregion
-        #region textBoxNumero
-        private void textBoxNumero_KeyDown(object sender, KeyEventArgs e)
+        #region timerHora
+        private void timerHora_Tick(object sender, EventArgs e)
+        {
+            textBoxHora.Text = DateTime.Now.ToString("T");
+        }
+        #endregion
+        #region textBoxMonto
+        private void textBoxMonto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.V)
             {
-                Clipboard.SetText(Clipboard.GetText().Trim());
-                if (ValidacionBss.esEntero(Clipboard.GetText()) == false)
+                if (ValidacionBss.esRealConDosDecimales(Clipboard.GetText()) == false)
                 {
                     e.Handled = true;
                     isWritable = false;
@@ -50,21 +61,17 @@ namespace Super_Mercado_Mio.Caja
                 }
             }
         }
-        private void textBoxNumero_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (isWritable == true)
             {
-                if (char.IsDigit(e.KeyChar) == true)
+                if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != 46)
                 {
-                    e.Handled = false;
+                    e.Handled = true;
                 }
-                else
+                else if (e.KeyChar == 46)
                 {
-                    if (Char.IsControl(e.KeyChar))
-                    {
-                        e.Handled = false;
-                    }
-                    else
+                    if (textBoxMonto.Text.IndexOf(".") > -1)
                     {
                         e.Handled = true;
                     }
@@ -76,11 +83,11 @@ namespace Super_Mercado_Mio.Caja
                 e.Handled = true;
             }
         }
-        private void textBoxNumero_Validating(object sender, CancelEventArgs e)
+        private void textBoxMonto_Validating(object sender, CancelEventArgs e)
         {
-            int errorCode = reviewNumber();
+            int errorCode = reviewAmount();
             hasErrors[0] = Convert.ToBoolean(errorCode);
-            errorProvider.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
+            errorProvider.SetError(textBoxMonto, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region buttonGuardar
@@ -88,10 +95,14 @@ namespace Super_Mercado_Mio.Caja
         {
             if (checkForErrors())
             {
-                caja.NOMBRE_DE_EQUIPO = System.Environment.MachineName;
-                caja.NUMERO = textBoxNumero.Text.Trim();
-                objetoCaja.add(caja);
-                MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                aperturaDeCaja.ID_USUARIO = SesionEnt.idUsuario;
+                aperturaDeCaja.ID_CAJA = SesionEnt.idCaja;
+                aperturaDeCaja.HORA = DateTime.Now.ToString("T");
+                aperturaDeCaja.MONTO = Convert.ToDecimal(textBoxMonto.Text.Trim());
+                aperturaDeCaja.ID = objetoAperturaDeCaja.add(aperturaDeCaja);
+                addRecord("Apertura_De_Caja", aperturaDeCaja.ID, "Nuevo");
+                MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -99,6 +110,7 @@ namespace Super_Mercado_Mio.Caja
         #region buttonCerrar
         private void buttonCerrar_Click(object sender, EventArgs e)
         {
+            timerHora.Stop();
             this.Close();
         }
         #endregion
@@ -114,23 +126,8 @@ namespace Super_Mercado_Mio.Caja
             registro.TIPO = tipo;
             objetoRegistro.insert(registro);
         }
-        private int authenticateNumber()
-        {
-            caja.NUMERO = textBoxNumero.Text.Trim();
-            if (objetoCaja.authenticateNumber(caja) == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 300;
-            }
-        }
         private bool checkForErrors()
         {
-            int errorCode = authenticateNumber();
-            hasErrors[1] = Convert.ToBoolean(errorCode);
-            errorProvider.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)
             {
@@ -141,19 +138,26 @@ namespace Super_Mercado_Mio.Caja
                 switch (errorPosition)
                 {
                     case 0:
-                        textBoxNumero.Focus();
+                        textBoxMonto.Focus();
                         break;
                 }
                 return false;
             }
         }
-        private int reviewNumber()
+        private int reviewAmount()
         {
-            if (textBoxNumero.Text.Trim() != "")
+            if (textBoxMonto.Text.Trim() != "")
             {
-                if (ValidacionBss.esEntero(textBoxNumero.Text.Trim()) == true)
+                if (ValidacionBss.esRealConDosDecimales(textBoxMonto.Text.Trim()) == true)
                 {
-                    return authenticateNumber();
+                    if (Convert.ToDecimal(textBoxMonto.Text) >= 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
                 else
                 {

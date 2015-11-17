@@ -31,6 +31,9 @@ namespace Bss
                 case 3:
                     errorMessage = "No se seleccionó niguna opción.";
                     break;
+                case 4:
+                    errorMessage = "El valor del campo debe ser mayor a cero.";
+                    break;
                     //User Errors
                 case 110:
                     errorMessage = "El CI ya se halla registrado.";
@@ -44,6 +47,10 @@ namespace Bss
                     //Dosificacion Errors
                 case 200:
                     errorMessage = "El número de autorización ya se halla registrado.";
+                    break;
+                    //Caja Errors
+                case 300:
+                    errorMessage = "El número ya se halla registrado.";
                     break;
                     //Provider Errors
                 case 400:
@@ -60,7 +67,7 @@ namespace Bss
                     errorMessage = "El cliente ya se halla registrado.";
                     break;
                     //Group Errors
-                case 8:
+                case 600:
                     errorMessage = "El grupo ya se halla registrado.";
                     break;
                     //Product Screens

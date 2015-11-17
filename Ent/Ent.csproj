@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AperturaDeCajaEnt.cs" />
     <Compile Include="CajaEnt.cs" />
     <Compile Include="ClienteEnt.cs" />
     <Compile Include="DetalleDeIngresoEnt.cs" />

@@ -21,6 +21,8 @@ namespace Super_Mercado_Mio
         SucursalBss objetoSucursal = new SucursalBss();
         DosificacionBss objetoDosificacion = new DosificacionBss();
         DosificacionEnt dosificacion = new DosificacionEnt();
+        CajaBss objetoCaja = new CajaBss();
+        CajaEnt caja = new CajaEnt();
         #endregion
         #region Form
         public Principal()
@@ -75,6 +77,7 @@ namespace Super_Mercado_Mio
                 nuevaSucursalToolStripMenuItem.Visible = false;
             }
             reviewDosificacion();
+            reviewCashBox();
         }
         #endregion
         #region Menu Archivo
@@ -446,6 +449,16 @@ namespace Super_Mercado_Mio
                 MessageBox.Show("No existe una dosificación activa. No se pueden emitir facturas.", "Advertencia", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
+        }
+        private void reviewCashBox()
+        {
+            caja.NOMBRE_DE_EQUIPO = SesionEnt.nombreDeEquipo;
+            if (objetoCaja.exists(caja) == 0)
+            {
+                Caja.Nueva formNuevaCaja = new Caja.Nueva();
+                formNuevaCaja.ShowDialog();
+            }
+            SesionEnt.idCaja = objetoCaja.getId(caja);
         }
         #endregion
     }

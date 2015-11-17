@@ -81,6 +81,28 @@ Begin
 End
 Go
 
+Create Procedure insertarCaja
+@Nombre_De_Equipo Varchar(MAX),
+@Numero Varchar(20)
+As
+Begin
+	Insert Into Caja(Nombre_De_Equipo, Numero, Estado)
+	Values (@Nombre_De_Equipo, @Numero, 'ACTIVA')
+	Select SCOPE_IDENTITY()
+End
+
+Create Procedure insertarAperturaDeCaja
+@Id_Usuario Int,
+@Id_Caja Int,
+@Hora Varchar(50),
+@Monto Decimal(18,2)
+As
+Begin
+	Insert Into Apertura_De_Caja(Id_Usuario, Id_Caja, Fecha, Hora, Monto, Cerrado)
+	Values(@Id_Usuario, @Id_Caja, GETDATE(), @Hora, @Monto, 1)
+	Select SCOPE_IDENTITY()
+End
+
 Create Procedure insertarProveedor
 @Nit Varchar(12),
 @Nombre Varchar(300),

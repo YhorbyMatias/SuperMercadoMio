@@ -134,7 +134,7 @@ namespace Super_Mercado_Mio.Usuario
             if (records > 0)
             {
                 formatDataGridViewUsuarios();
-                dataGridViewUsuarios.Columns["Id_Usuario"].Visible = false;
+                dataGridViewUsuarios.Columns["Id"].Visible = false;
                 dataGridViewUsuarios.Sort(dataGridViewUsuarios.Columns["Usuario"], ListSortDirection.Ascending);
             }
             else

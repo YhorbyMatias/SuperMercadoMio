@@ -98,7 +98,6 @@ namespace Super_Mercado_Mio.Cliente
             {
                 cliente.CI_O_NIT = textBoxCiONit.Text.Trim();
                 cliente.NOMBRE = textBoxNombre.Text.ToUpper().Trim();
-                cliente.ESTADO = true;
                 cliente.ID = objetoCliente.add(cliente);
                 addRecord("Cliente", cliente.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
