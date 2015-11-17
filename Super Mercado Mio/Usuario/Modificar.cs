@@ -319,12 +319,16 @@ namespace Super_Mercado_Mio.Usuario
             if (checkForErrors() == true)
             {
                 loadListPrivilegiosFinales();
-                usuario.APELLIDO_MATERNO = textBoxApellidoMaterno.Text.Trim().ToUpper();
+                usuario.CI = textBoxCi.Text.Trim();
+                usuario.NOMBRES = textBoxNombres.Text.Trim();
+                usuario.APELLIDO_PATERNO = textBoxApellidoPaterno.Text.Trim();
+                usuario.APELLIDO_MATERNO = textBoxApellidoMaterno.Text.Trim();
                 usuario.TELEFONO = textBoxTelefono.Text.Trim();
                 if (textBoxClave.Text.Trim() != "")
                 {
                     usuario.CLAVE = encryptPassword(textBoxClave.Text.Trim());
                 }
+                usuario.NOMBRE_DE_USUARIO = textBoxNombreDeUsuario.Text.Trim();
                 objetoUsuario.update(usuario);
                 addRecord("Usuario", usuario.ID, "Modificar");
                 foreach (PrivilegioEnt privilegioAuxiliar in listPrivilegiosFinales)
@@ -532,7 +536,7 @@ namespace Super_Mercado_Mio.Usuario
                 {
                     PrivilegioEnt privilegio = new PrivilegioEnt();
                     privilegio.ID_USUARIO = usuario.ID;
-                    privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id_Opcion"]);
+                    privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id"]);
                     listPrivilegiosFinales.Add(privilegio);
                 }
             }

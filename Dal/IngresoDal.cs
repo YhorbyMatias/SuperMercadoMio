@@ -17,7 +17,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select ISNULL(MAX(Id_Ingreso), 0) As Numero_De_Registro From Ingreso";
+            sqlCommand.CommandText = "Select ISNULL(MAX(Id), 0) As Numero_De_Registro From Ingreso";
             sqlConnection.Open();
             int numeroDeRegistro = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
