@@ -38,10 +38,10 @@
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.textBoxHora = new System.Windows.Forms.TextBox();
             this.textBoxMonto = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.labelMonto = new System.Windows.Forms.Label();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.timerHora = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -143,15 +143,20 @@
             this.textBoxMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMonto_KeyPress);
             this.textBoxMonto.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMonto_Validating);
             // 
-            // label1
+            // contextMenuStripEmpty
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 165);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
-            this.label1.TabIndex = 221;
-            this.label1.Text = "Monto:";
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
+            // 
+            // labelMonto
+            // 
+            this.labelMonto.AutoSize = true;
+            this.labelMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMonto.Location = new System.Drawing.Point(12, 165);
+            this.labelMonto.Name = "labelMonto";
+            this.labelMonto.Size = new System.Drawing.Size(54, 16);
+            this.labelMonto.TabIndex = 221;
+            this.labelMonto.Text = "Monto:";
             // 
             // buttonCerrar
             // 
@@ -176,11 +181,6 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // contextMenuStripEmpty
-            // 
-            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
-            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
-            // 
             // errorProvider
             // 
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -200,7 +200,7 @@
             this.ClientSize = new System.Drawing.Size(284, 243);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelMonto);
             this.Controls.Add(this.textBoxMonto);
             this.Controls.Add(this.textBoxHora);
             this.Controls.Add(this.textBoxFecha);
@@ -232,7 +232,7 @@
         private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.TextBox textBoxHora;
         private System.Windows.Forms.TextBox textBoxMonto;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelMonto;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;

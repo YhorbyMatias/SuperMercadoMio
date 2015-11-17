@@ -31,11 +31,7 @@ namespace Super_Mercado_Mio.Caja
         }
         private void Apertura_Load(object sender, EventArgs e)
         {
-            caja.NOMBRE_DE_EQUIPO = System.Environment.MachineName;
-            textBoxNumeroDeCaja.Text = objetoCaja.getNumber(caja).ToString();
-            textBoxUsuario.Text = SesionEnt.nombreDeUsuario;
-            textBoxFecha.Text = DateTime.Now.ToShortDateString();
-            textBoxHora.Text = DateTime.Now.ToString("T");
+            loadFormData();
             timerHora.Start();
         }
         #endregion
@@ -143,6 +139,14 @@ namespace Super_Mercado_Mio.Caja
                 }
                 return false;
             }
+        }
+        private void loadFormData()
+        {
+            caja.NOMBRE_DE_EQUIPO = System.Environment.MachineName;
+            textBoxNumeroDeCaja.Text = objetoCaja.getNumber(caja).ToString();
+            textBoxUsuario.Text = SesionEnt.nombreDeUsuario;
+            textBoxFecha.Text = DateTime.Now.ToShortDateString();
+            textBoxHora.Text = DateTime.Now.ToString("T");
         }
         private int reviewAmount()
         {

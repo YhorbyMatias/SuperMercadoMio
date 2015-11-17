@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AperturaDeCajaBss.cs" />
     <Compile Include="CajaBss.cs" />
+    <Compile Include="CierreDeCajaBss.cs" />
     <Compile Include="ClienteBss.cs" />
     <Compile Include="ConexionBss.cs" />
     <Compile Include="DetalleDeIngresoBss.cs" />

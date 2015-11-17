@@ -114,22 +114,22 @@ Create Table Apertura_De_Caja
 
 Create Table Cierre_De_Caja
 (
-Id Int Not Null Identity(1,1),
-Id_Usuario Int Not Null,
-Id_Caja Int Not Null,
-Id_Apertura_De_Caja Int Not Null,
-Fecha Date Not Null,
-Hora Varchar(50) Not Null,
-Monto_De_Apertura_De_Caja Decimal(18,2) Not Null,
-Monto_Total_De_Ventas Decimal(18,2) Not Null,
-Monto_De_Devoluciones Decimal(18,2) Not Null,
-Monto_De_Ventas_De_Tarjetas Decimal(18,2) Not Null,
-Pagos Decimal(18,2) Not Null,
-Monto_Total Decimal(18,2) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Usuario) References Usuario(Id),
-Foreign Key(Id_Caja) References Caja(Id),
-Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
+	Id_Apertura_De_Caja Int Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(50) Not Null,
+	Monto_De_Apertura_De_Caja Decimal(18,2) Not Null,
+	Monto_De_Ventas Decimal(18,2) Not Null,
+	Monto_De_Devoluciones Decimal(18,2) Not Null,
+	Monto_De_Venta_De_Tarjetas Decimal(18,2) Not Null,
+	Monto_De_Pagos Decimal(18,2) Not Null,
+	Monto_Total Decimal(18,2) Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Usuario) References Usuario(Id),
+	Foreign Key(Id_Caja) References Caja(Id),
+	Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id)
 )
 
 Create Table Proveedor

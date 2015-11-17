@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AperturaDeCajaDal.cs" />
     <Compile Include="CajaDal.cs" />
+    <Compile Include="CierreDeCajaDal.cs" />
     <Compile Include="ClienteDal.cs" />
     <Compile Include="ConexionDal.cs" />
     <Compile Include="DetalleDeIngresoDal.cs" />
