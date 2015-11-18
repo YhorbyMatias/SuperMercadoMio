@@ -46,7 +46,9 @@
     <Compile Include="ClienteDal.cs" />
     <Compile Include="ConexionDal.cs" />
     <Compile Include="DetalleDeIngresoDal.cs" />
+    <Compile Include="DevolucionDal.cs" />
     <Compile Include="DosificacionDal.cs" />
+    <Compile Include="EgresoDal.cs" />
     <Compile Include="EmpresaDal.cs" />
     <Compile Include="GrupoDal.cs" />
     <Compile Include="IngresoDal.cs" />

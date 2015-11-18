@@ -32,7 +32,7 @@ namespace Bss
                     errorMessage = "No se seleccionó niguna opción.";
                     break;
                 case 4:
-                    errorMessage = "El valor del campo debe ser mayor a cero.";
+                    errorMessage = "El valor del campo debe ser mayor o igual a cero.";
                     break;
                     //User Errors
                 case 110:
@@ -51,6 +51,9 @@ namespace Bss
                     //Caja Errors
                 case 300:
                     errorMessage = "El número ya se halla registrado.";
+                    break;
+                case 301:
+                    errorMessage = "El monto total no puede ser negativo.";
                     break;
                     //Provider Errors
                 case 400:

@@ -49,7 +49,9 @@
     <Compile Include="ClienteBss.cs" />
     <Compile Include="ConexionBss.cs" />
     <Compile Include="DetalleDeIngresoBss.cs" />
+    <Compile Include="DevolucionBss.cs" />
     <Compile Include="DosificacionBss.cs" />
+    <Compile Include="EgresoBss.cs" />
     <Compile Include="EmpresaBss.cs" />
     <Compile Include="GrupoBss.cs" />
     <Compile Include="ImpresionBss.cs" />

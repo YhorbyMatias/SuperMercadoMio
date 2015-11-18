@@ -19,6 +19,10 @@ namespace Bss
         {
             return objetoAperturaDeCaja.add(aperturaDeCaja);
         }
+        public void close(AperturaDeCajaEnt aperturaDeCaja)
+        {
+            objetoAperturaDeCaja.close(aperturaDeCaja);
+        }
         public int exists(AperturaDeCajaEnt aperturaDeCaja)
         {
             return objetoAperturaDeCaja.exists(aperturaDeCaja);

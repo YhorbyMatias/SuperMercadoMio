@@ -218,26 +218,24 @@ Foreign Key(Id_Producto) References Producto(Id)
 
 Create Table Egreso
 (
-Id Int Not Null Identity(1,1),
-Id_Usuario Int Not Null,
-Id_Caja Int Not Null,
-Id_Apertura_De_Caja Int Not Null,
-Id_Cliente Int Not Null,
-Fecha Date Not Null,
-Hora Varchar(50) Not Null,
-Tipo Varchar(15) Not Null,
-Metodo_De_Pago Varchar(15) Not Null,
-Monto Decimal(18,2) Not Null,
-Monto_Pagado Decimal(18,2) Not Null,
-Cambio Decimal(18,2) Not Null,
-Observaciones Varchar(500) Null,
-Cerrado Bit Not Null,
-Estado Varchar(7) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Usuario) References Usuario(Id),
-Foreign Key(Id_Caja) References Caja(Id),
-Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id),
-Foreign Key(Id_Cliente) References Cliente(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
+	Id_Apertura_De_Caja Int Not Null,
+	Id_Cliente Int Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(50) Not Null,
+	Tipo Varchar(15) Not Null,
+	Metodo_De_Pago Varchar(15) Null,
+	Monto Decimal(18,2) Not Null,
+	Monto_Pagado Decimal(18,2) Not Null,
+	Cambio Decimal(18,2) Not Null,
+	Observaciones Varchar(500) Null,
+	Facturado Bit Not Null,
+	Cerrado Bit Not Null,
+	Estado Varchar(7) Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Usuario) References Usuario(Id)
 )
 
 Create Table Detalle_De_Egreso
@@ -257,30 +255,30 @@ Go
 
 Create Table Factura
 (
-Id Int Not Null Identity(1,1),
-Id_Usuario Int Not Null,
-Id_Caja Int Not Null,
-Id_Apertura_De_Caja Int Not Null,
-Id_Egreso Int Not Null,
-Id_Cliente Int Not Null,
-Id_Dosificacion Int Not Null,
-Numero_De_Autorizacion Varchar(15) Not Null,
-Numero_De_Factura Int Not Null,
-Codigo_De_Control Varchar(14) Not Null,
-Nit_O_Ci_Cliente Varchar(12) Not Null,
-Cliente Varchar(500) Not Null,
-Fecha Date Not Null,
-Hora Varchar(50) Not Null,
-Monto Money Not Null,
-Monto_Pagado Money Not Null,
-Cambio Money Not Null,
-Estado Varchar(7) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Usuario) References Usuario(Id),
-Foreign Key(Id_Caja) References Caja(Id),
-Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id),
-Foreign Key(Id_Cliente) References Cliente(Id),
-Foreign Key(Id_Dosificacion) References Dosificacion(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
+	Id_Apertura_De_Caja Int Not Null,
+	Id_Egreso Int Not Null,
+	Id_Cliente Int Not Null,
+	Id_Dosificacion Int Not Null,
+	Numero_De_Autorizacion Varchar(15) Not Null,
+	Numero_De_Factura Int Not Null,
+	Codigo_De_Control Varchar(14) Not Null,
+	Ci_O_Nit Varchar(12) Not Null,
+	Cliente Varchar(500) Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(50) Not Null,
+	Monto Decimal(18,2) Not Null,
+	Monto_Pagado Decimal(18,2) Not Null,
+	Cambio Decimal(18,2) Not Null,
+	Estado Varchar(7) Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Usuario) References Usuario(Id),
+	Foreign Key(Id_Caja) References Caja(Id),
+	Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id),
+	Foreign Key(Id_Cliente) References Cliente(Id),
+	Foreign Key(Id_Dosificacion) References Dosificacion(Id)
 )
 Go
 
@@ -299,21 +297,21 @@ Foreign Key(Id_Producto) References Producto(Id),
 )
 Go
 
-Create Table Monto_De_Devolucion
+Create Table Devolucion
 (
-Id Int Not Null Identity(1,1),
-Id_Usuario Int Not Null,
-Id_Caja Int Not Null,
-Id_Apertura_De_Caja Int Not Null,
-Id_Egreso Int Not Null,
-Fecha Date Not Null,
-Hora Varchar(50) Not Null,
-Monto Decimal(18,2) Not Null,
-Cerrado Bit Not Null,
-Estado Bit Not Null,
-Primary Key(Id),
-Foreign Key(Id_Usuario) References Usuario(Id),
-Foreign Key(Id_Caja) References Caja(Id),
-Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
+	Id_Apertura_De_Caja Int Not Null,
+	Id_Egreso Int Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(50) Not Null,
+	Monto Decimal(18,2) Not Null,
+	Cerrado Bit Not Null,
+	Estado Bit Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Usuario) References Usuario(Id),
+	Foreign Key(Id_Caja) References Caja(Id),
+	Foreign Key(Id_Apertura_De_Caja) References Apertura_De_Caja(Id)
 )
 Go

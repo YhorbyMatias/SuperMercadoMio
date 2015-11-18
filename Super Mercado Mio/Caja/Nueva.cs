@@ -129,7 +129,7 @@ namespace Super_Mercado_Mio.Caja
         private bool checkForErrors()
         {
             int errorCode = authenticateNumber();
-            hasErrors[1] = Convert.ToBoolean(errorCode);
+            hasErrors[0] = Convert.ToBoolean(errorCode);
             errorProvider.SetError(textBoxNumero, ValidacionBss.getErrorMessage(errorCode));
             int errorPosition = hasErrors.ToList().IndexOf(true);
             if (errorPosition == -1)

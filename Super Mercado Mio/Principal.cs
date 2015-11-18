@@ -236,32 +236,12 @@ namespace Super_Mercado_Mio
             formularioListaDeProductos.Show();
         }
         #endregion
-        #region Menu Producto
-        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Menu Caja
+        private void aperturaDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo(1, null);
-            formularioNuevoProducto.MdiParent = this;
-            formularioNuevoProducto.Show();
-        }
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Producto.Lista formularioListaDeProductos = new Producto.Lista(2);
-            formularioListaDeProductos.MdiParent = this;
-            formularioListaDeProductos.Show();
-        }
-        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Producto.Lista formularioListaDeProductos = new Producto.Lista(1);
-            formularioListaDeProductos.MdiParent = this;
-            formularioListaDeProductos.Show();
-        }
-        #endregion
-        #region Menu Compra
-        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Compra.Nueva formularioNuevaCompra = new Compra.Nueva();
-            formularioNuevaCompra.MdiParent = this;
-            formularioNuevaCompra.Show();
+            Caja.Apertura formAperturaDeCaja = new Caja.Apertura();
+            formAperturaDeCaja.MdiParent = this;
+            formAperturaDeCaja.Show();
         }
         #endregion
         #region Menu Cliente
@@ -288,6 +268,34 @@ namespace Super_Mercado_Mio
             Cliente.Lista formListaDeClientes = new Cliente.Lista(1);
             formListaDeClientes.MdiParent = this;
             formListaDeClientes.Show();
+        }
+        #endregion
+        #region Menu Producto
+        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo(1, null);
+            formularioNuevoProducto.MdiParent = this;
+            formularioNuevoProducto.Show();
+        }
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Lista formularioListaDeProductos = new Producto.Lista(2);
+            formularioListaDeProductos.MdiParent = this;
+            formularioListaDeProductos.Show();
+        }
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Lista formularioListaDeProductos = new Producto.Lista(1);
+            formularioListaDeProductos.MdiParent = this;
+            formularioListaDeProductos.Show();
+        }
+        #endregion
+        #region Menu Compra
+        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Nueva formularioNuevaCompra = new Compra.Nueva();
+            formularioNuevaCompra.MdiParent = this;
+            formularioNuevaCompra.Show();
         }
         #endregion
         #region Methods
@@ -356,6 +364,9 @@ namespace Super_Mercado_Mio
                         break;
                     case "Lista de Proveedores":
                         listaDeProveedoresToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Apertura de Caja":
+                        aperturaDeCajaToolStripMenuItem.Enabled = true;
                         break;
                     case "Nuevo Cliente":
                         nuevoClienteToolStripMenuItem.Enabled = true;

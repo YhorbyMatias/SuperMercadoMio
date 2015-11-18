@@ -284,6 +284,12 @@
     <Compile Include="Usuario\Nuevo.Designer.cs">
       <DependentUpon>Nuevo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venta\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Venta\Nueva.cs">
       <SubType>Form</SubType>
     </Compile>

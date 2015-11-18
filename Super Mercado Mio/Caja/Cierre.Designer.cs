@@ -44,8 +44,8 @@
             this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.textBoxMontoDeVentas = new System.Windows.Forms.TextBox();
             this.labelMontoDeVentas = new System.Windows.Forms.Label();
-            this.textBoxMontoPorDevoluciones = new System.Windows.Forms.TextBox();
-            this.labelMontoPorDevoluciones = new System.Windows.Forms.Label();
+            this.textBoxMontoDeDevoluciones = new System.Windows.Forms.TextBox();
+            this.labelMontoDeDevoluciones = new System.Windows.Forms.Label();
             this.textBoxMontoDeVentaDeTarjetas = new System.Windows.Forms.TextBox();
             this.labelMontoDeVentaDeTarjetas = new System.Windows.Forms.Label();
             this.textBoxMontoDePagos = new System.Windows.Forms.TextBox();
@@ -196,27 +196,27 @@
             this.labelMontoDeVentas.TabIndex = 235;
             this.labelMontoDeVentas.Text = "Ventas:";
             // 
-            // textBoxMontoPorDevoluciones
+            // textBoxMontoDeDevoluciones
             // 
-            this.textBoxMontoPorDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMontoPorDevoluciones.Location = new System.Drawing.Point(172, 218);
-            this.textBoxMontoPorDevoluciones.MaxLength = 10;
-            this.textBoxMontoPorDevoluciones.Name = "textBoxMontoPorDevoluciones";
-            this.textBoxMontoPorDevoluciones.ReadOnly = true;
-            this.textBoxMontoPorDevoluciones.Size = new System.Drawing.Size(150, 22);
-            this.textBoxMontoPorDevoluciones.TabIndex = 236;
-            this.textBoxMontoPorDevoluciones.TabStop = false;
-            this.textBoxMontoPorDevoluciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMontoDeDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMontoDeDevoluciones.Location = new System.Drawing.Point(172, 218);
+            this.textBoxMontoDeDevoluciones.MaxLength = 10;
+            this.textBoxMontoDeDevoluciones.Name = "textBoxMontoDeDevoluciones";
+            this.textBoxMontoDeDevoluciones.ReadOnly = true;
+            this.textBoxMontoDeDevoluciones.Size = new System.Drawing.Size(150, 22);
+            this.textBoxMontoDeDevoluciones.TabIndex = 236;
+            this.textBoxMontoDeDevoluciones.TabStop = false;
+            this.textBoxMontoDeDevoluciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // labelMontoPorDevoluciones
+            // labelMontoDeDevoluciones
             // 
-            this.labelMontoPorDevoluciones.AutoSize = true;
-            this.labelMontoPorDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoPorDevoluciones.Location = new System.Drawing.Point(12, 221);
-            this.labelMontoPorDevoluciones.Name = "labelMontoPorDevoluciones";
-            this.labelMontoPorDevoluciones.Size = new System.Drawing.Size(107, 16);
-            this.labelMontoPorDevoluciones.TabIndex = 237;
-            this.labelMontoPorDevoluciones.Text = "Devoluciones:";
+            this.labelMontoDeDevoluciones.AutoSize = true;
+            this.labelMontoDeDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMontoDeDevoluciones.Location = new System.Drawing.Point(12, 221);
+            this.labelMontoDeDevoluciones.Name = "labelMontoDeDevoluciones";
+            this.labelMontoDeDevoluciones.Size = new System.Drawing.Size(107, 16);
+            this.labelMontoDeDevoluciones.TabIndex = 237;
+            this.labelMontoDeDevoluciones.Text = "Devoluciones:";
             // 
             // textBoxMontoDeVentaDeTarjetas
             // 
@@ -331,8 +331,8 @@
             this.Controls.Add(this.labelMontoDePagos);
             this.Controls.Add(this.textBoxMontoDeVentaDeTarjetas);
             this.Controls.Add(this.labelMontoDeVentaDeTarjetas);
-            this.Controls.Add(this.textBoxMontoPorDevoluciones);
-            this.Controls.Add(this.labelMontoPorDevoluciones);
+            this.Controls.Add(this.textBoxMontoDeDevoluciones);
+            this.Controls.Add(this.labelMontoDeDevoluciones);
             this.Controls.Add(this.textBoxMontoDeVentas);
             this.Controls.Add(this.labelMontoDeVentas);
             this.Controls.Add(this.textBoxMontoDeAperturaDeCaja);
@@ -373,8 +373,8 @@
         private System.Windows.Forms.Timer timerHora;
         private System.Windows.Forms.TextBox textBoxMontoDeVentas;
         private System.Windows.Forms.Label labelMontoDeVentas;
-        private System.Windows.Forms.TextBox textBoxMontoPorDevoluciones;
-        private System.Windows.Forms.Label labelMontoPorDevoluciones;
+        private System.Windows.Forms.TextBox textBoxMontoDeDevoluciones;
+        private System.Windows.Forms.Label labelMontoDeDevoluciones;
         private System.Windows.Forms.TextBox textBoxMontoDeVentaDeTarjetas;
         private System.Windows.Forms.Label labelMontoDeVentaDeTarjetas;
         private System.Windows.Forms.TextBox textBoxMontoDePagos;
