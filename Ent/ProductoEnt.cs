@@ -9,7 +9,7 @@ namespace Ent
     public class ProductoEnt
     {
         #region Atributos
-        private int id_producto;
+        private int id;
         private int id_proveedor;
         private int id_grupo;
         private string tipo_de_codigo_de_barras;
@@ -17,19 +17,19 @@ namespace Ent
         private string nombre_generico;
         private string marca;
         private string presentacion;
-        private string alias;
         private string sabor_u_olor;
         private string tipo;
         private decimal cantidad_minima;
         private decimal precio_de_compra;
         private decimal precio_de_venta;
+        private string alias;
         private bool estado;
         #endregion
         #region Propiedades
-        public int ID_PRODUCTO
+        public int ID
         {
-            get { return this.id_producto; }
-            set { this.id_producto = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_PROVEEDOR
         {
@@ -66,11 +66,6 @@ namespace Ent
             get { return this.presentacion; }
             set { this.presentacion = value; }
         }
-        public string ALIAS
-        {
-            get { return this.alias; }
-            set { this.alias = value; }
-        }
         public string SABOR_U_OLOR
         {
             get { return this.sabor_u_olor; }
@@ -95,6 +90,11 @@ namespace Ent
         {
             get { return this.precio_de_venta; }
             set { this.precio_de_venta = value; }
+        }
+        public string ALIAS
+        {
+            get { return this.alias; }
+            set { this.alias = value; }
         }
         public bool ESTADO
         {

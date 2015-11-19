@@ -239,11 +239,11 @@ namespace Super_Mercado_Mio.Compra
                     detalleDeIngreso.ID_DETALLE_DE_INGRESO = objetoDetalleDeIngreso.insert(detalleDeIngreso);
                     insertarRegistro("Detalle_De_Ingreso", detalleDeIngreso.ID_DETALLE_DE_INGRESO, "Nuevo");
                     producto = new ProductoEnt();
-                    producto.ID_PRODUCTO = detalleDeIngreso.ID_PRODUCTO;
+                    producto.ID = detalleDeIngreso.ID_PRODUCTO;
                     producto.PRECIO_DE_COMPRA = detalleDeIngreso.PRECIO_DE_COMPRA;
                     producto.PRECIO_DE_VENTA = detalleDeIngreso.PRECIO_DE_VENTA;
                     objetoProducto.updatePrecios(producto);
-                    insertarRegistro("Producto", producto.ID_PRODUCTO, "Modificar Precios");
+                    insertarRegistro("Producto", producto.ID, "Modificar Precios");
                 }
                 MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -359,7 +359,7 @@ namespace Super_Mercado_Mio.Compra
                 Producto.Nuevo formularioNuevoProducto = new Producto.Nuevo(2, producto.CODIGO_DE_BARRAS);
                 formularioNuevoProducto.ShowDialog();
                 producto = formularioNuevoProducto.producto;
-                if (producto.ID_PRODUCTO != 0)
+                if (producto.ID != 0)
                 {
                     dataTableProducto = objetoProducto.select(producto);
                     addProducto(dataTableProducto);

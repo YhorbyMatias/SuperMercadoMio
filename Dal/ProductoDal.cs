@@ -12,66 +12,7 @@ namespace Dal
     public class ProductoDal
     {
         #region Metodos
-        public int authenticate(ProductoEnt producto)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Producto) From Producto Where Estado = 1 And Nombre_Generico = @Nombre_Generico "
-                + "And Marca = @Marca And Presentacion = @Presentacion And ISNULL(Sabor_U_Olor, '') = @Sabor_U_Olor "
-                + "And Id_Producto <> @Id_Producto";
-            sqlCommand.Parameters.AddWithValue("@Nombre_Generico", producto.NOMBRE_GENERICO);
-            sqlCommand.Parameters.AddWithValue("@Marca", producto.MARCA);
-            sqlCommand.Parameters.AddWithValue("@Presentacion", producto.PRESENTACION);
-            sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", producto.SABOR_U_OLOR);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
-        public int authenticateAlias(ProductoEnt producto)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Producto) From Producto Where Estado = 1 And Alias = @Alias "
-                + "And Id_Producto <> @Id_Producto";
-            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
-        public int authenticateCodigoDeBarras(ProductoEnt producto)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id_Producto) From Producto Where Estado = 1 And Codigo_De_Barras = @Codigo_De_Barras "
-                + "And Id_Producto <> @Id_Producto";
-            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", producto.CODIGO_DE_BARRAS);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
-        public DataTable findAll()
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor "
-                + "From buscarProductos() Where Precio > 0 Order By Codigo_De_Barras Asc";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable("Productos");
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            sqlDataAdapter.Fill(dataTable);
-            return dataTable;
-        }
-        public int insert(ProductoEnt producto)
+        public int add(ProductoEnt producto)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -84,7 +25,6 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Nombre_Generico", producto.NOMBRE_GENERICO);
             sqlCommand.Parameters.AddWithValue("@Marca", producto.MARCA);
             sqlCommand.Parameters.AddWithValue("@Presentacion", producto.PRESENTACION);
-            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
             if (producto.SABOR_U_OLOR != "")
             {
                 sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", producto.SABOR_U_OLOR);
@@ -104,17 +44,75 @@ namespace Dal
             }
             sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", producto.PRECIO_DE_COMPRA);
             sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", producto.PRECIO_DE_VENTA);
+            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
             sqlConnection.Open();
-            int idProducto = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
-            return idProducto;
+            return id;
+        }
+        public int authenticate(ProductoEnt producto)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Producto Where Estado = 1 And Nombre_Generico = @Nombre_Generico "
+                + "And Marca = @Marca And Presentacion = @Presentacion And ISNULL(Sabor_U_Olor, '') = @Sabor_U_Olor "
+                + "And Id <> @Id";
+            sqlCommand.Parameters.AddWithValue("@Nombre_Generico", producto.NOMBRE_GENERICO);
+            sqlCommand.Parameters.AddWithValue("@Marca", producto.MARCA);
+            sqlCommand.Parameters.AddWithValue("@Presentacion", producto.PRESENTACION);
+            sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", producto.SABOR_U_OLOR);
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
+            sqlConnection.Open();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exists;
+        }
+        public int authenticateAlias(ProductoEnt producto)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Producto Where Estado = 1 And Alias = @Alias And Id <> @Id";
+            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
+            sqlConnection.Open();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exists;
+        }
+        public int authenticateCodigoDeBarras(ProductoEnt producto)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Producto Where Estado = 1 And Codigo_De_Barras = @Codigo_De_Barras And Id <> @Id";
+            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", producto.CODIGO_DE_BARRAS);
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
+            sqlConnection.Open();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exists;
+        }
+        public DataTable findAll()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor "
+                + "From buscarProductos() Where Precio > 0 Order By Codigo_De_Barras Asc";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Productos");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
         }
         public int getNumber(ProductoEnt producto)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select COUNT(Id_Producto) From Producto Where Estado = 1 "
+            sqlCommand.CommandText = "Select COUNT(Id) From Producto Where Estado = 1 "
                 + "And Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras";
             sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", producto.TIPO_DE_CODIGO_DE_BARRAS);
             sqlConnection.Open();
@@ -128,9 +126,9 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Id_Proveedor, Id_Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, "
-                + "Presentacion, Alias, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta From Producto Where Estado = 1 "
-                + "And Id_Producto = @Id_Producto";
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
+                + "Presentacion, Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta, Alias From Producto Where Estado = 1 "
+                + "And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Producto");
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -166,7 +164,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
+            sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
                 + "Precio_De_Compra, Precio_De_Venta From buscarProductos() Where Codigo_De_Barras = @Codigo_De_Barras";
             sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", producto.CODIGO_DE_BARRAS);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
@@ -180,7 +178,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id_Producto, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
+            sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, "
                 + "Precio_De_Compra, Precio_De_Venta From buscarProductos() Order By Codigo_De_Barras Asc";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Productos");
@@ -195,9 +193,9 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Producto Set Id_Proveedor = @Id_Proveedor, Id_Grupo = @Id_Grupo, "
                 + "Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras, Codigo_De_Barras = @Codigo_De_Barras, "
-                + "Nombre_Generico = @Nombre_Generico, Marca = @Marca, Alias = @Alias, Sabor_U_Olor = @Sabor_U_Olor, Tipo = @Tipo, "
-                + "Cantidad_Minima = @Cantidad_Minima, Precio_De_Compra = @Precio_De_Compra, Precio_De_Venta = @Precio_De_Venta "
-                + "Where Id_Producto = @Id_Producto";
+                + "Nombre_Generico = @Nombre_Generico, Marca = @Marca, Sabor_U_Olor = @Sabor_U_Olor, Tipo = @Tipo, "
+                + "Cantidad_Minima = @Cantidad_Minima, Precio_De_Compra = @Precio_De_Compra, Precio_De_Venta = @Precio_De_Venta, "
+                + "Alias = @Alias Where Id_Producto = @Id_Producto";
             sqlCommand.Parameters.AddWithValue("@Id_Proveedor", producto.ID_PROVEEDOR);
             sqlCommand.Parameters.AddWithValue("@Id_Grupo", producto.ID_GRUPO);
             sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", producto.TIPO_DE_CODIGO_DE_BARRAS);
@@ -205,7 +203,6 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Nombre_Generico", producto.NOMBRE_GENERICO);
             sqlCommand.Parameters.AddWithValue("@Marca", producto.MARCA);
             sqlCommand.Parameters.AddWithValue("@Presentacion", producto.PRESENTACION);
-            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
             if (producto.SABOR_U_OLOR != "")
             {
                 sqlCommand.Parameters.AddWithValue("@Sabor_U_Olor", producto.SABOR_U_OLOR);
@@ -225,7 +222,8 @@ namespace Dal
             }
             sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", producto.PRECIO_DE_COMPRA);
             sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", producto.PRECIO_DE_VENTA);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
+            sqlCommand.Parameters.AddWithValue("@Alias", producto.ALIAS);
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
@@ -236,10 +234,10 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Producto Set Precio_De_Compra = @Precio_De_Compra, Precio_De_Venta = @Precio_De_Venta "
-                + "Where Id_Producto = @Id_Producto";
+                + "Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", producto.PRECIO_DE_COMPRA);
             sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", producto.PRECIO_DE_VENTA);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID_PRODUCTO);
+            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

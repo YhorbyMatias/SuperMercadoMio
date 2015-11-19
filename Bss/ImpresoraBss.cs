@@ -49,32 +49,35 @@ namespace Bss
                 {
                     throw exceptionX;
                 }
-                try
+                if (posPrinter != null)
                 {
-                    posPrinter.Claim(1000);
-                }
-                catch (PosControlException posControlExceptionX)
-                {
-                    throw posControlExceptionX;
-                }
-                try
-                {
-                    posPrinter.DeviceEnabled = true;
-                }
-                catch (PosControlException posControlExceptionX)
-                {
-                    throw posControlExceptionX;
-                }
-                try
-                {
-                    posPrinter.RecLetterQuality = false;
-                    posPrinter.MapMode = MapMode.Metric;
-                    SesionEnt.posPrinter = posPrinter;
-                    SesionEnt.printerEnabled = true;
-                }
-                catch (PosControlException posControlExceptionX)
-                {
-                    throw posControlExceptionX;
+                    try
+                    {
+                        posPrinter.Claim(1000);
+                    }
+                    catch (PosControlException posControlExceptionX)
+                    {
+                        throw posControlExceptionX;
+                    }
+                    try
+                    {
+                        posPrinter.DeviceEnabled = true;
+                    }
+                    catch (PosControlException posControlExceptionX)
+                    {
+                        throw posControlExceptionX;
+                    }
+                    try
+                    {
+                        posPrinter.RecLetterQuality = false;
+                        posPrinter.MapMode = MapMode.Metric;
+                        SesionEnt.posPrinter = posPrinter;
+                        SesionEnt.printerEnabled = true;
+                    }
+                    catch (PosControlException posControlExceptionX)
+                    {
+                        throw posControlExceptionX;
+                    }
                 }
             }
         }

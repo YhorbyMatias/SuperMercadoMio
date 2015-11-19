@@ -33,7 +33,7 @@ namespace Bss
         }
         public int insert(ProductoEnt producto)
         {
-            return objetoProducto.insert(producto);
+            return objetoProducto.add(producto);
         }
         public int getNumber(ProductoEnt producto)
         {

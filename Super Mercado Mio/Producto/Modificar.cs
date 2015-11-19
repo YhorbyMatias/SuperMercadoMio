@@ -29,7 +29,7 @@ namespace Super_Mercado_Mio.Producto
         public Modificar(int idProductoX)
         {
             InitializeComponent();
-            producto.ID_PRODUCTO = idProductoX;
+            producto.ID = idProductoX;
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
@@ -301,7 +301,7 @@ namespace Super_Mercado_Mio.Producto
                 producto.PRECIO_DE_COMPRA = Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim());
                 producto.PRECIO_DE_VENTA = Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim());
                 objetoProducto.update(producto);
-                insertarRegistro("Producto", producto.ID_PRODUCTO, "Nuevo");
+                insertarRegistro("Producto", producto.ID, "Nuevo");
                 if (producto.CODIGO_DE_BARRAS == textBoxCodigoDeBarras.Text.Trim())
                 {
                     MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,

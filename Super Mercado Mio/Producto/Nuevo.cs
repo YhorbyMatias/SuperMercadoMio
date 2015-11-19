@@ -54,12 +54,24 @@ namespace Super_Mercado_Mio.Producto
             errorProviderFormulario.SetError(comboBoxProveedor, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
+        #region buttonAddProvider
+        private void buttonAddProvider_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
         #region comboBoxGrupo
         private void comboBoxGrupo_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarGrupo();
             hasErrors[1] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(comboBoxGrupo, ValidacionBss.getErrorMessage(errorCode));
+        }
+        #endregion
+        #region buttonAddGroup
+        private void buttonAddGroup_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
         #region radioButtonTipoDeCodigoDeBarrasManual
@@ -107,14 +119,6 @@ namespace Super_Mercado_Mio.Producto
             hasErrors[5] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxPresentacion, ValidacionBss.getErrorMessage(errorCode));
             textBoxAlias.Text = generarAlias();
-        }
-        #endregion
-        #region textBoxAlias
-        private void textBoxAlias_Validating(object sender, CancelEventArgs e)
-        {
-            int errorCode = validarAlias();
-            hasErrors[6] = Convert.ToBoolean(errorCode);
-            errorProviderFormulario.SetError(textBoxAlias, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
         #region textBoxSaborYOlor
@@ -260,6 +264,14 @@ namespace Super_Mercado_Mio.Producto
             errorProviderFormulario.SetError(textBoxPrecioDeVenta, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
+        #region textBoxAlias
+        private void textBoxAlias_Validating(object sender, CancelEventArgs e)
+        {
+            int errorCode = validarAlias();
+            hasErrors[6] = Convert.ToBoolean(errorCode);
+            errorProviderFormulario.SetError(textBoxAlias, ValidacionBss.getErrorMessage(errorCode));
+        }
+        #endregion
         #region buttonGuardar
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
@@ -280,7 +292,6 @@ namespace Super_Mercado_Mio.Producto
                 producto.NOMBRE_GENERICO = textBoxNombreGenerico.Text.Trim().ToUpper();
                 producto.MARCA = textBoxMarca.Text.Trim().ToUpper();
                 producto.PRESENTACION = textBoxPresentacion.Text.Trim().ToUpper();
-                producto.ALIAS = textBoxAlias.Text.Trim().ToUpper();
                 producto.SABOR_U_OLOR = textBoxSaborUOlor.Text.Trim().ToUpper();
                 if (radioButtonTipoDeProductoInventario.Checked)
                 {
@@ -300,8 +311,9 @@ namespace Super_Mercado_Mio.Producto
                 }
                 producto.PRECIO_DE_COMPRA = Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim());
                 producto.PRECIO_DE_VENTA = Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim());
-                producto.ID_PRODUCTO = objetoProducto.insert(producto);
-                insertarRegistro("Producto", producto.ID_PRODUCTO, "Nuevo");
+                producto.ALIAS = textBoxAlias.Text.Trim().ToUpper();
+                producto.ID = objetoProducto.insert(producto);
+                insertarRegistro("Producto", producto.ID, "Nuevo");
                 if (producto.CODIGO_DE_BARRAS == textBoxCodigoDeBarras.Text.Trim())
                 {
                     MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,

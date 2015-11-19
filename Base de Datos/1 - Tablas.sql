@@ -168,22 +168,22 @@ Go
 
 Create Table Producto
 (
-Id Int Not Null Identity(1,1),
-Id_Proveedor Int Not Null,
-Id_Grupo Int Not Null,
-Tipo_De_Codigo_De_Barras Varchar(7) Not Null,
-Codigo_De_Barras Varchar(100) Not Null,
-Nombre_Generico Varchar(100) Not Null,
-Marca Varchar(100) Not Null,
-Presentacion Varchar(100) Not Null,
-Alias Varchar(24) Not Null,
-Sabor_U_Olor Varchar(100) Null,
-Tipo Varchar(10) Not Null,
-Cantidad_Minima Decimal(18,3) Not Null,
-Precio_De_Compra Decimal(18,2) Not Null,
-Precio_De_Venta Decimal(18,2) Not Null,
-Estado Bit Not Null,
-Primary Key (Id)
+	Id Int Not Null Identity(1,1),
+	Id_Proveedor Int Not Null,
+	Id_Grupo Int Not Null,
+	Tipo_De_Codigo_De_Barras Varchar(7) Not Null,
+	Codigo_De_Barras Varchar(100) Not Null,
+	Nombre_Generico Varchar(100) Not Null,
+	Marca Varchar(100) Not Null,
+	Presentacion Varchar(100) Not Null,
+	Sabor_U_Olor Varchar(100) Null,
+	Tipo Varchar(10) Not Null,
+	Cantidad_Minima Decimal(18,3) Not Null,
+	Precio_De_Compra Decimal(18,2) Not Null,
+	Precio_De_Venta Decimal(18,2) Not Null,
+	Alias Varchar(24) Not Null,
+	Estado Bit Not Null,
+	Primary Key (Id)
 )
 
 Create Table Ingreso

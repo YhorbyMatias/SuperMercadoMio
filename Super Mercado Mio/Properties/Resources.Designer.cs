@@ -63,6 +63,16 @@ namespace Super_Mercado_Mio.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add16 {
+            get {
+                object obj = ResourceManager.GetObject("add16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cerrar {
             get {
                 object obj = ResourceManager.GetObject("Cerrar", resourceCulture);

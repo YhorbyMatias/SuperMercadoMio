@@ -125,7 +125,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (opcion == 3 || opcion == 4)
             {
-                producto.ID_PRODUCTO = Convert.ToInt32(dataGridViewProductos["Id_Producto", e.RowIndex].Value);
+                producto.ID = Convert.ToInt32(dataGridViewProductos["Id_Producto", e.RowIndex].Value);
                 producto.CODIGO_DE_BARRAS = dataGridViewProductos["Codigo_De_Barras", e.RowIndex].Value.ToString();
                 this.Close();
             }
