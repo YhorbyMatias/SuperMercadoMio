@@ -133,7 +133,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id, Numero_De_Autorizacion, Llave, Leyenda From Dosificacion "
+            sqlCommand.CommandText = "Select Id, Numero_De_Autorizacion, Llave From Dosificacion "
                 + "Where Estado = 'VIGENTE' And Id_Sucursal = @Id_Sucursal";
             sqlCommand.Parameters.AddWithValue("@Id_Sucursal", dosificacion.ID_SUCURSAL);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();

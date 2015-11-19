@@ -41,14 +41,14 @@
             this.labelNumeroDeCaja = new System.Windows.Forms.Label();
             this.labelMontoDeAperturaDeCaja = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxMontoDeVentaDeTarjetas = new System.Windows.Forms.TextBox();
+            this.textBoxMontoDePagos = new System.Windows.Forms.TextBox();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.textBoxMontoDeVentas = new System.Windows.Forms.TextBox();
             this.labelMontoDeVentas = new System.Windows.Forms.Label();
             this.textBoxMontoDeDevoluciones = new System.Windows.Forms.TextBox();
             this.labelMontoDeDevoluciones = new System.Windows.Forms.Label();
-            this.textBoxMontoDeVentaDeTarjetas = new System.Windows.Forms.TextBox();
             this.labelMontoDeVentaDeTarjetas = new System.Windows.Forms.Label();
-            this.textBoxMontoDePagos = new System.Windows.Forms.TextBox();
             this.labelMontoDePagos = new System.Windows.Forms.Label();
             this.textBoxMontoTotal = new System.Windows.Forms.TextBox();
             this.labelMontoTotal = new System.Windows.Forms.Label();
@@ -170,9 +170,44 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // textBoxMontoDeVentaDeTarjetas
+            // 
+            this.textBoxMontoDeVentaDeTarjetas.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.textBoxMontoDeVentaDeTarjetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorProvider.SetIconAlignment(this.textBoxMontoDeVentaDeTarjetas, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxMontoDeVentaDeTarjetas, 5);
+            this.textBoxMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(172, 246);
+            this.textBoxMontoDeVentaDeTarjetas.MaxLength = 10;
+            this.textBoxMontoDeVentaDeTarjetas.Name = "textBoxMontoDeVentaDeTarjetas";
+            this.textBoxMontoDeVentaDeTarjetas.Size = new System.Drawing.Size(150, 22);
+            this.textBoxMontoDeVentaDeTarjetas.TabIndex = 0;
+            this.textBoxMontoDeVentaDeTarjetas.Text = "0";
+            this.textBoxMontoDeVentaDeTarjetas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMontoDeVentaDeTarjetas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMontoDeVentaDeTarjetas_KeyDown);
+            this.textBoxMontoDeVentaDeTarjetas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMontoDeVentaDeTarjetas_KeyPress);
+            this.textBoxMontoDeVentaDeTarjetas.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMontoDeVentaDeTarjetas_Validating);
+            // 
+            // textBoxMontoDePagos
+            // 
+            this.textBoxMontoDePagos.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.textBoxMontoDePagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorProvider.SetIconAlignment(this.textBoxMontoDePagos, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.errorProvider.SetIconPadding(this.textBoxMontoDePagos, 5);
+            this.textBoxMontoDePagos.Location = new System.Drawing.Point(172, 274);
+            this.textBoxMontoDePagos.MaxLength = 10;
+            this.textBoxMontoDePagos.Name = "textBoxMontoDePagos";
+            this.textBoxMontoDePagos.Size = new System.Drawing.Size(150, 22);
+            this.textBoxMontoDePagos.TabIndex = 1;
+            this.textBoxMontoDePagos.Text = "0";
+            this.textBoxMontoDePagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMontoDePagos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMontoDePagos_KeyDown);
+            this.textBoxMontoDePagos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMontoDePagos_KeyPress);
+            this.textBoxMontoDePagos.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMontoDePagos_Validating);
+            // 
             // timerHora
             // 
             this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
             // 
             // textBoxMontoDeVentas
             // 
@@ -218,23 +253,6 @@
             this.labelMontoDeDevoluciones.TabIndex = 237;
             this.labelMontoDeDevoluciones.Text = "Devoluciones:";
             // 
-            // textBoxMontoDeVentaDeTarjetas
-            // 
-            this.textBoxMontoDeVentaDeTarjetas.ContextMenuStrip = this.contextMenuStripEmpty;
-            this.textBoxMontoDeVentaDeTarjetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorProvider.SetIconAlignment(this.textBoxMontoDeVentaDeTarjetas, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.errorProvider.SetIconPadding(this.textBoxMontoDeVentaDeTarjetas, 5);
-            this.textBoxMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(172, 246);
-            this.textBoxMontoDeVentaDeTarjetas.MaxLength = 10;
-            this.textBoxMontoDeVentaDeTarjetas.Name = "textBoxMontoDeVentaDeTarjetas";
-            this.textBoxMontoDeVentaDeTarjetas.Size = new System.Drawing.Size(150, 22);
-            this.textBoxMontoDeVentaDeTarjetas.TabIndex = 0;
-            this.textBoxMontoDeVentaDeTarjetas.Text = "0";
-            this.textBoxMontoDeVentaDeTarjetas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxMontoDeVentaDeTarjetas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMontoDeVentaDeTarjetas_KeyDown);
-            this.textBoxMontoDeVentaDeTarjetas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMontoDeVentaDeTarjetas_KeyPress);
-            this.textBoxMontoDeVentaDeTarjetas.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMontoDeVentaDeTarjetas_Validating);
-            // 
             // labelMontoDeVentaDeTarjetas
             // 
             this.labelMontoDeVentaDeTarjetas.AutoSize = true;
@@ -244,23 +262,6 @@
             this.labelMontoDeVentaDeTarjetas.Size = new System.Drawing.Size(136, 16);
             this.labelMontoDeVentaDeTarjetas.TabIndex = 239;
             this.labelMontoDeVentaDeTarjetas.Text = "Venta de Tarjetas:";
-            // 
-            // textBoxMontoDePagos
-            // 
-            this.textBoxMontoDePagos.ContextMenuStrip = this.contextMenuStripEmpty;
-            this.textBoxMontoDePagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorProvider.SetIconAlignment(this.textBoxMontoDePagos, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.errorProvider.SetIconPadding(this.textBoxMontoDePagos, 5);
-            this.textBoxMontoDePagos.Location = new System.Drawing.Point(172, 274);
-            this.textBoxMontoDePagos.MaxLength = 10;
-            this.textBoxMontoDePagos.Name = "textBoxMontoDePagos";
-            this.textBoxMontoDePagos.Size = new System.Drawing.Size(150, 22);
-            this.textBoxMontoDePagos.TabIndex = 1;
-            this.textBoxMontoDePagos.Text = "0";
-            this.textBoxMontoDePagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxMontoDePagos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMontoDePagos_KeyDown);
-            this.textBoxMontoDePagos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMontoDePagos_KeyPress);
-            this.textBoxMontoDePagos.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMontoDePagos_Validating);
             // 
             // labelMontoDePagos
             // 
@@ -274,7 +275,9 @@
             // 
             // textBoxMontoTotal
             // 
-            this.textBoxMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMontoTotal.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.textBoxMontoTotal.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxMontoTotal.Location = new System.Drawing.Point(172, 302);
             this.textBoxMontoTotal.MaxLength = 10;
             this.textBoxMontoTotal.Name = "textBoxMontoTotal";

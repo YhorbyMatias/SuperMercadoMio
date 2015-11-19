@@ -38,6 +38,18 @@ namespace Dal
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
+        public int exist(AperturaDeCajaEnt aperturaDeCaja)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Count(Id) From Apertura_De_Caja Where Cerrado = 0 And Id_Caja = @Id_Caja";
+            sqlCommand.Parameters.AddWithValue("@Id_Caja", aperturaDeCaja.ID_CAJA);
+            sqlConnection.Open();
+            int exist = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return exist;
+        }
         public int exists(AperturaDeCajaEnt aperturaDeCaja)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

@@ -17,7 +17,7 @@ namespace Ent
         private int id_cliente;
         private int id_dosificacion;
         private string numero_de_autorizacion;
-        private int numero_de_factura;
+        private int numero;
         private string codigo_de_control;
         private string ci_o_nit;
         private string cliente;
@@ -69,10 +69,10 @@ namespace Ent
             get { return this.numero_de_autorizacion; }
             set { this.numero_de_autorizacion = value; }
         }
-        public int NUMERO_DE_FACTURA
+        public int NUMERO
         {
-            get { return this.numero_de_factura; }
-            set { this.numero_de_factura = value; }
+            get { return this.numero; }
+            set { this.numero = value; }
         }
         public string CODIGO_DE_CONTROL
         {
@@ -118,6 +118,46 @@ namespace Ent
         {
             get { return this.estado; }
             set { this.estado = value; }
+        }
+        #endregion
+        #region Atributos Auxiliares
+        private string llave;
+        private string numero_de_autorizacion_auxiliar;
+        private string numero_auxiliar;
+        private string ci_o_nit_auxiliar;
+        private string fecha_auxiliar;
+        private string monto_auxiliar;
+        #endregion
+        #region Propiedades Auxiliares
+        public string LLAVE
+        {
+            get { return this.llave; }
+            set { this.llave = value; }
+        }
+        public string NUMERO_DE_AUTORIZACION_AUXILIAR
+        {
+            get { return this.numero_de_autorizacion_auxiliar; }
+            set { this.numero_de_autorizacion_auxiliar = value; }
+        }
+        public string NUMERO_AUXILIAR
+        {
+            get { return this.numero_auxiliar; }
+            set { this.numero_auxiliar = value; }
+        }
+        public string CI_O_NIT_AUXILIAR
+        {
+            get { return this.ci_o_nit_auxiliar; }
+            set { this.ci_o_nit_auxiliar = value; }
+        }
+        public string FECHA_AUXILIAR
+        {
+            get { return this.fecha_auxiliar; }
+            set { this.fecha_auxiliar = value; }
+        }
+        public string MONTO_AUXILIAR
+        {
+            get { return this.monto_auxiliar; }
+            set { this.monto_auxiliar = value; }
         }
         #endregion
     }

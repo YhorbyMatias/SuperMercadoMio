@@ -15,5 +15,6 @@ namespace Ent
         public static int idCaja;
         public static bool activeDosificacion;
         public static PosPrinter posPrinter = null;
+        public static bool printerEnabled;
     }
 }

@@ -25,8 +25,8 @@ namespace Ent
         }
         public int ID_USUARIO
         {
-            get { return this.ID_USUARIO; }
-            set { this.ID_USUARIO = value; }
+            get { return this.id_usuario; }
+            set { this.id_usuario = value; }
         }
         public int ID_CAJA
         {

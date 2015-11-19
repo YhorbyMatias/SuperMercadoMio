@@ -47,6 +47,8 @@
     <Compile Include="CajaEnt.cs" />
     <Compile Include="CierreDeCajaEnt.cs" />
     <Compile Include="ClienteEnt.cs" />
+    <Compile Include="DetalleDeEgresoEnt.cs" />
+    <Compile Include="DetalleDeFacturaEnt.cs" />
     <Compile Include="DetalleDeIngresoEnt.cs" />
     <Compile Include="DevolucionEnt.cs" />
     <Compile Include="DosificacionEnt.cs" />

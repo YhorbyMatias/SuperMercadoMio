@@ -1,5 +1,6 @@
 ﻿using Bss;
 using Ent;
+using Microsoft.PointOfService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,12 +24,20 @@ namespace Super_Mercado_Mio.Caja
         CajaEnt caja = new CajaEnt();
         EgresoBss objetoEgreso = new EgresoBss();
         EgresoEnt egreso = new EgresoEnt();
+        DetalleDeEgresoBss objetoDetalleDeEgreso = new DetalleDeEgresoBss();
+        DosificacionBss objetoDosificacion = new DosificacionBss();
+        DosificacionEnt dosificacion = new DosificacionEnt();
+        FacturaBss objetoFactura = new FacturaBss();
+        FacturaEnt factura = new FacturaEnt();
+        DetalleDeFacturaBss objetoDetalleDeFactura = new DetalleDeFacturaBss();
+        DetalleDeFacturaEnt detalleDeFactura = new DetalleDeFacturaEnt();
         DevolucionBss objetoDevolucion = new DevolucionBss();
         DevolucionEnt devolucion = new DevolucionEnt();
         CierreDeCajaBss objetoCierreDeCaja = new CierreDeCajaBss();
         CierreDeCajaEnt cierreDeCaja = new CierreDeCajaEnt();
         RegistroBss objetoRegistro = new RegistroBss();
         RegistroEnt registro = new RegistroEnt();
+        ImpresoraBss printer = new ImpresoraBss();
         #endregion
         #region Form
         public Cierre()
@@ -63,85 +72,75 @@ namespace Super_Mercado_Mio.Caja
                             MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                         {
                             DataTable dataTableEgresos = objetoEgreso.getMinorSales(egreso);
-                            DataTable dataTableDetalleDeEgresos = objetodetalleegreso.BuscarDetalleEgresoEgresosMenoresBss(egreso);
-                            DataRow FilaDosificacion = objetodosificacion.BuscarDosificacionBss().Rows[0];
-                            dosificacion.ID_DOSIFICACION = Convert.ToInt32(FilaDosificacion["Id_Dosificacion"]);
-                            dosificacion.NUMERO_AUTORIZACION = FilaDosificacion["Numero_Autorizacion"].ToString();
-                            factura.LLAVE = @FilaDosificacion["Llave"].ToString();
+                            DataTable dataTableDetalleDeEgresos = objetoDetalleDeEgreso.getMinorSalesDetail(egreso);
+                            DataTable dataTableDosificacion = objetoDosificacion.select(dosificacion);
+                            dosificacion.ID = Convert.ToInt32(dataTableDosificacion.Rows[0]["Id"]);
+                            dosificacion.NUMERO_DE_AUTORIZACION = dataTableDosificacion.Rows[0]["Numero_De_Autorizacion"].ToString();
+                            factura.LLAVE = @dataTableDosificacion.Rows[0]["Llave"].ToString();
                             factura.ID_USUARIO = egreso.ID_USUARIO;
-                            factura.ID_CLIENTE = 1;
                             factura.ID_CAJA = egreso.ID_CAJA;
-                            factura.ID_DOSIFICACION = dosificacion.ID_DOSIFICACION;
-                            factura.NUMERO_DE_AUTORIZACION = dosificacion.NUMERO_AUTORIZACION;
-                            factura.NUMERO_DE_AUTORIZACION_AUXILIAR = dosificacion.NUMERO_AUTORIZACION;
-                            factura.NIT_O_CI_CLIENTE = "0";
-                            factura.NIT_O_CI_CLIENTE_AUXILIAR = factura.NIT_O_CI_CLIENTE;
+                            factura.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
+                            factura.ID_EGRESO = 0;
+                            factura.ID_CLIENTE = 1;
+                            factura.ID_DOSIFICACION = dosificacion.ID;
+                            factura.NUMERO_DE_AUTORIZACION = dosificacion.NUMERO_DE_AUTORIZACION;
+                            factura.NUMERO_DE_AUTORIZACION_AUXILIAR = dosificacion.NUMERO_DE_AUTORIZACION;
+                            factura.CI_O_NIT = "0";
+                            factura.CI_O_NIT_AUXILIAR = factura.CI_O_NIT;
                             factura.CLIENTE = "VENTAS MENORES DEL DIA";
                             factura.FECHA = DateTime.Today.ToShortDateString();
                             factura.FECHA_AUXILIAR = DateTime.Today.ToString("yyyyMMdd");
                             factura.HORA = DateTime.Now.ToLongTimeString();
-                            factura.PRECIO_TOTAL = Convert.ToDecimal(dataTableEgresos.Rows[0]["Precio_Total"]);
-                            factura.PRECIO_TOTAL_AUXILIAR = decimal.Round(factura.PRECIO_TOTAL, 0).ToString();
+                            factura.MONTO = Convert.ToDecimal(dataTableEgresos.Rows[0]["Monto"]);
+                            factura.MONTO_AUXILIAR = decimal.Round(factura.MONTO, 0).ToString();
                             factura.MONTO_PAGADO = Convert.ToDecimal(dataTableEgresos.Rows[0]["Monto_Pagado"]);
-                            factura.VUELTO = Convert.ToDecimal(dataTableEgresos.Rows[0]["Vuelto"]); ;
+                            factura.CAMBIO = Convert.ToDecimal(dataTableEgresos.Rows[0]["Cambio"]); ;
                             for (int filas = 0; filas < dataTableDetalleDeEgresos.Rows.Count; filas++)
                             {
-                                bool existe = false;
-                                int filalista = 0;
-                                for (int filaslista = 0; filaslista < objetofactura.ListaDetalleFactura.Count; filaslista++)
-                                {
-                                    if (dataTableDetalleDeEgresos.Rows[filas]["Id_Egreso"].ToString() == objetofactura.ListaDetalleFactura[filaslista].ID_PRODUCTO.ToString())
-                                    {
-                                        if (dataTableDetalleDeEgresos.Rows[filas]["Id_Producto"].ToString() == objetofactura.ListaDetalleFactura[filaslista].ID_PRODUCTO.ToString())
-                                        {
-                                            existe = true;
-                                            filalista = filaslista;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (existe == false)
-                                {
-                                    detallefactura = new DetalleFacturaEnt();
-                                    detallefactura.ID_PRODUCTO = Convert.ToInt32(dataTableDetalleDeEgresos.Rows[filas]["Id_Producto"]);
-                                    detallefactura.CONCEPTO = dataTableDetalleDeEgresos.Rows[filas]["Concepto"].ToString();
-                                    detallefactura.CANTIDAD = Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Cantidad"]);
-                                    detallefactura.PRECIO_TOTAL = Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Precio_Total"]);
-                                    objetofactura.ListaDetalleFactura.Add(detallefactura);
-                                }
-                                else
-                                {
-                                    objetofactura.ListaDetalleFactura[filalista].CANTIDAD = objetofactura.ListaDetalleFactura[filalista].CANTIDAD + Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Cantidad"]);
-                                    objetofactura.ListaDetalleFactura[filalista].PRECIO_TOTAL = objetofactura.ListaDetalleFactura[filalista].PRECIO_TOTAL + Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Precio_Total"]);
-                                }
+                                detalleDeFactura = new DetalleDeFacturaEnt();
+                                detalleDeFactura.ID_PRODUCTO = Convert.ToInt32(dataTableDetalleDeEgresos.Rows[filas]["Id"]);
+                                detalleDeFactura.DETALLE = dataTableDetalleDeEgresos.Rows[filas]["Alias"].ToString();
+                                detalleDeFactura.CANTIDAD = Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Cantidad"]);
+                                detalleDeFactura.IMPORTE = Convert.ToDecimal(dataTableDetalleDeEgresos.Rows[filas]["Precio_Total"]);
+                                objetoFactura.addDetalle(detalleDeFactura);
                             }
-                            factura.ID_FACTURA = objetofactura.InsertarFacturaBss(factura);
-                            factura.NUMERO_DE_FACTURA = (objetofactura.ObtenerNumeroDeFacturaBss(factura)).ToString();
-                            factura.NUMERO_DE_FACTURA_AUXILIAR = factura.NUMERO_DE_FACTURA;
-                            factura.CODIGO_DE_CONTROL = objetofactura.ObtenerCodigoDeControlFacturaBss(factura);
-                            objetofactura.InsertarCodigoDeControlFacturaBss(factura);
-                            objetoegreso.FacturarEgresoBss(egreso);
-                            detallefactura.ID_FACTURA = factura.ID_FACTURA;
-                            imprimirFactura(objetofactura.ObtenerFacturaBss(factura), objetodetallefactura.ObtenerDetalleFacturaBss(detallefactura));
+                            factura.ID = objetoFactura.add(factura);
+                            factura.NUMERO = objetoFactura.getNumber(factura);
+                            factura.NUMERO_AUXILIAR = factura.NUMERO.ToString();
+                            factura.CODIGO_DE_CONTROL = objetoFactura.getControlCode(factura);
+                            objetoFactura.updateControlCode(factura);
+                            objetoEgreso.updateFacturado(egreso);
+                            detalleDeFactura.ID_FACTURA = factura.ID;
+                            if (SesionEnt.printerEnabled)
+                            {
+                                printInvoice(objetoFactura.obtainById(factura), objetoDetalleDeFactura.obtainById(detalleDeFactura));
+                            }
+                            else
+                            {
+                                MessageBox.Show("La impresora se halla deshabilidada. No se imprimió la factura.", "Advertencia",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                             loadFormData();
                             timerHora.Start();
                         }
                         else
                         {
                             buttonGuardar.Enabled = false;
-                            lblUsuario.Text = "";
-                            lblNumeroDeCaja.Text = "";
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("No hizo la apertura de caja", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No realizó la apertura de caja.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 buttonGuardar.Enabled = false;
-                lblUsuario.Text = "";
-                lblNumeroDeCaja.Text = "";
             }
+        }
+        #endregion
+        #region timerHora
+        private void timerHora_Tick(object sender, EventArgs e)
+        {
+            textBoxHora.Text = DateTime.Now.ToString("T");
         }
         #endregion
         #region textBoxMontoDeVentaDeTarjetas
@@ -305,7 +304,7 @@ namespace Super_Mercado_Mio.Caja
         {
             return Convert.ToDecimal(textBoxMontoDeAperturaDeCaja.Text) + Convert.ToDecimal(textBoxMontoDeVentas.Text)
                 + Convert.ToDecimal(textBoxMontoDeDevoluciones.Text) + Convert.ToDecimal(textBoxMontoDeVentaDeTarjetas.Text)
-                + Convert.ToDecimal(textBoxMontoDePagos.Text);
+                - Convert.ToDecimal(textBoxMontoDePagos.Text);
         }
         private void loadFormData()
         {
@@ -327,6 +326,16 @@ namespace Super_Mercado_Mio.Caja
             }
             textBoxMontoTotal.Text = (calculateTotalAmount()).ToString();
 
+        }
+        private void printInvoice(DataTable invoice, DataTable invoiceLines)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            SesionEnt.posPrinter.TransactionPrint(PrinterStation.Receipt, PrinterTransactionControl.Transaction);
+            SesionEnt.posPrinter.RecLineChars = 40;
+            SesionEnt.posPrinter.PrintNormal(PrinterStation.Receipt, printer.formatoDeImpresionDeFactura(invoice, invoiceLines,
+                SesionEnt.posPrinter.RecLinesToPaperCut));
+            SesionEnt.posPrinter.CutPaper(100);
+            SesionEnt.posPrinter.TransactionPrint(PrinterStation.Receipt, PrinterTransactionControl.Normal);
         }
         private int reviewMontoDePagos()
         {

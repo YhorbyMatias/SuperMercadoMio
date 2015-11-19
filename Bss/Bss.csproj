@@ -43,19 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllegedRC4Bss.cs" />
     <Compile Include="AperturaDeCajaBss.cs" />
+    <Compile Include="Base64Bss.cs" />
     <Compile Include="CajaBss.cs" />
     <Compile Include="CierreDeCajaBss.cs" />
     <Compile Include="ClienteBss.cs" />
     <Compile Include="ConexionBss.cs" />
+    <Compile Include="DetalleDeEgresoBss.cs" />
+    <Compile Include="DetalleDeFacturaBss.cs" />
     <Compile Include="DetalleDeIngresoBss.cs" />
     <Compile Include="DevolucionBss.cs" />
     <Compile Include="DosificacionBss.cs" />
     <Compile Include="EgresoBss.cs" />
     <Compile Include="EmpresaBss.cs" />
+    <Compile Include="FacturaBss.cs" />
     <Compile Include="GrupoBss.cs" />
-    <Compile Include="ImpresionBss.cs" />
+    <Compile Include="ImpresoraBss.cs" />
     <Compile Include="IngresoBss.cs" />
+    <Compile Include="LiteralBss.cs" />
     <Compile Include="OpcionBss.cs" />
     <Compile Include="PrivilegioBss.cs" />
     <Compile Include="ProductoBss.cs" />
@@ -65,6 +71,7 @@
     <Compile Include="SucursalBss.cs" />
     <Compile Include="UsuarioBss.cs" />
     <Compile Include="ValidacionBss.cs" />
+    <Compile Include="VerhoeffBss.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dal\Dal.csproj">

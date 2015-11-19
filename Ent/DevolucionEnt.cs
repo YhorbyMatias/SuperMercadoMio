@@ -26,6 +26,11 @@ namespace Ent
             get { return this.id; }
             set { this.id = value; }
         }
+        public int ID_USUARIO
+        {
+            get { return this.id_usuario; }
+            set { this.id_usuario = value; }
+        }
         public int ID_CAJA
         {
             get { return this.id_caja; }

@@ -31,8 +31,19 @@ namespace Super_Mercado_Mio.Caja
         }
         private void Apertura_Load(object sender, EventArgs e)
         {
-            loadFormData();
-            timerHora.Start();
+            aperturaDeCaja.ID_CAJA = SesionEnt.idCaja;
+            if (objetoAperturaDeCaja.exist(aperturaDeCaja) == 0)
+            {
+                loadFormData();
+                timerHora.Start();
+            }
+            else
+            {
+                textBoxMonto.ResetText();
+                textBoxMonto.ReadOnly = true;
+                buttonGuardar.Enabled = false;
+                MessageBox.Show("No realizó el cierre de caja.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
         #region timerHora
@@ -97,7 +108,7 @@ namespace Super_Mercado_Mio.Caja
                 aperturaDeCaja.MONTO = Convert.ToDecimal(textBoxMonto.Text.Trim());
                 aperturaDeCaja.ID = objetoAperturaDeCaja.add(aperturaDeCaja);
                 addRecord("Apertura_De_Caja", aperturaDeCaja.ID, "Nuevo");
-                MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK,
+                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
             }

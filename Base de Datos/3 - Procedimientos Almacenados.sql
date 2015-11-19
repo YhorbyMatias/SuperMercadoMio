@@ -90,6 +90,7 @@ Begin
 	Values (@Nombre_De_Equipo, @Numero, 'ACTIVA')
 	Select SCOPE_IDENTITY()
 End
+Go
 
 Create Procedure insertarAperturaDeCaja
 @Id_Usuario Int,
@@ -99,9 +100,10 @@ Create Procedure insertarAperturaDeCaja
 As
 Begin
 	Insert Into Apertura_De_Caja(Id_Usuario, Id_Caja, Fecha, Hora, Monto, Cerrado)
-	Values(@Id_Usuario, @Id_Caja, GETDATE(), @Hora, @Monto, 1)
+	Values(@Id_Usuario, @Id_Caja, GETDATE(), @Hora, @Monto, 0)
 	Select SCOPE_IDENTITY()
 End
+Go
 
 Create Procedure insertarProveedor
 @Nit Varchar(12),
@@ -191,6 +193,47 @@ Begin
 	Insert Into Detalle_De_Ingreso(Id_Ingreso, Id_Producto, Cantidad, Precio_De_Compra, Monto_Total, Porcentaje_De_Utilidad, Precio_De_Venta,
 	Estado)
 	Values(@Id_Ingreso, @Id_Producto, @Cantidad, @Precio_De_Compra, @Monto_Total, @Porcentaje_De_Utilidad, @Precio_De_Venta, 'VIGENTE')
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarFactura
+@Id_Usuario As Int,
+@Id_Caja As Int,
+@Id_Apertura_De_Caja As Int,
+@Id_Egreso As Int,
+@Id_Cliente As Int,
+@Id_Dosificacion As Int,
+@Numero_De_Autorizacion As Varchar(15),
+@Ci_O_Nit As Varchar(12),
+@Cliente As Varchar(500),
+@Fecha As Date,
+@Hora As Varchar(50),
+@Monto As Money,
+@Monto_Pagado As Money,
+@Cambio As Money
+As
+Begin
+	Declare @Numero As Int
+	Set @Numero = (Select (ISNULL(MAX(Numero), 0) + 1) From Factura Where Id_Dosificacion = @Id_Dosificacion)
+	Insert Into Factura(Id_Usuario, Id_Caja, Id_Apertura_De_Caja, Id_Egreso, Id_Cliente, Id_Dosificacion, Numero_De_Autorizacion, Numero,
+	Codigo_De_Control, Ci_O_Nit, Cliente, Fecha, Hora, Monto, Monto_Pagado, Cambio, Estado)
+	Values(@Id_Usuario, @Id_Caja, @Id_Apertura_De_Caja, @Id_Egreso, @Id_Cliente, @Id_Dosificacion, @Numero_De_Autorizacion, @Numero, '',
+	@Ci_O_Nit, @Cliente, @Fecha, @Hora, @Monto, @Monto_Pagado, @Cambio, 'VIGENTE')
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarDetalleDeFactura
+@Id_Factura Int,
+@Id_Producto Int,
+@Detalle Varchar(24),
+@Cantidad Decimal(18,3),
+@Importe Decimal(18,2)
+As
+Begin
+	Insert Into Detalle_De_Factura(Id_Factura, Id_Producto, Detalle, Cantidad, Importe, Estado)
+	Values(@Id_Factura, @Id_Producto, @Detalle, @Cantidad, @Importe, 1)
 	Select SCOPE_IDENTITY()
 End
 Go

@@ -23,6 +23,7 @@ namespace Super_Mercado_Mio
         DosificacionEnt dosificacion = new DosificacionEnt();
         CajaBss objetoCaja = new CajaBss();
         CajaEnt caja = new CajaEnt();
+        ImpresoraBss printer = new ImpresoraBss();
         #endregion
         #region Form
         public Principal()
@@ -31,6 +32,7 @@ namespace Super_Mercado_Mio
         }
         private void Principal_FormClosed(object sender, FormClosedEventArgs e)
         {
+            printer.closeConnection();
             Application.Exit();
         }
         private void Principal_Load(object sender, EventArgs e)
@@ -78,6 +80,7 @@ namespace Super_Mercado_Mio
             }
             reviewDosificacion();
             reviewCashBox();
+            printer.openConnection();
         }
         #endregion
         #region Menu Archivo
@@ -242,6 +245,12 @@ namespace Super_Mercado_Mio
             Caja.Apertura formAperturaDeCaja = new Caja.Apertura();
             formAperturaDeCaja.MdiParent = this;
             formAperturaDeCaja.Show();
+        }
+        private void cierreDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Caja.Cierre formCierreDeCaja = new Caja.Cierre();
+            formCierreDeCaja.MdiParent = this;
+            formCierreDeCaja.Show();
         }
         #endregion
         #region Menu Cliente

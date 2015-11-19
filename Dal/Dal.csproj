@@ -45,11 +45,14 @@
     <Compile Include="CierreDeCajaDal.cs" />
     <Compile Include="ClienteDal.cs" />
     <Compile Include="ConexionDal.cs" />
+    <Compile Include="DetalleDeEgresoDal.cs" />
+    <Compile Include="DetalleDeFacturaDal.cs" />
     <Compile Include="DetalleDeIngresoDal.cs" />
     <Compile Include="DevolucionDal.cs" />
     <Compile Include="DosificacionDal.cs" />
     <Compile Include="EgresoDal.cs" />
     <Compile Include="EmpresaDal.cs" />
+    <Compile Include="FacturaDal.cs" />
     <Compile Include="GrupoDal.cs" />
     <Compile Include="IngresoDal.cs" />
     <Compile Include="OpcionDal.cs" />

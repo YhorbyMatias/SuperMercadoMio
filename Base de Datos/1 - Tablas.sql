@@ -240,16 +240,16 @@ Create Table Egreso
 
 Create Table Detalle_De_Egreso
 (
-Id Int Not Null Identity(1,1),
-Id_Egreso Int Not Null,
-Id_Producto Int Not Null,
-Cantidad Decimal(18,3) Not Null,
-Precio_Unitario Decimal(18,2) Not Null,
-Monto_Total Money Not Null,
-Estado Varchar(7) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Egreso) References Egreso(Id),
-Foreign Key(Id_Producto) References Producto(Id),
+	Id Int Not Null Identity(1,1),
+	Id_Egreso Int Not Null,
+	Id_Producto Int Not Null,
+	Cantidad Decimal(18,3) Not Null,
+	Precio_Unitario Decimal(18,2) Not Null,
+	Monto_Total Decimal(18,2) Not Null,
+	Estado Varchar(7) Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Egreso) References Egreso(Id),
+	Foreign Key(Id_Producto) References Producto(Id)
 )
 Go
 
@@ -263,7 +263,7 @@ Create Table Factura
 	Id_Cliente Int Not Null,
 	Id_Dosificacion Int Not Null,
 	Numero_De_Autorizacion Varchar(15) Not Null,
-	Numero_De_Factura Int Not Null,
+	Numero Int Not Null,
 	Codigo_De_Control Varchar(14) Not Null,
 	Ci_O_Nit Varchar(12) Not Null,
 	Cliente Varchar(500) Not Null,
@@ -284,16 +284,16 @@ Go
 
 Create Table Detalle_De_Factura
 (
-Id Int Not Null Identity(1,1),
-Id_Factura Int Not Null,
-Id_Producto Int Not Null,
-Detalle Varchar(24) Not Null,
-Cantidad Decimal(18,3) Not Null,
-Precio_Total Decimal(18,2) Not Null,
-Estado Bit Not Null,
-Primary Key(Id),
-Foreign Key(Id_Factura) References Factura(Id),
-Foreign Key(Id_Producto) References Producto(Id),
+	Id Int Not Null Identity(1,1),
+	Id_Factura Int Not Null,
+	Id_Producto Int Not Null,
+	Detalle Varchar(24) Not Null,
+	Cantidad Decimal(18,3) Not Null,
+	Importe Decimal(18,2) Not Null,
+	Estado Bit Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Factura) References Factura(Id),
+	Foreign Key(Id_Producto) References Producto(Id)
 )
 Go
 

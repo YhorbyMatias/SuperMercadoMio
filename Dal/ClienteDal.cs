@@ -17,7 +17,7 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.CommandText = "addCliente";
+            sqlCommand.CommandText = "insertarCliente";
             sqlCommand.Parameters.AddWithValue("@Ci_O_Nit", cliente.CI_O_NIT);
             sqlCommand.Parameters.AddWithValue("@Nombre", cliente.NOMBRE);
             sqlConnection.Open();

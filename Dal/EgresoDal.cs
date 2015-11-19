@@ -28,12 +28,12 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select COUNT(Id) As Exists From Egreso "
-                + "Where Id_Cliente = 1 And Tipo = 'EGRESO MENOR' And Facturado = 0 And Cerrado = 0 And Estado = 'VIGENTE' "
+            sqlCommand.CommandText = "Select COUNT(Id) As 'Exists' From Egreso "
+                + "Where Id_Cliente = 1 And Tipo = 'VENTA MENOR' And Facturado = 0 And Cerrado = 0 And Estado = 'VIGENTE' "
                 + "And Id_Apertura_De_Caja = @Id_Apertura_De_Caja";
-            sqlCommand.Parameters.Add("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
             sqlConnection.Open();
-            int exists = (int)sqlCommand.ExecuteScalar();
+            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return exists;
         }
@@ -43,9 +43,9 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select ISNULL(SUM(Monto), 0) As Monto, ISNULL(SUM(Monto_Pagado), 0) As Monto_Pagado, "
-                + "ISNULL(SUM(Cambio), 0) As Cambio From Egreso Where Id_Cliente = 1 And Tipo = 'EGRESO MENOR' And Facturado = 0 "
+                + "ISNULL(SUM(Cambio), 0) As Cambio From Egreso Where Id_Cliente = 1 And Tipo = 'VENTA MENOR' And Facturado = 0 "
                 + "And Cerrado = 0 And Estado = 'VIGENTE' And Id_Apertura_De_Caja = @Id_Apertura_De_Caja";
-            sqlCommand.Parameters.Add("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("EgresosMenores");
@@ -64,6 +64,17 @@ namespace Dal
             decimal salesTotalAmount = Convert.ToDecimal(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return salesTotalAmount;
+        }
+        public void updateFacturado(EgresoEnt egreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Egreso Set Facturado = 1 Where Id_Cliente = 1 And Id_Apertura_De_Caja = @Id_Apertura_De_Caja";
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
         }
         #endregion
     }

@@ -31,6 +31,10 @@ namespace Bss
         {
             return objetoEgreso.getSalesTotalAmount(egreso);
         }
+        public void updateFacturado(EgresoEnt egreso)
+        {
+            objetoEgreso.updateFacturado(egreso);
+        }
         #endregion
     }
 }
