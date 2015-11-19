@@ -1,5 +1,6 @@
 ﻿using Bss;
 using Ent;
+using Microsoft.PointOfService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,14 @@ namespace Super_Mercado_Mio
         }
         private void Principal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            printer.closeConnection();
+            try
+            {
+                printer.closeConnection();
+            }
+            catch (PosControlException exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Application.Exit();
         }
         private void Principal_Load(object sender, EventArgs e)
@@ -80,7 +88,14 @@ namespace Super_Mercado_Mio
             }
             reviewDosificacion();
             reviewCashBox();
-            printer.openConnection();
+            try
+            {
+                printer.openConnection();
+            }
+            catch (PosControlException exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
         #region Menu Archivo

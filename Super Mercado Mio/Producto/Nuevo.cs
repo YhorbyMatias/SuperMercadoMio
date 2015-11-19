@@ -57,7 +57,13 @@ namespace Super_Mercado_Mio.Producto
         #region buttonAddProvider
         private void buttonAddProvider_Click(object sender, EventArgs e)
         {
-
+            Proveedor.Nuevo formNuevoProveedor = new Proveedor.Nuevo(1, null);
+            formNuevoProveedor.ShowDialog();
+            if (formNuevoProveedor.proveedor.ID > 0)
+            {
+                loadProveedores();
+                comboBoxProveedor.SelectedValue = formNuevoProveedor.proveedor.ID;
+            }
         }
         #endregion
         #region comboBoxGrupo
@@ -71,7 +77,13 @@ namespace Super_Mercado_Mio.Producto
         #region buttonAddGroup
         private void buttonAddGroup_Click(object sender, EventArgs e)
         {
-
+            Grupo.Nuevo formNuevoGrupo = new Grupo.Nuevo();
+            formNuevoGrupo.ShowDialog();
+            if (formNuevoGrupo.grupo.ID > 0)
+            {
+                loadGrupos();
+                comboBoxGrupo.SelectedValue = formNuevoGrupo.grupo.ID;
+            }
         }
         #endregion
         #region radioButtonTipoDeCodigoDeBarrasManual
