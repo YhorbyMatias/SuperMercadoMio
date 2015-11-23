@@ -17,7 +17,7 @@ namespace Bss
         public static string getErrorMessage(int errorCode)
         {
             string errorMessage = "";
-            switch(errorCode)
+            switch (errorCode)
             {
                 case 0:
                     errorMessage = null;
@@ -34,7 +34,7 @@ namespace Bss
                 case 4:
                     errorMessage = "El valor del campo debe ser mayor o igual a cero.";
                     break;
-                    //User Errors
+                //User Errors
                 case 110:
                     errorMessage = "El CI ya se halla registrado.";
                     break;
@@ -44,36 +44,36 @@ namespace Bss
                 case 112:
                     errorMessage = "El nombre de usuario ya se halla registrado.";
                     break;
-                    //Dosificacion Errors
+                //Dosificacion Errors
                 case 200:
                     errorMessage = "El número de autorización ya se halla registrado.";
                     break;
-                    //Caja Errors
+                //Caja Errors
                 case 300:
                     errorMessage = "El número ya se halla registrado.";
                     break;
                 case 301:
                     errorMessage = "El monto total no puede ser negativo.";
                     break;
-                    //Provider Errors
+                //Provider Errors
                 case 400:
                     errorMessage = "El NIT ya se halla registrado.";
                     break;
                 case 401:
                     errorMessage = "El proveedor ya se halla registrado.";
                     break;
-                    //Client Errors
+                //Client Errors
                 case 500:
                     errorMessage = "El Ci o Nit ya se halla registrado.";
                     break;
                 case 501:
                     errorMessage = "El cliente ya se halla registrado.";
                     break;
-                    //Group Errors
+                //Group Errors
                 case 600:
                     errorMessage = "El grupo ya se halla registrado.";
                     break;
-                    //Product Screens
+                //Product Screens
                 case 9:
                     errorMessage = "El código de barras ya se halla registrado.";
                     break;
@@ -86,12 +86,22 @@ namespace Bss
                 case 12:
                     errorMessage = "El precio de compra debe ser menor al precio de venta.";
                     break;
-                    //
+                //
                 case 13:
                     errorMessage = "Revise el nit del proveedor.";
                     break;
                 case 14:
                     errorMessage = "No se agregó ningún producto.";
+                    break;
+                //Sales Errors
+                case 900:
+                    errorMessage = "No se agregó ningún producto.";
+                    break;
+                case 901:
+                    errorMessage = "Revise el CI del cliente.";
+                    break;
+                case 902:
+                    errorMessage = "El monto pagado no puede ser menor al monto total.";
                     break;
             }
             return errorMessage;

@@ -105,6 +105,26 @@ Begin
 End
 Go
 
+Create Procedure insertarCierreDeCaja
+@Id_Usuario Int,
+@Id_Caja Int,
+@Id_Apertura_De_Caja Int,
+@Hora Varchar(50),
+@Monto_De_Apertura_De_Caja Decimal(18,2),
+@Monto_De_Ventas Decimal(18,2),
+@Monto_De_Devoluciones Decimal(18,2),
+@Monto_De_Venta_De_Tarjetas Decimal(18,2),
+@Monto_De_Pagos Decimal(18,2),
+@Monto_Total Decimal(18,2)
+As
+Begin
+	Insert Into Cierre_De_Caja(Id_Usuario, Id_Caja, Id_Apertura_De_Caja, Fecha, Hora, Monto_De_Apertura_De_Caja, Monto_De_Ventas,
+	Monto_De_Devoluciones, Monto_De_Venta_De_Tarjetas, Monto_De_Pagos, Monto_Total)
+	Values(@Id_Usuario, @Id_Caja, @Id_Apertura_De_Caja, GETDATE(), @Hora, @Monto_De_Apertura_De_Caja, @Monto_De_Ventas,
+	@Monto_De_Devoluciones, @Monto_De_Venta_De_Tarjetas, @Monto_De_Pagos, @Monto_Total)
+	Select SCOPE_IDENTITY()
+End
+Go
 Create Procedure insertarProveedor
 @Nit Varchar(12),
 @Nombre Varchar(300),

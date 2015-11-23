@@ -28,29 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProductos = new System.Windows.Forms.DataGridView();
-            this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxNumeroVenta = new System.Windows.Forms.TextBox();
             this.lblNumeroDeVenta = new System.Windows.Forms.Label();
             this.checkBoxSinFactura = new System.Windows.Forms.CheckBox();
             this.textBoxMontoTotal = new System.Windows.Forms.TextBox();
-            this.textBoxVuelto = new System.Windows.Forms.TextBox();
+            this.textBoxCambio = new System.Windows.Forms.TextBox();
             this.lblMontoPagado = new System.Windows.Forms.Label();
             this.textBoxMontoPagado = new System.Windows.Forms.TextBox();
-            this.lblCambio = new System.Windows.Forms.Label();
+            this.contextMenuStripEmpty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.labelCambio = new System.Windows.Forms.Label();
             this.lblMontoTotal = new System.Windows.Forms.Label();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.textBoxCIoNIT = new System.Windows.Forms.TextBox();
+            this.textBoxCiONit = new System.Windows.Forms.TextBox();
             this.textBoxCliente = new System.Windows.Forms.TextBox();
             this.lblCliente = new System.Windows.Forms.Label();
             this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
@@ -59,8 +56,15 @@
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.labelFecha = new System.Windows.Forms.Label();
             this.groupBoxDetalleDeVenta = new System.Windows.Forms.GroupBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
             this.groupBoxDetalleDeVenta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewProductos
@@ -70,58 +74,16 @@
             this.dataGridViewProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Producto,
-            this.Nombre,
+            this.Id,
+            this.Alias,
             this.Cantidad,
             this.Precio_Unitario,
             this.Precio_Total});
             this.dataGridViewProductos.Location = new System.Drawing.Point(6, 57);
             this.dataGridViewProductos.Name = "dataGridViewProductos";
-            this.dataGridViewProductos.Size = new System.Drawing.Size(702, 296);
+            this.dataGridViewProductos.Size = new System.Drawing.Size(702, 313);
             this.dataGridViewProductos.TabIndex = 203;
-            // 
-            // Id_Producto
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Id_Producto.HeaderText = "Id_Producto";
-            this.Id_Producto.Name = "Id_Producto";
-            this.Id_Producto.ReadOnly = true;
-            this.Id_Producto.Visible = false;
-            // 
-            // Nombre
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            this.Nombre.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Nombre.HeaderText = "Producto";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Precio_Unitario
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.Precio_Unitario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Precio_Unitario.HeaderText = "Precio Unitario";
-            this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.ReadOnly = true;
-            // 
-            // Precio_Total
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Precio_Total.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Precio_Total.HeaderText = "Precio Total";
-            this.Precio_Total.Name = "Precio_Total";
-            this.Precio_Total.ReadOnly = true;
+            this.dataGridViewProductos.TabStop = false;
             // 
             // textBoxNumeroVenta
             // 
@@ -150,13 +112,13 @@
             this.checkBoxSinFactura.AutoSize = true;
             this.checkBoxSinFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxSinFactura.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxSinFactura.Location = new System.Drawing.Point(824, 317);
+            this.checkBoxSinFactura.Location = new System.Drawing.Point(812, 317);
             this.checkBoxSinFactura.Name = "checkBoxSinFactura";
             this.checkBoxSinFactura.Size = new System.Drawing.Size(167, 24);
             this.checkBoxSinFactura.TabIndex = 186;
+            this.checkBoxSinFactura.TabStop = false;
             this.checkBoxSinFactura.Text = "Ventas Manuales";
             this.checkBoxSinFactura.UseVisualStyleBackColor = true;
-            this.checkBoxSinFactura.Visible = false;
             // 
             // textBoxMontoTotal
             // 
@@ -167,20 +129,20 @@
             this.textBoxMontoTotal.Size = new System.Drawing.Size(150, 35);
             this.textBoxMontoTotal.TabIndex = 200;
             this.textBoxMontoTotal.TabStop = false;
-            this.textBoxMontoTotal.Text = "500";
+            this.textBoxMontoTotal.Text = "0";
             this.textBoxMontoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBoxVuelto
+            // textBoxCambio
             // 
-            this.textBoxVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxVuelto.Location = new System.Drawing.Point(909, 276);
-            this.textBoxVuelto.Name = "textBoxVuelto";
-            this.textBoxVuelto.ReadOnly = true;
-            this.textBoxVuelto.Size = new System.Drawing.Size(150, 35);
-            this.textBoxVuelto.TabIndex = 199;
-            this.textBoxVuelto.TabStop = false;
-            this.textBoxVuelto.Text = "100";
-            this.textBoxVuelto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCambio.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxCambio.Location = new System.Drawing.Point(909, 276);
+            this.textBoxCambio.Name = "textBoxCambio";
+            this.textBoxCambio.Size = new System.Drawing.Size(150, 35);
+            this.textBoxCambio.TabIndex = 199;
+            this.textBoxCambio.TabStop = false;
+            this.textBoxCambio.Text = "0";
+            this.textBoxCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblMontoPagado
             // 
@@ -195,24 +157,32 @@
             // 
             // textBoxMontoPagado
             // 
+            this.textBoxMontoPagado.ContextMenuStrip = this.contextMenuStripEmpty;
             this.textBoxMontoPagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMontoPagado.Location = new System.Drawing.Point(909, 235);
             this.textBoxMontoPagado.Name = "textBoxMontoPagado";
             this.textBoxMontoPagado.Size = new System.Drawing.Size(150, 35);
-            this.textBoxMontoPagado.TabIndex = 185;
-            this.textBoxMontoPagado.Text = "600";
+            this.textBoxMontoPagado.TabIndex = 2;
             this.textBoxMontoPagado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMontoPagado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMontoPagado_KeyDown);
+            this.textBoxMontoPagado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMontoPagado_KeyPress);
+            this.textBoxMontoPagado.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMontoPagado_Validating);
             // 
-            // lblCambio
+            // contextMenuStripEmpty
             // 
-            this.lblCambio.AutoSize = true;
-            this.lblCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCambio.Location = new System.Drawing.Point(732, 286);
-            this.lblCambio.Name = "lblCambio";
-            this.lblCambio.Size = new System.Drawing.Size(100, 20);
-            this.lblCambio.TabIndex = 196;
-            this.lblCambio.Text = "Cambio (Bs.)";
-            this.lblCambio.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.contextMenuStripEmpty.Name = "contextMenuStripTextBox";
+            this.contextMenuStripEmpty.Size = new System.Drawing.Size(61, 4);
+            // 
+            // labelCambio
+            // 
+            this.labelCambio.AutoSize = true;
+            this.labelCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCambio.Location = new System.Drawing.Point(732, 286);
+            this.labelCambio.Name = "labelCambio";
+            this.labelCambio.Size = new System.Drawing.Size(100, 20);
+            this.labelCambio.TabIndex = 196;
+            this.labelCambio.Text = "Cambio (Bs.)";
+            this.labelCambio.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblMontoTotal
             // 
@@ -228,36 +198,42 @@
             // buttonCerrar
             // 
             this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCerrar.Location = new System.Drawing.Point(934, 347);
+            this.buttonCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCerrar.Location = new System.Drawing.Point(898, 347);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 188;
+            this.buttonCerrar.TabIndex = 4;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGuardar.Location = new System.Drawing.Point(839, 347);
+            this.buttonGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGuardar.Location = new System.Drawing.Point(803, 347);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 187;
+            this.buttonGuardar.TabIndex = 3;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // textBoxCIoNIT
+            // textBoxCiONit
             // 
-            this.textBoxCIoNIT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCIoNIT.Location = new System.Drawing.Point(909, 12);
-            this.textBoxCIoNIT.MaxLength = 12;
-            this.textBoxCIoNIT.Name = "textBoxCIoNIT";
-            this.textBoxCIoNIT.Size = new System.Drawing.Size(150, 26);
-            this.textBoxCIoNIT.TabIndex = 180;
-            this.textBoxCIoNIT.Text = "0";
-            this.textBoxCIoNIT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCiONit.ContextMenuStrip = this.contextMenuStripEmpty;
+            this.textBoxCiONit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCiONit.Location = new System.Drawing.Point(909, 12);
+            this.textBoxCiONit.MaxLength = 12;
+            this.textBoxCiONit.Name = "textBoxCiONit";
+            this.textBoxCiONit.Size = new System.Drawing.Size(150, 26);
+            this.textBoxCiONit.TabIndex = 1;
+            this.textBoxCiONit.Text = "0";
+            this.textBoxCiONit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCiONit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCiONit_KeyDown);
+            this.textBoxCiONit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCiONit_KeyPress);
+            this.textBoxCiONit.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCiONit_Validating);
             // 
             // textBoxCliente
             // 
@@ -287,7 +263,8 @@
             this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(75, 25);
             this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
             this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(150, 26);
-            this.textBoxCodigoDeBarras.TabIndex = 183;
+            this.textBoxCodigoDeBarras.TabIndex = 0;
+            this.textBoxCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigoDeBarras_KeyDown);
             // 
             // lblCodigoDeBarras
             // 
@@ -337,16 +314,69 @@
             this.groupBoxDetalleDeVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxDetalleDeVenta.Location = new System.Drawing.Point(12, 12);
             this.groupBoxDetalleDeVenta.Name = "groupBoxDetalleDeVenta";
-            this.groupBoxDetalleDeVenta.Size = new System.Drawing.Size(714, 359);
-            this.groupBoxDetalleDeVenta.TabIndex = 206;
+            this.groupBoxDetalleDeVenta.Size = new System.Drawing.Size(714, 376);
+            this.groupBoxDetalleDeVenta.TabIndex = 0;
             this.groupBoxDetalleDeVenta.TabStop = false;
             this.groupBoxDetalleDeVenta.Text = "Detalle de Venta";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
+            // Id
+            // 
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.Silver;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle36;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Id.Visible = false;
+            // 
+            // Alias
+            // 
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.Silver;
+            this.Alias.DefaultCellStyle = dataGridViewCellStyle37;
+            this.Alias.HeaderText = "Producto";
+            this.Alias.Name = "Alias";
+            this.Alias.ReadOnly = true;
+            this.Alias.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle38;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Precio_Unitario
+            // 
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.Silver;
+            this.Precio_Unitario.DefaultCellStyle = dataGridViewCellStyle39;
+            this.Precio_Unitario.HeaderText = "Precio Unitario";
+            this.Precio_Unitario.Name = "Precio_Unitario";
+            this.Precio_Unitario.ReadOnly = true;
+            this.Precio_Unitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Precio_Total
+            // 
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Precio_Total.DefaultCellStyle = dataGridViewCellStyle40;
+            this.Precio_Total.HeaderText = "Precio Total";
+            this.Precio_Total.Name = "Precio_Total";
+            this.Precio_Total.ReadOnly = true;
+            this.Precio_Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Nueva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 403);
+            this.ClientSize = new System.Drawing.Size(1076, 400);
             this.Controls.Add(this.groupBoxDetalleDeVenta);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.labelFecha);
@@ -354,24 +384,25 @@
             this.Controls.Add(this.lblNumeroDeVenta);
             this.Controls.Add(this.checkBoxSinFactura);
             this.Controls.Add(this.textBoxMontoTotal);
-            this.Controls.Add(this.textBoxVuelto);
+            this.Controls.Add(this.textBoxCambio);
             this.Controls.Add(this.lblMontoPagado);
             this.Controls.Add(this.textBoxMontoPagado);
-            this.Controls.Add(this.lblCambio);
+            this.Controls.Add(this.labelCambio);
             this.Controls.Add(this.lblMontoTotal);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.textBoxCIoNIT);
+            this.Controls.Add(this.textBoxCiONit);
             this.Controls.Add(this.textBoxCliente);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.lblCIoNIT);
-            this.MaximizeBox = false;
             this.Name = "Nueva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Venta";
+            this.Load += new System.EventHandler(this.Nueva_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
             this.groupBoxDetalleDeVenta.ResumeLayout(false);
             this.groupBoxDetalleDeVenta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,14 +415,14 @@
         private System.Windows.Forms.Label lblNumeroDeVenta;
         private System.Windows.Forms.CheckBox checkBoxSinFactura;
         private System.Windows.Forms.TextBox textBoxMontoTotal;
-        private System.Windows.Forms.TextBox textBoxVuelto;
+        private System.Windows.Forms.TextBox textBoxCambio;
         private System.Windows.Forms.Label lblMontoPagado;
         private System.Windows.Forms.TextBox textBoxMontoPagado;
-        private System.Windows.Forms.Label lblCambio;
+        private System.Windows.Forms.Label labelCambio;
         private System.Windows.Forms.Label lblMontoTotal;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
-        private System.Windows.Forms.TextBox textBoxCIoNIT;
+        private System.Windows.Forms.TextBox textBoxCiONit;
         private System.Windows.Forms.TextBox textBoxCliente;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.TextBox textBoxCodigoDeBarras;
@@ -400,8 +431,10 @@
         private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.GroupBox groupBoxDetalleDeVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Total;

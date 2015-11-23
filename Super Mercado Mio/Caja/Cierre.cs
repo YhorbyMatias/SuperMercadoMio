@@ -265,6 +265,7 @@ namespace Super_Mercado_Mio.Caja
             cierreDeCaja.ID_USUARIO = SesionEnt.idUsuario;
             cierreDeCaja.ID_CAJA = SesionEnt.idCaja;
             cierreDeCaja.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
+            cierreDeCaja.HORA = DateTime.Now.ToString("T");
             cierreDeCaja.MONTO_DE_APERTURA_DE_CAJA = Convert.ToDecimal(textBoxMontoDeAperturaDeCaja.Text);
             cierreDeCaja.MONTO_DE_VENTAS = Convert.ToDecimal(textBoxMontoDeVentas.Text);
             cierreDeCaja.MONTO_DE_DEVOLUCIONES = Convert.ToDecimal(textBoxMontoDeDevoluciones.Text);

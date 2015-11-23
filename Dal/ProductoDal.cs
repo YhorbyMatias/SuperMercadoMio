@@ -107,6 +107,20 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable getByBarCode(ProductoEnt producto)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id, Alias, Tipo, Precio_De_Venta From buscarProductos() "
+                + "Where Codigo_De_Barras = @Codigo_De_Barras";
+            sqlCommand.Parameters.AddWithValue("@Codigo_De_Barras", producto.CODIGO_DE_BARRAS);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Producto");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public int getNumber(ProductoEnt producto)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -195,7 +209,7 @@ namespace Dal
                 + "Tipo_De_Codigo_De_Barras = @Tipo_De_Codigo_De_Barras, Codigo_De_Barras = @Codigo_De_Barras, "
                 + "Nombre_Generico = @Nombre_Generico, Marca = @Marca, Sabor_U_Olor = @Sabor_U_Olor, Tipo = @Tipo, "
                 + "Cantidad_Minima = @Cantidad_Minima, Precio_De_Compra = @Precio_De_Compra, Precio_De_Venta = @Precio_De_Venta, "
-                + "Alias = @Alias Where Id_Producto = @Id_Producto";
+                + "Alias = @Alias Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Id_Proveedor", producto.ID_PROVEEDOR);
             sqlCommand.Parameters.AddWithValue("@Id_Grupo", producto.ID_GRUPO);
             sqlCommand.Parameters.AddWithValue("@Tipo_De_Codigo_De_Barras", producto.TIPO_DE_CODIGO_DE_BARRAS);
@@ -237,7 +251,7 @@ namespace Dal
                 + "Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Precio_De_Compra", producto.PRECIO_DE_COMPRA);
             sqlCommand.Parameters.AddWithValue("@Precio_De_Venta", producto.PRECIO_DE_VENTA);
-            sqlCommand.Parameters.AddWithValue("@Id_Producto", producto.ID);
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

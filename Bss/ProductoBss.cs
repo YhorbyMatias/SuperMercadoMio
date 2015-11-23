@@ -35,6 +35,10 @@ namespace Bss
         {
             return objetoProducto.add(producto);
         }
+        public DataTable getByBarCode(ProductoEnt producto)
+        {
+            return objetoProducto.getByBarCode(producto);
+        }
         public int getNumber(ProductoEnt producto)
         {
             return objetoProducto.getNumber(producto);

@@ -33,14 +33,14 @@ namespace Super_Mercado_Mio
         }
         private void Principal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                printer.closeConnection();
-            }
-            catch (PosControlException exception)
-            {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    printer.closeConnection();
+            //}
+            //catch (PosControlException exception)
+            //{
+            //    MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             Application.Exit();
         }
         private void Principal_Load(object sender, EventArgs e)
@@ -88,14 +88,14 @@ namespace Super_Mercado_Mio
             }
             reviewDosificacion();
             reviewCashBox();
-            try
-            {
-                printer.openConnection();
-            }
-            catch (PosControlException exception)
-            {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    printer.openConnection();
+            //}
+            //catch (PosControlException exception)
+            //{
+            //    MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         #endregion
         #region Menu Archivo
@@ -268,6 +268,14 @@ namespace Super_Mercado_Mio
             formCierreDeCaja.Show();
         }
         #endregion
+        #region Menu Venta
+        private void nuevaVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Venta.Nueva formNuevaVenta = new Venta.Nueva();
+            formNuevaVenta.MdiParent = this;
+            formNuevaVenta.Show();
+        }
+        #endregion
         #region Menu Cliente
         private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -294,6 +302,14 @@ namespace Super_Mercado_Mio
             formListaDeClientes.Show();
         }
         #endregion
+        #region Menu Compra
+        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Nueva formularioNuevaCompra = new Compra.Nueva();
+            formularioNuevaCompra.MdiParent = this;
+            formularioNuevaCompra.Show();
+        }
+        #endregion
         #region Menu Producto
         private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -312,14 +328,6 @@ namespace Super_Mercado_Mio
             Producto.Lista formularioListaDeProductos = new Producto.Lista(1);
             formularioListaDeProductos.MdiParent = this;
             formularioListaDeProductos.Show();
-        }
-        #endregion
-        #region Menu Compra
-        private void nuevaCompraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Compra.Nueva formularioNuevaCompra = new Compra.Nueva();
-            formularioNuevaCompra.MdiParent = this;
-            formularioNuevaCompra.Show();
         }
         #endregion
         #region Methods
@@ -389,8 +397,26 @@ namespace Super_Mercado_Mio
                     case "Lista de Proveedores":
                         listaDeProveedoresToolStripMenuItem.Enabled = true;
                         break;
+                    case "Nuevo Grupo":
+                        nuevoGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Grupo":
+                        modificarGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Eliminar Grupo":
+                        eliminarGrupoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Grupos":
+                        listaDeGruposToolStripMenuItem.Enabled = true;
+                        break;
                     case "Apertura de Caja":
                         aperturaDeCajaToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Cierre de Caja":
+                        cierreDeCajaToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Nueva Venta":
+                        nuevaVentaToolStripMenuItem.Enabled = true;
                         break;
                     case "Nuevo Cliente":
                         nuevoClienteToolStripMenuItem.Enabled = true;
@@ -404,20 +430,14 @@ namespace Super_Mercado_Mio
                     case "Lista de Clientes":
                         listaDeClientesToolStripMenuItem.Enabled = true;
                         break;
-                    case "Nuevo Grupo":
-                        nuevoGrupoToolStripMenuItem.Enabled = true;
-                        break;
-                    case "Modificar Grupo":
-                        modificarGrupoToolStripMenuItem.Enabled = true;
-                        break;
-                    case "Eliminar Grupo":
-                        eliminarGrupoToolStripMenuItem.Enabled = true;
-                        break;
-                    case "Lista de Grupos":
-                        listaDeGruposToolStripMenuItem.Enabled = true;
-                        break;
                     case "Nueva Compra":
                         nuevaCompraToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Nuevo Producto":
+                        nuevoProductoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Producto":
+                        modificarProductoToolStripMenuItem.Enabled = true;
                         break;
                 }
             }

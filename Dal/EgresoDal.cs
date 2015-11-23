@@ -52,6 +52,17 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public int getNumber()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select ISNULL(MAX(Id), 0) As Number From Egreso";
+            sqlConnection.Open();
+            int number = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return number;
+        }
         public decimal getSalesTotalAmount(EgresoEnt egreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

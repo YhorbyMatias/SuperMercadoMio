@@ -137,7 +137,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxSaborUOlor_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarSaborUOlor();
-            hasErrors[7] = Convert.ToBoolean(errorCode);
+            hasErrors[6] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxSaborUOlor, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -182,7 +182,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxCantidadMinima_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarCantidadMinima();
-            hasErrors[8] = Convert.ToBoolean(errorCode);
+            hasErrors[7] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxCantidadMinima, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -227,7 +227,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxPrecioDeCompra_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarPrecioDeCompra();
-            hasErrors[9] = Convert.ToBoolean(errorCode);
+            hasErrors[8] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxPrecioDeCompra, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -272,7 +272,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxPrecioDeVenta_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarPrecioDeVenta();
-            hasErrors[10] = Convert.ToBoolean(errorCode);
+            hasErrors[9] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxPrecioDeVenta, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -280,7 +280,7 @@ namespace Super_Mercado_Mio.Producto
         private void textBoxAlias_Validating(object sender, CancelEventArgs e)
         {
             int errorCode = validarAlias();
-            hasErrors[6] = Convert.ToBoolean(errorCode);
+            hasErrors[10] = Convert.ToBoolean(errorCode);
             errorProviderFormulario.SetError(textBoxAlias, ValidacionBss.getErrorMessage(errorCode));
         }
         #endregion
@@ -354,7 +354,7 @@ namespace Super_Mercado_Mio.Producto
             values[1] = "NINGUNO";
             DataTable dataTableProveedores = objetoProveedor.selectAll();
             dataTableProveedores.Rows.Add(values);
-            comboBoxProveedor.ValueMember = "Id_Proveedor";
+            comboBoxProveedor.ValueMember = "Id";
             comboBoxProveedor.DisplayMember = "Nombre";
             comboBoxProveedor.DataSource = dataTableProveedores;
             comboBoxProveedor.SelectedValue = 0;
@@ -366,7 +366,7 @@ namespace Super_Mercado_Mio.Producto
             values[1] = "NINGUNO";
             DataTable dataTableGrupos = objetoGrupo.selectAll();
             dataTableGrupos.Rows.Add(values);
-            comboBoxGrupo.ValueMember = "Id_Grupo";
+            comboBoxGrupo.ValueMember = "Id";
             comboBoxGrupo.DisplayMember = "Nombre";
             comboBoxGrupo.DataSource = dataTableGrupos;
             comboBoxGrupo.SelectedValue = 0;
@@ -835,19 +835,19 @@ namespace Super_Mercado_Mio.Producto
                         textBoxPresentacion.Focus();
                         break;
                     case 6:
-                        textBoxAlias.Focus();
-                        break;
-                    case 7:
                         textBoxSaborUOlor.Focus();
                         break;
-                    case 8:
+                    case 7:
                         textBoxCantidadMinima.Focus();
                         break;
-                    case 9:
+                    case 8:
                         textBoxPrecioDeCompra.Focus();
                         break;
-                    case 10:
+                    case 9:
                         textBoxPrecioDeVenta.Focus();
+                        break;
+                    case 10:
+                        textBoxAlias.Focus();
                         break;
                 }
                 return false;

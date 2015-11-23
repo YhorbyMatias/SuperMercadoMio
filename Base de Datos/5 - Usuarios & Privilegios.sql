@@ -38,6 +38,8 @@ Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (32, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (33, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (34, 1, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (35, 1, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (36, 1, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (37, 1, 1);
 
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (1, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (2, 2, 1);
@@ -74,3 +76,5 @@ Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (32, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (33, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (34, 2, 1);
 Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (35, 2, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (36, 2, 1);
+Insert Into Privilegio(Id_Opcion, Id_Usuario, Estado) Values (37, 2, 1);
