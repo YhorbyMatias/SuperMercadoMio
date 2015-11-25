@@ -84,6 +84,8 @@
             this.eliminarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anularFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripPrincipal.SuspendLayout();
             this.menuStripMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +113,7 @@
             this.definicionesToolStripMenuItem,
             this.cajaToolStripMenuItem,
             this.ventaToolStripMenuItem,
+            this.facturaToolStripMenuItem,
             this.clienteToolStripMenuItem,
             this.compraToolStripMenuItem,
             this.productoToolStripMenuItem});
@@ -431,7 +434,7 @@
             // 
             this.aperturaDeCajaToolStripMenuItem.Enabled = false;
             this.aperturaDeCajaToolStripMenuItem.Name = "aperturaDeCajaToolStripMenuItem";
-            this.aperturaDeCajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aperturaDeCajaToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.aperturaDeCajaToolStripMenuItem.Text = "Apertura";
             this.aperturaDeCajaToolStripMenuItem.Click += new System.EventHandler(this.aperturaDeCajaToolStripMenuItem_Click);
             // 
@@ -439,7 +442,7 @@
             // 
             this.cierreDeCajaToolStripMenuItem.Enabled = false;
             this.cierreDeCajaToolStripMenuItem.Name = "cierreDeCajaToolStripMenuItem";
-            this.cierreDeCajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cierreDeCajaToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.cierreDeCajaToolStripMenuItem.Text = "Cierre";
             this.cierreDeCajaToolStripMenuItem.Click += new System.EventHandler(this.cierreDeCajaToolStripMenuItem_Click);
             // 
@@ -455,7 +458,7 @@
             // 
             this.nuevaVentaToolStripMenuItem.Enabled = false;
             this.nuevaVentaToolStripMenuItem.Name = "nuevaVentaToolStripMenuItem";
-            this.nuevaVentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevaVentaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.nuevaVentaToolStripMenuItem.Text = "Nueva";
             this.nuevaVentaToolStripMenuItem.Click += new System.EventHandler(this.nuevaVentaToolStripMenuItem_Click);
             // 
@@ -568,6 +571,21 @@
             this.stockDeProductosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.stockDeProductosToolStripMenuItem.Text = "Stock";
             // 
+            // facturaToolStripMenuItem
+            // 
+            this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.anularFacturaToolStripMenuItem});
+            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.facturaToolStripMenuItem.Text = "Factura";
+            // 
+            // anularFacturaToolStripMenuItem
+            // 
+            this.anularFacturaToolStripMenuItem.Name = "anularFacturaToolStripMenuItem";
+            this.anularFacturaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.anularFacturaToolStripMenuItem.Text = "Anular";
+            this.anularFacturaToolStripMenuItem.Click += new System.EventHandler(this.anularFacturaToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,5 +667,7 @@
         private System.Windows.Forms.ToolStripMenuItem cierreDeCajaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaVentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem anularFacturaToolStripMenuItem;
     }
 }

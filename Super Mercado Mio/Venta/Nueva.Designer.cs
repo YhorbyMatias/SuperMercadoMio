@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewDetalleDeVenta = new System.Windows.Forms.DataGridView();
+            this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxNumeroVenta = new System.Windows.Forms.TextBox();
             this.labelNumeroDeVenta = new System.Windows.Forms.Label();
             this.checkBoxFacturaManual = new System.Windows.Forms.CheckBox();
@@ -55,14 +60,9 @@
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.labelFecha = new System.Windows.Forms.Label();
             this.groupBoxDetalleDeVenta = new System.Windows.Forms.GroupBox();
+            this.buttonSearchProduct = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxCambio = new System.Windows.Forms.TextBox();
-            this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSearchProduct = new System.Windows.Forms.Button();
             this.buttonSearchClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleDeVenta)).BeginInit();
             this.groupBoxDetalleDeVenta.SuspendLayout();
@@ -92,6 +92,54 @@
             this.dataGridViewDetalleDeVenta.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetalleDeVenta_CellEndEdit);
             this.dataGridViewDetalleDeVenta.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetalleDeVenta_CellValidating);
             this.dataGridViewDetalleDeVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewDetalleDeVenta_RowsRemoved);
+            // 
+            // Id_Producto
+            // 
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
+            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Id_Producto.HeaderText = "Id_Producto";
+            this.Id_Producto.Name = "Id_Producto";
+            this.Id_Producto.ReadOnly = true;
+            this.Id_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Id_Producto.Visible = false;
+            // 
+            // Alias
+            // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
+            this.Alias.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Alias.HeaderText = "Producto";
+            this.Alias.Name = "Alias";
+            this.Alias.ReadOnly = true;
+            this.Alias.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Precio_Unitario
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Silver;
+            this.Precio_Unitario.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Precio_Unitario.HeaderText = "Precio Unitario";
+            this.Precio_Unitario.Name = "Precio_Unitario";
+            this.Precio_Unitario.ReadOnly = true;
+            this.Precio_Unitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Monto_Total
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Monto_Total.HeaderText = "Monto Total";
+            this.Monto_Total.Name = "Monto_Total";
+            this.Monto_Total.ReadOnly = true;
+            this.Monto_Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // textBoxNumeroVenta
             // 
@@ -248,8 +296,7 @@
             // 
             // textBoxCliente
             // 
-            this.textBoxCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCliente.Location = new System.Drawing.Point(909, 44);
             this.textBoxCliente.Multiline = true;
@@ -342,6 +389,19 @@
             this.groupBoxDetalleDeVenta.TabStop = false;
             this.groupBoxDetalleDeVenta.Text = "Detalle de Venta";
             // 
+            // buttonSearchProduct
+            // 
+            this.buttonSearchProduct.FlatAppearance.BorderSize = 0;
+            this.buttonSearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchProduct.Image = global::Super_Mercado_Mio.Properties.Resources.search16;
+            this.buttonSearchProduct.Location = new System.Drawing.Point(248, 29);
+            this.buttonSearchProduct.Name = "buttonSearchProduct";
+            this.buttonSearchProduct.Size = new System.Drawing.Size(21, 21);
+            this.buttonSearchProduct.TabIndex = 204;
+            this.buttonSearchProduct.TabStop = false;
+            this.buttonSearchProduct.UseVisualStyleBackColor = true;
+            this.buttonSearchProduct.Click += new System.EventHandler(this.buttonSearchProduct_Click);
+            // 
             // errorProvider
             // 
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -361,67 +421,6 @@
             this.textBoxCambio.TabIndex = 243;
             this.textBoxCambio.TabStop = false;
             this.textBoxCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // Id_Producto
-            // 
-            dataGridViewCellStyle81.BackColor = System.Drawing.Color.Silver;
-            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle81;
-            this.Id_Producto.HeaderText = "Id_Producto";
-            this.Id_Producto.Name = "Id_Producto";
-            this.Id_Producto.ReadOnly = true;
-            this.Id_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Id_Producto.Visible = false;
-            // 
-            // Alias
-            // 
-            dataGridViewCellStyle82.BackColor = System.Drawing.Color.Silver;
-            this.Alias.DefaultCellStyle = dataGridViewCellStyle82;
-            this.Alias.HeaderText = "Producto";
-            this.Alias.Name = "Alias";
-            this.Alias.ReadOnly = true;
-            this.Alias.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle83;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Precio_Unitario
-            // 
-            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle84.BackColor = System.Drawing.Color.Silver;
-            this.Precio_Unitario.DefaultCellStyle = dataGridViewCellStyle84;
-            this.Precio_Unitario.HeaderText = "Precio Unitario";
-            this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.ReadOnly = true;
-            this.Precio_Unitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Monto_Total
-            // 
-            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle85.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle85.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle85;
-            this.Monto_Total.HeaderText = "Monto Total";
-            this.Monto_Total.Name = "Monto_Total";
-            this.Monto_Total.ReadOnly = true;
-            this.Monto_Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // buttonSearchProduct
-            // 
-            this.buttonSearchProduct.FlatAppearance.BorderSize = 0;
-            this.buttonSearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchProduct.Image = global::Super_Mercado_Mio.Properties.Resources.search16;
-            this.buttonSearchProduct.Location = new System.Drawing.Point(248, 29);
-            this.buttonSearchProduct.Name = "buttonSearchProduct";
-            this.buttonSearchProduct.Size = new System.Drawing.Size(21, 21);
-            this.buttonSearchProduct.TabIndex = 204;
-            this.buttonSearchProduct.TabStop = false;
-            this.buttonSearchProduct.UseVisualStyleBackColor = true;
-            this.buttonSearchProduct.Click += new System.EventHandler(this.buttonSearchProduct_Click);
             // 
             // buttonSearchClient
             // 

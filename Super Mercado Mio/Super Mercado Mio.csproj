@@ -150,6 +150,12 @@
     <Compile Include="Empresa\Nueva.Designer.cs">
       <DependentUpon>Nueva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factura\Anular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factura\Anular.Designer.cs">
+      <DependentUpon>Anular.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grupo\Eliminar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Empresa\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factura\Anular.resx">
+      <DependentUpon>Anular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Grupo\Eliminar.resx">
       <DependentUpon>Eliminar.cs</DependentUpon>

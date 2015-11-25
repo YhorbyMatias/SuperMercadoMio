@@ -276,6 +276,14 @@ namespace Super_Mercado_Mio
             formNuevaVenta.Show();
         }
         #endregion
+        #region Menu Factura
+        private void anularFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Factura.Anular formAnularFactura = new Factura.Anular();
+            formAnularFactura.MdiParent = this;
+            formAnularFactura.Show();
+        }
+        #endregion
         #region Menu Cliente
         private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {

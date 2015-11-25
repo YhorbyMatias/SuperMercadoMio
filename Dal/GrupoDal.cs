@@ -79,8 +79,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select * From buscarGrupos() "
-                + "Where Not Exists (Select P.Id_Grupo From Producto P Where Estado = 1 And Id = P.Id_Grupo)";
+            sqlCommand.CommandText = "Select * From buscarGrupos() G "
+                + "Where Not Exists (Select P.Id_Grupo From Producto P Where Estado = 1 And G.Id = P.Id_Grupo)";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;
             DataTable dataTable = new DataTable("Grupos");

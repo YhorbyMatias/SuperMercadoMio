@@ -415,10 +415,10 @@ namespace Super_Mercado_Mio.Producto
         }
         private void evaluarCodigoDeBarras()
         {
-            if (radioButtonTipoDeCodigoDeBarrasSistema.Checked == true)
+            if (radioButtonTipoDeCodigoDeBarrasSistema.Checked)
             {
                 textBoxCodigoDeBarras.ReadOnly = true;
-                if (codigoDeBarrasSistema != "")
+                if (codigoDeBarrasSistema == "")
                 {
                     producto.TIPO_DE_CODIGO_DE_BARRAS = "SISTEMA";
                     textBoxCodigoDeBarras.Text = "M" + (objetoProducto.getNumber(producto) + 1).ToString("D5");
