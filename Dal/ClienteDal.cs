@@ -76,6 +76,19 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable getByCiONit(ClienteEnt cliente)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id, Nombre From Cliente Where Estado = 1 And Ci_O_Nit = @Ci_O_Nit";
+            sqlCommand.Parameters.AddWithValue("@Ci_O_Nit", cliente.CI_O_NIT);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Cliente");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable getById(ClienteEnt cliente)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

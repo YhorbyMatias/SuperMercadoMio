@@ -13,8 +13,21 @@ namespace Bss
     {
         #region Objects
         EgresoDal objetoEgreso = new EgresoDal();
+        public List<DetalleDeEgresoEnt> invoiceLines = new List<DetalleDeEgresoEnt>();
         #endregion
         #region Methods
+        public int add(EgresoEnt egreso)
+        {
+            int id = objetoEgreso.add(egreso);
+            DetalleDeEgresoBss objetoDetalleDeEgreso = new DetalleDeEgresoBss();
+            foreach(DetalleDeEgresoEnt invoiceLine in invoiceLines)
+            {
+                invoiceLine.ID_EGRESO = id;
+                objetoDetalleDeEgreso.add(invoiceLine);
+            }
+            invoiceLines.Clear();
+            return id;
+        }
         public void close(EgresoEnt egreso)
         {
             objetoEgreso.close(egreso);
@@ -38,6 +51,10 @@ namespace Bss
         public void updateFacturado(EgresoEnt egreso)
         {
             objetoEgreso.updateFacturado(egreso);
+        }
+        public void updateFacturadoById(EgresoEnt egreso)
+        {
+            objetoEgreso.updateFacturadoById(egreso);
         }
         #endregion
     }

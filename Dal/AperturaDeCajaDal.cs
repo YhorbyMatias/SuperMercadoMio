@@ -79,6 +79,20 @@ namespace Dal
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
         }
+        public int getId(AperturaDeCajaEnt aperturaDeCaja)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select Id From Apertura_De_Caja Where Cerrado = 0 And Id_Usuario = @Id_Usuario "
+                + "And Id_Caja = @Id_Caja";
+            sqlCommand.Parameters.AddWithValue("@Id_Usuario", aperturaDeCaja.ID_USUARIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Caja", aperturaDeCaja.ID_CAJA);
+            sqlConnection.Open();
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return id;
+        }
         #endregion
     }
 }

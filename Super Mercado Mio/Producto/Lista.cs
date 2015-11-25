@@ -18,7 +18,7 @@ namespace Super_Mercado_Mio.Producto
         int opcion = 0;
         int records = 0;
         ProductoBss objetoProducto = new ProductoBss();
-        ProductoEnt producto = new ProductoEnt();
+        public ProductoEnt producto = new ProductoEnt();
         DataView dataViewProductos = new DataView();
         #endregion
         #region Form
@@ -114,7 +114,7 @@ namespace Super_Mercado_Mio.Producto
                 if (e.ColumnIndex == 0)
                 {
                     Producto.Modificar formularioModificarProducto =
-                        new Modificar(Convert.ToInt32(dataGridViewProductos["Id_Producto", e.RowIndex].Value));
+                        new Modificar(Convert.ToInt32(dataGridViewProductos["Id", e.RowIndex].Value));
                     formularioModificarProducto.MdiParent = this.MdiParent;
                     this.Close();
                     formularioModificarProducto.Show();
@@ -125,7 +125,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (opcion == 3 || opcion == 4)
             {
-                producto.ID = Convert.ToInt32(dataGridViewProductos["Id_Producto", e.RowIndex].Value);
+                producto.ID = Convert.ToInt32(dataGridViewProductos["Id", e.RowIndex].Value);
                 producto.CODIGO_DE_BARRAS = dataGridViewProductos["Codigo_De_Barras", e.RowIndex].Value.ToString();
                 this.Close();
             }
@@ -134,7 +134,7 @@ namespace Super_Mercado_Mio.Producto
         #region Metodos Propios
         private void setDataGridViewProductosFormat()
         {
-            dataGridViewProductos.Columns["Id_Producto"].Visible = false;
+            dataGridViewProductos.Columns["Id"].Visible = false;
             if (opcion == 1)
             {
                 dataGridViewProductos.Columns["Modificar"].Visible = false;
@@ -212,6 +212,26 @@ namespace Super_Mercado_Mio.Producto
                 dataGridViewProductos.Columns["Precio_De_Compra"].Width = 70;
                 dataGridViewProductos.Columns["Precio_De_Venta"].Width = 70;
                 dataGridViewProductos.Columns["Precio_De_Compra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridViewProductos.Columns["Precio_De_Venta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridViewProductos.Columns["Nombre_Generico"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridViewProductos.Columns["Marca"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridViewProductos.Columns["Nombre_Generico"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridViewProductos.Columns["Marca"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+            else if (opcion == 4)
+            {
+                dataGridViewProductos.Columns["Modificar"].Visible = false;
+                dataGridViewProductos.Columns["Codigo_De_Barras"].HeaderText = "Código de Barras";
+                dataGridViewProductos.Columns["Nombre_Generico"].HeaderText = "Nombre Genérico";
+                dataGridViewProductos.Columns["Presentacion"].HeaderText = "Presentación";
+                dataGridViewProductos.Columns["Sabor_U_Olor"].HeaderText = "Sabor U Olor";
+                dataGridViewProductos.Columns["Precio_De_Venta"].HeaderText = "Precio de Venta";
+                dataGridViewProductos.Columns["Codigo_De_Barras"].Width = 50;
+                dataGridViewProductos.Columns["Nombre_Generico"].Width = 100;
+                dataGridViewProductos.Columns["Marca"].Width = 115;
+                dataGridViewProductos.Columns["Presentacion"].Width = 80;
+                dataGridViewProductos.Columns["Sabor_U_Olor"].Width = 60;
+                dataGridViewProductos.Columns["Precio_De_Venta"].Width = 110;
                 dataGridViewProductos.Columns["Precio_De_Venta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dataGridViewProductos.Columns["Nombre_Generico"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dataGridViewProductos.Columns["Marca"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;

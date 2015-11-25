@@ -35,6 +35,10 @@ namespace Bss
         {
             return objetoAperturaDeCaja.get(aperturaDeCaja);
         }
+        public int getId(AperturaDeCajaEnt aperturaDeCaja)
+        {
+            return objetoAperturaDeCaja.getId(aperturaDeCaja);
+        }
         #endregion
     }
 }

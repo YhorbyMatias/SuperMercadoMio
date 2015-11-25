@@ -15,6 +15,10 @@ namespace Bss
         DetalleDeEgresoDal objetoDetalleDeEgreso = new DetalleDeEgresoDal();
         #endregion
         #region Methods
+        public int add(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            return objetoDetalleDeEgreso.add(detalleDeEgreso);
+        }
         public DataTable getMinorSalesDetail(EgresoEnt egreso)
         {
             return objetoDetalleDeEgreso.getMinorSalesDetail(egreso);

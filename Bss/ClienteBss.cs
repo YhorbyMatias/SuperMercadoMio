@@ -35,6 +35,10 @@ namespace Bss
         {
             return objetoCliente.getAll();
         }
+        public DataTable getByCiONit(ClienteEnt cliente)
+        {
+            return objetoCliente.getByCiONit(cliente);
+        }
         public DataTable getById(ClienteEnt cliente)
         {
             return objetoCliente.getById(cliente);

@@ -99,8 +99,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor "
-                + "From buscarProductos() Where Precio > 0 Order By Codigo_De_Barras Asc";
+            sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, Precio_De_Venta "
+                + "From buscarProductos() Where Tipo_De_Codigo_De_Barras = 'SISTEMA' And Precio_De_Venta > 0 Order By Codigo_De_Barras Asc";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Productos");
             sqlDataAdapter.SelectCommand = sqlCommand;

@@ -33,18 +33,18 @@ Create Function buscarProductos()
 Returns Table
 Return
 (
-	Select Pr.Id, P.Nombre As Proveedor, G.Nombre As Grupo, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca, Pr.Presentacion,
-	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Tipo, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta, Pr.Alias
+	Select Pr.Id, P.Nombre As Proveedor, G.Nombre As Grupo, Pr.Tipo_De_Codigo_De_Barras, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca,
+	Pr.Presentacion, ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Tipo, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta, Pr.Alias
 	From Proveedor P, Grupo G, Producto Pr
 	Where P.Id = Pr.Id_Proveedor And G.Id = Pr.Id_Grupo And Pr.Estado = 1
 	Union
-	Select Pr.Id, P.Nombre As Proveedor, '' As Grupo, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca, Pr.Presentacion,
-	ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Tipo, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta, Pr.Alias
+	Select Pr.Id, P.Nombre As Proveedor, '' As Grupo, Pr.Tipo_De_Codigo_De_Barras, Pr.Codigo_De_Barras, Pr.Nombre_Generico, Pr.Marca,
+	Pr.Presentacion, ISNULL(Pr.Sabor_U_Olor, '') As Sabor_U_Olor, Pr.Tipo, Pr.Cantidad_Minima, Pr.Precio_De_Compra, Pr.Precio_De_Venta, Pr.Alias
 	From Proveedor P, Producto Pr
 	Where P.Id = Pr.Id_Proveedor And Pr.Id_Grupo = 0 And Pr.Estado = 1
 	Union
-	Select Id, '', '' As Grupo, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, ISNULL(Sabor_U_Olor, '') As Sabor_U_Olor,
-	Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta, Alias
+	Select Id, '', '' As Grupo, Tipo_De_Codigo_De_Barras, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion,
+	ISNULL(Sabor_U_Olor, '') As Sabor_U_Olor, Tipo, Cantidad_Minima, Precio_De_Compra, Precio_De_Venta, Alias
 	From Producto
 	Where Id_Proveedor = 0 And Id_Grupo = 0 And Estado = 1
 )

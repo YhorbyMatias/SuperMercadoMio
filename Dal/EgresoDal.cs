@@ -12,6 +12,31 @@ namespace Dal
     public class EgresoDal
     {
         #region Methods
+        public int add(EgresoEnt egreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "insertarEgreso";
+            sqlCommand.Parameters.AddWithValue("@Id_Usuario", egreso.ID_USUARIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Caja", egreso.ID_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Cliente", egreso.ID_CLIENTE);
+            sqlCommand.Parameters.AddWithValue("@Hora", egreso.HORA);
+            sqlCommand.Parameters.AddWithValue("@Tipo", egreso.TIPO);
+            sqlCommand.Parameters.AddWithValue("@Metodo_De_Pago", egreso.METODO_DE_PAGO);
+            sqlCommand.Parameters.AddWithValue("@Monto", egreso.MONTO);
+            sqlCommand.Parameters.AddWithValue("@Monto_Pagado", egreso.MONTO_PAGADO);
+            sqlCommand.Parameters.AddWithValue("@Cambio", egreso.CAMBIO);
+            sqlCommand.Parameters.AddWithValue("@Observaciones", egreso.OBSERVACIONES);
+            sqlCommand.Parameters.AddWithValue("@Facturado", egreso.FACTURADO);
+            sqlCommand.Parameters.AddWithValue("@Cerrado", egreso.CERRADO);
+            sqlCommand.Parameters.AddWithValue("@Estado", egreso.ESTADO);
+            sqlConnection.Open();
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return id;
+        }
         public void close(EgresoEnt egreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -83,6 +108,17 @@ namespace Dal
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Update Egreso Set Facturado = 1 Where Id_Cliente = 1 And Id_Apertura_De_Caja = @Id_Apertura_De_Caja";
             sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+        public void updateFacturadoById(EgresoEnt egreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Egreso Set Facturado = 1 Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", egreso.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

@@ -217,6 +217,46 @@ Begin
 End
 Go
 
+Create Procedure insertarEgreso
+@Id_Usuario Int,
+@Id_Caja Int,
+@Id_Apertura_De_Caja Int,
+@Id_Cliente Int,
+@Hora Varchar(50),
+@Tipo Varchar(15),
+@Metodo_De_Pago Varchar(15),
+@Monto Decimal(18,2),
+@Monto_Pagado Decimal(18,2),
+@Cambio Decimal(18,2),
+@Observaciones Varchar(500),
+@Facturado Bit,
+@Cerrado Bit,
+@Estado Varchar(7)
+As
+Begin
+	Insert Into Egreso (Id_Usuario, Id_Caja, Id_Apertura_De_Caja, Id_Cliente, Fecha, Hora, Tipo, Metodo_De_Pago, Monto, Monto_Pagado, Cambio,
+	Observaciones, Facturado, Cerrado, Estado)
+	Values (@Id_Usuario, @Id_Caja, @Id_Apertura_De_Caja, @Id_Cliente, GETDATE(), @Hora, @Tipo, @Metodo_De_Pago, @Monto, @Monto_Pagado, @Cambio,
+	@Observaciones, @Facturado, @Cerrado, @Estado)
+	Select SCOPE_IDENTITY()
+End
+Go
+
+Create Procedure insertarDetalleDeEgreso
+@Id_Egreso Int,
+@Id_Producto Int,
+@Cantidad Decimal(18,3),
+@Precio_Unitario Decimal(18,2),
+@Monto_Total Decimal(18,2),
+@Estado Varchar(7)
+As
+Begin
+	Insert Into Detalle_De_Egreso(Id_Egreso, Id_Producto, Cantidad, Precio_Unitario, Monto_Total, Estado)
+	Values(@Id_Egreso, @Id_Producto, @Cantidad, @Precio_Unitario, @Monto_Total, @Estado)
+	Select SCOPE_IDENTITY()
+End
+Go
+
 Create Procedure insertarFactura
 @Id_Usuario As Int,
 @Id_Caja As Int,

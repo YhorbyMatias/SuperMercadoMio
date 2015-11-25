@@ -577,7 +577,7 @@ namespace Super_Mercado_Mio.Producto
                         }
                         else
                         {
-                            return 9;
+                            return 700;
                         }
                     }
                 }
@@ -603,7 +603,7 @@ namespace Super_Mercado_Mio.Producto
                     }
                     else
                     {
-                        return 10;
+                        return 701;
                     }
                 }
                 else
@@ -628,7 +628,7 @@ namespace Super_Mercado_Mio.Producto
                     }
                     else
                     {
-                        return 10;
+                        return 701;
                     }
                 }
                 else
@@ -653,30 +653,12 @@ namespace Super_Mercado_Mio.Producto
                     }
                     else
                     {
-                        return 10;
+                        return 701;
                     }
                 }
                 else
                 {
                     return 0;
-                }
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        private int validarAlias()
-        {
-            if (textBoxAlias.Text.Trim() != "")
-            {
-                if (verificarAlias())
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 11;
                 }
             }
             else
@@ -694,7 +676,7 @@ namespace Super_Mercado_Mio.Producto
                 }
                 else
                 {
-                    return 10;
+                    return 701;
                 }
             }
             else
@@ -743,7 +725,7 @@ namespace Super_Mercado_Mio.Producto
                             }
                             else
                             {
-                                return 12;
+                                return 702;
                             }
                         }
                         else
@@ -782,7 +764,7 @@ namespace Super_Mercado_Mio.Producto
                             }
                             else
                             {
-                                return 12;
+                                return 702;
                             }
                         }
                         else
@@ -798,6 +780,24 @@ namespace Super_Mercado_Mio.Producto
                 else
                 {
                     return 2;
+                }
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        private int validarAlias()
+        {
+            if (textBoxAlias.Text.Trim() != "")
+            {
+                if (verificarAlias())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 703;
                 }
             }
             else

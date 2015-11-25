@@ -22,6 +22,7 @@ namespace Ent
         private decimal monto_pagado;
         private decimal cambio;
         private string observaciones;
+        private bool facturado;
         private bool cerrado;
         private string estado;
         #endregion
@@ -90,6 +91,11 @@ namespace Ent
         {
             get { return this.observaciones; }
             set { this.observaciones = value; }
+        }
+        public bool FACTURADO
+        {
+            get { return this.facturado; }
+            set { this.facturado = value; }
         }
         public bool CERRADO
         {

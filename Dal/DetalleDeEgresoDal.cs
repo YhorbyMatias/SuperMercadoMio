@@ -12,6 +12,23 @@ namespace Dal
     public class DetalleDeEgresoDal
     {
         #region Methods
+        public int add(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "insertarDetalleDeEgreso";
+            sqlCommand.Parameters.AddWithValue("@Id_Egreso", detalleDeEgreso.ID_EGRESO);
+            sqlCommand.Parameters.AddWithValue("@Id_Producto", detalleDeEgreso.ID_PRODUCTO);
+            sqlCommand.Parameters.AddWithValue("@Cantidad", detalleDeEgreso.CANTIDAD);
+            sqlCommand.Parameters.AddWithValue("@Precio_Unitario", detalleDeEgreso.PRECIO_UNITARIO);
+            sqlCommand.Parameters.AddWithValue("@Monto_Total", detalleDeEgreso.MONTO_TOTAL);
+            sqlCommand.Parameters.AddWithValue("@Estado", detalleDeEgreso.ESTADO);
+            sqlConnection.Open();
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return id;
+        }
         public DataTable getMinorSalesDetail(EgresoEnt egreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

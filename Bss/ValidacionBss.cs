@@ -74,17 +74,17 @@ namespace Bss
                     errorMessage = "El grupo ya se halla registrado.";
                     break;
                 //Product Screens
-                case 9:
+                case 700:
                     errorMessage = "El código de barras ya se halla registrado.";
                     break;
-                case 10:
+                case 701:
                     errorMessage = "El producto ya se halla registrado.";
                     break;
-                case 11:
-                    errorMessage = "El alias ya se halla registrado.";
-                    break;
-                case 12:
+                case 702:
                     errorMessage = "El precio de compra debe ser menor al precio de venta.";
+                    break;
+                case 703:
+                    errorMessage = "El alias ya se halla registrado.";
                     break;
                 //
                 case 13:
@@ -102,6 +102,12 @@ namespace Bss
                     break;
                 case 902:
                     errorMessage = "El monto pagado no puede ser menor al monto total.";
+                    break;
+                case 903:
+                    errorMessage = "El monto de una 'Venta Menor' debe ser inferior a 5 Bs.";
+                    break;
+                case 904:
+                    errorMessage = "Elija el cliente '0' o ingrese el CI ó Nit del cliente";
                     break;
             }
             return errorMessage;
