@@ -58,7 +58,14 @@ namespace Dal
                 + "Municipio = @Municipio Where Id = @Id";
             sqlCommand.Parameters.AddWithValue("@Numero", sucursal.NUMERO);
             sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
-            sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
+            if (sucursal.TELEFONO != "")
+            {
+                sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
+            }
+            else
+            {
+                sqlCommand.Parameters.AddWithValue("@Telefono", DBNull.Value);
+            }
             sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
             sqlCommand.Parameters.AddWithValue("@Id", sucursal.ID);
             sqlConnection.Open();

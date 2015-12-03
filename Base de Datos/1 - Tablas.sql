@@ -52,7 +52,7 @@ Create Table Sucursal
 	Id_Empresa Int Not Null,
 	Numero Varchar(3) Not Null,
 	Direccion Varchar(MAX) Not Null,
-	Telefono Varchar(8) Not Null,
+	Telefono Varchar(8) Null,
 	Municipio Varchar(100) Not Null,
 	Estado Bit Not Null,
 	Primary Key(Id),
