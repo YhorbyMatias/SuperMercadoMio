@@ -19,9 +19,21 @@ namespace Bss
         {
             return objetoDetalleDeEgreso.add(detalleDeEgreso);
         }
+        public void cancel(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            objetoDetalleDeEgreso.cancel(detalleDeEgreso);
+        }
+        public void delete(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            objetoDetalleDeEgreso.delete(detalleDeEgreso);
+        }
         public DataTable getMinorSalesDetail(EgresoEnt egreso)
         {
             return objetoDetalleDeEgreso.getMinorSalesDetail(egreso);
+        }
+        public void update(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            objetoDetalleDeEgreso.update(detalleDeEgreso);
         }
         #endregion
     }

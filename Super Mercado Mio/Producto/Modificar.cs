@@ -22,8 +22,6 @@ namespace Super_Mercado_Mio.Producto
         GrupoBss objetoGrupo = new GrupoBss();
         ProductoBss objetoProducto = new ProductoBss();
         public ProductoEnt producto = new ProductoEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Modificar(int idProductoX)
@@ -325,7 +323,6 @@ namespace Super_Mercado_Mio.Producto
                 producto.PRECIO_DE_COMPRA = Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim());
                 producto.PRECIO_DE_VENTA = Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim());
                 objetoProducto.update(producto);
-                insertarRegistro("Producto", producto.ID, "Nuevo");
                 if (producto.CODIGO_DE_BARRAS == textBoxCodigoDeBarras.Text.Trim())
                 {
                     MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
@@ -867,17 +864,6 @@ namespace Super_Mercado_Mio.Producto
                 }
                 return false;
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

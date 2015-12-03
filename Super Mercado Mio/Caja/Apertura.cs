@@ -21,8 +21,6 @@ namespace Super_Mercado_Mio.Caja
         CajaEnt caja = new CajaEnt();
         AperturaDeCajaBss objetoAperturaDeCaja = new AperturaDeCajaBss();
         AperturaDeCajaEnt aperturaDeCaja = new AperturaDeCajaEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Apertura()
@@ -107,7 +105,6 @@ namespace Super_Mercado_Mio.Caja
                 aperturaDeCaja.HORA = DateTime.Now.ToString("T");
                 aperturaDeCaja.MONTO = Convert.ToDecimal(textBoxMonto.Text.Trim());
                 aperturaDeCaja.ID = objetoAperturaDeCaja.add(aperturaDeCaja);
-                addRecord("Apertura_De_Caja", aperturaDeCaja.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -122,17 +119,6 @@ namespace Super_Mercado_Mio.Caja
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private bool checkForErrors()
         {
             int errorPosition = hasErrors.ToList().IndexOf(true);

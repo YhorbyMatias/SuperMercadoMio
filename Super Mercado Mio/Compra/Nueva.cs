@@ -25,8 +25,6 @@ namespace Super_Mercado_Mio.Compra
         ProveedorEnt proveedor = new ProveedorEnt();
         ProductoBss objetoProducto = new ProductoBss();
         ProductoEnt producto = new ProductoEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Nueva()
@@ -116,7 +114,23 @@ namespace Super_Mercado_Mio.Compra
         {
             if (e.KeyValue == 13)
             {
-                searchProducto();
+                searchProduct();
+            }
+        }
+        #endregion
+        #region searchProductButton
+        private void searchProductButton_Click(object sender, EventArgs e)
+        {
+            Producto.Busqueda formBusquedaDeProductos = new Producto.Busqueda(1);
+            formBusquedaDeProductos.ShowDialog();
+            if (formBusquedaDeProductos.product.ID > 0)
+            {
+                textBoxCodigoDeBarras.Text = formBusquedaDeProductos.product.CODIGO_DE_BARRAS;
+                searchProduct();
+            }
+            else
+            {
+                textBoxCodigoDeBarras.Focus();
             }
         }
         #endregion
@@ -224,7 +238,6 @@ namespace Super_Mercado_Mio.Compra
                 ingreso.MONTO = Convert.ToDecimal(calculateMonto());
                 ingreso.OBSERVACIONES = textBoxObservaciones.Text.Trim().ToUpper();
                 ingreso.ID_INGRESO = objetoIngreso.insert(ingreso);
-                insertarRegistro("Ingreso", ingreso.ID_INGRESO, "Nuevo");
                 for (int rowIndex = 0; rowIndex < dataGridViewDetalleDeIngreso.Rows.Count; rowIndex++)
                 {
                     detalleDeIngreso = new DetalleDeIngresoEnt();
@@ -237,13 +250,11 @@ namespace Super_Mercado_Mio.Compra
                         Convert.ToDecimal(dataGridViewDetalleDeIngreso["Porcentaje_De_Utilidad", rowIndex].Value);
                     detalleDeIngreso.PRECIO_DE_VENTA = Convert.ToDecimal(dataGridViewDetalleDeIngreso["Precio_De_Venta", rowIndex].Value);
                     detalleDeIngreso.ID_DETALLE_DE_INGRESO = objetoDetalleDeIngreso.insert(detalleDeIngreso);
-                    insertarRegistro("Detalle_De_Ingreso", detalleDeIngreso.ID_DETALLE_DE_INGRESO, "Nuevo");
                     producto = new ProductoEnt();
                     producto.ID = detalleDeIngreso.ID_PRODUCTO;
                     producto.PRECIO_DE_COMPRA = detalleDeIngreso.PRECIO_DE_COMPRA;
                     producto.PRECIO_DE_VENTA = detalleDeIngreso.PRECIO_DE_VENTA;
                     objetoProducto.updatePrecios(producto);
-                    insertarRegistro("Producto", producto.ID, "Modificar Precios");
                 }
                 MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -264,7 +275,7 @@ namespace Super_Mercado_Mio.Compra
             bool exists = false;
             for (int rows = 0; rows < dataGridViewDetalleDeIngreso.Rows.Count; rows++)
             {
-                if (dataTableProducto.Rows[0]["Id_Producto"].ToString() == dataGridViewDetalleDeIngreso["Id_Producto", rows].Value.ToString())
+                if (dataTableProducto.Rows[0]["Id"].ToString() == dataGridViewDetalleDeIngreso["Id_Producto", rows].Value.ToString())
                 {
                     row = rows;
                     exists = true;
@@ -275,7 +286,7 @@ namespace Super_Mercado_Mio.Compra
             {
                 dataGridViewDetalleDeIngreso.Rows.Add();
                 row = dataGridViewDetalleDeIngreso.Rows.Count - 1;
-                dataGridViewDetalleDeIngreso["Id_Producto", row].Value = dataTableProducto.Rows[0]["Id_Producto"].ToString();
+                dataGridViewDetalleDeIngreso["Id_Producto", row].Value = dataTableProducto.Rows[0]["Id"].ToString();
                 dataGridViewDetalleDeIngreso["Codigo_De_Barras", row].Value = dataTableProducto.Rows[0]["Codigo_De_Barras"].ToString();
                 dataGridViewDetalleDeIngreso["Nombre_Generico", row].Value = dataTableProducto.Rows[0]["Nombre_Generico"].ToString();
                 dataGridViewDetalleDeIngreso["Marca", row].Value = dataTableProducto.Rows[0]["Marca"].ToString();
@@ -322,17 +333,6 @@ namespace Super_Mercado_Mio.Compra
             return (Convert.ToDecimal(dataGridViewDetalleDeIngreso["Monto_Total", rowIndex].Value) /
                 Convert.ToDecimal(dataGridViewDetalleDeIngreso["Cantidad", rowIndex].Value)).ToString("0.00");
         }
-        private void insertarRegistro(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private void setDataGridViewDetalleDeIngresoFormat()
         {
             dataGridViewDetalleDeIngreso.Columns["Codigo_De_Barras"].Width = 100;
@@ -346,7 +346,7 @@ namespace Super_Mercado_Mio.Compra
             dataGridViewDetalleDeIngreso.Columns["Porcentaje_De_Utilidad"].Width = 60;
             dataGridViewDetalleDeIngreso.Columns["Precio_De_Venta"].Width = 75;
         }
-        private void searchProducto()
+        private void searchProduct()
         {
             producto.CODIGO_DE_BARRAS = textBoxCodigoDeBarras.Text.Trim().ToUpper();
             DataTable dataTableProducto = objetoProducto.select(producto);
@@ -374,7 +374,7 @@ namespace Super_Mercado_Mio.Compra
             {
                 if (dataTableProveedores.Rows.Count == 1)
                 {
-                    proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[0]["Id_Proveedor"]);
+                    proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[0]["Id"]);
                     textBoxProveedor.Text = dataTableProveedores.Rows[0]["Nombre"].ToString();
                 }
                 else
@@ -384,7 +384,7 @@ namespace Super_Mercado_Mio.Compra
                     if (formBusquedaDeProveedores.row > -1)
                     {
                         int rowIndex = formBusquedaDeProveedores.row;
-                        proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[rowIndex]["Id_Proveedor"]);
+                        proveedor.ID = Convert.ToInt32(dataTableProveedores.Rows[rowIndex]["Id"]);
                         textBoxProveedor.Text = dataTableProveedores.Rows[rowIndex]["Nombre"].ToString();
                     }
                 }
@@ -530,7 +530,7 @@ namespace Super_Mercado_Mio.Compra
             }
             else
             {
-                return 12;
+                return 802;
             }
         }
         private int validateProductos()
@@ -541,7 +541,7 @@ namespace Super_Mercado_Mio.Compra
             }
             else
             {
-                return 14;
+                return 801;
             }
         }
         private int validateProveedor()
@@ -556,7 +556,7 @@ namespace Super_Mercado_Mio.Compra
                     }
                     else
                     {
-                        return 13;
+                        return 800;
                     }
                 }
                 else

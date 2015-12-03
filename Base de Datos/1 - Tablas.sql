@@ -34,20 +34,6 @@ Create Table Privilegio
 )
 Go
 
-Create Table Registro
-(
-	Id Int Not Null Identity(1,1),
-	Usuario Varchar(300) Not Null,
-	Equipo Varchar(100) Not Null,
-	Fecha Date Not Null,
-	Hora Varchar(30) Not Null,
-	Tabla Varchar(100) Not Null,
-	Id_Tabla Int Not Null,
-	Tipo Varchar(45) Not Null,
-	Primary Key(Id)
-)
-Go
-
 Create Table Empresa
 (
 	Id Int Identity(1,1) Not Null,
@@ -122,6 +108,7 @@ Create Table Cierre_De_Caja
 	Hora Varchar(50) Not Null,
 	Monto_De_Apertura_De_Caja Decimal(18,2) Not Null,
 	Monto_De_Ventas Decimal(18,2) Not Null,
+	Monto_De_Cupones Decimal(18,2) Not Null,
 	Monto_De_Devoluciones Decimal(18,2) Not Null,
 	Monto_De_Venta_De_Tarjetas Decimal(18,2) Not Null,
 	Monto_De_Pagos Decimal(18,2) Not Null,
@@ -220,7 +207,6 @@ Create Table Egreso
 (
 	Id Int Not Null Identity(1,1),
 	Id_Usuario Int Not Null,
-	Id_Caja Int Not Null,
 	Id_Apertura_De_Caja Int Not Null,
 	Id_Cliente Int Not Null,
 	Fecha Date Not Null,
@@ -228,6 +214,8 @@ Create Table Egreso
 	Tipo Varchar(15) Not Null,
 	Metodo_De_Pago Varchar(15) Null,
 	Monto Decimal(18,2) Not Null,
+	Monto_De_Cupon Decimal(18,2) Not Null,
+	Monto_Extra Decimal(18,2) Not Null,
 	Monto_Pagado Decimal(18,2) Not Null,
 	Cambio Decimal(18,2) Not Null,
 	Observaciones Varchar(500) Null,

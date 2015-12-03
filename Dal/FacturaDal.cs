@@ -37,6 +37,18 @@ namespace Dal
             sqlConnection.Close();
             return id;
         }
+        public void cancel(FacturaEnt factura)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Factura Set Codigo_De_Control = '0', Ci_O_Nit = '0', Cliente = 'ANULADA', Monto = '0.00', "
+                + "Monto_Pagado = '0.00', Cambio = '0.00', Estado = 'ANULADA' Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", factura.ID);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
         public int getNumber(FacturaEnt factura)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -49,7 +61,7 @@ namespace Dal
             sqlConnection.Close();
             return number;
         }
-        public DataTable obtainById(FacturaEnt factura)
+        public DataTable getById(FacturaEnt factura)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -61,6 +73,23 @@ namespace Dal
                 + "And E.Estado = 1 And S.Id = D.Id_Sucursal And S.Estado = 1 And D.Id = F.Id_Dosificacion And C.Id = F.Id_Caja "
                 + "And F.Id = @Id_Factura";
             sqlCommand.Parameters.AddWithValue("@Id_Factura", factura.ID);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Factura");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable getByControlCode(FacturaEnt factura)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select F.Id, F.Id_Egreso, F.Numero_De_Autorizacion, F.Numero As Numero_De_Factura, F.Codigo_De_Control, "
+                + "D.Fecha_Limite_De_Emision, U.Usuario, C.Numero As Numero_De_Caja, F.Ci_O_Nit, F.Cliente, F.Fecha, F.Hora, F.Monto, "
+                + "F.Monto_Pagado, F.Cambio,  From Usuario U, Dosificacion D, Caja C, Factura F "
+                + "Where U.Id = F.Id_Usuario And D.Id = F.Id_Dosificacion And C.Id = F.Id_Caja And F.Estado = 'VIGENTE' "
+                + "And F.Id = @Id_Factura";
+            sqlCommand.Parameters.AddWithValue("@Codigo_De_Control", factura.CODIGO_DE_CONTROL);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Factura");
             sqlDataAdapter.SelectCommand = sqlCommand;

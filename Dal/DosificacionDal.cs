@@ -134,7 +134,7 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Id, Numero_De_Autorizacion, Llave From Dosificacion "
-                + "Where Estado = 'VIGENTE' And Id_Sucursal = @Id_Sucursal";
+                + "Where Estado = 'ACTIVA' And Id_Sucursal = @Id_Sucursal";
             sqlCommand.Parameters.AddWithValue("@Id_Sucursal", dosificacion.ID_SUCURSAL);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = sqlCommand;

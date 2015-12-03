@@ -32,8 +32,8 @@ namespace Dal
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Update Apertura_De_Caja Set Cerrado = 1 Where Estado = 1 And Id = @Id";
-            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", aperturaDeCaja.ID);
+            sqlCommand.CommandText = "Update Apertura_De_Caja Set Cerrado = 1 Where Cerrado = 1 And Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", aperturaDeCaja.ID);
             sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();

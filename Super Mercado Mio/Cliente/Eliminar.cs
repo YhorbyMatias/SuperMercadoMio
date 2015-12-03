@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Cliente
         ClienteBss objetoCliente = new ClienteBss();
         ClienteEnt cliente = new ClienteEnt();
         DataView dataViewClientes = new DataView();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Eliminar()
@@ -61,17 +59,6 @@ namespace Super_Mercado_Mio.Cliente
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private void filterDataGridViewClientes()
         {
             if (records > 0)

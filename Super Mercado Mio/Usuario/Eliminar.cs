@@ -22,8 +22,6 @@ namespace Super_Mercado_Mio.Usuario
         PrivilegioEnt privilegio = new PrivilegioEnt();
         DataTable dataTablePrivilegios = new DataTable();
         DataView dataViewUsuarios = new DataView();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
         public Eliminar()
@@ -57,7 +55,6 @@ namespace Super_Mercado_Mio.Usuario
                     {
                         usuario.ESTADO = false;
                         objetoUsuario.delete(usuario);
-                        addRecord("Usuario", usuario.ID, "Eliminar");
                         privilegio.ID_USUARIO = usuario.ID;
                         dataTablePrivilegios = objetoPrivilegio.find(privilegio);
                         for (int filas = 0; filas < dataTablePrivilegios.Rows.Count; filas++)
@@ -66,7 +63,6 @@ namespace Super_Mercado_Mio.Usuario
                             privilegio.ID = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id"]);
                             privilegio.ESTADO = false;
                             objetoPrivilegio.delete(privilegio);
-                            addRecord("Privilegio", privilegio.ID, "Eliminar");
                         }
                         MessageBox.Show("El usuario fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
@@ -86,17 +82,6 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
-        private void addRecord(string tabla, int clave, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = clave;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private void filterDataGridViewUsuarios()
         {
             if (records > 0)

@@ -94,13 +94,24 @@ namespace Dal
             sqlConnection.Close();
             return exists;
         }
+        public void delete(ProductoEnt producto)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Producto Set Estado = 0 Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", producto.ID);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
         public DataTable findAll()
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select Id, Codigo_De_Barras, Nombre_Generico, Marca, Presentacion, Sabor_U_Olor, Precio_De_Venta "
-                + "From buscarProductos() Where Tipo_De_Codigo_De_Barras = 'SISTEMA' And Precio_De_Venta > 0 Order By Codigo_De_Barras Asc";
+                + "From buscarProductos() Where Precio_De_Venta > 0 Order By Codigo_De_Barras Asc";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Productos");
             sqlDataAdapter.SelectCommand = sqlCommand;
@@ -134,6 +145,18 @@ namespace Dal
             sqlConnection.Close();
             return number;
         }
+        public DataTable getStock()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select * From Stock() Order By Codigo_De_Barras Asc";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Productos");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable search(ProductoEnt producto)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -155,6 +178,20 @@ namespace Dal
             SqlCommand sqlCommand = sqlConnection.CreateCommand();
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.CommandText = "Select * From buscarProductos() Order By Codigo_De_Barras Asc";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            DataTable dataTable = new DataTable("Productos");
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable searchAllRemovable()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select * From buscarProductos() Where Id Not In "
+                + "(Select Distinct DdI.Id_Producto From Detalle_De_Ingreso DdI Where DdI.Estado = 'VIGENTE' Union "
+                + "Select Distinct DdE.Id_Producto From Detalle_De_Egreso DdE Where DdE.Estado = 'VIGENTE')Order By Codigo_De_Barras Asc";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dataTable = new DataTable("Productos");
             sqlDataAdapter.SelectCommand = sqlCommand;

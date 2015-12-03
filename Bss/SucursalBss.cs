@@ -15,21 +15,9 @@ namespace Bss
         SucursalDal objetoSucursal = new SucursalDal();
         #endregion
         #region Metodos
-        public int exists()
-        {
-            return objetoSucursal.exists();
-        }
         public string getNumber(SucursalEnt sucursal)
         {
             return objetoSucursal.getNumber(sucursal);
-        }
-        public int insert(SucursalEnt sucursal)
-        {
-            return objetoSucursal.insert(sucursal);
-        }
-        public void update(SucursalEnt sucursal)
-        {
-            objetoSucursal.update(sucursal);
         }
         public DataTable search()
         {
@@ -38,6 +26,10 @@ namespace Bss
         public DataTable select()
         {
             return objetoSucursal.select();
+        }
+        public void update(SucursalEnt sucursal)
+        {
+            objetoSucursal.update(sucursal);
         }
         #endregion
     }

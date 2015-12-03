@@ -29,6 +29,28 @@ namespace Dal
             sqlConnection.Close();
             return id;
         }
+        public void cancel(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Detalle_De_Egreso Set Estado = 'ANULADO' Where Id_Egreso = @Id_Egreso";
+            sqlCommand.Parameters.AddWithValue("@Id_Egreso", detalleDeEgreso.ID_EGRESO);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+        public void delete(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Detalle_De_Egreso Set Estado = 'ELIMINADO' Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Id", detalleDeEgreso.ID);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
         public DataTable getMinorSalesDetail(EgresoEnt egreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -44,6 +66,22 @@ namespace Dal
             DataTable dataTable = new DataTable("Detalle de Egreso Egresos Menores");
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
+        }
+        public void update(DetalleDeEgresoEnt detalleDeEgreso)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Update Detalle_De_Egreso Set Cantidad = @Cantidad, Precio_Unitario = @Precio_Unitario, "
+                + "Monto_Total = @Monto_Total, Estado = @Estado Where Id = @Id";
+            sqlCommand.Parameters.AddWithValue("@Cantidad", detalleDeEgreso.CANTIDAD);
+            sqlCommand.Parameters.AddWithValue("@Precio_Unitario", detalleDeEgreso.PRECIO_UNITARIO);
+            sqlCommand.Parameters.AddWithValue("@Monto_Total", detalleDeEgreso.MONTO_TOTAL);
+            sqlCommand.Parameters.AddWithValue("@Estado", detalleDeEgreso.ESTADO);
+            sqlCommand.Parameters.AddWithValue("@Id", detalleDeEgreso.ID);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
         }
         #endregion
     }

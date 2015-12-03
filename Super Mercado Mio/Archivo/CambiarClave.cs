@@ -16,18 +16,16 @@ namespace Super_Mercado_Mio.Archivo
     public partial class CambiarClave : Form
     {
         #region Objetos
-        int idUsuario = 0;
-        UsuarioBss objetoUsuario = new UsuarioBss();
-        UsuarioEnt usuario = new UsuarioEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
+        int userId = 0;
+        UsuarioBss userObject = new UsuarioBss();
+        UsuarioEnt user = new UsuarioEnt();
         #endregion
         #region Formulario
-        public CambiarClave(UsuarioEnt usuarioX)
+        public CambiarClave(UsuarioEnt user)
         {
             InitializeComponent();
-            idUsuario = usuarioX.ID;
-            usuario = usuarioX;
+            userId = user.ID;
+            this.user = user;
         }
         #endregion
         #region textBoxClaveActual
@@ -87,10 +85,8 @@ namespace Super_Mercado_Mio.Archivo
         {
             if (validaciones())
             {
-                usuario.CLAVE = generarClave(textBoxNuevaClave.Text.Trim());
-                objetoUsuario.updatePassword(usuario);
-                string nombreDeUsuario = objetoUsuario.getFullName(usuario);
-                insertarRegistro(nombreDeUsuario, "Usuario", usuario.ID, "Update Password");
+                user.CLAVE = generarClave(textBoxNuevaClave.Text.Trim());
+                userObject.updatePassword(user);
                 MessageBox.Show("La clave se cambió correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -153,8 +149,8 @@ namespace Super_Mercado_Mio.Archivo
         }
         private bool verificarClave()
         {
-            usuario.CLAVE = generarClave(textBoxClaveActual.Text.Trim());
-            if (objetoUsuario.authenticatePassword(usuario) == 1)
+            user.CLAVE = generarClave(textBoxClaveActual.Text.Trim());
+            if (userObject.authenticatePassword(user) == 1)
             {
                 return true;
             }
@@ -218,16 +214,6 @@ namespace Super_Mercado_Mio.Archivo
                 sb.Append(result[i].ToString("x"));
             }
             return sb.ToString().ToUpper();
-        }
-        private void insertarRegistro(string usuarioX, string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = usuarioX;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

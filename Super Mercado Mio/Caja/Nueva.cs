@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Caja
         bool[] hasErrors = new bool[] { true };
         CajaBss objetoCaja = new CajaBss();
         CajaEnt caja = new CajaEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
         public Nueva()
@@ -91,7 +89,8 @@ namespace Super_Mercado_Mio.Caja
                 caja.NOMBRE_DE_EQUIPO = System.Environment.MachineName;
                 caja.NUMERO = textBoxNumero.Text.Trim();
                 objetoCaja.add(caja);
-                MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -103,17 +102,6 @@ namespace Super_Mercado_Mio.Caja
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private int authenticateNumber()
         {
             caja.NUMERO = textBoxNumero.Text.Trim();

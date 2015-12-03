@@ -20,13 +20,17 @@ namespace Bss
         {
             int id = objetoEgreso.add(egreso);
             DetalleDeEgresoBss objetoDetalleDeEgreso = new DetalleDeEgresoBss();
-            foreach(DetalleDeEgresoEnt invoiceLine in invoiceLines)
+            foreach (DetalleDeEgresoEnt invoiceLine in invoiceLines)
             {
                 invoiceLine.ID_EGRESO = id;
                 objetoDetalleDeEgreso.add(invoiceLine);
             }
             invoiceLines.Clear();
             return id;
+        }
+        public void cancel(EgresoEnt egreso)
+        {
+            objetoEgreso.cancel(egreso);
         }
         public void close(EgresoEnt egreso)
         {
@@ -44,9 +48,25 @@ namespace Bss
         {
             return objetoEgreso.getNumber();
         }
+        public decimal getCouponsTotalAmount(EgresoEnt egreso)
+        {
+            return objetoEgreso.getCouponsTotalAmount(egreso);
+        }
+        public decimal getExtraTotalAmount(EgresoEnt egreso)
+        {
+            return objetoEgreso.getExtraTotalAmount(egreso);
+        }
         public decimal getSalesTotalAmount(EgresoEnt egreso)
         {
             return objetoEgreso.getSalesTotalAmount(egreso);
+        }
+        public bool isClosed(EgresoEnt egreso)
+        {
+            return objetoEgreso.isClosed(egreso);
+        }
+        public void update(EgresoEnt egreso)
+        {
+            objetoEgreso.update(egreso);
         }
         public void updateFacturado(EgresoEnt egreso)
         {

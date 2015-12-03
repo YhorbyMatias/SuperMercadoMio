@@ -17,6 +17,7 @@ namespace Ent
         private string hora;
         private decimal monto_de_apertura_de_caja;
         private decimal monto_de_ventas;
+        private decimal monto_de_cupones;
         private decimal monto_de_devoluciones;
         private decimal monto_de_venta_de_tarjetas;
         private decimal monto_de_pagos;
@@ -62,6 +63,11 @@ namespace Ent
         {
             get { return this.monto_de_ventas; }
             set { this.monto_de_ventas = value; }
+        }
+        public decimal MONTO_DE_CUPONES
+        {
+            get { return this.monto_de_cupones; }
+            set { this.monto_de_cupones = value; }
         }
         public decimal MONTO_DE_DEVOLUCIONES
         {

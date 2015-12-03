@@ -26,14 +26,12 @@ namespace Super_Mercado_Mio.Usuario
         DataTable dataTableOpciones = new DataTable();
         DataTable dataTablePrivilegios = new DataTable();
         List<PrivilegioEnt> listPrivilegiosFinales = new List<PrivilegioEnt>();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
-        public Modificar(int idUsuario)
+        public Modificar(int userId)
         {
             InitializeComponent();
-            usuario.ID = idUsuario;
+            usuario.ID = userId;
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
@@ -330,7 +328,6 @@ namespace Super_Mercado_Mio.Usuario
                 }
                 usuario.NOMBRE_DE_USUARIO = textBoxNombreDeUsuario.Text.Trim();
                 objetoUsuario.update(usuario);
-                addRecord("Usuario", usuario.ID, "Modificar");
                 foreach (PrivilegioEnt privilegioAuxiliar in listPrivilegiosFinales)
                 {
                     bool estado = false;
@@ -345,7 +342,6 @@ namespace Super_Mercado_Mio.Usuario
                     if (estado == false)
                     {
                         int idPrivilegio = objetoPrivilegio.insert(privilegioAuxiliar);
-                        addRecord("Privilegio", idPrivilegio, "Nuevo");
                     }
                 }
                 for (int filas = 0; filas < dataTablePrivilegios.Rows.Count; filas++)
@@ -365,7 +361,6 @@ namespace Super_Mercado_Mio.Usuario
                         privilegio.ID = Convert.ToInt32(dataTablePrivilegios.Rows[filas]["Id"]);
                         privilegio.ESTADO = false;
                         objetoPrivilegio.delete(privilegio);
-                        addRecord("Privilegio", privilegio.ID, "Eliminar");
                     }
                 }
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -380,17 +375,6 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
-        private void addRecord(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
-        }
         private bool authenticateCi()
         {
             usuario.CI = textBoxCi.Text.Trim();

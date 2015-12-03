@@ -50,42 +50,6 @@ namespace Super_Mercado_Mio
             SesionEnt.nombreDeEquipo = System.Environment.MachineName;
             toolStripStatusLabelUsuario.Text = "Usuario: " + SesionEnt.nombreDeUsuario;
             loadMenu();
-            if (objetoEmpresa.exists() == 0)
-            {
-                if (usuario.ID == 1)
-                {
-                    nuevaEmpresaToolStripMenuItem.Enabled = true;
-                    nuevaEmpresaToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    Empresa.Nueva FormularioNuevaEmpresa = new Empresa.Nueva(2, this.isCompanyRegistered);
-                    FormularioNuevaEmpresa.ShowDialog();
-                }
-            }
-            else
-            {
-                nuevaEmpresaToolStripMenuItem.Enabled = false;
-                nuevaEmpresaToolStripMenuItem.Visible = false;
-            }
-            if (objetoSucursal.exists() == 0)
-            {
-                if (usuario.ID == 1)
-                {
-                    nuevaSucursalToolStripMenuItem.Enabled = true;
-                    nuevaSucursalToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    Sucursal.Nueva FormularioNuevaSucursal = new Sucursal.Nueva(2, this.isBranchRegistered);
-                    FormularioNuevaSucursal.ShowDialog();
-                }
-            }
-            else
-            {
-                nuevaSucursalToolStripMenuItem.Enabled = false;
-                nuevaSucursalToolStripMenuItem.Visible = false;
-            }
             reviewDosificacion();
             reviewCashBox();
             //try
@@ -143,12 +107,6 @@ namespace Super_Mercado_Mio
         }
         #endregion
         #region Menu Empresa
-        private void nuevaEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Empresa.Nueva formularioNuevaEmpresa = new Empresa.Nueva(1, this.isCompanyRegistered);
-            formularioNuevaEmpresa.MdiParent = this;
-            formularioNuevaEmpresa.Show();
-        }
         private void modificarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Empresa.Modificar formularioModificarEmpresa = new Empresa.Modificar();
@@ -163,12 +121,6 @@ namespace Super_Mercado_Mio
         }
         #endregion
         #region Menu Sucursal
-        private void nuevaSucursalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Sucursal.Nueva formularioNuevaSucursal = new Sucursal.Nueva(1, isBranchRegistered);
-            formularioNuevaSucursal.MdiParent = this;
-            formularioNuevaSucursal.Show();
-        }
         private void modificarSucursalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Sucursal.Modificar formularioModificarSucursal = new Sucursal.Modificar();
@@ -255,6 +207,24 @@ namespace Super_Mercado_Mio
         }
         #endregion
         #region Menu Caja
+        private void modificarCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Caja.Lista fromListaDeCajas = new Caja.Lista(2);
+            fromListaDeCajas.MdiParent = this;
+            fromListaDeCajas.Show();
+        }
+        private void eliminarCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Caja.Eliminar formEliminarCaja = new Caja.Eliminar();
+            formEliminarCaja.MdiParent = this;
+            formEliminarCaja.Show();
+        }
+        private void listaDeCajasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Caja.Lista formCashboxList = new Caja.Lista(1);
+            formCashboxList.MdiParent = this;
+            formCashboxList.Show();
+        }
         private void aperturaDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Caja.Apertura formAperturaDeCaja = new Caja.Apertura();
@@ -331,11 +301,23 @@ namespace Super_Mercado_Mio
             formularioListaDeProductos.MdiParent = this;
             formularioListaDeProductos.Show();
         }
+        private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Eliminar formEliminarProducto = new Producto.Eliminar();
+            formEliminarProducto.MdiParent = this;
+            formEliminarProducto.Show();
+        }
         private void listaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Producto.Lista formularioListaDeProductos = new Producto.Lista(1);
             formularioListaDeProductos.MdiParent = this;
             formularioListaDeProductos.Show();
+        }
+        private void stockDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto.Stock formStockDeProductos = new Producto.Stock();
+            formStockDeProductos.MdiParent = this;
+            formStockDeProductos.Show();
         }
         #endregion
         #region Methods
@@ -374,9 +356,6 @@ namespace Super_Mercado_Mio
                         break;
                     case "Datos de Empresa":
                         datosDeEmpresaToolStripMenuItem.Enabled = true;
-                        break;
-                    case "Nueva Sucursal":
-                        nuevaSucursalToolStripMenuItem.Enabled = true;
                         break;
                     case "Modificar Sucursal":
                         modificarSucursalToolStripMenuItem.Enabled = true;
@@ -417,6 +396,15 @@ namespace Super_Mercado_Mio
                     case "Lista de Grupos":
                         listaDeGruposToolStripMenuItem.Enabled = true;
                         break;
+                    case "Modificar Caja":
+                        modificarCajaToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Eliminar Caja":
+                        eliminarCajaToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Lista de Cajas":
+                        listaDeCajasToolStripMenuItem.Enabled = true;
+                        break;
                     case "Apertura de Caja":
                         aperturaDeCajaToolStripMenuItem.Enabled = true;
                         break;
@@ -447,23 +435,13 @@ namespace Super_Mercado_Mio
                     case "Modificar Producto":
                         modificarProductoToolStripMenuItem.Enabled = true;
                         break;
+                    case "Eliminar Producto":
+                        eliminarProductoToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Stock de Productos":
+                        stockDeProductosToolStripMenuItem.Enabled = true;
+                        break;
                 }
-            }
-        }
-        private void isCompanyRegistered()
-        {
-            if (objetoEmpresa.exists() == 1)
-            {
-                nuevaEmpresaToolStripMenuItem.Enabled = false;
-                nuevaEmpresaToolStripMenuItem.Visible = false;
-            }
-        }
-        private void isBranchRegistered()
-        {
-            if (objetoSucursal.exists() == 1)
-            {
-                nuevaSucursalToolStripMenuItem.Enabled = false;
-                nuevaSucursalToolStripMenuItem.Visible = false;
             }
         }
         private void reviewDosificacion()

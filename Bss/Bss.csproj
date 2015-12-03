@@ -67,7 +67,6 @@
     <Compile Include="ProductoBss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorBss.cs" />
-    <Compile Include="RegistroBss.cs" />
     <Compile Include="SucursalBss.cs" />
     <Compile Include="UsuarioBss.cs" />
     <Compile Include="ValidacionBss.cs" />

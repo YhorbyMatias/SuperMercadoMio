@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Empresa
         bool[] hasErrors = new bool[] { false, false, false, false };
         EmpresaBss objetoEmpresa = new EmpresaBss();
         EmpresaEnt empresa = new EmpresaEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
         public Modificar()
@@ -29,15 +27,7 @@ namespace Super_Mercado_Mio.Empresa
         }
         private void Modificar_Load(object sender, EventArgs e)
         {
-            if (objetoEmpresa.exists() == 1)
-            {
-                cargarInformacionDeEmpresa();
-            }
-            else
-            {
-                MessageBox.Show("La empresa no fue registrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                buttonGuardar.Enabled = false;
-            }
+            cargarInformacionDeEmpresa();
         }
         #endregion
         #region textBoxPropietario
@@ -207,7 +197,6 @@ namespace Super_Mercado_Mio.Empresa
                 empresa.NIT = textBoxNit.Text.Trim();
                 empresa.ACTIVIDAD_ECONOMICA = textBoxActividadEconomica.Text.Trim().ToUpper();
                 objetoEmpresa.update(empresa);
-                insertarRegistro("Empresa", empresa.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -312,17 +301,6 @@ namespace Super_Mercado_Mio.Empresa
                 }
                 return false;
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

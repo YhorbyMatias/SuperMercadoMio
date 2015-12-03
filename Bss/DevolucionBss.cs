@@ -14,6 +14,10 @@ namespace Bss
         DevolucionDal objetoDevolucion = new DevolucionDal();
         #endregion
         #region Methods
+        public int add(DevolucionEnt devolucion)
+        {
+            return objetoDevolucion.add(devolucion);
+        }
         public void close(DevolucionEnt devolucion)
         {
             objetoDevolucion.close(devolucion);

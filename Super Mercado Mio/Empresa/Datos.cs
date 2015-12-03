@@ -23,14 +23,7 @@ namespace Super_Mercado_Mio.Empresa
         }
         private void Datos_Load(object sender, EventArgs e)
         {
-            if (objetoEmpresa.exists() == 1)
-            {
-                cargarInformacionDeEmpresa();
-            }
-            else
-            {
-                MessageBox.Show("La empresa no fue registrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            cargarInformacionDeEmpresa();
         }
         #endregion
         #region Metodos Propios

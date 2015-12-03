@@ -15,18 +15,6 @@ namespace Bss
         EmpresaDal objetoEmpresa = new EmpresaDal();
         #endregion
         #region Metodos
-        public int exists()
-        {
-            return objetoEmpresa.exists();
-        }
-        public int insert(EmpresaEnt empresa)
-        {
-            return objetoEmpresa.add(empresa);
-        }
-        public void update(EmpresaEnt empresa)
-        {
-            objetoEmpresa.update(empresa);
-        }
         public DataTable search()
         {
             return objetoEmpresa.search();
@@ -34,6 +22,10 @@ namespace Bss
         public DataTable select()
         {
             return objetoEmpresa.select();
+        }
+        public void update(EmpresaEnt empresa)
+        {
+            objetoEmpresa.update(empresa);
         }
         #endregion
     }

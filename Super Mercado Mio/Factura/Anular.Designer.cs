@@ -32,36 +32,37 @@
             this.textBoxSearchCodigoDeControl = new System.Windows.Forms.TextBox();
             this.buttonSearchFactura = new System.Windows.Forms.Button();
             this.groupBoxFactura = new System.Windows.Forms.GroupBox();
-            this.labelNumeroDeAutorizacionTexto = new System.Windows.Forms.Label();
-            this.textBoxNumeroDeAutorizacion = new System.Windows.Forms.TextBox();
-            this.labelNumeroDeFactura = new System.Windows.Forms.Label();
-            this.textBoxNumeroDeFactura = new System.Windows.Forms.TextBox();
-            this.labelCodigoDeControl = new System.Windows.Forms.Label();
-            this.textBoxCodigoDeControl = new System.Windows.Forms.TextBox();
-            this.labelCiONit = new System.Windows.Forms.Label();
-            this.textBoxCiONit = new System.Windows.Forms.TextBox();
-            this.labelCliente = new System.Windows.Forms.Label();
-            this.textBoxCliente = new System.Windows.Forms.TextBox();
-            this.textBoxFechaLimiteDeEmision = new System.Windows.Forms.TextBox();
-            this.labelFechaLimiteDeEmision = new System.Windows.Forms.Label();
-            this.labelFecha = new System.Windows.Forms.Label();
-            this.textBoxFecha = new System.Windows.Forms.TextBox();
+            this.groupBoxDetalleDeFactura = new System.Windows.Forms.GroupBox();
+            this.dataGridViewDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.textBoxUsuario = new System.Windows.Forms.TextBox();
+            this.labelUsuario = new System.Windows.Forms.Label();
+            this.textBoxCaja = new System.Windows.Forms.TextBox();
+            this.labelCaja = new System.Windows.Forms.Label();
+            this.textBoxCambio = new System.Windows.Forms.TextBox();
+            this.textBoxMontoTotal = new System.Windows.Forms.TextBox();
+            this.textBoxHora = new System.Windows.Forms.TextBox();
+            this.textBoxMontoPagado = new System.Windows.Forms.TextBox();
             this.labelCambio = new System.Windows.Forms.Label();
             this.labelMontoPagado = new System.Windows.Forms.Label();
             this.labelMontoTotal = new System.Windows.Forms.Label();
             this.labelHora = new System.Windows.Forms.Label();
-            this.textBoxMontoPagado = new System.Windows.Forms.TextBox();
-            this.textBoxHora = new System.Windows.Forms.TextBox();
-            this.textBoxMontoTotal = new System.Windows.Forms.TextBox();
-            this.textBoxCambio = new System.Windows.Forms.TextBox();
-            this.labelCaja = new System.Windows.Forms.Label();
-            this.textBoxCaja = new System.Windows.Forms.TextBox();
-            this.labelUsuario = new System.Windows.Forms.Label();
-            this.textBoxUsuario = new System.Windows.Forms.TextBox();
-            this.groupBoxDetalleDeFactura = new System.Windows.Forms.GroupBox();
-            this.dataGridViewDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.textBoxFecha = new System.Windows.Forms.TextBox();
+            this.labelFecha = new System.Windows.Forms.Label();
+            this.textBoxFechaLimiteDeEmision = new System.Windows.Forms.TextBox();
+            this.labelFechaLimiteDeEmision = new System.Windows.Forms.Label();
+            this.textBoxCliente = new System.Windows.Forms.TextBox();
+            this.labelCliente = new System.Windows.Forms.Label();
+            this.textBoxCiONit = new System.Windows.Forms.TextBox();
+            this.labelCiONit = new System.Windows.Forms.Label();
+            this.textBoxCodigoDeControl = new System.Windows.Forms.TextBox();
+            this.labelCodigoDeControl = new System.Windows.Forms.Label();
+            this.textBoxNumeroDeFactura = new System.Windows.Forms.TextBox();
+            this.labelNumeroDeFactura = new System.Windows.Forms.Label();
+            this.textBoxNumeroDeAutorizacion = new System.Windows.Forms.TextBox();
+            this.labelNumeroDeAutorizacionTexto = new System.Windows.Forms.Label();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonAnular = new System.Windows.Forms.Button();
+            this.checkBoxRefacturar = new System.Windows.Forms.CheckBox();
             this.groupBoxFactura.SuspendLayout();
             this.groupBoxDetalleDeFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleFactura)).BeginInit();
@@ -78,6 +79,7 @@
             // 
             // textBoxSearchCodigoDeControl
             // 
+            this.textBoxSearchCodigoDeControl.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxSearchCodigoDeControl.Location = new System.Drawing.Point(129, 12);
             this.textBoxSearchCodigoDeControl.Name = "textBoxSearchCodigoDeControl";
             this.textBoxSearchCodigoDeControl.Size = new System.Drawing.Size(150, 20);
@@ -94,7 +96,7 @@
             this.buttonSearchFactura.Location = new System.Drawing.Point(285, 12);
             this.buttonSearchFactura.Name = "buttonSearchFactura";
             this.buttonSearchFactura.Size = new System.Drawing.Size(21, 21);
-            this.buttonSearchFactura.TabIndex = 259;
+            this.buttonSearchFactura.TabIndex = 1;
             this.buttonSearchFactura.TabStop = false;
             this.buttonSearchFactura.UseVisualStyleBackColor = true;
             this.buttonSearchFactura.Click += new System.EventHandler(this.buttonSearchFactura_Click);
@@ -135,146 +137,110 @@
             this.groupBoxFactura.TabStop = false;
             this.groupBoxFactura.Text = "Factura";
             // 
-            // labelNumeroDeAutorizacionTexto
+            // groupBoxDetalleDeFactura
             // 
-            this.labelNumeroDeAutorizacionTexto.AutoSize = true;
-            this.labelNumeroDeAutorizacionTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumeroDeAutorizacionTexto.Location = new System.Drawing.Point(6, 22);
-            this.labelNumeroDeAutorizacionTexto.Name = "labelNumeroDeAutorizacionTexto";
-            this.labelNumeroDeAutorizacionTexto.Size = new System.Drawing.Size(142, 15);
-            this.labelNumeroDeAutorizacionTexto.TabIndex = 213;
-            this.labelNumeroDeAutorizacionTexto.Text = "Número de Autorización:";
+            this.groupBoxDetalleDeFactura.Controls.Add(this.dataGridViewDetalleFactura);
+            this.groupBoxDetalleDeFactura.Location = new System.Drawing.Point(9, 154);
+            this.groupBoxDetalleDeFactura.Name = "groupBoxDetalleDeFactura";
+            this.groupBoxDetalleDeFactura.Size = new System.Drawing.Size(774, 327);
+            this.groupBoxDetalleDeFactura.TabIndex = 286;
+            this.groupBoxDetalleDeFactura.TabStop = false;
+            this.groupBoxDetalleDeFactura.Text = "Detalle";
             // 
-            // textBoxNumeroDeAutorizacion
+            // dataGridViewDetalleFactura
             // 
-            this.textBoxNumeroDeAutorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumeroDeAutorizacion.Location = new System.Drawing.Point(158, 19);
-            this.textBoxNumeroDeAutorizacion.Name = "textBoxNumeroDeAutorizacion";
-            this.textBoxNumeroDeAutorizacion.ReadOnly = true;
-            this.textBoxNumeroDeAutorizacion.Size = new System.Drawing.Size(150, 21);
-            this.textBoxNumeroDeAutorizacion.TabIndex = 261;
-            this.textBoxNumeroDeAutorizacion.TabStop = false;
+            this.dataGridViewDetalleFactura.AllowUserToAddRows = false;
+            this.dataGridViewDetalleFactura.AllowUserToDeleteRows = false;
+            this.dataGridViewDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDetalleFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridViewDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDetalleFactura.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewDetalleFactura.MultiSelect = false;
+            this.dataGridViewDetalleFactura.Name = "dataGridViewDetalleFactura";
+            this.dataGridViewDetalleFactura.ReadOnly = true;
+            this.dataGridViewDetalleFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDetalleFactura.Size = new System.Drawing.Size(762, 302);
+            this.dataGridViewDetalleFactura.TabIndex = 287;
             // 
-            // labelNumeroDeFactura
+            // textBoxUsuario
             // 
-            this.labelNumeroDeFactura.AutoSize = true;
-            this.labelNumeroDeFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumeroDeFactura.Location = new System.Drawing.Point(6, 49);
-            this.labelNumeroDeFactura.Name = "labelNumeroDeFactura";
-            this.labelNumeroDeFactura.Size = new System.Drawing.Size(116, 15);
-            this.labelNumeroDeFactura.TabIndex = 262;
-            this.labelNumeroDeFactura.Text = "Número de Factura:";
+            this.textBoxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsuario.Location = new System.Drawing.Point(158, 127);
+            this.textBoxUsuario.Name = "textBoxUsuario";
+            this.textBoxUsuario.ReadOnly = true;
+            this.textBoxUsuario.Size = new System.Drawing.Size(150, 21);
+            this.textBoxUsuario.TabIndex = 285;
+            this.textBoxUsuario.TabStop = false;
             // 
-            // textBoxNumeroDeFactura
+            // labelUsuario
             // 
-            this.textBoxNumeroDeFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumeroDeFactura.Location = new System.Drawing.Point(158, 46);
-            this.textBoxNumeroDeFactura.Name = "textBoxNumeroDeFactura";
-            this.textBoxNumeroDeFactura.ReadOnly = true;
-            this.textBoxNumeroDeFactura.Size = new System.Drawing.Size(150, 21);
-            this.textBoxNumeroDeFactura.TabIndex = 263;
-            this.textBoxNumeroDeFactura.TabStop = false;
+            this.labelUsuario.AutoSize = true;
+            this.labelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsuario.Location = new System.Drawing.Point(6, 130);
+            this.labelUsuario.Name = "labelUsuario";
+            this.labelUsuario.Size = new System.Drawing.Size(53, 15);
+            this.labelUsuario.TabIndex = 284;
+            this.labelUsuario.Text = "Usuario:";
             // 
-            // labelCodigoDeControl
+            // textBoxCaja
             // 
-            this.labelCodigoDeControl.AutoSize = true;
-            this.labelCodigoDeControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigoDeControl.Location = new System.Drawing.Point(6, 76);
-            this.labelCodigoDeControl.Name = "labelCodigoDeControl";
-            this.labelCodigoDeControl.Size = new System.Drawing.Size(108, 15);
-            this.labelCodigoDeControl.TabIndex = 264;
-            this.labelCodigoDeControl.Text = "Código de Control:";
+            this.textBoxCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCaja.Location = new System.Drawing.Point(373, 19);
+            this.textBoxCaja.Name = "textBoxCaja";
+            this.textBoxCaja.ReadOnly = true;
+            this.textBoxCaja.Size = new System.Drawing.Size(150, 21);
+            this.textBoxCaja.TabIndex = 283;
+            this.textBoxCaja.TabStop = false;
             // 
-            // textBoxCodigoDeControl
+            // labelCaja
             // 
-            this.textBoxCodigoDeControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCodigoDeControl.Location = new System.Drawing.Point(158, 73);
-            this.textBoxCodigoDeControl.Name = "textBoxCodigoDeControl";
-            this.textBoxCodigoDeControl.ReadOnly = true;
-            this.textBoxCodigoDeControl.Size = new System.Drawing.Size(150, 21);
-            this.textBoxCodigoDeControl.TabIndex = 265;
-            this.textBoxCodigoDeControl.TabStop = false;
+            this.labelCaja.AutoSize = true;
+            this.labelCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCaja.Location = new System.Drawing.Point(314, 22);
+            this.labelCaja.Name = "labelCaja";
+            this.labelCaja.Size = new System.Drawing.Size(35, 15);
+            this.labelCaja.TabIndex = 282;
+            this.labelCaja.Text = "Caja:";
             // 
-            // labelCiONit
+            // textBoxCambio
             // 
-            this.labelCiONit.AutoSize = true;
-            this.labelCiONit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCiONit.Location = new System.Drawing.Point(314, 49);
-            this.labelCiONit.Name = "labelCiONit";
-            this.labelCiONit.Size = new System.Drawing.Size(53, 15);
-            this.labelCiONit.TabIndex = 266;
-            this.labelCiONit.Text = "Ci ó NIT:";
+            this.textBoxCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCambio.Location = new System.Drawing.Point(626, 127);
+            this.textBoxCambio.Name = "textBoxCambio";
+            this.textBoxCambio.ReadOnly = true;
+            this.textBoxCambio.Size = new System.Drawing.Size(150, 21);
+            this.textBoxCambio.TabIndex = 281;
+            this.textBoxCambio.TabStop = false;
             // 
-            // textBoxCiONit
+            // textBoxMontoTotal
             // 
-            this.textBoxCiONit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCiONit.Location = new System.Drawing.Point(373, 46);
-            this.textBoxCiONit.Name = "textBoxCiONit";
-            this.textBoxCiONit.ReadOnly = true;
-            this.textBoxCiONit.Size = new System.Drawing.Size(150, 21);
-            this.textBoxCiONit.TabIndex = 267;
-            this.textBoxCiONit.TabStop = false;
+            this.textBoxMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMontoTotal.Location = new System.Drawing.Point(626, 73);
+            this.textBoxMontoTotal.Name = "textBoxMontoTotal";
+            this.textBoxMontoTotal.ReadOnly = true;
+            this.textBoxMontoTotal.Size = new System.Drawing.Size(150, 21);
+            this.textBoxMontoTotal.TabIndex = 280;
+            this.textBoxMontoTotal.TabStop = false;
             // 
-            // labelCliente
+            // textBoxHora
             // 
-            this.labelCliente.AutoSize = true;
-            this.labelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCliente.Location = new System.Drawing.Point(314, 76);
-            this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(48, 15);
-            this.labelCliente.TabIndex = 268;
-            this.labelCliente.Text = "Cliente:";
+            this.textBoxHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHora.Location = new System.Drawing.Point(626, 46);
+            this.textBoxHora.Name = "textBoxHora";
+            this.textBoxHora.ReadOnly = true;
+            this.textBoxHora.Size = new System.Drawing.Size(150, 21);
+            this.textBoxHora.TabIndex = 279;
+            this.textBoxHora.TabStop = false;
             // 
-            // textBoxCliente
+            // textBoxMontoPagado
             // 
-            this.textBoxCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCliente.Location = new System.Drawing.Point(373, 73);
-            this.textBoxCliente.Multiline = true;
-            this.textBoxCliente.Name = "textBoxCliente";
-            this.textBoxCliente.ReadOnly = true;
-            this.textBoxCliente.Size = new System.Drawing.Size(150, 75);
-            this.textBoxCliente.TabIndex = 269;
-            this.textBoxCliente.TabStop = false;
-            // 
-            // textBoxFechaLimiteDeEmision
-            // 
-            this.textBoxFechaLimiteDeEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFechaLimiteDeEmision.Location = new System.Drawing.Point(158, 100);
-            this.textBoxFechaLimiteDeEmision.Name = "textBoxFechaLimiteDeEmision";
-            this.textBoxFechaLimiteDeEmision.ReadOnly = true;
-            this.textBoxFechaLimiteDeEmision.Size = new System.Drawing.Size(150, 21);
-            this.textBoxFechaLimiteDeEmision.TabIndex = 271;
-            this.textBoxFechaLimiteDeEmision.TabStop = false;
-            // 
-            // labelFechaLimiteDeEmision
-            // 
-            this.labelFechaLimiteDeEmision.AutoSize = true;
-            this.labelFechaLimiteDeEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFechaLimiteDeEmision.Location = new System.Drawing.Point(6, 103);
-            this.labelFechaLimiteDeEmision.Name = "labelFechaLimiteDeEmision";
-            this.labelFechaLimiteDeEmision.Size = new System.Drawing.Size(146, 15);
-            this.labelFechaLimiteDeEmision.TabIndex = 270;
-            this.labelFechaLimiteDeEmision.Text = "Fecha Límite de Emisión:";
-            // 
-            // labelFecha
-            // 
-            this.labelFecha.AutoSize = true;
-            this.labelFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFecha.Location = new System.Drawing.Point(529, 22);
-            this.labelFecha.Name = "labelFecha";
-            this.labelFecha.Size = new System.Drawing.Size(44, 15);
-            this.labelFecha.TabIndex = 272;
-            this.labelFecha.Text = "Fecha:";
-            // 
-            // textBoxFecha
-            // 
-            this.textBoxFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFecha.Location = new System.Drawing.Point(626, 19);
-            this.textBoxFecha.Name = "textBoxFecha";
-            this.textBoxFecha.ReadOnly = true;
-            this.textBoxFecha.Size = new System.Drawing.Size(150, 21);
-            this.textBoxFecha.TabIndex = 273;
-            this.textBoxFecha.TabStop = false;
+            this.textBoxMontoPagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMontoPagado.Location = new System.Drawing.Point(626, 100);
+            this.textBoxMontoPagado.Name = "textBoxMontoPagado";
+            this.textBoxMontoPagado.ReadOnly = true;
+            this.textBoxMontoPagado.Size = new System.Drawing.Size(150, 21);
+            this.textBoxMontoPagado.TabIndex = 278;
+            this.textBoxMontoPagado.TabStop = false;
             // 
             // labelCambio
             // 
@@ -316,110 +282,146 @@
             this.labelHora.TabIndex = 274;
             this.labelHora.Text = "Hora:";
             // 
-            // textBoxMontoPagado
+            // textBoxFecha
             // 
-            this.textBoxMontoPagado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMontoPagado.Location = new System.Drawing.Point(626, 100);
-            this.textBoxMontoPagado.Name = "textBoxMontoPagado";
-            this.textBoxMontoPagado.ReadOnly = true;
-            this.textBoxMontoPagado.Size = new System.Drawing.Size(150, 21);
-            this.textBoxMontoPagado.TabIndex = 278;
-            this.textBoxMontoPagado.TabStop = false;
+            this.textBoxFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFecha.Location = new System.Drawing.Point(626, 19);
+            this.textBoxFecha.Name = "textBoxFecha";
+            this.textBoxFecha.ReadOnly = true;
+            this.textBoxFecha.Size = new System.Drawing.Size(150, 21);
+            this.textBoxFecha.TabIndex = 273;
+            this.textBoxFecha.TabStop = false;
             // 
-            // textBoxHora
+            // labelFecha
             // 
-            this.textBoxHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxHora.Location = new System.Drawing.Point(626, 46);
-            this.textBoxHora.Name = "textBoxHora";
-            this.textBoxHora.ReadOnly = true;
-            this.textBoxHora.Size = new System.Drawing.Size(150, 21);
-            this.textBoxHora.TabIndex = 279;
-            this.textBoxHora.TabStop = false;
+            this.labelFecha.AutoSize = true;
+            this.labelFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFecha.Location = new System.Drawing.Point(529, 22);
+            this.labelFecha.Name = "labelFecha";
+            this.labelFecha.Size = new System.Drawing.Size(44, 15);
+            this.labelFecha.TabIndex = 272;
+            this.labelFecha.Text = "Fecha:";
             // 
-            // textBoxMontoTotal
+            // textBoxFechaLimiteDeEmision
             // 
-            this.textBoxMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMontoTotal.Location = new System.Drawing.Point(626, 73);
-            this.textBoxMontoTotal.Name = "textBoxMontoTotal";
-            this.textBoxMontoTotal.ReadOnly = true;
-            this.textBoxMontoTotal.Size = new System.Drawing.Size(150, 21);
-            this.textBoxMontoTotal.TabIndex = 280;
-            this.textBoxMontoTotal.TabStop = false;
+            this.textBoxFechaLimiteDeEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFechaLimiteDeEmision.Location = new System.Drawing.Point(158, 100);
+            this.textBoxFechaLimiteDeEmision.Name = "textBoxFechaLimiteDeEmision";
+            this.textBoxFechaLimiteDeEmision.ReadOnly = true;
+            this.textBoxFechaLimiteDeEmision.Size = new System.Drawing.Size(150, 21);
+            this.textBoxFechaLimiteDeEmision.TabIndex = 271;
+            this.textBoxFechaLimiteDeEmision.TabStop = false;
             // 
-            // textBoxCambio
+            // labelFechaLimiteDeEmision
             // 
-            this.textBoxCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCambio.Location = new System.Drawing.Point(626, 127);
-            this.textBoxCambio.Name = "textBoxCambio";
-            this.textBoxCambio.ReadOnly = true;
-            this.textBoxCambio.Size = new System.Drawing.Size(150, 21);
-            this.textBoxCambio.TabIndex = 281;
-            this.textBoxCambio.TabStop = false;
+            this.labelFechaLimiteDeEmision.AutoSize = true;
+            this.labelFechaLimiteDeEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaLimiteDeEmision.Location = new System.Drawing.Point(6, 103);
+            this.labelFechaLimiteDeEmision.Name = "labelFechaLimiteDeEmision";
+            this.labelFechaLimiteDeEmision.Size = new System.Drawing.Size(146, 15);
+            this.labelFechaLimiteDeEmision.TabIndex = 270;
+            this.labelFechaLimiteDeEmision.Text = "Fecha Límite de Emisión:";
             // 
-            // labelCaja
+            // textBoxCliente
             // 
-            this.labelCaja.AutoSize = true;
-            this.labelCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCaja.Location = new System.Drawing.Point(314, 22);
-            this.labelCaja.Name = "labelCaja";
-            this.labelCaja.Size = new System.Drawing.Size(35, 15);
-            this.labelCaja.TabIndex = 282;
-            this.labelCaja.Text = "Caja:";
+            this.textBoxCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCliente.Location = new System.Drawing.Point(373, 73);
+            this.textBoxCliente.Multiline = true;
+            this.textBoxCliente.Name = "textBoxCliente";
+            this.textBoxCliente.ReadOnly = true;
+            this.textBoxCliente.Size = new System.Drawing.Size(150, 75);
+            this.textBoxCliente.TabIndex = 269;
+            this.textBoxCliente.TabStop = false;
             // 
-            // textBoxCaja
+            // labelCliente
             // 
-            this.textBoxCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCaja.Location = new System.Drawing.Point(373, 19);
-            this.textBoxCaja.Name = "textBoxCaja";
-            this.textBoxCaja.ReadOnly = true;
-            this.textBoxCaja.Size = new System.Drawing.Size(150, 21);
-            this.textBoxCaja.TabIndex = 283;
-            this.textBoxCaja.TabStop = false;
+            this.labelCliente.AutoSize = true;
+            this.labelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCliente.Location = new System.Drawing.Point(314, 76);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(48, 15);
+            this.labelCliente.TabIndex = 268;
+            this.labelCliente.Text = "Cliente:";
             // 
-            // labelUsuario
+            // textBoxCiONit
             // 
-            this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsuario.Location = new System.Drawing.Point(6, 130);
-            this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(53, 15);
-            this.labelUsuario.TabIndex = 284;
-            this.labelUsuario.Text = "Usuario:";
+            this.textBoxCiONit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCiONit.Location = new System.Drawing.Point(373, 46);
+            this.textBoxCiONit.Name = "textBoxCiONit";
+            this.textBoxCiONit.ReadOnly = true;
+            this.textBoxCiONit.Size = new System.Drawing.Size(150, 21);
+            this.textBoxCiONit.TabIndex = 267;
+            this.textBoxCiONit.TabStop = false;
             // 
-            // textBoxUsuario
+            // labelCiONit
             // 
-            this.textBoxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsuario.Location = new System.Drawing.Point(158, 127);
-            this.textBoxUsuario.Name = "textBoxUsuario";
-            this.textBoxUsuario.ReadOnly = true;
-            this.textBoxUsuario.Size = new System.Drawing.Size(150, 21);
-            this.textBoxUsuario.TabIndex = 285;
-            this.textBoxUsuario.TabStop = false;
+            this.labelCiONit.AutoSize = true;
+            this.labelCiONit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCiONit.Location = new System.Drawing.Point(314, 49);
+            this.labelCiONit.Name = "labelCiONit";
+            this.labelCiONit.Size = new System.Drawing.Size(53, 15);
+            this.labelCiONit.TabIndex = 266;
+            this.labelCiONit.Text = "Ci ó NIT:";
             // 
-            // groupBoxDetalleDeFactura
+            // textBoxCodigoDeControl
             // 
-            this.groupBoxDetalleDeFactura.Controls.Add(this.dataGridViewDetalleFactura);
-            this.groupBoxDetalleDeFactura.Location = new System.Drawing.Point(9, 154);
-            this.groupBoxDetalleDeFactura.Name = "groupBoxDetalleDeFactura";
-            this.groupBoxDetalleDeFactura.Size = new System.Drawing.Size(774, 327);
-            this.groupBoxDetalleDeFactura.TabIndex = 286;
-            this.groupBoxDetalleDeFactura.TabStop = false;
-            this.groupBoxDetalleDeFactura.Text = "Detalle";
+            this.textBoxCodigoDeControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCodigoDeControl.Location = new System.Drawing.Point(158, 73);
+            this.textBoxCodigoDeControl.Name = "textBoxCodigoDeControl";
+            this.textBoxCodigoDeControl.ReadOnly = true;
+            this.textBoxCodigoDeControl.Size = new System.Drawing.Size(150, 21);
+            this.textBoxCodigoDeControl.TabIndex = 265;
+            this.textBoxCodigoDeControl.TabStop = false;
             // 
-            // dataGridViewDetalleFactura
+            // labelCodigoDeControl
             // 
-            this.dataGridViewDetalleFactura.AllowUserToAddRows = false;
-            this.dataGridViewDetalleFactura.AllowUserToDeleteRows = false;
-            this.dataGridViewDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewDetalleFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridViewDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetalleFactura.Location = new System.Drawing.Point(6, 19);
-            this.dataGridViewDetalleFactura.MultiSelect = false;
-            this.dataGridViewDetalleFactura.Name = "dataGridViewDetalleFactura";
-            this.dataGridViewDetalleFactura.ReadOnly = true;
-            this.dataGridViewDetalleFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetalleFactura.Size = new System.Drawing.Size(762, 302);
-            this.dataGridViewDetalleFactura.TabIndex = 287;
+            this.labelCodigoDeControl.AutoSize = true;
+            this.labelCodigoDeControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCodigoDeControl.Location = new System.Drawing.Point(6, 76);
+            this.labelCodigoDeControl.Name = "labelCodigoDeControl";
+            this.labelCodigoDeControl.Size = new System.Drawing.Size(108, 15);
+            this.labelCodigoDeControl.TabIndex = 264;
+            this.labelCodigoDeControl.Text = "Código de Control:";
+            // 
+            // textBoxNumeroDeFactura
+            // 
+            this.textBoxNumeroDeFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeroDeFactura.Location = new System.Drawing.Point(158, 46);
+            this.textBoxNumeroDeFactura.Name = "textBoxNumeroDeFactura";
+            this.textBoxNumeroDeFactura.ReadOnly = true;
+            this.textBoxNumeroDeFactura.Size = new System.Drawing.Size(150, 21);
+            this.textBoxNumeroDeFactura.TabIndex = 263;
+            this.textBoxNumeroDeFactura.TabStop = false;
+            // 
+            // labelNumeroDeFactura
+            // 
+            this.labelNumeroDeFactura.AutoSize = true;
+            this.labelNumeroDeFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeroDeFactura.Location = new System.Drawing.Point(6, 49);
+            this.labelNumeroDeFactura.Name = "labelNumeroDeFactura";
+            this.labelNumeroDeFactura.Size = new System.Drawing.Size(116, 15);
+            this.labelNumeroDeFactura.TabIndex = 262;
+            this.labelNumeroDeFactura.Text = "Número de Factura:";
+            // 
+            // textBoxNumeroDeAutorizacion
+            // 
+            this.textBoxNumeroDeAutorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeroDeAutorizacion.Location = new System.Drawing.Point(158, 19);
+            this.textBoxNumeroDeAutorizacion.Name = "textBoxNumeroDeAutorizacion";
+            this.textBoxNumeroDeAutorizacion.ReadOnly = true;
+            this.textBoxNumeroDeAutorizacion.Size = new System.Drawing.Size(150, 21);
+            this.textBoxNumeroDeAutorizacion.TabIndex = 261;
+            this.textBoxNumeroDeAutorizacion.TabStop = false;
+            // 
+            // labelNumeroDeAutorizacionTexto
+            // 
+            this.labelNumeroDeAutorizacionTexto.AutoSize = true;
+            this.labelNumeroDeAutorizacionTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeroDeAutorizacionTexto.Location = new System.Drawing.Point(6, 22);
+            this.labelNumeroDeAutorizacionTexto.Name = "labelNumeroDeAutorizacionTexto";
+            this.labelNumeroDeAutorizacionTexto.Size = new System.Drawing.Size(142, 15);
+            this.labelNumeroDeAutorizacionTexto.TabIndex = 213;
+            this.labelNumeroDeAutorizacionTexto.Text = "Número de Autorización:";
             // 
             // buttonCerrar
             // 
@@ -427,7 +429,7 @@
             this.buttonCerrar.Location = new System.Drawing.Point(409, 532);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(100, 41);
-            this.buttonCerrar.TabIndex = 262;
+            this.buttonCerrar.TabIndex = 4;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
@@ -438,17 +440,28 @@
             this.buttonAnular.Location = new System.Drawing.Point(303, 532);
             this.buttonAnular.Name = "buttonAnular";
             this.buttonAnular.Size = new System.Drawing.Size(100, 41);
-            this.buttonAnular.TabIndex = 261;
+            this.buttonAnular.TabIndex = 3;
             this.buttonAnular.Text = "Anular";
             this.buttonAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonAnular.UseVisualStyleBackColor = true;
             this.buttonAnular.Click += new System.EventHandler(this.buttonAnular_Click);
+            // 
+            // checkBoxRefacturar
+            // 
+            this.checkBoxRefacturar.AutoSize = true;
+            this.checkBoxRefacturar.Location = new System.Drawing.Point(312, 14);
+            this.checkBoxRefacturar.Name = "checkBoxRefacturar";
+            this.checkBoxRefacturar.Size = new System.Drawing.Size(76, 17);
+            this.checkBoxRefacturar.TabIndex = 2;
+            this.checkBoxRefacturar.Text = "Refacturar";
+            this.checkBoxRefacturar.UseVisualStyleBackColor = true;
             // 
             // Anular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 585);
+            this.Controls.Add(this.checkBoxRefacturar);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonAnular);
             this.Controls.Add(this.groupBoxFactura);
@@ -504,5 +517,6 @@
         private System.Windows.Forms.DataGridView dataGridViewDetalleFactura;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonAnular;
+        private System.Windows.Forms.CheckBox checkBoxRefacturar;
     }
 }

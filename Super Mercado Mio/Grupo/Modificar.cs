@@ -18,8 +18,6 @@ namespace Super_Mercado_Mio.Grupo
         bool[] hasErrors = new bool[] { false };
         GrupoBss objetoGrupo = new GrupoBss();
         public GrupoEnt grupo = new GrupoEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Modificar(int idGrupo)
@@ -46,7 +44,6 @@ namespace Super_Mercado_Mio.Grupo
             if (validaciones())
             {
                 objetoGrupo.update(grupo);
-                addRecord("Grupo", grupo.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -60,17 +57,6 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private void loadFormData()
         {
             DataTable dataTableGrupo = objetoGrupo.search(grupo);

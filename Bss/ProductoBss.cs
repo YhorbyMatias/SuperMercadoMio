@@ -27,6 +27,10 @@ namespace Bss
         {
             return objetoProducto.authenticateCodigoDeBarras(producto);
         }
+        public void delete(ProductoEnt producto)
+        {
+            objetoProducto.delete(producto);
+        }
         public DataTable findAll()
         {
             return objetoProducto.findAll();
@@ -43,6 +47,10 @@ namespace Bss
         {
             return objetoProducto.getNumber(producto);
         }
+        public DataTable getStock()
+        {
+            return objetoProducto.getStock();
+        }
         public DataTable search(ProductoEnt producto)
         {
             return objetoProducto.search(producto);
@@ -50,6 +58,10 @@ namespace Bss
         public DataTable searchAll()
         {
             return objetoProducto.searchAll();
+        }
+        public DataTable searchAllRemovable()
+        {
+            return objetoProducto.searchAllRemovable();
         }
         public DataTable searchMarcas()
         {

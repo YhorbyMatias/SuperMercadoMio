@@ -58,6 +58,7 @@
             this.textBoxMonto = new System.Windows.Forms.TextBox();
             this.labelMonto = new System.Windows.Forms.Label();
             this.groupBoxDetalleDeCompra = new System.Windows.Forms.GroupBox();
+            this.searchProductButton = new System.Windows.Forms.Button();
             this.labelCodigoDeBarras = new System.Windows.Forms.Label();
             this.textBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
             this.dataGridViewDetalleDeIngreso = new System.Windows.Forms.DataGridView();
@@ -93,7 +94,7 @@
             // 
             this.textBoxNit.ContextMenuStrip = this.contextMenuStripEmpty;
             this.errorProviderFormulario.SetIconPadding(this.textBoxNit, 5);
-            this.textBoxNit.Location = new System.Drawing.Point(94, 12);
+            this.textBoxNit.Location = new System.Drawing.Point(77, 12);
             this.textBoxNit.MaxLength = 12;
             this.textBoxNit.Name = "textBoxNit";
             this.textBoxNit.Size = new System.Drawing.Size(150, 20);
@@ -109,7 +110,7 @@
             // 
             // textBoxProveedor
             // 
-            this.textBoxProveedor.Location = new System.Drawing.Point(94, 38);
+            this.textBoxProveedor.Location = new System.Drawing.Point(77, 38);
             this.textBoxProveedor.Multiline = true;
             this.textBoxProveedor.Name = "textBoxProveedor";
             this.textBoxProveedor.ReadOnly = true;
@@ -221,6 +222,7 @@
             // 
             // groupBoxDetalleDeCompra
             // 
+            this.groupBoxDetalleDeCompra.Controls.Add(this.searchProductButton);
             this.groupBoxDetalleDeCompra.Controls.Add(this.labelCodigoDeBarras);
             this.groupBoxDetalleDeCompra.Controls.Add(this.textBoxCodigoDeBarras);
             this.groupBoxDetalleDeCompra.Controls.Add(this.dataGridViewDetalleDeIngreso);
@@ -230,6 +232,18 @@
             this.groupBoxDetalleDeCompra.TabIndex = 3;
             this.groupBoxDetalleDeCompra.TabStop = false;
             this.groupBoxDetalleDeCompra.Text = "Detalle de Compra";
+            // 
+            // searchProductButton
+            // 
+            this.searchProductButton.FlatAppearance.BorderSize = 0;
+            this.searchProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchProductButton.Image = global::Super_Mercado_Mio.Properties.Resources.search16;
+            this.searchProductButton.Location = new System.Drawing.Point(276, 19);
+            this.searchProductButton.Name = "searchProductButton";
+            this.searchProductButton.Size = new System.Drawing.Size(21, 21);
+            this.searchProductButton.TabIndex = 258;
+            this.searchProductButton.UseVisualStyleBackColor = true;
+            this.searchProductButton.Click += new System.EventHandler(this.searchProductButton_Click);
             // 
             // labelCodigoDeBarras
             // 
@@ -273,7 +287,7 @@
             this.Monto_Total,
             this.Porcentaje_De_Utilidad,
             this.Precio_De_Venta});
-            this.dataGridViewDetalleDeIngreso.Location = new System.Drawing.Point(9, 45);
+            this.dataGridViewDetalleDeIngreso.Location = new System.Drawing.Point(9, 46);
             this.dataGridViewDetalleDeIngreso.MultiSelect = false;
             this.dataGridViewDetalleDeIngreso.Name = "dataGridViewDetalleDeIngreso";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -285,7 +299,7 @@
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewDetalleDeIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewDetalleDeIngreso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetalleDeIngreso.Size = new System.Drawing.Size(998, 297);
+            this.dataGridViewDetalleDeIngreso.Size = new System.Drawing.Size(998, 296);
             this.dataGridViewDetalleDeIngreso.TabIndex = 4;
             this.dataGridViewDetalleDeIngreso.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetalleDeIngreso_CellValidating);
             this.dataGridViewDetalleDeIngreso.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewDetalleDeIngreso_UserDeletingRow);
@@ -477,5 +491,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje_De_Utilidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_De_Venta;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
+        private System.Windows.Forms.Button searchProductButton;
     }
 }

@@ -24,8 +24,6 @@ namespace Super_Mercado_Mio.Usuario
         PrivilegioBss objetoPrivilegio = new PrivilegioBss();
         PrivilegioEnt privilegio = new PrivilegioEnt();
         DataTable dataTableOpciones = new DataTable();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
         public Nuevo()
@@ -326,7 +324,6 @@ namespace Super_Mercado_Mio.Usuario
                 usuario.TELEFONO = textBoxTelefono.Text.Trim();
                 usuario.CLAVE = encryptPassword(textBoxClave.Text.Trim());
                 usuario.ID = objetoUsuario.insert(usuario);
-                addRecord("Usuario", usuario.ID, "Nuevo");
                 for (int i = 0; i < dataTableOpciones.Rows.Count; i++)
                 {
                     if (checkedListBoxOpciones.GetItemChecked(i))
@@ -335,7 +332,6 @@ namespace Super_Mercado_Mio.Usuario
                         privilegio.ID_USUARIO = usuario.ID;
                         privilegio.ID_OPCION = Convert.ToInt32(dataTableOpciones.Rows[i]["Id"]);
                         privilegio.ID = objetoPrivilegio.insert(privilegio);
-                        addRecord("Privilegio", privilegio.ID, "Nuevo");
                     }
                 }
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
@@ -351,17 +347,6 @@ namespace Super_Mercado_Mio.Usuario
         }
         #endregion
         #region Metodos Propios
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private bool authenticateCi()
         {
             usuario.CI = textBoxCi.Text.Trim();

@@ -81,11 +81,11 @@ namespace Super_Mercado_Mio.Venta
         #region buttonSearchProduct
         private void buttonSearchProduct_Click(object sender, EventArgs e)
         {
-            Producto.Lista formListaDeProductos = new Producto.Lista(4);
-            formListaDeProductos.ShowDialog();
-            if (formListaDeProductos.producto.ID > 0)
+            Producto.Busqueda formBusquedaDeProductos = new Producto.Busqueda(2);
+            formBusquedaDeProductos.ShowDialog();
+            if (formBusquedaDeProductos.product.ID > 0)
             {
-                searchProduct(formListaDeProductos.producto.CODIGO_DE_BARRAS);
+                searchProduct(formBusquedaDeProductos.product.CODIGO_DE_BARRAS);
             }
             else
             {
@@ -115,7 +115,7 @@ namespace Super_Mercado_Mio.Venta
                 {
                     dataGridViewDetalleDeVenta.Rows[e.RowIndex].ErrorText = null;
                     dataGridViewDetalleDeVenta.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                    dataGridViewDetalleDeVenta["Precio_Total", e.RowIndex].Value = calculateInvoiceLineTotalAmount(e.RowIndex);
+                    dataGridViewDetalleDeVenta["Monto_Total", e.RowIndex].Value = calculateInvoiceLineTotalAmount(e.RowIndex);
                     textBoxMontoTotal.Text = calculateInvoiceTotalAmount().ToString();
                     textBoxCambio.Text = calculateChange().ToString();
                 }
@@ -286,6 +286,8 @@ namespace Super_Mercado_Mio.Venta
                 }
                 egreso.METODO_DE_PAGO = "CONTADO";
                 egreso.MONTO = Convert.ToDecimal(textBoxMontoTotal.Text);
+                egreso.MONTO_DE_CUPON = 0;
+                egreso.MONTO_EXTRA = 0;
                 egreso.MONTO_PAGADO = Convert.ToDecimal(textBoxMontoPagado.Text);
                 egreso.CAMBIO = Convert.ToDecimal(textBoxCambio.Text);
                 egreso.OBSERVACIONES = "";
@@ -314,6 +316,7 @@ namespace Super_Mercado_Mio.Venta
                 }
                 if (egreso.TIPO == "FACTURA SISTEMA")
                 {
+                    dosificacion.ID_SUCURSAL = 1;
                     DataTable dataTableDosificacion = objetoDosificacion.select(dosificacion);
                     dosificacion.ID = Convert.ToInt32(dataTableDosificacion.Rows[0]["Id"]);
                     dosificacion.NUMERO_DE_AUTORIZACION = dataTableDosificacion.Rows[0]["Numero_De_Autorizacion"].ToString();
@@ -354,7 +357,7 @@ namespace Super_Mercado_Mio.Venta
                     detalleDeFactura.ID_FACTURA = factura.ID;
                     if (SesionEnt.printerEnabled)
                     {
-                        printInvoice(objetoFactura.obtainById(factura), objetoDetalleDeFactura.obtainById(detalleDeFactura));
+                        printInvoice(objetoFactura.getById(factura), objetoDetalleDeFactura.obtainById(detalleDeFactura));
                     }
                     else
                     {

@@ -21,8 +21,6 @@ namespace Super_Mercado_Mio.Dosificacion
         SucursalEnt sucursal = new SucursalEnt();
         DosificacionBss objetoDosificacion = new DosificacionBss();
         DosificacionEnt dosificacion = new DosificacionEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Nueva()
@@ -157,7 +155,6 @@ namespace Super_Mercado_Mio.Dosificacion
                 dosificacion.LEYENDA = textBoxLeyenda.Text.Trim().ToUpper();
                 dosificacion.ESTADO = textBoxEstado.Text;
                 dosificacion.ID = objetoDosificacion.add(dosificacion);
-                addRecord("Dosificacion", dosificacion.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -170,17 +167,6 @@ namespace Super_Mercado_Mio.Dosificacion
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private bool authenticateAuthorizationNumber()
         {
             dosificacion.NUMERO_DE_AUTORIZACION = textBoxNumeroDeAutorizacion.Text.Trim();

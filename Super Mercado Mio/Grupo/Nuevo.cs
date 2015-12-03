@@ -18,8 +18,6 @@ namespace Super_Mercado_Mio.Grupo
         bool[] hasErrors = new bool[] { true };
         GrupoBss objetoGrupo = new GrupoBss();
         public GrupoEnt grupo = new GrupoEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Nuevo()
@@ -41,7 +39,6 @@ namespace Super_Mercado_Mio.Grupo
             if (validaciones())
             {
                 grupo.ID = objetoGrupo.add(grupo);
-                addRecord("Grupo", grupo.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -55,17 +52,6 @@ namespace Super_Mercado_Mio.Grupo
         }
         #endregion
         #region Metodos Propios
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private int validarNombre()
         {
             if (textBoxNombre.Text.Trim() != "")

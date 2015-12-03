@@ -54,13 +54,15 @@
             this.labelMontoTotal = new System.Windows.Forms.Label();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.textBoxMontoDeCupones = new System.Windows.Forms.TextBox();
+            this.labelMontoDeCupones = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxMontoDeAperturaDeCaja
             // 
             this.textBoxMontoDeAperturaDeCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMontoDeAperturaDeCaja.Location = new System.Drawing.Point(171, 162);
+            this.textBoxMontoDeAperturaDeCaja.Location = new System.Drawing.Point(172, 162);
             this.textBoxMontoDeAperturaDeCaja.MaxLength = 10;
             this.textBoxMontoDeAperturaDeCaja.Name = "textBoxMontoDeAperturaDeCaja";
             this.textBoxMontoDeAperturaDeCaja.ReadOnly = true;
@@ -176,7 +178,7 @@
             this.textBoxMontoDeVentaDeTarjetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorProvider.SetIconAlignment(this.textBoxMontoDeVentaDeTarjetas, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.errorProvider.SetIconPadding(this.textBoxMontoDeVentaDeTarjetas, 5);
-            this.textBoxMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(172, 246);
+            this.textBoxMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(171, 274);
             this.textBoxMontoDeVentaDeTarjetas.MaxLength = 10;
             this.textBoxMontoDeVentaDeTarjetas.Name = "textBoxMontoDeVentaDeTarjetas";
             this.textBoxMontoDeVentaDeTarjetas.Size = new System.Drawing.Size(150, 22);
@@ -193,7 +195,7 @@
             this.textBoxMontoDePagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorProvider.SetIconAlignment(this.textBoxMontoDePagos, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.errorProvider.SetIconPadding(this.textBoxMontoDePagos, 5);
-            this.textBoxMontoDePagos.Location = new System.Drawing.Point(172, 274);
+            this.textBoxMontoDePagos.Location = new System.Drawing.Point(171, 302);
             this.textBoxMontoDePagos.MaxLength = 10;
             this.textBoxMontoDePagos.Name = "textBoxMontoDePagos";
             this.textBoxMontoDePagos.Size = new System.Drawing.Size(150, 22);
@@ -225,7 +227,7 @@
             // 
             this.labelMontoDeVentas.AutoSize = true;
             this.labelMontoDeVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoDeVentas.Location = new System.Drawing.Point(13, 193);
+            this.labelMontoDeVentas.Location = new System.Drawing.Point(12, 193);
             this.labelMontoDeVentas.Name = "labelMontoDeVentas";
             this.labelMontoDeVentas.Size = new System.Drawing.Size(60, 16);
             this.labelMontoDeVentas.TabIndex = 235;
@@ -234,7 +236,7 @@
             // textBoxMontoDeDevoluciones
             // 
             this.textBoxMontoDeDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMontoDeDevoluciones.Location = new System.Drawing.Point(172, 218);
+            this.textBoxMontoDeDevoluciones.Location = new System.Drawing.Point(172, 246);
             this.textBoxMontoDeDevoluciones.MaxLength = 10;
             this.textBoxMontoDeDevoluciones.Name = "textBoxMontoDeDevoluciones";
             this.textBoxMontoDeDevoluciones.ReadOnly = true;
@@ -247,7 +249,7 @@
             // 
             this.labelMontoDeDevoluciones.AutoSize = true;
             this.labelMontoDeDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoDeDevoluciones.Location = new System.Drawing.Point(12, 221);
+            this.labelMontoDeDevoluciones.Location = new System.Drawing.Point(11, 249);
             this.labelMontoDeDevoluciones.Name = "labelMontoDeDevoluciones";
             this.labelMontoDeDevoluciones.Size = new System.Drawing.Size(107, 16);
             this.labelMontoDeDevoluciones.TabIndex = 237;
@@ -257,7 +259,7 @@
             // 
             this.labelMontoDeVentaDeTarjetas.AutoSize = true;
             this.labelMontoDeVentaDeTarjetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(12, 249);
+            this.labelMontoDeVentaDeTarjetas.Location = new System.Drawing.Point(11, 277);
             this.labelMontoDeVentaDeTarjetas.Name = "labelMontoDeVentaDeTarjetas";
             this.labelMontoDeVentaDeTarjetas.Size = new System.Drawing.Size(136, 16);
             this.labelMontoDeVentaDeTarjetas.TabIndex = 239;
@@ -267,7 +269,7 @@
             // 
             this.labelMontoDePagos.AutoSize = true;
             this.labelMontoDePagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoDePagos.Location = new System.Drawing.Point(12, 277);
+            this.labelMontoDePagos.Location = new System.Drawing.Point(11, 305);
             this.labelMontoDePagos.Name = "labelMontoDePagos";
             this.labelMontoDePagos.Size = new System.Drawing.Size(57, 16);
             this.labelMontoDePagos.TabIndex = 241;
@@ -278,7 +280,7 @@
             this.textBoxMontoTotal.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.textBoxMontoTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMontoTotal.Location = new System.Drawing.Point(172, 302);
+            this.textBoxMontoTotal.Location = new System.Drawing.Point(171, 330);
             this.textBoxMontoTotal.MaxLength = 10;
             this.textBoxMontoTotal.Name = "textBoxMontoTotal";
             this.textBoxMontoTotal.ReadOnly = true;
@@ -291,7 +293,7 @@
             // 
             this.labelMontoTotal.AutoSize = true;
             this.labelMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMontoTotal.Location = new System.Drawing.Point(12, 305);
+            this.labelMontoTotal.Location = new System.Drawing.Point(11, 333);
             this.labelMontoTotal.Name = "labelMontoTotal";
             this.labelMontoTotal.Size = new System.Drawing.Size(48, 16);
             this.labelMontoTotal.TabIndex = 243;
@@ -300,7 +302,7 @@
             // buttonCerrar
             // 
             this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.Location = new System.Drawing.Point(170, 330);
+            this.buttonCerrar.Location = new System.Drawing.Point(169, 358);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
             this.buttonCerrar.TabIndex = 3;
@@ -311,7 +313,7 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(75, 330);
+            this.buttonGuardar.Location = new System.Drawing.Point(74, 358);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
             this.buttonGuardar.TabIndex = 2;
@@ -320,12 +322,36 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // textBoxMontoDeCupones
+            // 
+            this.textBoxMontoDeCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMontoDeCupones.Location = new System.Drawing.Point(172, 218);
+            this.textBoxMontoDeCupones.MaxLength = 10;
+            this.textBoxMontoDeCupones.Name = "textBoxMontoDeCupones";
+            this.textBoxMontoDeCupones.ReadOnly = true;
+            this.textBoxMontoDeCupones.Size = new System.Drawing.Size(150, 22);
+            this.textBoxMontoDeCupones.TabIndex = 244;
+            this.textBoxMontoDeCupones.TabStop = false;
+            this.textBoxMontoDeCupones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelMontoDeCupones
+            // 
+            this.labelMontoDeCupones.AutoSize = true;
+            this.labelMontoDeCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMontoDeCupones.Location = new System.Drawing.Point(12, 221);
+            this.labelMontoDeCupones.Name = "labelMontoDeCupones";
+            this.labelMontoDeCupones.Size = new System.Drawing.Size(141, 16);
+            this.labelMontoDeCupones.TabIndex = 245;
+            this.labelMontoDeCupones.Text = "Monto de Cupones:";
+            // 
             // Cierre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCerrar;
-            this.ClientSize = new System.Drawing.Size(334, 383);
+            this.ClientSize = new System.Drawing.Size(334, 411);
+            this.Controls.Add(this.textBoxMontoDeCupones);
+            this.Controls.Add(this.labelMontoDeCupones);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.textBoxMontoTotal);
@@ -386,5 +412,7 @@
         private System.Windows.Forms.Label labelMontoTotal;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.TextBox textBoxMontoDeCupones;
+        private System.Windows.Forms.Label labelMontoDeCupones;
     }
 }

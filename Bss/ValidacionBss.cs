@@ -10,6 +10,7 @@ namespace Bss
     public class ValidacionBss
     {
         #region Atributos
+        public static string controlCodeDictionary = "ABCDEFabcdef0123456789";
         public static string diccionarioCadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz áéíóúÁÉÍÓÚÑñ.,";
         public static string diccionarioLlave = @"ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789=#()*+-_\@[]{}%$";
         #endregion
@@ -86,12 +87,15 @@ namespace Bss
                 case 703:
                     errorMessage = "El alias ya se halla registrado.";
                     break;
-                //
-                case 13:
+                //Purchase Errors
+                case 800:
                     errorMessage = "Revise el nit del proveedor.";
                     break;
-                case 14:
+                case 801:
                     errorMessage = "No se agregó ningún producto.";
+                    break;
+                case 802:
+                    errorMessage = "El precio de compra debe ser menor al precio de venta.";
                     break;
                 //Sales Errors
                 case 900:
@@ -181,6 +185,11 @@ namespace Bss
             bool bandera;
             bandera = Regex.IsMatch(value, @"^[0-9]{7,8}$");
             return bandera;
+        }
+        public static bool isControlCode(string value)
+        {
+            return Regex.IsMatch(value, @"^(([0-9A-F][0-9A-F]\-)([0-9A-F][0-9A-F]\-)([0-9A-F][0-9A-F]\-)"
+                + @"([0-9A-F][0-9A-F])((\-[0-9A-F][0-9A-F])||((\-[0-9A-F][0-9A-F])(\-[0-9A-F][0-9A-F]))))$");
         }
         #endregion
     }

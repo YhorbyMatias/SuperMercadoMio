@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Grupo
         GrupoBss objetoGrupo = new GrupoBss();
         GrupoEnt grupo = new GrupoEnt();
         DataView dataViewGrupos = new DataView();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Eliminar()
@@ -52,7 +50,6 @@ namespace Super_Mercado_Mio.Grupo
                     grupo.ID = Convert.ToInt32(dataGridViewGrupos.SelectedRows[0].Cells["Id"].Value);
                     grupo.ESTADO = false;
                     objetoGrupo.delete(grupo);
-                    insertarRegistro("Grupo", grupo.ID, "Eliminar");
                     MessageBox.Show("El grupo fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -112,17 +109,6 @@ namespace Super_Mercado_Mio.Grupo
                                                  " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
                 }
             }
-        }
-        private void insertarRegistro(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

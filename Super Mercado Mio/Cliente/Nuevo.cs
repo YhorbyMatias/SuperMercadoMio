@@ -20,8 +20,6 @@ namespace Super_Mercado_Mio.Cliente
         bool[] hasErrors = new bool[] { true, true };
         ClienteBss objetoCliente = new ClienteBss();
         public ClienteEnt cliente = new ClienteEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Nuevo(int option, string ciONit)
@@ -99,7 +97,6 @@ namespace Super_Mercado_Mio.Cliente
                 cliente.CI_O_NIT = textBoxCiONit.Text.Trim();
                 cliente.NOMBRE = textBoxNombre.Text.ToUpper().Trim();
                 cliente.ID = objetoCliente.add(cliente);
-                addRecord("Cliente", cliente.ID, "Nuevo");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -112,17 +109,6 @@ namespace Super_Mercado_Mio.Cliente
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private bool authenticateCiONit()
         {
             if (textBoxCiONit.Text.Trim() != "0" && textBoxCiONit.Text.Trim() != "00")

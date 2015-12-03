@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Proveedor
         ProveedorBss objetoProveedor = new ProveedorBss();
         ProveedorEnt proveedor = new ProveedorEnt();
         DataView dataViewProveedores = new DataView();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Form
         public Eliminar()
@@ -52,7 +50,6 @@ namespace Super_Mercado_Mio.Proveedor
                     proveedor.ID = Convert.ToInt32(dataGridViewProveedores.SelectedRows[0].Cells["Id"].Value);
                     proveedor.ESTADO = false;
                     objetoProveedor.delete(proveedor);
-                    insertarRegistro("Proveedor", proveedor.ID, "Eliminar");
                     MessageBox.Show("El proveedor fue eliminado.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -116,17 +113,6 @@ namespace Super_Mercado_Mio.Proveedor
                                                  " Like '%" + textBoxBuscar.Text.Trim().ToUpper() + "%'";
                 }
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

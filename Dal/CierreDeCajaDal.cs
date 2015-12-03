@@ -24,6 +24,7 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Hora", cierreDeCaja.HORA);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Apertura_De_Caja", cierreDeCaja.MONTO_DE_APERTURA_DE_CAJA);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Ventas", cierreDeCaja.MONTO_DE_VENTAS);
+            sqlCommand.Parameters.AddWithValue("@Monto_De_Cupones", cierreDeCaja.MONTO_DE_CUPONES);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Devoluciones", cierreDeCaja.MONTO_DE_DEVOLUCIONES);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Ventas_De_Tarjetas", cierreDeCaja.MONTO_DE_VENTA_DE_TARJETAS);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Pagos", cierreDeCaja.MONTO_DE_PAGOS);

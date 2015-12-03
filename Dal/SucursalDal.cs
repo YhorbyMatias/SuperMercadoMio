@@ -12,17 +12,6 @@ namespace Dal
     public class SucursalDal
     {
         #region Metodos
-        public int exists()
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select Count(Id) From Sucursal Where Estado = 1";
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
         public string getNumber(SucursalEnt sucursal)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
@@ -34,22 +23,6 @@ namespace Dal
             string number = Convert.ToString(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return number;
-        }
-        public int insert(SucursalEnt sucursal)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.CommandText = "insertarSucursal";
-            sqlCommand.Parameters.AddWithValue("@Id_Empresa", sucursal.ID_EMPRESA);
-            sqlCommand.Parameters.AddWithValue("@Numero", sucursal.NUMERO);
-            sqlCommand.Parameters.AddWithValue("@Direccion", sucursal.DIRECCION);
-            sqlCommand.Parameters.AddWithValue("@Telefono", sucursal.TELEFONO);
-            sqlCommand.Parameters.AddWithValue("@Municipio", sucursal.MUNICIPIO);
-            sqlConnection.Open();
-            int idSucursal = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return idSucursal;
         }
         public DataTable search()
         {

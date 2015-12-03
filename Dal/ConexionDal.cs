@@ -11,7 +11,7 @@ namespace Dal
     public class ConexionDal
     {
         #region Atributos
-        public static string connectionString = ConfigurationManager.ConnectionStrings["CadenaDeConexion"].ConnectionString;
+        public static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         #endregion
         #region Metodos
         public static void test()

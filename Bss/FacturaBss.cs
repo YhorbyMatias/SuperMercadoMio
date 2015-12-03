@@ -31,6 +31,10 @@ namespace Bss
             this.listDetalleDeFactura.Clear();
             return id;
         }
+        public void cancel(FacturaEnt factura)
+        {
+            objetoFactura.cancel(factura);
+        }
         public int getNumber(FacturaEnt factura)
         {
             return objetoFactura.getNumber(factura);
@@ -62,6 +66,14 @@ namespace Bss
                 this.listDetalleDeFactura[row].IMPORTE = this.listDetalleDeFactura[row].IMPORTE + detalleDeFactura.IMPORTE;
             }
         }
+        public DataTable getByControlCode(FacturaEnt factura)
+        {
+            return objetoFactura.getByControlCode(factura);
+        }
+        public DataTable getById(FacturaEnt factura)
+        {
+            return objetoFactura.getById(factura);
+        }
         public string getControlCode(FacturaEnt factura)
         {
             factura.MONTO_AUXILIAR = factura.MONTO.ToString("##").ToString();
@@ -92,10 +104,6 @@ namespace Bss
             string codigo = objetobase64.ObtenerBase64(numero);
             codigo = objetoallegedrc4.AllegedRC4(codigo, factura.LLAVE + cincodigitosverhoeff);
             return getFinalCodeControl(codigo);
-        }
-        public DataTable obtainById(FacturaEnt factura)
-        {
-            return objetoFactura.obtainById(factura);
         }
         #endregion
         #region Private Methods

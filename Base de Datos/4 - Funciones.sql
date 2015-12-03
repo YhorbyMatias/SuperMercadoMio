@@ -49,3 +49,15 @@ Return
 	Where Id_Proveedor = 0 And Id_Grupo = 0 And Estado = 1
 )
 Go
+
+Create Function Stock()
+Returns Table
+Return
+(
+	Select Bp.Id, Bp.Proveedor, Bp.Grupo, Bp.Tipo_De_Codigo_De_Barras, Bp.Codigo_De_Barras, Bp.Nombre_Generico, Bp.Marca,
+	Bp.Presentacion, Bp.Sabor_U_Olor, Bp.Tipo, Bp.Cantidad_Minima, Bp.Precio_De_Compra, Bp.Precio_De_Venta, Bp.Alias,
+	(ISNULL((Select SUM(DdI.Cantidad) From Detalle_De_Ingreso DdI Where bP.Id = DdI.Id_Producto And DdI.Estado = 'VIGENTE'), 0)
+	- ISNULL((Select SUM(DdE.Cantidad) From Detalle_De_Egreso DdE Where bP.Id = DdE.Id_Producto And DdE.Estado = 'VIGENTE'), 0)) As Stock
+	From buscarProductos() bP
+)
+Go

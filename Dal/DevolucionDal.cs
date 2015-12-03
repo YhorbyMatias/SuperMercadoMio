@@ -12,6 +12,23 @@ namespace Dal
     public class DevolucionDal
     {
         #region Methods
+        public int add(DevolucionEnt devolucion)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "insertarDevolucion";
+            sqlCommand.Parameters.AddWithValue("@Id_Usuario", devolucion.ID_USUARIO);
+            sqlCommand.Parameters.AddWithValue("@Id_Caja", devolucion.ID_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", devolucion.ID_APERTURA_DE_CAJA);
+            sqlCommand.Parameters.AddWithValue("@Id_Egreso", devolucion.ID_EGRESO);
+            sqlCommand.Parameters.AddWithValue("@Hora", devolucion.HORA);
+            sqlCommand.Parameters.AddWithValue("@Monto", devolucion.MONTO);
+            sqlConnection.Open();
+            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return id;
+        }
         public void close(DevolucionEnt devolucion)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

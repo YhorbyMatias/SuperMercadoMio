@@ -19,6 +19,8 @@ namespace Ent
         private string tipo;
         private string metodo_de_pago;
         private decimal monto;
+        private decimal monto_de_cupon;
+        private decimal monto_extra;
         private decimal monto_pagado;
         private decimal cambio;
         private string observaciones;
@@ -76,6 +78,16 @@ namespace Ent
         {
             get { return this.monto; }
             set { this.monto = value; }
+        }
+        public decimal MONTO_DE_CUPON
+        {
+            get { return this.monto_de_cupon; }
+            set { this.monto_de_cupon = value; }
+        }
+        public decimal MONTO_EXTRA
+        {
+            get { return this.monto_extra; }
+            set { this.monto_extra = value; }
         }
         public decimal MONTO_PAGADO
         {

@@ -19,8 +19,6 @@ namespace Super_Mercado_Mio.Proveedor
         bool[] hasErrors = new bool[] { false, false, false, false, false };
         ProveedorBss objetoProveedor = new ProveedorBss();
         ProveedorEnt proveedor = new ProveedorEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         #endregion
         #region Formulario
         public Modificar(int idProveedor)
@@ -252,7 +250,6 @@ namespace Super_Mercado_Mio.Proveedor
                 proveedor.CELULAR = textBoxCelular.Text.Trim();
                 proveedor.NUMERO_DE_CUENTA = textBoxNumeroDeCuenta.Text.Trim().ToUpper();
                 objetoProveedor.update(proveedor);
-                insertarRegistro("Proveedor", proveedor.ID, "Modificar");
                 MessageBox.Show("Los datos fueron guardados correctamente.", "Operación Exitosa", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.Close();
@@ -447,17 +444,6 @@ namespace Super_Mercado_Mio.Proveedor
                 }
                 return false;
             }
-        }
-        private void insertarRegistro(string tablaX, int idTablaX, string tipoX)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tablaX;
-            registro.ID_TABLA = idTablaX;
-            registro.TIPO = tipoX;
-            objetoRegistro.insert(registro);
         }
         #endregion
     }

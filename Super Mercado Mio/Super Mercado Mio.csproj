@@ -66,6 +66,24 @@
     <Compile Include="Caja\Cierre.Designer.cs">
       <DependentUpon>Cierre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Caja\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caja\Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja\Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caja\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Caja\Nueva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,12 +162,6 @@
     <Compile Include="Empresa\Modificar.Designer.cs">
       <DependentUpon>Modificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Empresa\Nueva.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empresa\Nueva.Designer.cs">
-      <DependentUpon>Nueva.cs</DependentUpon>
-    </Compile>
     <Compile Include="Factura\Anular.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +204,18 @@
     <Compile Include="Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Busqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Busqueda.Designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\Lista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +233,12 @@
     </Compile>
     <Compile Include="Producto\Nuevo.Designer.cs">
       <DependentUpon>Nuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Stock.Designer.cs">
+      <DependentUpon>Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -260,12 +290,6 @@
     <Compile Include="Sucursal\Modificar.Designer.cs">
       <DependentUpon>Modificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sucursal\Nueva.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sucursal\Nueva.Designer.cs">
-      <DependentUpon>Nueva.cs</DependentUpon>
-    </Compile>
     <Compile Include="Usuario\Eliminar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +314,12 @@
     <Compile Include="Usuario\Nuevo.Designer.cs">
       <DependentUpon>Nuevo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venta\Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\Modificar.Designer.cs">
+      <DependentUpon>Modificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Venta\Nueva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +334,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Caja\Cierre.resx">
       <DependentUpon>Cierre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caja\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caja\Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caja\Modificar.resx">
+      <DependentUpon>Modificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Caja\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>
@@ -344,9 +383,6 @@
     <EmbeddedResource Include="Empresa\Modificar.resx">
       <DependentUpon>Modificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Empresa\Nueva.resx">
-      <DependentUpon>Nueva.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Factura\Anular.resx">
       <DependentUpon>Anular.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,6 +404,12 @@
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Busqueda.resx">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto\Lista.resx">
       <DependentUpon>Lista.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Nuevo.resx">
       <DependentUpon>Nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Stock.resx">
+      <DependentUpon>Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -411,9 +456,6 @@
     <EmbeddedResource Include="Sucursal\Modificar.resx">
       <DependentUpon>Modificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sucursal\Nueva.resx">
-      <DependentUpon>Nueva.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Usuario\Eliminar.resx">
       <DependentUpon>Eliminar.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\Nuevo.resx">
       <DependentUpon>Nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\Modificar.resx">
+      <DependentUpon>Modificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venta\Nueva.resx">
       <DependentUpon>Nueva.cs</DependentUpon>

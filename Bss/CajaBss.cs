@@ -2,6 +2,7 @@
 using Ent;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,25 @@ namespace Bss
         {
             return objetoCaja.authenticateNumber(caja);
         }
+        public void delete(CajaEnt caja)
+        {
+            objetoCaja.delete(caja);
+        }
         public int exists(CajaEnt caja)
         {
             return objetoCaja.exists(caja);
+        }
+        public DataTable getAll()
+        {
+            return objetoCaja.getAll();
+        }
+        public DataTable getAllRemovable()
+        {
+            return objetoCaja.getAllRemovable();
+        }
+        public DataTable getById(CajaEnt caja)
+        {
+            return objetoCaja.getById(caja);
         }
         public int getId(CajaEnt caja)
         {
@@ -33,6 +50,10 @@ namespace Bss
         public int getNumber(CajaEnt caja)
         {
             return objetoCaja.getNumber(caja);
+        }
+        public void update(CajaEnt caja)
+        {
+            objetoCaja.update(caja);
         }
         #endregion
     }

@@ -35,8 +35,6 @@ namespace Super_Mercado_Mio.Caja
         DevolucionEnt devolucion = new DevolucionEnt();
         CierreDeCajaBss objetoCierreDeCaja = new CierreDeCajaBss();
         CierreDeCajaEnt cierreDeCaja = new CierreDeCajaEnt();
-        RegistroBss objetoRegistro = new RegistroBss();
-        RegistroEnt registro = new RegistroEnt();
         ImpresoraBss printer = new ImpresoraBss();
         #endregion
         #region Form
@@ -56,6 +54,14 @@ namespace Super_Mercado_Mio.Caja
                     foreach (Form form in Application.OpenForms)
                     {
                         if (form.GetType() == typeof(Venta.Nueva))
+                        {
+                            form.Close();
+                        }
+                        if (form.GetType() == typeof(Venta.Modificar))
+                        {
+                            form.Close();
+                        }
+                        if (form.GetType() == typeof(Factura.Anular))
                         {
                             form.Close();
                         }
@@ -113,7 +119,7 @@ namespace Super_Mercado_Mio.Caja
                             detalleDeFactura.ID_FACTURA = factura.ID;
                             if (SesionEnt.printerEnabled)
                             {
-                                printInvoice(objetoFactura.obtainById(factura), objetoDetalleDeFactura.obtainById(detalleDeFactura));
+                                printInvoice(objetoFactura.getById(factura), objetoDetalleDeFactura.obtainById(detalleDeFactura));
                             }
                             else
                             {
@@ -268,12 +274,12 @@ namespace Super_Mercado_Mio.Caja
             cierreDeCaja.HORA = DateTime.Now.ToString("T");
             cierreDeCaja.MONTO_DE_APERTURA_DE_CAJA = Convert.ToDecimal(textBoxMontoDeAperturaDeCaja.Text);
             cierreDeCaja.MONTO_DE_VENTAS = Convert.ToDecimal(textBoxMontoDeVentas.Text);
+            cierreDeCaja.MONTO_DE_DEVOLUCIONES = Convert.ToDecimal(textBoxMontoDeCupones.Text);
             cierreDeCaja.MONTO_DE_DEVOLUCIONES = Convert.ToDecimal(textBoxMontoDeDevoluciones.Text);
             cierreDeCaja.MONTO_DE_VENTA_DE_TARJETAS = Convert.ToDecimal(textBoxMontoDeVentaDeTarjetas.Text);
             cierreDeCaja.MONTO_DE_PAGOS = Convert.ToDecimal(textBoxMontoDePagos.Text);
             cierreDeCaja.MONTO_TOTAL = Convert.ToDecimal(textBoxMontoTotal.Text);
             cierreDeCaja.ID = objetoCierreDeCaja.add(cierreDeCaja);
-            addRecord("Cierre_De_Caja", cierreDeCaja.ID, "Nuevo");
             devolucion.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
             objetoDevolucion.close(devolucion);
             egreso.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
@@ -290,17 +296,6 @@ namespace Super_Mercado_Mio.Caja
         }
         #endregion
         #region Methods
-        private void addRecord(string tabla, int idTabla, string tipo)
-        {
-            registro = new RegistroEnt();
-            registro.USUARIO = SesionEnt.nombreDeUsuario;
-            registro.EQUIPO = SesionEnt.nombreDeEquipo;
-            registro.HORA = DateTime.Now.ToString("T");
-            registro.TABLA = tabla;
-            registro.ID_TABLA = idTabla;
-            registro.TIPO = tipo;
-            objetoRegistro.insert(registro);
-        }
         private decimal calculateTotalAmount()
         {
             return Convert.ToDecimal(textBoxMontoDeAperturaDeCaja.Text) + Convert.ToDecimal(textBoxMontoDeVentas.Text)
@@ -318,7 +313,8 @@ namespace Super_Mercado_Mio.Caja
             aperturaDeCaja.ID = Convert.ToInt32(dataTableAperturaDeCaja.Rows[0]["Id"]);
             textBoxMontoDeAperturaDeCaja.Text = Convert.ToDecimal(dataTableAperturaDeCaja.Rows[0]["Monto"]).ToString();
             egreso.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
-            textBoxMontoDeVentas.Text = objetoEgreso.getSalesTotalAmount(egreso).ToString();
+            textBoxMontoDeVentas.Text = (objetoEgreso.getSalesTotalAmount(egreso) + objetoEgreso.getExtraTotalAmount(egreso)).ToString();
+            textBoxMontoDeCupones.Text = objetoEgreso.getCouponsTotalAmount(egreso).ToString();
             devolucion.ID_APERTURA_DE_CAJA = aperturaDeCaja.ID;
             textBoxMontoDeDevoluciones.Text = objetoDevolucion.getRefundsTotalAmount(devolucion).ToString();
             if (Convert.ToDecimal(textBoxMontoDeDevoluciones.Text) < 0)
@@ -326,7 +322,6 @@ namespace Super_Mercado_Mio.Caja
                 textBoxMontoDeDevoluciones.ForeColor = Color.Red;
             }
             textBoxMontoTotal.Text = (calculateTotalAmount()).ToString();
-
         }
         private void printInvoice(DataTable invoice, DataTable invoiceLines)
         {

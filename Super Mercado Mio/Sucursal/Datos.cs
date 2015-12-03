@@ -23,14 +23,7 @@ namespace Super_Mercado_Mio.Sucursal
         }
         private void Datos_Load(object sender, EventArgs e)
         {
-            if (objetoSucursal.exists() == 1)
-            {
-                cargarInformacionDeSucursal();
-            }
-            else
-            {
-                MessageBox.Show("La sucursal no fue registrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            cargarInformacionDeSucursal();
         }
         #endregion
         #region Metodos Propios

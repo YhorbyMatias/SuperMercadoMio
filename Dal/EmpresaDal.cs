@@ -12,32 +12,6 @@ namespace Dal
     public class EmpresaDal
     {
         #region Metodos
-        public int add(EmpresaEnt empresa)
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.CommandText = "insertarEmpresa";
-            sqlCommand.Parameters.AddWithValue("@Propietario", empresa.PROPIETARIO);
-            sqlCommand.Parameters.AddWithValue("@Razon_Social", empresa.RAZON_SOCIAL);
-            sqlCommand.Parameters.AddWithValue("@Nit", empresa.NIT);
-            sqlCommand.Parameters.AddWithValue("@Actividad_Economica", empresa.ACTIVIDAD_ECONOMICA);
-            sqlConnection.Open();
-            int id = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return id;
-        }
-        public int exists()
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select COUNT(Id) From Empresa Where Estado = 1";
-            sqlConnection.Open();
-            int exists = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return exists;
-        }
         public DataTable search()
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
