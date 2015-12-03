@@ -207,6 +207,7 @@ Create Table Egreso
 (
 	Id Int Not Null Identity(1,1),
 	Id_Usuario Int Not Null,
+	Id_Caja Int Not Null,
 	Id_Apertura_De_Caja Int Not Null,
 	Id_Cliente Int Not Null,
 	Fecha Date Not Null,
