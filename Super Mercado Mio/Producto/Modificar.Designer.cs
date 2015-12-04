@@ -80,7 +80,7 @@
             this.textBoxAlias.MaxLength = 24;
             this.textBoxAlias.Name = "textBoxAlias";
             this.textBoxAlias.Size = new System.Drawing.Size(200, 20);
-            this.textBoxAlias.TabIndex = 8;
+            this.textBoxAlias.TabIndex = 16;
             this.textBoxAlias.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAlias_Validating);
             // 
             // textBoxPrecioDeVenta
@@ -91,7 +91,7 @@
             this.textBoxPrecioDeVenta.MaxLength = 10;
             this.textBoxPrecioDeVenta.Name = "textBoxPrecioDeVenta";
             this.textBoxPrecioDeVenta.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPrecioDeVenta.TabIndex = 14;
+            this.textBoxPrecioDeVenta.TabIndex = 15;
             this.textBoxPrecioDeVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecioDeVenta_KeyDown);
             this.textBoxPrecioDeVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecioDeVenta_KeyPress);
             this.textBoxPrecioDeVenta.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecioDeVenta_Validating);
@@ -109,7 +109,7 @@
             this.textBoxCantidadMinima.MaxLength = 10;
             this.textBoxCantidadMinima.Name = "textBoxCantidadMinima";
             this.textBoxCantidadMinima.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCantidadMinima.TabIndex = 12;
+            this.textBoxCantidadMinima.TabIndex = 13;
             this.textBoxCantidadMinima.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCantidadMinima_KeyDown);
             this.textBoxCantidadMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCantidadMinima_KeyPress);
             this.textBoxCantidadMinima.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCantidadMinima_Validating);
@@ -123,7 +123,7 @@
             this.textBoxPresentacion.MaxLength = 100;
             this.textBoxPresentacion.Name = "textBoxPresentacion";
             this.textBoxPresentacion.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPresentacion.TabIndex = 7;
+            this.textBoxPresentacion.TabIndex = 9;
             this.textBoxPresentacion.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPresentacion_Validating);
             // 
             // textBoxMarca
@@ -135,7 +135,7 @@
             this.textBoxMarca.MaxLength = 100;
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.Size = new System.Drawing.Size(200, 20);
-            this.textBoxMarca.TabIndex = 6;
+            this.textBoxMarca.TabIndex = 8;
             this.textBoxMarca.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMarca_Validating);
             // 
             // comboBoxProveedor
@@ -157,7 +157,7 @@
             this.textBoxNombreGenerico.MaxLength = 100;
             this.textBoxNombreGenerico.Name = "textBoxNombreGenerico";
             this.textBoxNombreGenerico.Size = new System.Drawing.Size(200, 20);
-            this.textBoxNombreGenerico.TabIndex = 5;
+            this.textBoxNombreGenerico.TabIndex = 7;
             this.textBoxNombreGenerico.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNombreGenerico_Validating);
             // 
             // textBoxCodigoDeBarras
@@ -167,7 +167,7 @@
             this.textBoxCodigoDeBarras.MaxLength = 100;
             this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
             this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCodigoDeBarras.TabIndex = 4;
+            this.textBoxCodigoDeBarras.TabIndex = 6;
             this.textBoxCodigoDeBarras.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCodigoDeBarras_Validating);
             // 
             // comboBoxGrupo
@@ -179,7 +179,7 @@
             this.comboBoxGrupo.Location = new System.Drawing.Point(165, 39);
             this.comboBoxGrupo.Name = "comboBoxGrupo";
             this.comboBoxGrupo.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxGrupo.TabIndex = 1;
+            this.comboBoxGrupo.TabIndex = 2;
             this.comboBoxGrupo.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxGrupo_Validating);
             // 
             // textBoxPrecioDeCompra
@@ -190,7 +190,7 @@
             this.textBoxPrecioDeCompra.MaxLength = 10;
             this.textBoxPrecioDeCompra.Name = "textBoxPrecioDeCompra";
             this.textBoxPrecioDeCompra.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPrecioDeCompra.TabIndex = 13;
+            this.textBoxPrecioDeCompra.TabIndex = 14;
             this.textBoxPrecioDeCompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPrecioDeCompra_KeyDown);
             this.textBoxPrecioDeCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrecioDeCompra_KeyPress);
             this.textBoxPrecioDeCompra.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrecioDeCompra_Validating);
@@ -237,7 +237,7 @@
             this.radioButtonTipoDeProductoBalanza.Location = new System.Drawing.Point(81, 3);
             this.radioButtonTipoDeProductoBalanza.Name = "radioButtonTipoDeProductoBalanza";
             this.radioButtonTipoDeProductoBalanza.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonTipoDeProductoBalanza.TabIndex = 11;
+            this.radioButtonTipoDeProductoBalanza.TabIndex = 12;
             this.radioButtonTipoDeProductoBalanza.Text = "Balanza";
             this.radioButtonTipoDeProductoBalanza.UseVisualStyleBackColor = true;
             // 
@@ -248,7 +248,7 @@
             this.radioButtonTipoDeProductoInventario.Location = new System.Drawing.Point(3, 3);
             this.radioButtonTipoDeProductoInventario.Name = "radioButtonTipoDeProductoInventario";
             this.radioButtonTipoDeProductoInventario.Size = new System.Drawing.Size(72, 17);
-            this.radioButtonTipoDeProductoInventario.TabIndex = 10;
+            this.radioButtonTipoDeProductoInventario.TabIndex = 11;
             this.radioButtonTipoDeProductoInventario.TabStop = true;
             this.radioButtonTipoDeProductoInventario.Text = "Inventario";
             this.radioButtonTipoDeProductoInventario.UseVisualStyleBackColor = true;
@@ -260,7 +260,7 @@
             this.panelTipoDeProducto.Location = new System.Drawing.Point(165, 219);
             this.panelTipoDeProducto.Name = "panelTipoDeProducto";
             this.panelTipoDeProducto.Size = new System.Drawing.Size(200, 23);
-            this.panelTipoDeProducto.TabIndex = 10;
+            this.panelTipoDeProducto.TabIndex = 11;
             // 
             // labelTipo
             // 
@@ -286,7 +286,7 @@
             this.textBoxSaborUOlor.MaxLength = 100;
             this.textBoxSaborUOlor.Name = "textBoxSaborUOlor";
             this.textBoxSaborUOlor.Size = new System.Drawing.Size(200, 20);
-            this.textBoxSaborUOlor.TabIndex = 9;
+            this.textBoxSaborUOlor.TabIndex = 10;
             this.textBoxSaborUOlor.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSaborUOlor_Validating);
             // 
             // labelMarca
@@ -331,7 +331,7 @@
             this.radioButtonTipoDeCodigoDeBarrasSistema.Location = new System.Drawing.Point(231, 66);
             this.radioButtonTipoDeCodigoDeBarrasSistema.Name = "radioButtonTipoDeCodigoDeBarrasSistema";
             this.radioButtonTipoDeCodigoDeBarrasSistema.Size = new System.Drawing.Size(62, 17);
-            this.radioButtonTipoDeCodigoDeBarrasSistema.TabIndex = 3;
+            this.radioButtonTipoDeCodigoDeBarrasSistema.TabIndex = 5;
             this.radioButtonTipoDeCodigoDeBarrasSistema.Text = "Sistema";
             this.radioButtonTipoDeCodigoDeBarrasSistema.UseVisualStyleBackColor = true;
             this.radioButtonTipoDeCodigoDeBarrasSistema.CheckedChanged += new System.EventHandler(this.radioButtonTipoDeCodigoDeBarrasSistema_CheckedChanged);
@@ -343,7 +343,7 @@
             this.radioButtonTipoDeCodigoDeBarrasManual.Location = new System.Drawing.Point(165, 66);
             this.radioButtonTipoDeCodigoDeBarrasManual.Name = "radioButtonTipoDeCodigoDeBarrasManual";
             this.radioButtonTipoDeCodigoDeBarrasManual.Size = new System.Drawing.Size(60, 17);
-            this.radioButtonTipoDeCodigoDeBarrasManual.TabIndex = 2;
+            this.radioButtonTipoDeCodigoDeBarrasManual.TabIndex = 4;
             this.radioButtonTipoDeCodigoDeBarrasManual.TabStop = true;
             this.radioButtonTipoDeCodigoDeBarrasManual.Text = "Manual";
             this.radioButtonTipoDeCodigoDeBarrasManual.UseVisualStyleBackColor = true;
@@ -373,7 +373,7 @@
             this.buttonCerrar.Location = new System.Drawing.Point(205, 352);
             this.buttonCerrar.Name = "buttonCerrar";
             this.buttonCerrar.Size = new System.Drawing.Size(89, 41);
-            this.buttonCerrar.TabIndex = 16;
+            this.buttonCerrar.TabIndex = 18;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCerrar.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             this.buttonGuardar.Location = new System.Drawing.Point(110, 352);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 41);
-            this.buttonGuardar.TabIndex = 15;
+            this.buttonGuardar.TabIndex = 17;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -407,7 +407,7 @@
             this.buttonAddGroup.Location = new System.Drawing.Point(371, 39);
             this.buttonAddGroup.Name = "buttonAddGroup";
             this.buttonAddGroup.Size = new System.Drawing.Size(21, 21);
-            this.buttonAddGroup.TabIndex = 393;
+            this.buttonAddGroup.TabIndex = 3;
             this.buttonAddGroup.UseVisualStyleBackColor = true;
             this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
             // 

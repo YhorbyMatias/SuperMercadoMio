@@ -731,7 +731,7 @@ namespace Super_Mercado_Mio.Producto
                     {
                         if (!hasErrors[10])
                         {
-                            if (Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim()) > Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim()))
+                            if (Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim()) < Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim()))
                             {
                                 return 0;
                             }
@@ -770,7 +770,7 @@ namespace Super_Mercado_Mio.Producto
                     {
                         if (!hasErrors[9])
                         {
-                            if (Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim()) > Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim()))
+                            if (Convert.ToDecimal(textBoxPrecioDeCompra.Text.Trim()) < Convert.ToDecimal(textBoxPrecioDeVenta.Text.Trim()))
                             {
                                 return 0;
                             }

@@ -75,6 +75,10 @@ namespace Dal
             sqlConnection.Close();
             return exists;
         }
+        public DataTable getById(EgresoEnt egreso)
+        {
+
+        }
         public DataTable getMinorSales(EgresoEnt egreso)
         {
             SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);

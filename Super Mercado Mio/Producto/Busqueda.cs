@@ -137,6 +137,7 @@ namespace Super_Mercado_Mio.Producto
         {
             if (option == 1)
             {
+                productsDataGridView.Columns["Precio_De_Compra"].HeaderText = "Precio de Compra";
                 productsDataGridView.Columns["Precio_De_Compra"].Width = 70;
                 productsDataGridView.Columns["Precio_De_Compra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
@@ -145,7 +146,6 @@ namespace Super_Mercado_Mio.Producto
             productsDataGridView.Columns["Nombre_Generico"].HeaderText = "Nombre Genérico";
             productsDataGridView.Columns["Presentacion"].HeaderText = "Presentación";
             productsDataGridView.Columns["Sabor_U_Olor"].HeaderText = "Sabor U Olor";
-            productsDataGridView.Columns["Precio_De_Compra"].HeaderText = "Precio de Compra";
             productsDataGridView.Columns["Precio_De_Venta"].HeaderText = "Precio de Venta";
             productsDataGridView.Columns["Codigo_De_Barras"].Width = 100;
             productsDataGridView.Columns["Nombre_Generico"].Width = 100;

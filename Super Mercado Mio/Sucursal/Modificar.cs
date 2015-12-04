@@ -224,7 +224,7 @@ namespace Super_Mercado_Mio.Sucursal
             }
             else
             {
-                return 1;
+                return 0;
             }
         }
         private int validarMunicipio()
