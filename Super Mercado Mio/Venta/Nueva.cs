@@ -54,7 +54,7 @@ namespace Super_Mercado_Mio.Venta
                     checkBoxFacturaManual.Checked = true;
                     checkBoxFacturaManual.Enabled = false;
                 }
-                textBoxNumeroVenta.Text = (objetoEgreso.getNumber() + 1).ToString();
+                textBoxNumeroVenta.Text = (objetoEgreso.getSaleNumber() + 1).ToString();
                 textBoxFecha.Text = DateTime.Now.ToShortDateString();
                 egreso.ID_CLIENTE = 1;
                 cliente.CI_O_NIT = "0";
@@ -284,6 +284,7 @@ namespace Super_Mercado_Mio.Venta
                     egreso.TIPO = "FACTURA SISTEMA";
                     egreso.FACTURADO = true;
                 }
+                egreso.NUMERO_DE_REGISTRO = (objetoEgreso.getSaleNumber() + 1);
                 egreso.METODO_DE_PAGO = "CONTADO";
                 egreso.MONTO = Convert.ToDecimal(textBoxMontoTotal.Text);
                 egreso.MONTO_DE_CUPON = 0;
@@ -304,7 +305,7 @@ namespace Super_Mercado_Mio.Venta
                     objetoEgreso.invoiceLines.Add(detalleDeEgreso);
                 }
                 egreso.ID = objetoEgreso.add(egreso);
-                if (egreso.ID == Convert.ToInt32(textBoxNumeroVenta.Text))
+                if (egreso.NUMERO_DE_REGISTRO == Convert.ToInt32(textBoxNumeroVenta.Text))
                 {
                     MessageBox.Show("Los datos fueron guardados correctamente", "Operación Exitosa", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

@@ -149,14 +149,16 @@ Go
 
 Create Procedure insertarIngreso
 @Id_Proveedor Int,
+@Hora Varchar(20),
+@Tipo Varchar(15),
 @Numero_De_Registro Int,
 @Numero_De_Nota_De_Entrega Varchar(50),
 @Monto Decimal(18,2),
 @Observaciones Varchar(500)
 As
 Begin
-	Insert Into Ingreso(Id_Proveedor, Fecha, Numero_De_Registro, Numero_De_Nota_De_Entrega, Monto, Observaciones, Estado)
-	Values(@Id_Proveedor, GETDATE(), @Numero_De_Registro, @Numero_De_Nota_De_Entrega, @Monto, @Observaciones, 'VIGENTE')
+	Insert Into Ingreso(Id_Proveedor, Fecha, Hora, Tipo, Numero_De_Registro, Numero_De_Nota_De_Entrega, Monto, Observaciones, Estado)
+	Values(@Id_Proveedor, GETDATE(), @Hora, @Tipo, @Numero_De_Registro, @Numero_De_Nota_De_Entrega, @Monto, @Observaciones, 'VIGENTE')
 	Select SCOPE_IDENTITY()
 End
 Go
@@ -185,6 +187,7 @@ Create Procedure insertarEgreso
 @Id_Cliente Int,
 @Hora Varchar(50),
 @Tipo Varchar(15),
+@Numero_De_Registro Int,
 @Metodo_De_Pago Varchar(15),
 @Monto Decimal(18,2),
 @Monto_De_Cupon Decimal(18,2),
@@ -197,10 +200,10 @@ Create Procedure insertarEgreso
 @Estado Varchar(7)
 As
 Begin
-	Insert Into Egreso (Id_Usuario, Id_Caja, Id_Apertura_De_Caja, Id_Cliente, Fecha, Hora, Tipo, Metodo_De_Pago, Monto, Monto_De_Cupon,
-	Monto_Extra, Monto_Pagado, Cambio, Observaciones, Facturado, Cerrado, Estado)
-	Values (@Id_Usuario, @Id_Caja, @Id_Apertura_De_Caja, @Id_Cliente, GETDATE(), @Hora, @Tipo, @Metodo_De_Pago, @Monto, @Monto_De_Cupon,
-	@Monto_Extra, @Monto_Pagado, @Cambio, @Observaciones, @Facturado, @Cerrado, @Estado)
+	Insert Into Egreso (Id_Usuario, Id_Caja, Id_Apertura_De_Caja, Id_Cliente, Fecha, Hora, Tipo, Numero_De_Registro, Metodo_De_Pago, Monto,
+	Monto_De_Cupon, Monto_Extra, Monto_Pagado, Cambio, Observaciones, Facturado, Cerrado, Estado)
+	Values (@Id_Usuario, @Id_Caja, @Id_Apertura_De_Caja, @Id_Cliente, GETDATE(), @Hora, @Tipo, @Numero_De_Registro, @Metodo_De_Pago, @Monto,
+	@Monto_De_Cupon, @Monto_Extra, @Monto_Pagado, @Cambio, @Observaciones, @Facturado, @Cerrado, @Estado)
 	Select SCOPE_IDENTITY()
 End
 Go

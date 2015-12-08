@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Super_Mercado_Mio.Compra
 {
-    public partial class Nueva : Form
+    public partial class Modificar : Form
     {
         #region Objetos
         bool isWritable = true;
-        bool[] hasErrors = new bool[] { true, true, true };
+        bool[] hasErrors = new bool[] { false, false, false };
         IngresoBss objetoIngreso = new IngresoBss();
         IngresoEnt ingreso = new IngresoEnt();
         DetalleDeIngresoBss objetoDetalleDeIngreso = new DetalleDeIngresoBss();
@@ -25,18 +25,18 @@ namespace Super_Mercado_Mio.Compra
         ProveedorEnt proveedor = new ProveedorEnt();
         ProductoBss objetoProducto = new ProductoBss();
         ProductoEnt producto = new ProductoEnt();
+        List<DetalleDeIngresoEnt> detalleDeIngresolist = new List<DetalleDeIngresoEnt>();
         #endregion
         #region Form
-        public Nueva()
+        public Modificar(int idIngreso)
         {
             InitializeComponent();
+            ingreso.ID = idIngreso;
         }
-        private void Nueva_Load(object sender, EventArgs e)
+        private void Modificar_Load(object sender, EventArgs e)
         {
             setDataGridViewDetalleDeIngresoFormat();
-            textBoxFecha.Text = DateTime.Now.ToShortDateString();
-            ingreso.TIPO = "COMPRA";
-            textBoxNumeroDeRegistro.Text = (objetoIngreso.getNumeroDeRegistro(ingreso) + 1).ToString();
+            loadFormData();
         }
         #endregion
         #region textBoxNit
@@ -139,7 +139,7 @@ namespace Super_Mercado_Mio.Compra
         #region dataGridViewDetalleDeIngreso
         private void dataGridViewDetalleDeIngreso_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 7)
             {
                 int errorCode = validateCantidad(e.FormattedValue);
                 dataGridViewDetalleDeIngreso.Rows[e.RowIndex].ErrorText = ValidacionBss.getErrorMessage(errorCode);
@@ -154,7 +154,7 @@ namespace Super_Mercado_Mio.Compra
                     textBoxMonto.Text = calculateMonto();
                 }
             }
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 8)
             {
                 int errorCode = validatePrecioDeCompra(e.FormattedValue);
                 dataGridViewDetalleDeIngreso.Rows[e.RowIndex].ErrorText = ValidacionBss.getErrorMessage(errorCode);
@@ -180,7 +180,7 @@ namespace Super_Mercado_Mio.Compra
                     }
                 }
             }
-            if (e.ColumnIndex == 8)
+            if (e.ColumnIndex == 9)
             {
                 int errorCode = validateMontoTotal(e.FormattedValue, e.RowIndex);
                 dataGridViewDetalleDeIngreso.Rows[e.RowIndex].ErrorText = ValidacionBss.getErrorMessage(errorCode);
@@ -197,7 +197,7 @@ namespace Super_Mercado_Mio.Compra
                     textBoxMonto.Text = calculateMonto();
                 }
             }
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 10)
             {
                 int errorCode = validatePrecioDeVenta(e.FormattedValue);
                 dataGridViewDetalleDeIngreso.Rows[e.RowIndex].ErrorText = ValidacionBss.getErrorMessage(errorCode);
@@ -228,6 +228,15 @@ namespace Super_Mercado_Mio.Compra
         {
             textBoxMonto.Text = calculateMonto();
         }
+        private void dataGridViewDetalleDeIngreso_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (e.Row.Cells["Id"].Value.ToString() != "0")
+            {
+                detalleDeIngreso = new DetalleDeIngresoEnt();
+                detalleDeIngreso.ID = Convert.ToInt32(e.Row.Cells["Id"].Value);
+                detalleDeIngresolist.Add(detalleDeIngreso);
+            }
+        }
         #endregion
         #region buttonGuardar
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -235,16 +244,18 @@ namespace Super_Mercado_Mio.Compra
             if (validate())
             {
                 ingreso.ID_PROVEEDOR = proveedor.ID;
-                ingreso.HORA = DateTime.Now.ToString("T");
-                ingreso.TIPO = "COMPRA";
-                ingreso.NUMERO_DE_REGISTRO = (objetoIngreso.getNumeroDeRegistro(ingreso) + 1);
                 ingreso.NUMERO_DE_NOTA_DE_ENTREGA = textBoxNumeroDeNotaDeEntrega.Text.Trim().ToUpper();
                 ingreso.MONTO = Convert.ToDecimal(calculateMonto());
                 ingreso.OBSERVACIONES = textBoxObservaciones.Text.Trim().ToUpper();
-                ingreso.ID = objetoIngreso.add(ingreso);
+                objetoIngreso.update(ingreso);
+                foreach (DetalleDeIngresoEnt purchaseDetail in detalleDeIngresolist)
+                {
+                    objetoDetalleDeIngreso.delete(purchaseDetail);
+                }
                 for (int rowIndex = 0; rowIndex < dataGridViewDetalleDeIngreso.Rows.Count; rowIndex++)
                 {
                     detalleDeIngreso = new DetalleDeIngresoEnt();
+                    detalleDeIngreso.ID = Convert.ToInt32(dataGridViewDetalleDeIngreso["Id", rowIndex].Value);
                     detalleDeIngreso.ID_INGRESO = ingreso.ID;
                     detalleDeIngreso.ID_PRODUCTO = Convert.ToInt32(dataGridViewDetalleDeIngreso["Id_Producto", rowIndex].Value);
                     detalleDeIngreso.CANTIDAD = Convert.ToDecimal(dataGridViewDetalleDeIngreso["Cantidad", rowIndex].Value);
@@ -253,7 +264,14 @@ namespace Super_Mercado_Mio.Compra
                     detalleDeIngreso.PORCENTAJE_DE_UTILIDAD =
                         Convert.ToDecimal(dataGridViewDetalleDeIngreso["Porcentaje_De_Utilidad", rowIndex].Value);
                     detalleDeIngreso.PRECIO_DE_VENTA = Convert.ToDecimal(dataGridViewDetalleDeIngreso["Precio_De_Venta", rowIndex].Value);
-                    detalleDeIngreso.ID = objetoDetalleDeIngreso.add(detalleDeIngreso);
+                    if (detalleDeIngreso.ID != 0)
+                    {
+                        objetoDetalleDeIngreso.update(detalleDeIngreso);
+                    }
+                    else
+                    {
+                        detalleDeIngreso.ID = objetoDetalleDeIngreso.add(detalleDeIngreso);
+                    }
                     producto = new ProductoEnt();
                     producto.ID = detalleDeIngreso.ID_PRODUCTO;
                     producto.PRECIO_DE_COMPRA = detalleDeIngreso.PRECIO_DE_COMPRA;
@@ -290,6 +308,7 @@ namespace Super_Mercado_Mio.Compra
             {
                 dataGridViewDetalleDeIngreso.Rows.Add();
                 row = dataGridViewDetalleDeIngreso.Rows.Count - 1;
+                dataGridViewDetalleDeIngreso["Id", row].Value = "0";
                 dataGridViewDetalleDeIngreso["Id_Producto", row].Value = dataTableProducto.Rows[0]["Id"].ToString();
                 dataGridViewDetalleDeIngreso["Codigo_De_Barras", row].Value = dataTableProducto.Rows[0]["Codigo_De_Barras"].ToString();
                 dataGridViewDetalleDeIngreso["Nombre_Generico", row].Value = dataTableProducto.Rows[0]["Nombre_Generico"].ToString();
@@ -336,6 +355,45 @@ namespace Super_Mercado_Mio.Compra
         {
             return (Convert.ToDecimal(dataGridViewDetalleDeIngreso["Monto_Total", rowIndex].Value) /
                 Convert.ToDecimal(dataGridViewDetalleDeIngreso["Cantidad", rowIndex].Value)).ToString("0.00");
+        }
+        private void loadFormData()
+        {
+            DataTable purchaseDataTable = objetoIngreso.getById(ingreso);
+            proveedor.ID = Convert.ToInt32(purchaseDataTable.Rows[0]["Id_Proveedor"]);
+            proveedor.NIT = purchaseDataTable.Rows[0]["Nit"].ToString();
+            ingreso.ID_PROVEEDOR = proveedor.ID;
+            textBoxNit.Text = proveedor.NIT;
+            textBoxProveedor.Text = purchaseDataTable.Rows[0]["Proveedor"].ToString();
+            textBoxFecha.Text = Convert.ToDateTime(purchaseDataTable.Rows[0]["Fecha"]).ToShortDateString();
+            textBoxNumeroDeRegistro.Text = purchaseDataTable.Rows[0]["Numero_De_Registro"].ToString();
+            textBoxNumeroDeNotaDeEntrega.Text = purchaseDataTable.Rows[0]["Numero_De_Nota_De_Entrega"].ToString();
+            textBoxMonto.Text = purchaseDataTable.Rows[0]["Monto"].ToString();
+            textBoxObservaciones.Text = purchaseDataTable.Rows[0]["Observaciones"].ToString();
+            detalleDeIngreso.ID_INGRESO = ingreso.ID;
+            DataTable purchaseLinesDataTable = objetoDetalleDeIngreso.getByIngresoId(detalleDeIngreso);
+            for (int rowIndex = 0; rowIndex < purchaseLinesDataTable.Rows.Count; rowIndex++)
+            {
+                dataGridViewDetalleDeIngreso.Rows.Add();
+                dataGridViewDetalleDeIngreso["Id", rowIndex].Value = purchaseLinesDataTable.Rows[rowIndex]["Id"].ToString();
+                dataGridViewDetalleDeIngreso["Id_Producto", rowIndex].Value = purchaseLinesDataTable.Rows[rowIndex]["Id_Producto"].ToString();
+                dataGridViewDetalleDeIngreso["Codigo_De_Barras", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Codigo_De_Barras"].ToString();
+                dataGridViewDetalleDeIngreso["Nombre_Generico", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Nombre_Generico"].ToString();
+                dataGridViewDetalleDeIngreso["Marca", rowIndex].Value = purchaseLinesDataTable.Rows[rowIndex]["Marca"].ToString();
+                dataGridViewDetalleDeIngreso["Presentacion", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Presentacion"].ToString();
+                dataGridViewDetalleDeIngreso["Sabor_U_Olor", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Sabor_U_Olor"].ToString();
+                dataGridViewDetalleDeIngreso["Cantidad", rowIndex].Value = purchaseLinesDataTable.Rows[rowIndex]["Cantidad"].ToString();
+                dataGridViewDetalleDeIngreso["Precio_De_Compra", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Precio_De_Compra"].ToString();
+                dataGridViewDetalleDeIngreso["Monto_Total", rowIndex].Value = purchaseLinesDataTable.Rows[rowIndex]["Monto_Total"].ToString();
+                dataGridViewDetalleDeIngreso["Porcentaje_De_Utilidad", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Porcentaje_De_Utilidad"].ToString();
+                dataGridViewDetalleDeIngreso["Precio_De_Venta", rowIndex].Value =
+                    purchaseLinesDataTable.Rows[rowIndex]["Precio_De_Venta"].ToString();
+            }
         }
         private void setDataGridViewDetalleDeIngresoFormat()
         {

@@ -24,6 +24,7 @@ namespace Dal
             sqlCommand.Parameters.AddWithValue("@Id_Cliente", egreso.ID_CLIENTE);
             sqlCommand.Parameters.AddWithValue("@Hora", egreso.HORA);
             sqlCommand.Parameters.AddWithValue("@Tipo", egreso.TIPO);
+            sqlCommand.Parameters.AddWithValue("@Numero_De_Registro", egreso.NUMERO_DE_REGISTRO);
             sqlCommand.Parameters.AddWithValue("@Metodo_De_Pago", egreso.METODO_DE_PAGO);
             sqlCommand.Parameters.AddWithValue("@Monto", egreso.MONTO);
             sqlCommand.Parameters.AddWithValue("@Monto_De_Cupon", egreso.MONTO_DE_CUPON);
@@ -77,7 +78,18 @@ namespace Dal
         }
         public DataTable getById(EgresoEnt egreso)
         {
-
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select E.Id_Cliente, C.Ci_O_Nit, C.Nombre As Cliente, E.Numero_De_Registro, E.Fecha, E.Monto, "
+                + "E.Monto_Pagado, E.Cambio, E.Tipo From Cliente C, Egreso E Where C.Id = E.Id_Cliente And C.Estado = 1 And E.nd Facturado = 0 "
+                + "And Cerrado = 0 And Estado = 'VIGENTE' And Id_Apertura_De_Caja = @Id_Apertura_De_Caja";
+            sqlCommand.Parameters.AddWithValue("@Id_Apertura_De_Caja", egreso.ID_APERTURA_DE_CAJA);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            DataTable dataTable = new DataTable("EgresosMenores");
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
         }
         public DataTable getMinorSales(EgresoEnt egreso)
         {
@@ -93,17 +105,6 @@ namespace Dal
             DataTable dataTable = new DataTable("EgresosMenores");
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
-        }
-        public int getNumber()
-        {
-            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
-            SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = "Select ISNULL(MAX(Id), 0) As Number From Egreso";
-            sqlConnection.Open();
-            int number = Convert.ToInt32(sqlCommand.ExecuteScalar());
-            sqlConnection.Close();
-            return number;
         }
         public decimal getCouponsTotalAmount(EgresoEnt egreso)
         {
@@ -130,6 +131,18 @@ namespace Dal
             decimal extraTotalAmount = Convert.ToDecimal(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
             return extraTotalAmount;
+        }
+        public int getSaleNumber()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConexionDal.connectionString);
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.CommandText = "Select COUNT(Id) As SaleNumber From Egreso "
+                + "Where Tipo in ('EGRESO MENOR', 'FACTURA MANUAL', 'FACTURA SISTEMA')";
+            sqlConnection.Open();
+            int saleNumber = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            sqlConnection.Close();
+            return saleNumber;
         }
         public decimal getSalesTotalAmount(EgresoEnt egreso)
         {

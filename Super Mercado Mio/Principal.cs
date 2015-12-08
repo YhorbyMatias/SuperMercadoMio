@@ -287,6 +287,24 @@ namespace Super_Mercado_Mio
             formularioNuevaCompra.MdiParent = this;
             formularioNuevaCompra.Show();
         }
+        private void modificarCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Busqueda formBusquedaDeCompras = new Compra.Busqueda(2);
+            formBusquedaDeCompras.MdiParent = this;
+            formBusquedaDeCompras.Show();
+        }
+        private void anularCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Busqueda formBusquedaDeCompras = new Compra.Busqueda(3);
+            formBusquedaDeCompras.MdiParent = this;
+            formBusquedaDeCompras.Show();
+        }
+        private void busquedaDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compra.Busqueda formBusquedaDeCompras = new Compra.Busqueda(1);
+            formBusquedaDeCompras.MdiParent = this;
+            formBusquedaDeCompras.Show();
+        }
         #endregion
         #region Menu Producto
         private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -428,6 +446,15 @@ namespace Super_Mercado_Mio
                         break;
                     case "Nueva Compra":
                         nuevaCompraToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Modificar Compra":
+                        modificarCompraToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Anular Compra":
+                        anularCompraToolStripMenuItem.Enabled = true;
+                        break;
+                    case "Busqueda de Compras":
+                        busquedaDeComprasToolStripMenuItem.Enabled = true;
                         break;
                     case "Nuevo Producto":
                         nuevoProductoToolStripMenuItem.Enabled = true;

@@ -175,32 +175,33 @@ Create Table Producto
 
 Create Table Ingreso
 (
-Id Int Not Null Identity(1,1),
-Id_Proveedor Int Not Null,
-Fecha Date Not Null,
-Numero_De_Registro Int Not Null,
-Numero_De_Nota_De_Entrega Varchar(50) Null,
-Monto Decimal(18,2) Not Null,
-Observaciones Varchar(500) Null,
-Estado Varchar(20) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Proveedor) References Proveedor(Id),
+	Id Int Not Null Identity(1,1),
+	Id_Proveedor Int Not Null,
+	Fecha Date Not Null,
+	Hora Varchar(20) Not Null,
+	Tipo Varchar(15) Not Null,
+	Numero_De_Registro Int Not Null,
+	Numero_De_Nota_De_Entrega Varchar(50) Null,
+	Monto Decimal(18,2) Not Null,
+	Observaciones Varchar(500) Null,
+	Estado Varchar(20) Not Null,
+	Primary Key(Id)
 )
 
 Create Table Detalle_De_Ingreso
 (
-Id Int Not Null Identity(1,1),
-Id_Ingreso Int Not Null,
-Id_Producto Int Not Null,
-Cantidad Decimal(18,3) Not Null,
-Precio_De_Compra Decimal(18,2) Not Null,
-Monto_Total Decimal(18,2) Not Null,
-Porcentaje_De_Utilidad Decimal(18,2) Not Null,
-Precio_De_Venta Decimal(18,2) Not Null,
-Estado Varchar(9) Not Null,
-Primary Key(Id),
-Foreign Key(Id_Ingreso) References Ingreso(Id),
-Foreign Key(Id_Producto) References Producto(Id)
+	Id Int Not Null Identity(1,1),
+	Id_Ingreso Int Not Null,
+	Id_Producto Int Not Null,
+	Cantidad Decimal(18,3) Not Null,
+	Precio_De_Compra Decimal(18,2) Not Null,
+	Monto_Total Decimal(18,2) Not Null,
+	Porcentaje_De_Utilidad Decimal(18,2) Not Null,
+	Precio_De_Venta Decimal(18,2) Not Null,
+	Estado Varchar(9) Not Null,
+	Primary Key(Id),
+	Foreign Key(Id_Ingreso) References Ingreso(Id),
+	Foreign Key(Id_Producto) References Producto(Id)
 )
 
 Create Table Egreso
@@ -211,8 +212,9 @@ Create Table Egreso
 	Id_Apertura_De_Caja Int Not Null,
 	Id_Cliente Int Not Null,
 	Fecha Date Not Null,
-	Hora Varchar(50) Not Null,
+	Hora Varchar(20) Not Null,
 	Tipo Varchar(15) Not Null,
+	Numero_De_Registro Int Not Null,
 	Metodo_De_Pago Varchar(15) Null,
 	Monto Decimal(18,2) Not Null,
 	Monto_De_Cupon Decimal(18,2) Not Null,

@@ -17,6 +17,7 @@ namespace Ent
         private string fecha;
         private string hora;
         private string tipo;
+        private int numero_de_registro;
         private string metodo_de_pago;
         private decimal monto;
         private decimal monto_de_cupon;
@@ -68,6 +69,11 @@ namespace Ent
         {
             get { return this.tipo; }
             set { this.tipo = value; }
+        }
+        public int NUMERO_DE_REGISTRO
+        {
+            get { return this.numero_de_registro; }
+            set { this.numero_de_registro = value; }
         }
         public string METODO_DE_PAGO
         {

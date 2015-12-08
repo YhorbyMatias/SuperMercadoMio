@@ -44,10 +44,6 @@ namespace Bss
         {
             return objetoEgreso.getMinorSales(egreso);
         }
-        public int getNumber()
-        {
-            return objetoEgreso.getNumber();
-        }
         public decimal getCouponsTotalAmount(EgresoEnt egreso)
         {
             return objetoEgreso.getCouponsTotalAmount(egreso);
@@ -55,6 +51,10 @@ namespace Bss
         public decimal getExtraTotalAmount(EgresoEnt egreso)
         {
             return objetoEgreso.getExtraTotalAmount(egreso);
+        }
+        public int getSaleNumber()
+        {
+            return objetoEgreso.getSaleNumber();
         }
         public decimal getSalesTotalAmount(EgresoEnt egreso)
         {

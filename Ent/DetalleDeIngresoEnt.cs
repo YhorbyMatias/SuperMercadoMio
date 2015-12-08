@@ -9,7 +9,7 @@ namespace Ent
     public class DetalleDeIngresoEnt
     {
         #region Atributos
-        private int id_detalle_de_ingreso;
+        private int id;
         private int id_ingreso;
         private int id_producto;
         private decimal cantidad;
@@ -20,10 +20,10 @@ namespace Ent
         private string estado;
         #endregion
         #region Propiedades
-        public int ID_DETALLE_DE_INGRESO
+        public int ID
         {
-            get { return this.id_detalle_de_ingreso; }
-            set { this.id_detalle_de_ingreso = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_INGRESO
         {

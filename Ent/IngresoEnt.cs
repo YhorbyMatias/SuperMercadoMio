@@ -9,9 +9,11 @@ namespace Ent
     public class IngresoEnt
     {
         #region Atributos
-        private int id_ingreso;
+        private int id;
         private int id_proveedor;
         private string fecha;
+        private string hora;
+        private string tipo;
         private int numero_de_registro;
         private string numero_de_nota_de_entrega;
         private decimal monto;
@@ -19,10 +21,10 @@ namespace Ent
         private string estado;
         #endregion
         #region Propiedades
-        public int ID_INGRESO
+        public int ID
         {
-            get { return this.id_ingreso; }
-            set { this.id_ingreso = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
         public int ID_PROVEEDOR
         {
@@ -33,6 +35,16 @@ namespace Ent
         {
             get { return this.fecha; }
             set { this.fecha = value; }
+        }
+        public string HORA
+        {
+            get { return this.hora; }
+            set { this.hora = value; }
+        }
+        public string TIPO
+        {
+            get { return this.tipo; }
+            set { this.tipo = value; }
         }
         public int NUMERO_DE_REGISTRO
         {

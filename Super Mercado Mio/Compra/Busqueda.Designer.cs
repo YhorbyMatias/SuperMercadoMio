@@ -1,6 +1,6 @@
 ﻿namespace Super_Mercado_Mio.Compra
 {
-    partial class Lista
+    partial class Busqueda
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxNumeroDeNotaDeEntrega = new System.Windows.Forms.TextBox();
             this.textBoxNit = new System.Windows.Forms.TextBox();
@@ -73,12 +73,16 @@
             this.labelProveedor = new System.Windows.Forms.Label();
             this.labelNit = new System.Windows.Forms.Label();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
+            this.maskedTextBoxFecha = new System.Windows.Forms.MaskedTextBox();
+            this.conditionTextBox = new System.Windows.Forms.TextBox();
+            this.conditionLabel = new System.Windows.Forms.Label();
             this.toolStripButtonSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFirst = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPrevious = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonNext = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLast = new System.Windows.Forms.ToolStripButton();
-            this.maskedTextBoxFecha = new System.Windows.Forms.MaskedTextBox();
+            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCancel = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBoxDetalleDeCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetalleDeIngreso)).BeginInit();
@@ -98,6 +102,7 @@
             this.textBoxNumeroDeNotaDeEntrega.Name = "textBoxNumeroDeNotaDeEntrega";
             this.textBoxNumeroDeNotaDeEntrega.Size = new System.Drawing.Size(150, 20);
             this.textBoxNumeroDeNotaDeEntrega.TabIndex = 4;
+            this.textBoxNumeroDeNotaDeEntrega.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxNumeroDeNotaDeEntrega_KeyDown);
             // 
             // textBoxNit
             // 
@@ -118,87 +123,87 @@
             // 
             // Precio_De_Venta
             // 
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Precio_De_Venta.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Precio_De_Venta.DefaultCellStyle = dataGridViewCellStyle38;
             this.Precio_De_Venta.HeaderText = "Precio de Venta";
             this.Precio_De_Venta.Name = "Precio_De_Venta";
             // 
             // Porcentaje_De_Utilidad
             // 
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Porcentaje_De_Utilidad.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Porcentaje_De_Utilidad.DefaultCellStyle = dataGridViewCellStyle37;
             this.Porcentaje_De_Utilidad.HeaderText = "% de Utilidad";
             this.Porcentaje_De_Utilidad.Name = "Porcentaje_De_Utilidad";
             // 
             // Monto_Total
             // 
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Monto_Total.DefaultCellStyle = dataGridViewCellStyle36;
             this.Monto_Total.HeaderText = "Monto Total";
             this.Monto_Total.Name = "Monto_Total";
             // 
             // Precio_De_Compra
             // 
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Precio_De_Compra.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Precio_De_Compra.DefaultCellStyle = dataGridViewCellStyle35;
             this.Precio_De_Compra.HeaderText = "Precio de Compra";
             this.Precio_De_Compra.Name = "Precio_De_Compra";
             // 
             // Cantidad
             // 
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle34;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
             // Sabor_U_Olor
             // 
-            dataGridViewCellStyle58.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Sabor_U_Olor.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sabor_U_Olor.DefaultCellStyle = dataGridViewCellStyle33;
             this.Sabor_U_Olor.HeaderText = "Sabor U Olor";
             this.Sabor_U_Olor.Name = "Sabor_U_Olor";
             this.Sabor_U_Olor.ReadOnly = true;
             // 
             // Presentacion
             // 
-            dataGridViewCellStyle59.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Presentacion.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Presentacion.DefaultCellStyle = dataGridViewCellStyle32;
             this.Presentacion.HeaderText = "Presentación";
             this.Presentacion.Name = "Presentacion";
             this.Presentacion.ReadOnly = true;
             // 
             // Marca
             // 
-            dataGridViewCellStyle60.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marca.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Marca.DefaultCellStyle = dataGridViewCellStyle31;
             this.Marca.HeaderText = "Marca";
             this.Marca.Name = "Marca";
             this.Marca.ReadOnly = true;
             // 
             // Nombre_Generico
             // 
-            dataGridViewCellStyle61.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombre_Generico.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombre_Generico.DefaultCellStyle = dataGridViewCellStyle30;
             this.Nombre_Generico.HeaderText = "Nombre Genérico";
             this.Nombre_Generico.Name = "Nombre_Generico";
             this.Nombre_Generico.ReadOnly = true;
             // 
             // Codigo_De_Barras
             // 
-            dataGridViewCellStyle62.BackColor = System.Drawing.Color.Silver;
-            this.Codigo_De_Barras.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.Silver;
+            this.Codigo_De_Barras.DefaultCellStyle = dataGridViewCellStyle29;
             this.Codigo_De_Barras.HeaderText = "Código de Barras";
             this.Codigo_De_Barras.Name = "Codigo_De_Barras";
             this.Codigo_De_Barras.ReadOnly = true;
             // 
             // Id_Producto
             // 
-            dataGridViewCellStyle63.BackColor = System.Drawing.Color.Silver;
-            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Silver;
+            this.Id_Producto.DefaultCellStyle = dataGridViewCellStyle28;
             this.Id_Producto.HeaderText = "Id_Producto";
             this.Id_Producto.Name = "Id_Producto";
             this.Id_Producto.ReadOnly = true;
@@ -221,7 +226,7 @@
             this.groupBoxDetalleDeCompra.Location = new System.Drawing.Point(12, 100);
             this.groupBoxDetalleDeCompra.Name = "groupBoxDetalleDeCompra";
             this.groupBoxDetalleDeCompra.Size = new System.Drawing.Size(1013, 348);
-            this.groupBoxDetalleDeCompra.TabIndex = 7;
+            this.groupBoxDetalleDeCompra.TabIndex = 8;
             this.groupBoxDetalleDeCompra.TabStop = false;
             this.groupBoxDetalleDeCompra.Text = "Detalle de Compra";
             // 
@@ -230,20 +235,21 @@
             this.textBoxCodigoDeBarras.Location = new System.Drawing.Point(103, 19);
             this.textBoxCodigoDeBarras.Name = "textBoxCodigoDeBarras";
             this.textBoxCodigoDeBarras.Size = new System.Drawing.Size(150, 20);
-            this.textBoxCodigoDeBarras.TabIndex = 7;
+            this.textBoxCodigoDeBarras.TabIndex = 8;
+            this.textBoxCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCodigoDeBarras_KeyDown);
             // 
             // dataGridViewDetalleDeIngreso
             // 
             this.dataGridViewDetalleDeIngreso.AllowUserToAddRows = false;
             this.dataGridViewDetalleDeIngreso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDetalleDeIngreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDetalleDeIngreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewDetalleDeIngreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDetalleDeIngreso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Producto,
@@ -260,17 +266,17 @@
             this.dataGridViewDetalleDeIngreso.Location = new System.Drawing.Point(9, 45);
             this.dataGridViewDetalleDeIngreso.MultiSelect = false;
             this.dataGridViewDetalleDeIngreso.Name = "dataGridViewDetalleDeIngreso";
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDetalleDeIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDetalleDeIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.dataGridViewDetalleDeIngreso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDetalleDeIngreso.Size = new System.Drawing.Size(998, 297);
-            this.dataGridViewDetalleDeIngreso.TabIndex = 8;
+            this.dataGridViewDetalleDeIngreso.TabIndex = 9;
             // 
             // textBoxMonto
             // 
@@ -297,7 +303,7 @@
             this.textBoxObservaciones.Multiline = true;
             this.textBoxObservaciones.Name = "textBoxObservaciones";
             this.textBoxObservaciones.ReadOnly = true;
-            this.textBoxObservaciones.Size = new System.Drawing.Size(200, 66);
+            this.textBoxObservaciones.Size = new System.Drawing.Size(200, 40);
             this.textBoxObservaciones.TabIndex = 6;
             // 
             // labelObservaciones
@@ -381,12 +387,42 @@
             this.toolStripButtonFirst,
             this.toolStripButtonPrevious,
             this.toolStripButtonNext,
-            this.toolStripButtonLast});
+            this.toolStripButtonLast,
+            this.toolStripButtonEdit,
+            this.toolStripButtonCancel});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(1037, 25);
             this.toolStripMenu.TabIndex = 30;
             this.toolStripMenu.Text = "Menu";
+            // 
+            // maskedTextBoxFecha
+            // 
+            this.maskedTextBoxFecha.Location = new System.Drawing.Point(335, 28);
+            this.maskedTextBoxFecha.Mask = "00/00/0000";
+            this.maskedTextBoxFecha.Name = "maskedTextBoxFecha";
+            this.maskedTextBoxFecha.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxFecha.TabIndex = 2;
+            this.maskedTextBoxFecha.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.maskedTextBoxFecha_TypeValidationCompleted);
+            this.maskedTextBoxFecha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.maskedTextBoxFecha_KeyDown);
+            // 
+            // conditionTextBox
+            // 
+            this.conditionTextBox.Location = new System.Drawing.Point(825, 74);
+            this.conditionTextBox.Name = "conditionTextBox";
+            this.conditionTextBox.Size = new System.Drawing.Size(150, 20);
+            this.conditionTextBox.TabIndex = 7;
+            this.conditionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.conditionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.conditionTextBox_KeyDown);
+            // 
+            // conditionLabel
+            // 
+            this.conditionLabel.AutoSize = true;
+            this.conditionLabel.Location = new System.Drawing.Point(738, 77);
+            this.conditionLabel.Name = "conditionLabel";
+            this.conditionLabel.Size = new System.Drawing.Size(43, 13);
+            this.conditionLabel.TabIndex = 32;
+            this.conditionLabel.Text = "Estado:";
             // 
             // toolStripButtonSearch
             // 
@@ -438,21 +474,36 @@
             this.toolStripButtonLast.Text = "Último";
             this.toolStripButtonLast.Click += new System.EventHandler(this.toolStripButtonLast_Click);
             // 
-            // maskedTextBoxFecha
+            // toolStripButtonEdit
             // 
-            this.maskedTextBoxFecha.Location = new System.Drawing.Point(335, 28);
-            this.maskedTextBoxFecha.Mask = "00/00/0000";
-            this.maskedTextBoxFecha.Name = "maskedTextBoxFecha";
-            this.maskedTextBoxFecha.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBoxFecha.TabIndex = 2;
-            this.maskedTextBoxFecha.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.maskedTextBoxFecha_TypeValidationCompleted);
-            this.maskedTextBoxFecha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.maskedTextBoxFecha_KeyDown);
+            this.toolStripButtonEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEdit.Image = global::Super_Mercado_Mio.Properties.Resources.TEdit;
+            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
+            this.toolStripButtonEdit.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonEdit.Text = "Modificar";
+            this.toolStripButtonEdit.Visible = false;
+            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
+            // 
+            // toolStripButtonCancel
+            // 
+            this.toolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCancel.Image = global::Super_Mercado_Mio.Properties.Resources.TCancel;
+            this.toolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCancel.Name = "toolStripButtonCancel";
+            this.toolStripButtonCancel.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonCancel.Text = "Anular";
+            this.toolStripButtonCancel.ToolTipText = "Anular";
+            this.toolStripButtonCancel.Visible = false;
+            this.toolStripButtonCancel.Click += new System.EventHandler(this.toolStripButtonCancel_Click);
             // 
             // Lista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 460);
+            this.Controls.Add(this.conditionTextBox);
+            this.Controls.Add(this.conditionLabel);
             this.Controls.Add(this.maskedTextBoxFecha);
             this.Controls.Add(this.toolStripMenu);
             this.Controls.Add(this.groupBoxDetalleDeCompra);
@@ -524,5 +575,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLast;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripEmpty;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxFecha;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCancel;
+        private System.Windows.Forms.TextBox conditionTextBox;
+        private System.Windows.Forms.Label conditionLabel;
+        private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
     }
 }
